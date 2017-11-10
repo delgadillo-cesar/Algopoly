@@ -27,7 +27,7 @@ public class Dado {
 	 * 	Pre: Dado creado
 	 * 	Pos: Lanzar implica hipoteticamente arrojar 
 	 * 		 un dado y leer el numero de la cara del mismo
-	 * 
+	 * 		 El cual es un entero entre 1 y 6
 	 */
 	
 		int lanzar () 
