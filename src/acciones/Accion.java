@@ -1,8 +1,8 @@
 package acciones;
 
-import entidades.Jugador;
+import tablero.Casilla;
 
-public abstract class Accion {
+public abstract class Accion extends Casilla {
 	
-	public abstract void afectar(Jugador jugador);
+	
 }

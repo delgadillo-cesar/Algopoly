@@ -3,6 +3,7 @@ package acciones;
 import java.util.HashMap;
 
 import entidades.Jugador;
+import entidades.Nadie;
 
 public class Quini extends Accion{
 
@@ -35,5 +36,11 @@ public class Quini extends Accion{
 			return 30000;
 		}
 		return 0;
+	}
+
+	@Override
+	public Jugador propietario() {
+		
+		return new Nadie();
 	}
 }

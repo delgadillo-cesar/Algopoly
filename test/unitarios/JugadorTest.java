@@ -3,7 +3,7 @@ package unitarios;
 import org.junit.Assert;
 import org.junit.Test;
 
-import entidades.Jugador;
+import entidades.JugadorConcreto;
 
 
 
@@ -12,14 +12,14 @@ public class JugadorTest {
 	@Test
 	public void testCrearJugadorConNombreValidoNoDevuelveNull() {
 
-		Jugador jugador = new Jugador("Mario");
+		JugadorConcreto jugador = new JugadorConcreto("Mario");
 		Assert.assertNotNull(jugador);
 	}
 	
 	@Test
 	public void testJugadorNuevoTieneCienMilPesosDeCapital() {
 		
-		Jugador jugador = new Jugador("Juan");
+		JugadorConcreto jugador = new JugadorConcreto("Juan");
 		Assert.assertEquals(jugador.capital(), 100000);
 	}
 

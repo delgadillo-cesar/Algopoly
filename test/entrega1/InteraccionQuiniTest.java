@@ -3,9 +3,9 @@ package entrega1;
 import org.junit.Assert;
 import org.junit.Test;
 
-import acciones.Accion;
 import acciones.Quini;
-import entidades.Jugador;
+import entidades.JugadorConcreto;
+import tablero.Casilla;
 
 
 public class InteraccionQuiniTest {
@@ -13,8 +13,8 @@ public class InteraccionQuiniTest {
 	@Test
 	public void testCaerPorPrimeraVezEnQuini6IncrementaCapitalEn50000() {
 		
-		Jugador jugador = new Jugador("Elias");
-		Accion quini = new Quini();
+		JugadorConcreto jugador = new JugadorConcreto("Elias");
+		Casilla quini = new Quini();
 		int capitalInicial = jugador.capital();
 		
 		quini.afectar(jugador);
@@ -25,8 +25,8 @@ public class InteraccionQuiniTest {
 	@Test
 	public void testCaerPorSegundaVezEnQuini6IncrementaCapitalEn30000() {
 		
-		Jugador jugador = new Jugador("Pedro");
-		Accion quini = new Quini();
+		JugadorConcreto jugador = new JugadorConcreto("Pedro");
+		Casilla quini = new Quini();
 		int capitalInicial = jugador.capital();
 		quini.afectar(jugador);
 		
@@ -38,8 +38,8 @@ public class InteraccionQuiniTest {
 	@Test
 	public void testCaerPorTerceraVezEnQuini6NoIncrementaElCapital() {
 		
-		Jugador jugador = new Jugador("Pedro");
-		Accion quini = new Quini();
+		JugadorConcreto jugador = new JugadorConcreto("Pedro");
+		Casilla quini = new Quini();
 		int capitalInicial = jugador.capital();
 		quini.afectar(jugador);
 		quini.afectar(jugador);
@@ -52,8 +52,8 @@ public class InteraccionQuiniTest {
 	@Test
 	public void testCaerMilVecesEnQuini6NoIncrementaElCapital() {
 		
-		Jugador jugador = new Jugador("Pedro");
-		Accion quini = new Quini();
+		JugadorConcreto jugador = new JugadorConcreto("Pedro");
+		Casilla quini = new Quini();
 		int capitalInicial = jugador.capital();
 		for (int i = 0; i < 999; i++) {
 			quini.afectar(jugador);
