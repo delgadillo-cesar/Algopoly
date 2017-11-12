@@ -1,6 +1,7 @@
 package propiedades;
 
 import entidades.Jugador;
+import entidades.JugadorConcreto;
 
 public class Terreno extends Propiedad {
 
@@ -16,5 +17,11 @@ public class Terreno extends Propiedad {
 		propietario = jugador;
 		
 	}	
+	
+	@Override
+	public int numeroDeCasillerosAAvanzar(JugadorConcreto jugador, int numero)	{
+		
+		return 0;
+	}
 
 }

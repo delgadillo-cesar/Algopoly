@@ -34,5 +34,10 @@ public class JugadorConcreto extends Jugador{
 		propiedades.add(unTerreno);
 		
 	}
+	
+	public int cantidadPropiedades ()	{
+	
+		return this.propiedades.size();
+	}
 
 }
