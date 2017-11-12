@@ -23,5 +23,12 @@ public class Terreno extends Propiedad {
 		
 		return 0;
 	}
+	
+	@Override
+	public int numeroDeCasillerosARetroceder(JugadorConcreto jugador, int numero)	{
+		
+		return 0;
+	}
+
 
 }
