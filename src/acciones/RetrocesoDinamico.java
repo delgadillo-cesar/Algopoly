@@ -1,4 +1,6 @@
 package acciones;
+import juego.Dados;
+import tablero.Tablero;
 import entidades.Jugador;
 import entidades.JugadorConcreto;
 
@@ -32,7 +34,7 @@ public class RetrocesoDinamico extends Accion{
 	
 /***********************************************/
 	
-	public int numeroDeCasillerosARetroceder (JugadorConcreto jugador,int numero)
+	private int numeroDeCasillerosARetroceder (Jugador jugador,int numero)
 	{
 		int nuevoValor=0;
 		int temp=0;
@@ -63,9 +65,9 @@ public class RetrocesoDinamico extends Accion{
 	
 /***********************************************/
 	
-	@Override
-	public void afectar(Jugador jugador) {		
-			
+	public void afectar(Jugador jugador) {
+		int desplazarCasilleros = this.numeroDeCasillerosARetroceder(jugador, Dados.getInstance().getValor());
+		Tablero.getInstance().desplazar(jugador, -1 * desplazarCasilleros);
 	}
 			
 /***********************************************/

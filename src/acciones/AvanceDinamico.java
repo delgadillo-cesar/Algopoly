@@ -1,4 +1,6 @@
 package acciones;
+import tablero.Tablero;
+import juego.Dados;
 import entidades.Jugador;
 import entidades.JugadorConcreto;
 
@@ -32,7 +34,7 @@ public class AvanceDinamico extends Accion{
 	
 /***********************************************/
 	
-	public int numeroDeCasillerosAAvanzar (JugadorConcreto jugador,int numero)
+	private int numeroDeCasillerosAAvanzar (Jugador jugador,int numero)
 		{
 			int nuevoValor=0;
 			if (buscarEnIntervalo (numero,this.intervalo1))
@@ -51,8 +53,9 @@ public class AvanceDinamico extends Accion{
 /***********************************************/
 		
 	@Override
-	public void afectar(Jugador jugador) {		
-			
+	public void afectar(Jugador jugador) {
+		int desplazarCasilleros = this.numeroDeCasillerosAAvanzar(jugador, Dados.getInstance().getValor());
+		Tablero.getInstance().desplazar(jugador, desplazarCasilleros);
 	}
 			
 /***********************************************/
