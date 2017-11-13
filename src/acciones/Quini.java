@@ -25,18 +25,18 @@ public class Quini extends Accion {
 	}
 
 	private int premioParaJugador(Jugador unJugador) {
-
-		// nunca lo gano
-		if (vecesGanadas.get(unJugador) == null) {
-			vecesGanadas.put(unJugador, 1);
-			return 50000;
+		int premio = 50000;
+		
+		if (vecesGanadas.containsKey(unJugador)){
+			int cantidadDeVecesGanadas = vecesGanadas.get(unJugador);
+			if (cantidadDeVecesGanadas == 1) premio = 30000; else premio = 0;
+			
+			vecesGanadas.remove(unJugador);
+			vecesGanadas.put(unJugador, cantidadDeVecesGanadas ++);
+		}else{
+			vecesGanadas.put(unJugador, 1);			
 		}
-
-		else if (vecesGanadas.get(unJugador) == 1) {
-			vecesGanadas.put(unJugador, 2);
-			return 30000;
-		}
-		return 0;
+		return premio;
 	}
 
 }
