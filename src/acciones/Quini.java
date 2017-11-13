@@ -39,22 +39,4 @@ public class Quini extends Accion {
 		return 0;
 	}
 
-	@Override
-	public Jugador propietario() {
-
-		return new Nadie();
-	}
-
-	@Override
-	public int numeroDeCasillerosAAvanzar(JugadorConcreto jugador, int numero) {
-
-		return 0;
-	}
-
-	@Override
-	public int numeroDeCasillerosARetroceder(JugadorConcreto jugador, int numero) {
-
-		return 0;
-	}
-
 }

@@ -1,7 +1,6 @@
 package acciones;
 import entidades.Jugador;
 import entidades.JugadorConcreto;
-import entidades.Nadie;
 
 public class AvanceDinamico extends Accion{
 	
@@ -58,21 +57,6 @@ public class AvanceDinamico extends Accion{
 			
 /***********************************************/
 		
-	@Override
-	public Jugador propietario() {
-			
-		return new Nadie();
-	}
-
-/***********************************************/
-	
-	@Override
-	public int numeroDeCasillerosARetroceder(JugadorConcreto jugador, int numero)	{
-		
-		return 0;
-	}
-	
-/***********************************************/
 	
 }
 	

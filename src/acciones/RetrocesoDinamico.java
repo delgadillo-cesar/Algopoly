@@ -1,7 +1,6 @@
 package acciones;
 import entidades.Jugador;
 import entidades.JugadorConcreto;
-import entidades.Nadie;
 
 public class RetrocesoDinamico extends Accion{
 	
@@ -37,7 +36,7 @@ public class RetrocesoDinamico extends Accion{
 	{
 		int nuevoValor=0;
 		int temp=0;
-		System.out.println("N° de propiedades: " + jugador.cantidadPropiedades());
+		System.out.println("Nï¿½ de propiedades: " + jugador.cantidadPropiedades());
 		if (buscarEnIntervalo (numero,this.intervalo1))
 			{
 				temp = numero - jugador.cantidadPropiedades();
@@ -69,21 +68,5 @@ public class RetrocesoDinamico extends Accion{
 			
 	}
 			
-/***********************************************/
-		
-	@Override
-	public Jugador propietario() {
-			
-		return new Nadie();
-	}
-
-/***********************************************/
-	
-	@Override
-	public int numeroDeCasillerosAAvanzar(JugadorConcreto jugador, int numero)	{
-		
-		return 0;
-	}
-
 /***********************************************/
 }

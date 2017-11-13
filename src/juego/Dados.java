@@ -35,7 +35,4 @@ public class Dados {
 		
 		return (dado1==dado2)?true:false;
 	}
-	
-
-	
 }
