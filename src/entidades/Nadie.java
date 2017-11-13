@@ -33,4 +33,9 @@ public class Nadie extends Jugador{
 		throw new JugadorNadieException();
 	}
 
+	@Override
+	public boolean tienePropiedad(String unaDescipcionDePropiedad) {
+		return false;
+	}
+
 }
