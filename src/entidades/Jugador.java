@@ -16,4 +16,6 @@ public abstract class Jugador {
 
 	public abstract int cantidadPropiedades ();
 
+	public abstract boolean tienePropiedad(String unaDescipcionDePropiedad);
+
 }

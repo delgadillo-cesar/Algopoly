@@ -1,5 +1,6 @@
 package entidades;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import propiedades.Propiedad;
 
@@ -7,13 +8,13 @@ public class JugadorConcreto extends Jugador{
 
 	private String nombre;
 	private int capital;
-	private HashSet<Propiedad> propiedades;
+	private HashMap<String, Propiedad> propiedades;
 	
 	
 	public JugadorConcreto(String unNombre) {
 		nombre = unNombre;
 		capital = 100000;
-		propiedades = new HashSet<Propiedad>();
+		propiedades = new HashMap<String, Propiedad>();
 	}
 
 	
@@ -30,7 +31,7 @@ public class JugadorConcreto extends Jugador{
 
 	
 	public void comprar(Propiedad unaPropiedad) {
-		propiedades.add(unaPropiedad);
+		propiedades.put(unaPropiedad.nombre(), unaPropiedad);
 	}
 	
 	
@@ -50,6 +51,12 @@ public class JugadorConcreto extends Jugador{
 		if (unJugador == this) throw new PropietarioException();
 		
 		capital += unJugador.cobrar(unMonto);
+	}
+
+
+	@Override
+	public boolean tienePropiedad(String unaDescipcionDePropiedad) {
+		return (propiedades.get(unaDescipcionDePropiedad) != null);
 	}
 
 }
