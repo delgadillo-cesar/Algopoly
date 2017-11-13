@@ -6,32 +6,32 @@ import entidades.Jugador;
 import entidades.JugadorConcreto;
 import entidades.Nadie;
 
-public class Quini extends Accion{
+public class Quini extends Accion {
 
 	private HashMap<Jugador, Integer> vecesGanadas;
-	
+
 	public Quini() {
-		
+
 		vecesGanadas = new HashMap<Jugador, Integer>();
-		
+
 	}
-	
+
 	@Override
 	public void afectar(Jugador jugador) {
-		
+
 		int premio = premioParaJugador(jugador);
 		jugador.cobrar(premio);
-		
+
 	}
-	
+
 	private int premioParaJugador(Jugador unJugador) {
-		
+
 		// nunca lo gano
 		if (vecesGanadas.get(unJugador) == null) {
 			vecesGanadas.put(unJugador, 1);
 			return 50000;
 		}
-		
+
 		else if (vecesGanadas.get(unJugador) == 1) {
 			vecesGanadas.put(unJugador, 2);
 			return 30000;
@@ -41,15 +41,20 @@ public class Quini extends Accion{
 
 	@Override
 	public Jugador propietario() {
-		
+
 		return new Nadie();
 	}
-	
+
 	@Override
-	public int numeroDeCasillerosAAvanzar(JugadorConcreto jugador, int numero)	{
-		
+	public int numeroDeCasillerosAAvanzar(JugadorConcreto jugador, int numero) {
+
 		return 0;
 	}
-	
-	
+
+	@Override
+	public int numeroDeCasillerosARetroceder(JugadorConcreto jugador, int numero) {
+
+		return 0;
+	}
+
 }

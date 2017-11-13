@@ -2,7 +2,7 @@ package juego;
 
 public class Dados {
 	
-	private static Dados instancia;
+	private static Dados instanciaDados;
 	private int dado1;
 	private int dado2;
 	
@@ -14,10 +14,10 @@ public class Dados {
 	
 	public static Dados getInstance() {
 		
-		if (instancia == null) {
-			instancia = new Dados();
+		if (instanciaDados == null) {
+			instanciaDados = new Dados();
 		}
-		return instancia;
+		return instanciaDados;
 	}
 	
 	public void lanzarDados() {
