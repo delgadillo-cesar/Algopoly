@@ -207,7 +207,23 @@
 	</target>
 
 	<target name="ejecutar.aplicacion" depends="empaquetar">
-		<java classname="fiuba.algo3.ejemplo1.Foo" fork="true">
+		<java classname="acciones" fork="true">
+			<classpath refid="classpath" />
+			<classpath location="${build}/dist/algo3.jar" />
+		</java>
+		<java classname="entidades" fork="true">
+			<classpath refid="classpath" />
+			<classpath location="${build}/dist/algo3.jar" />
+		</java>
+		<java classname="juego" fork="true">
+			<classpath refid="classpath" />
+			<classpath location="${build}/dist/algo3.jar" />
+		</java>
+		<java classname="propiedades" fork="true">
+			<classpath refid="classpath" />
+			<classpath location="${build}/dist/algo3.jar" />
+		</java>
+		<java classname="tablero" fork="true">
 			<classpath refid="classpath" />
 			<classpath location="${build}/dist/algo3.jar" />
 		</java>
