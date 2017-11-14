@@ -38,7 +38,7 @@ public class InteraccionCarcelTest {
 		jugadores.add(new JugadorConcreto("Pepe"));
 		jugadores.add(new JugadorConcreto("Luis"));
 		Turno turno = new Turno(jugadores);
-		Casilla carcel = new Carcel();
+		Carcel carcel = new Carcel();
 
 		carcel.afectar(jugadores.get(0));
 		carcel.pagarFianza(jugadores.get(0));
@@ -56,7 +56,7 @@ public class InteraccionCarcelTest {
 		jugadores.add(new JugadorConcreto("Pepe"));
 		jugadores.add(new JugadorConcreto("Luis"));
 		Turno turno = new Turno(jugadores);
-		Casilla carcel = new Carcel();
+		Carcel carcel = new Carcel();
 
 		carcel.afectar(jugadores.get(0));
 		carcel.pagarFianza(jugadores.get(0));
