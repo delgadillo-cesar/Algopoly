@@ -270,6 +270,6 @@ public class Tablero {
 	 */
 	public static void resetear() {
 		
-		elTablero = new Tablero();
+		elTablero = null;
 	}
 }

@@ -1,6 +1,7 @@
 package unitarios;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import entidades.Jugador;
@@ -8,11 +9,15 @@ import entidades.JugadorConcreto;
 import tablero.Tablero;
 
 public class TableroTest {
-
+	
+	@Before
+	public void setUp() throws Exception {
+		Tablero.resetear();
+	}
+	
 	@Test
 	public void testObtenerTableroNoDevuelveNull() {
 		
-		Tablero.resetear();
 		Tablero tablero = Tablero.getInstance();
 		
 		Assert.assertNotNull(tablero);
@@ -21,7 +26,6 @@ public class TableroTest {
 	@Test
 	public void testDesplazarJugadorUnaCasillaHaciaAdelanteLoDesplazaCorrectamente() {
 		
-		Tablero.resetear();
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador = new JugadorConcreto("Pepe");
 		tablero.desplazar(jugador, "SALIDA");
@@ -36,7 +40,6 @@ public class TableroTest {
 	@Test
 	public void testDesplazarJugadorveintiunCasillasHaciaAdelanteLoDesplazaCorrectamente() {
 		
-		Tablero.resetear();
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador = new JugadorConcreto("Pepe");
 		tablero.desplazar(jugador, "SALIDA");
@@ -51,7 +54,6 @@ public class TableroTest {
 	@Test
 	public void testDesplazarJugadorUnaCasillaHaciaAtrasLoDesplazaCorrectamente() {
 		
-		Tablero.resetear();
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador = new JugadorConcreto("Pepe");
 		tablero.desplazar(jugador, "SALIDA");
@@ -66,7 +68,6 @@ public class TableroTest {
 	@Test
 	public void testDesplazarJugadorVeintiunCasillaHaciaAtrasLoDesplazaCorrectamente() {
 		
-		Tablero.resetear();
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador = new JugadorConcreto("Pepe");
 		tablero.desplazar(jugador, "SALIDA");
@@ -81,7 +82,6 @@ public class TableroTest {
 	@Test
 	public void testDesplazarJugadorUnaPosicionHaciaAdelanteRemueveAlJugadorDeLaCasillaAnterior() {
 		
-		Tablero.resetear();
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador = new JugadorConcreto("Pepe");
 		tablero.desplazar(jugador, "SALIDA");
@@ -95,7 +95,6 @@ public class TableroTest {
 	@Test
 	public void testDesplazarJugadorUnaPosicionHaciAtrasRemueveAlJugadorDeLaCasillaAnterior() {
 		
-		Tablero.resetear();
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador = new JugadorConcreto("Pepe");
 		tablero.desplazar(jugador, "SALIDA");
@@ -109,7 +108,6 @@ public class TableroTest {
 	@Test
 	public void testMovimientoDesdeSalidaHastaBsAsZonaNorteDesplazaCorrectamenteAUnJugadorPorElTablero() {
 		
-		Tablero.resetear();
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador = new JugadorConcreto("Pepe");
 		tablero.desplazar(jugador, "SALIDA");
@@ -127,7 +125,6 @@ public class TableroTest {
 	@Test
 	public void testMovimientoDesdeSubteHastaSaltaSurDesplazaCorrectamenteAUnJugadorPorElTablero() {
 		
-		Tablero.resetear();
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador = new JugadorConcreto("Pepe");
 		tablero.desplazar(jugador, "SUBTE");
