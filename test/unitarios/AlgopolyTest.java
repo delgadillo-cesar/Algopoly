@@ -1,6 +1,7 @@
 package unitarios;
 
 import org.junit.Assert;
+import org.junit.Test;
 
 public class AlgopolyTest {
 	
@@ -10,4 +11,5 @@ public class AlgopolyTest {
 		Algooly juego = new Algopoly();
 		
 		Assert.assertNotNull(juego);
+	}
 }
