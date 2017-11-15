@@ -1,5 +1,5 @@
 package entidades;
 
-public class PropietarioException extends Exception {
+public class PropietarioException extends RuntimeException {
 
 }
