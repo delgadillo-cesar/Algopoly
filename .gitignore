@@ -2,9 +2,7 @@
 build/
 libs/
 tmp/
-.classpath
-.project
-.settings/
+
 bin/
-build.xml.old
+
 *.jar
