@@ -30,9 +30,8 @@ public class Quini extends Accion {
 		
 		if (vecesGanadas.containsKey(unJugador)){
 			int cantidadDeVecesGanadas = vecesGanadas.get(unJugador);
-			if (cantidadDeVecesGanadas == 1) premio = 30000; else premio = 0;
+			if (cantidadDeVecesGanadas == 1) premio = 30000; else premio = 0;			
 			
-			//vecesGanadas.remove(unJugador);
 			vecesGanadas.put(unJugador, cantidadDeVecesGanadas + 1);
 		}else{
 			vecesGanadas.put(unJugador, 1);			
