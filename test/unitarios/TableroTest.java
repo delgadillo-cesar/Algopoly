@@ -74,7 +74,7 @@ public class TableroTest {
 	}
 	
 	@Test
-	public void testDesplazarJugadorRemueveAlJugadorDeLaCasillaAnterior() {
+	public void testDesplazarJugadorUnaPosicionHaciaAdelanteRemueveAlJugadorDeLaCasillaAnterior() {
 		
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador = new JugadorConcreto("Pepe");
@@ -84,5 +84,33 @@ public class TableroTest {
 		
 		Assert.assertTrue(tablero.casillaEstaVacia(1));
 		
+	}
+	
+	@Test
+	public void testDesplazarJugadorUnaPosicionHaciAtrasRemueveAlJugadorDeLaCasillaAnterior() {
+		
+		Tablero tablero = Tablero.getInstance();
+		Jugador jugador = new JugadorConcreto("Pepe");
+		tablero.desplazar(jugador, "SALIDA");
+		
+		tablero.desplazar(jugador, -1);
+		
+		Assert.assertTrue(tablero.casillaEstaVacia(1));
+		
+	}
+	
+	@Test
+	public void testDarUnaVueltaCompletaDesplazaCorrectamenteAUnJugadorPorElTablero() {
+		
+		Tablero tablero = Tablero.getInstance();
+		Jugador jugador = new JugadorConcreto("Pepe");
+		tablero.desplazar(jugador, "SALIDA");
+		
+		for (int i = 1; i <= 21; i++) {
+			
+			tablero.desplazar(jugador, 1);
+			Assert.assertTrue(tablero.casillaEstaVacia(i));
+			Assert.assertFalse(tablero.casillaEstaVacia(i+1));
+		}
 	}
 }
