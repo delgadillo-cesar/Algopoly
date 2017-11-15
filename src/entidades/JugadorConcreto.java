@@ -1,7 +1,6 @@
 package entidades;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import propiedades.Propiedad;
 
 public class JugadorConcreto extends Jugador{
@@ -49,8 +48,8 @@ public class JugadorConcreto extends Jugador{
 
 	
 	@Override
-	public void cobrar(int unMonto, Jugador unJugador) throws PropietarioException {
-		if (unJugador == this) throw new PropietarioException();
+	public void cobrar(int unMonto, Jugador unJugador) {
+		if (unJugador == this) throw new MismoJugadorException();
 		
 		capital += unJugador.pagar(unMonto);
 	}

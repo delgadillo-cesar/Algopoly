@@ -8,7 +8,7 @@ public abstract class Jugador {
 
 	public abstract int cobrar(int unMonto);
 
-	public abstract void cobrar(int unMonto, Jugador unJugador) throws JugadorNadieException, PropietarioException;
+	public abstract void cobrar(int unMonto, Jugador unJugador) throws JugadorNadieException, MismoJugadorException;
 
 	public abstract int pagar(int unMonto);
 

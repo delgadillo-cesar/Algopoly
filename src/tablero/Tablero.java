@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import entidades.Jugador;
-import entidades.PropietarioException;
+import entidades.MismoJugadorException;
 
 public class Tablero {
 
@@ -41,7 +41,7 @@ public class Tablero {
 		
 		try {
 			nuevaCasilla.afectar(jugador);
-		} catch (PropietarioException e) {
+		} catch (MismoJugadorException e) {
 		}
 	}
 	
@@ -58,7 +58,7 @@ public class Tablero {
 		
 		try {
 			nuevaCasilla.afectar(jugador);
-		} catch (PropietarioException e) {
+		} catch (MismoJugadorException e) {
 		}
 	}
 

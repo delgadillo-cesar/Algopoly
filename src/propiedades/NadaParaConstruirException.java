@@ -1,5 +1,7 @@
 package propiedades;
 
-public class NadaParaConstruirException extends Exception {
+public class NadaParaConstruirException extends RuntimeException {
+
+	private static final long serialVersionUID = 1L;
 
 }

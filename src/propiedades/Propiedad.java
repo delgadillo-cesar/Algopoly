@@ -2,7 +2,7 @@ package propiedades;
 
 import entidades.Jugador;
 import entidades.Nadie;
-import entidades.PropietarioException;
+import entidades.MismoJugadorException;
 import tablero.Casilla;
 
 public abstract class Propiedad extends Casilla {
@@ -39,5 +39,5 @@ public abstract class Propiedad extends Casilla {
 		unJugador.comprar(this);
 	}
 	
-	public abstract void afectar(Jugador jugador) throws PropietarioException;
+	public abstract void afectar(Jugador jugador) throws MismoJugadorException;
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import entidades.Jugador;
 import entidades.JugadorNadieException;
-import entidades.PropietarioException;
+import entidades.MismoJugadorException;
 
 public class Terreno extends Propiedad {
 	
@@ -39,7 +39,7 @@ public class Terreno extends Propiedad {
 	
 	
 	@Override
-	public void afectar(Jugador jugador) throws PropietarioException {
+	public void afectar(Jugador jugador) throws MismoJugadorException {
 		try {
 			propietario.cobrar(construido.precioAlquiler(), jugador);
 		} catch (JugadorNadieException e) {

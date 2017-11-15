@@ -2,7 +2,7 @@ package propiedades;
 
 import entidades.Jugador;
 import entidades.JugadorNadieException;
-import entidades.PropietarioException;
+import entidades.MismoJugadorException;
 
 public abstract class Compania extends Propiedad {
 
@@ -12,7 +12,6 @@ public abstract class Compania extends Propiedad {
 			propietario.cobrar(this.cobrar(), jugador);
 		} catch (JugadorNadieException e) {
 			this.comprar(jugador);
-		} catch (PropietarioException e) {
 		}
 	}
 	
