@@ -10,6 +10,8 @@ import tablero.Casilla;
 
 public class InteraccionQuiniTest {
 	
+/***********************************************/	
+	
 	@Test
 	public void testCaerPorPrimeraVezEnQuini6IncrementaCapitalEn50000() {
 		
@@ -21,6 +23,8 @@ public class InteraccionQuiniTest {
 		
 		Assert.assertEquals(capitalInicial + 50000, jugador.capital());
 	}
+	
+/***********************************************/	
 	
 	@Test
 	public void testCaerPorSegundaVezEnQuini6IncrementaCapitalEn30000() {
@@ -34,6 +38,8 @@ public class InteraccionQuiniTest {
 		
 		Assert.assertEquals(capitalInicial + 80000, jugador.capital());
 	}
+	
+/***********************************************/	
 	
 	@Test
 	public void testCaerPorTerceraVezEnQuini6NoIncrementaElCapital() {
@@ -49,6 +55,8 @@ public class InteraccionQuiniTest {
 		Assert.assertEquals(capitalInicial + 80000, jugador.capital());
 	}
 	
+/***********************************************/	
+	
 	@Test
 	public void testCaerMilVecesEnQuini6NoIncrementaElCapital() {
 		
@@ -63,6 +71,9 @@ public class InteraccionQuiniTest {
 		
 		Assert.assertEquals(capitalInicial + 80000, jugador.capital());
 	}
+	
+/***********************************************/
+	
 }
 
 	
