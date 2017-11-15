@@ -41,8 +41,10 @@ public class JugadorConcreto extends Jugador{
 
 	
 	@Override
-	public void pagar(int unMonto) {
+	public int pagar(int unMonto) {
 		capital -= unMonto;
+		
+		return unMonto;
 	}
 
 	
@@ -50,7 +52,7 @@ public class JugadorConcreto extends Jugador{
 	public void cobrar(int unMonto, Jugador unJugador) throws PropietarioException {
 		if (unJugador == this) throw new PropietarioException();
 		
-		capital += unJugador.cobrar(unMonto);
+		capital += unJugador.pagar(unMonto);
 	}
 
 

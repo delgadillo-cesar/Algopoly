@@ -25,7 +25,8 @@ public class Nadie extends Jugador{
 	}
 
 	@Override
-	public void pagar(int unMonto) {
+	public int pagar(int unMonto) {
+		return 0;
 	}
 
 	@Override
