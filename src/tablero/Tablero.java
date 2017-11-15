@@ -237,7 +237,7 @@ public class Tablero {
 		
 		
 		for (Map.Entry<Integer, Casilla>entry: this.numeroCasilla.entrySet()){
-			if(entry.getValue() == nuevaCasilla){
+			if(entry.getValue().descripcion() == nuevaCasilla.descripcion()){
 				this.jugadorNroCasilla.remove(jugador);
 				this.jugadorNroCasilla.put(jugador, entry.getKey());
 			}				
@@ -262,6 +262,14 @@ public class Tablero {
 	 * @return
 	 */
 	public boolean casillaEstaVacia(int unNumeroDeCasilla) {
-		return jugadorNroCasilla.containsValue(unNumeroDeCasilla);
+		return !jugadorNroCasilla.containsValue(unNumeroDeCasilla);
+	}
+	
+	/**
+	 * Metodo de tests. No se deberia utilizar	 
+	 */
+	public static void resetear() {
+		
+		elTablero = new Tablero();
 	}
 }
