@@ -61,4 +61,24 @@ public class Tablero {
 		} catch (PropietarioException e) {
 		}
 	}
+
+	/**
+	 * 
+	 * @param jugador
+	 * @return
+	 */
+	public int casillaDeJugador(Jugador jugador) {
+		
+		return jugadorNroCasilla.get(jugador);
+	}
+	
+	/**
+	 * Metodo de tests. No se deberia utilizar
+	 * @param unNumeroDeCasilla
+	 * @return
+	 */
+	public boolean casillaEstaVacia(int unNumeroDeCasilla) {
+		
+		return jugadorNroCasilla.containsValue(unNumeroDeCasilla);
+	}
 }
