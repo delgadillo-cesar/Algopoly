@@ -25,12 +25,13 @@ public class RetrocesoDinamico extends Accion{
 		
 /***********************************************/
 	
-	public	RetrocesoDinamico ()
-		{
-			intervalo1 = new int [] {2,3,4,5,6};
-			intervalo2 = new int [] {7,8,9,10};
-			intervalo3 = new int [] {11,12};
-		}
+	public	RetrocesoDinamico (){
+		this.descripcion = "RETROCESO DINAMICO";
+		
+		intervalo1 = new int [] {2,3,4,5,6};
+		intervalo2 = new int [] {7,8,9,10};
+		intervalo3 = new int [] {11,12};
+	}
 	
 /***********************************************/
 	

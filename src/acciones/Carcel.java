@@ -12,6 +12,7 @@ public class Carcel extends Accion {
 	private final Integer fianza = Integer.valueOf(45000);
 
 	public Carcel() {
+		this.descripcion = "CARCEL";
 		this.diasRestantes = new HashMap<Jugador, Integer>();
 	}
 

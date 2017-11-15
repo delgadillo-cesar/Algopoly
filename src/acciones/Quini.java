@@ -11,6 +11,7 @@ public class Quini extends Accion {
 	private HashMap<Jugador, Integer> vecesGanadas;
 
 	public Quini() {
+		this.descripcion = "QUINI 6";
 
 		vecesGanadas = new HashMap<Jugador, Integer>();
 

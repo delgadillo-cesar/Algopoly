@@ -5,6 +5,7 @@ import juego.Dados;
 public class Subte extends Compania {
 
 	public Subte(){
+		this.descripcion = "SUBTE";
 		this.nombrePropiedad = "SUBTE";
 		this.precioCompra = 40000;
 	}

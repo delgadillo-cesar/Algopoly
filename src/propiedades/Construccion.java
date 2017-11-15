@@ -29,6 +29,10 @@ public class Construccion {
 		return new Construccion("un hotel", costoConstuccion, precioAlquiler);
 	}
 	
+	public static Construccion construirUnEdificioHistorico(int costoConstuccion, int precioAlquiler){
+		return new Construccion("un edificio historico", costoConstuccion, precioAlquiler);
+	}
+	
 	
 	public int precioAlquiler(){
 		return this.precioAlquiler;
