@@ -26,7 +26,7 @@ public class Terreno extends Propiedad {
 
 		Construccion unaConstruccion = this.construcciones.get(0);
 		
-		this.propietario.cobrar(unaConstruccion.costoConstruccion());
+		this.propietario.pagar(unaConstruccion.costoConstruccion());
 		this.construido = unaConstruccion;
 		this.construcciones.remove(0);
 	}

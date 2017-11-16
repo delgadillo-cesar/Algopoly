@@ -7,7 +7,6 @@ import java.util.Map;
 
 import acciones.*;
 import entidades.Jugador;
-import entidades.MismoJugadorException;
 import propiedades.*;
 
 public class Tablero {
