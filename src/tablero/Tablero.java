@@ -269,6 +269,6 @@ public class Tablero {
 	 */
 	public static void resetear() {
 		
-		elTablero = null;
+		elTablero = new Tablero();
 	}
 }

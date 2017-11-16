@@ -128,6 +128,7 @@ public class TableroTest {
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador = new JugadorConcreto("Pepe");
 		tablero.desplazar(jugador, "SUBTE");
+		jugador.cobrar(2000000); /*Se agrega capital para que tenga suficiente para la prueba*/
 		
 		for (int i = 1; i <= 6; i++) {			
 			tablero.desplazar(jugador, 1);
