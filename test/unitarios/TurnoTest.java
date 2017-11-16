@@ -38,6 +38,21 @@ public class TurnoTest {
 	}
 
 	@Test
+	public void testCambiarTurnoDosVecesyJugadorActualEsPrimerJugador() {
+		Jugador primerJugador = new JugadorConcreto("Rich Uncle");
+		Jugador segundoJugador = new JugadorConcreto("Milburn Pennybags");
+		LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
+		jugadores.add(primerJugador);
+		jugadores.add(segundoJugador);
+		Turno turno = new Turno(jugadores);
+		do {
+			Dados.getInstance().lanzarDados();
+		} while (Dados.getInstance().salieronPares());
+		turno.cambiarTurno();
+		Assert.assertEquals(primerJugador, turno.cambiarTurno());
+	}
+
+	@Test
 	public void testCambiarTurnoConDadosIgualesyJugadorActualEsPrimerJugador() {
 		Jugador primerJugador = new JugadorConcreto("Rich Uncle");
 		Jugador segundoJugador = new JugadorConcreto("Milburn Pennybags");
