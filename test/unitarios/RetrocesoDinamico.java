@@ -1,24 +1,22 @@
-package entrega1;
+package unitarios;
+
+import static org.junit.Assert.*;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import entidades.JugadorConcreto;
 import juego.Dados;
-import tablero.Casilla;
 import tablero.Tablero;
-import acciones.AvanceDinamico;
-import acciones.RetrocesoDinamico;
-import propiedades.Terreno;
 
-public class InteraccionRetrocesoDinamicoTest {
-	
+public class RetrocesoDinamico {
+
 /***********************************************/
 	
 	@Test
 	public void test01CaeEnRetrocesoDinamicoCon2EnLosDadosYTiene1Propiedades() {
 		
-		Dados dados = Dados.getInstance();	
+		Dados dados = Dados.getInstance();
 		JugadorConcreto jugador = new JugadorConcreto ("Jose");
 		Tablero tablero = Tablero.getInstance();
 		tablero.desplazar(jugador,"TRENES");
@@ -37,7 +35,6 @@ public class InteraccionRetrocesoDinamicoTest {
 		JugadorConcreto jugador = new JugadorConcreto ("Jose");
 		Tablero tablero = Tablero.getInstance();
 		tablero.desplazar(jugador,"SANTA FE");
-		System.out.println("Dinero:"+ jugador.capital());
 		for(int i=0;dados.getValor()!=7;i++) 
 			dados.lanzarDados();
 		tablero.desplazar(jugador, dados.getValor());

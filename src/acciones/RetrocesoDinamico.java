@@ -2,7 +2,6 @@ package acciones;
 import juego.Dados;
 import tablero.Tablero;
 import entidades.Jugador;
-import entidades.JugadorConcreto;
 
 public class RetrocesoDinamico extends Accion{
 	
@@ -35,23 +34,20 @@ public class RetrocesoDinamico extends Accion{
 	
 /***********************************************/
 	
-	private int numeroDeCasillerosARetroceder (Jugador jugador,int numero)
-	{
+	public void afectar(Jugador jugador) {
+		
 		int nuevoValor=0;
 		int temp=0;
-		System.out.println("N� de propiedades: " + jugador.cantidadPropiedades());
+		int numero = Dados.getInstance().getValor();
 		if (buscarEnIntervalo (numero,this.intervalo1))
 			{
 				temp = numero - jugador.cantidadPropiedades();
-				System.out.println("temp: " + temp);
 				if (temp >=0)
 					nuevoValor = temp;
 				else
-					nuevoValor = numero;
-				
+					nuevoValor = numero;				
 			}
-			
-	
+				
 		else if (buscarEnIntervalo (numero,this.intervalo2))
 				{
 					nuevoValor = (jugador.capital())%numero;
@@ -60,15 +56,8 @@ public class RetrocesoDinamico extends Accion{
 				{
 					nuevoValor = numero-2;
 				}	
-		return nuevoValor;
-	}	
-	
-	
-/***********************************************/
-	
-	public void afectar(Jugador jugador) {
-		int desplazarCasilleros = this.numeroDeCasillerosARetroceder(jugador, Dados.getInstance().getValor());
-		Tablero.getInstance().desplazar(jugador, -1 * desplazarCasilleros);
+
+		Tablero.getInstance().desplazar(jugador,  -1 * nuevoValor);
 	}
 			
 /***********************************************/

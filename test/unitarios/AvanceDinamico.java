@@ -1,4 +1,4 @@
-package entrega1;
+package unitarios;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -7,8 +7,7 @@ import entidades.JugadorConcreto;
 import juego.Dados;
 import tablero.Tablero;
 
-
-public class InteraccionAvanceDinamicoTest {
+public class AvanceDinamico {
 
 /***********************************************/
 	
@@ -21,6 +20,7 @@ public class InteraccionAvanceDinamicoTest {
 		tablero.desplazar(jugador,"BS AS ZONA SUR");
 		for(int i=0;dados.getValor()!=5;i++) 
 			dados.lanzarDados();
+
 		tablero.desplazar(jugador, dados.getValor());
 		Assert.assertEquals(11, tablero.casillaDeJugador(jugador));
 		
@@ -52,7 +52,7 @@ public class InteraccionAvanceDinamicoTest {
 /***********************************************/
 	
 	@Test
-	public void test03CaeEnAvanceDinamicoCon11EnLosDados() {
+	public void test03CaeEnAvanceDinamicoCon12EnLosDados() {
 		
 		Dados dados = Dados.getInstance();	
 		JugadorConcreto jugador = new JugadorConcreto ("Jose");
@@ -60,8 +60,8 @@ public class InteraccionAvanceDinamicoTest {
 		tablero.desplazar(jugador,"TRENES");
 		for(int i=0;dados.getValor()!=11;i++) 
 			dados.lanzarDados();
-		tablero.desplazar(jugador, dados.getValor());
-		Assert.assertEquals(18, tablero.casillaDeJugador(jugador));
+
+		Assert.assertEquals(17, tablero.casillaDeJugador(jugador));
 		
 	
 	}
