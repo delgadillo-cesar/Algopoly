@@ -32,11 +32,9 @@ public class Turno {
 
 	private void avanzarTurno() {
 		this.repetirTurno();
-		if (!this.jugadorActual.equals(this.jugadores.getLast())) {
-			this.jugadorActual = this.jugadores.get(this.jugadores.indexOf(jugadorActual) + 1);
-		} else {
-			this.jugadorActual = this.jugadores.getFirst();
-		}
+		this.jugadores.removeFirst();
+		this.jugadores.addLast(jugadorAnterior);
+		this.jugadorActual = this.jugadores.getFirst();
 	}
 
 }
