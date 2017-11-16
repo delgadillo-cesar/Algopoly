@@ -44,6 +44,7 @@ public class QuiniTest {
 		Quini quini6 = new Quini ();
 		quini6.afectar(jugador);
 		quini6.afectar(jugador);
+		quini6.afectar(jugador);
 		Assert.assertEquals(180000,jugador.capital());
 		
 	}
