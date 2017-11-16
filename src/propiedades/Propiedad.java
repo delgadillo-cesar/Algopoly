@@ -36,7 +36,7 @@ public abstract class Propiedad extends Casilla {
 	public void comprar(Jugador unJugador){
 		unJugador.pagar(precioCompra);
 		propietario = unJugador;
-		unJugador.comprar(this);
+		unJugador.agregar(this);
 	}
 	
 	public abstract void afectar(Jugador jugador) throws MismoJugadorException;

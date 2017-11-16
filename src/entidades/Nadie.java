@@ -7,26 +7,27 @@ public class Nadie extends Jugador{
 
 	@Override
 	public int cobrar(int unMonto) {
-		return 0;
+		throw new JugadorNadieException();
 	}
 
 	@Override
 	public int capital() {
-		return 0;
+		throw new JugadorNadieException();
 	}
 
 	@Override
 	public int cantidadPropiedades() {
-		return 0;
+		throw new JugadorNadieException();
 	}
 
 	@Override
-	public void comprar(Propiedad unaPropiedad) {
+	public void agregar(Propiedad unaPropiedad) {
+		throw new JugadorNadieException();
 	}
 
 	@Override
 	public int pagar(int unMonto) {
-		return 0;
+		throw new JugadorNadieException();
 	}
 
 	@Override
@@ -36,7 +37,7 @@ public class Nadie extends Jugador{
 
 	@Override
 	public boolean tienePropiedad(String unaDescipcionDePropiedad) {
-		return false;
+		throw new JugadorNadieException();
 	}
 
 }

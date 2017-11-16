@@ -4,7 +4,7 @@ import propiedades.Propiedad;
 
 public abstract class Jugador {
 
-	public abstract void comprar(Propiedad unaPropiedad);
+	public abstract void agregar(Propiedad unaPropiedad);
 
 	public abstract int cobrar(int unMonto);
 

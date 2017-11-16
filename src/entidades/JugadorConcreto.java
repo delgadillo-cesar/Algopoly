@@ -29,7 +29,9 @@ public class JugadorConcreto extends Jugador{
 	}
 
 	
-	public void comprar(Propiedad unaPropiedad) {
+	public void agregar(Propiedad unaPropiedad) {
+//		if (unaPropiedad.propietario() != this) throw new NoPropietarioException();
+		
 		propiedades.put(unaPropiedad.nombre(), unaPropiedad);
 	}
 	
@@ -41,6 +43,8 @@ public class JugadorConcreto extends Jugador{
 	
 	@Override
 	public int pagar(int unMonto) {
+		if (unMonto > this.capital) throw new JugadorSinSaldoException();
+		
 		capital -= unMonto;
 		
 		return unMonto;
