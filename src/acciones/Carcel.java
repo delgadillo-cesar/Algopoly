@@ -26,7 +26,7 @@ public class Carcel extends Accion {
 
 			diasRestantes.remove(unJugador);
 			if (condenaRestante > 0)
-				diasRestantes.put(unJugador, condenaRestante--);
+				diasRestantes.put(unJugador, --condenaRestante);
 		}
 	}
 
@@ -41,7 +41,7 @@ public class Carcel extends Accion {
 
 		if (diasRestantes.containsKey(unJugador)) {
 			Integer condenaRestante = diasRestantes.get(unJugador);
-			if (condenaRestante <= sentencia - diasSinFianza)
+			if (condenaRestante < sentencia - diasSinFianza)
 				fianzaDisponible = true;
 		}
 
