@@ -33,6 +33,6 @@ public class Dados {
 	
 	public boolean salieronPares ()	{
 		
-		return (dado1==dado2)?true:false;
+		return (dado1==dado2);
 	}
 }
