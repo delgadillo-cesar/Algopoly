@@ -3,6 +3,7 @@ package unitarios;
 import static org.junit.Assert.*;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import entidades.JugadorConcreto;
@@ -10,6 +11,12 @@ import juego.Dados;
 import tablero.Tablero;
 
 public class RetrocesoDinamico {
+
+	
+	@Before
+	public void setUp() throws Exception {
+		Tablero.resetear();
+	}
 
 /***********************************************/
 	
@@ -35,9 +42,10 @@ public class RetrocesoDinamico {
 		JugadorConcreto jugador = new JugadorConcreto ("Jose");
 		Tablero tablero = Tablero.getInstance();
 		tablero.desplazar(jugador,"SANTA FE");
+		Assert.assertEquals(12, tablero.casillaDeJugador(jugador));
 		for(int i=0;dados.getValor()!=7;i++) 
 			dados.lanzarDados();
-		tablero.desplazar(jugador, dados.getValor());
+		tablero.desplazar(jugador, dados.getValor()); /*Cae en retoceso dinamico*/
 		Assert.assertEquals(13, tablero.casillaDeJugador(jugador));
 	}
 	
