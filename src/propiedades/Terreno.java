@@ -17,6 +17,7 @@ public class Terreno extends Propiedad {
 		this.construcciones = construcciones;
 		this.precioCompra = precioCompra;
 		this.nombrePropiedad = nombreTerreno;
+		this.descripcion = nombreTerreno;
 	}
 
 	
