@@ -6,13 +6,12 @@ import entidades.Jugador;
 
 public class Quini extends Accion {
 
-	private HashMap<Jugador, Integer> vecesGanadas;
+	private HashMap<Jugador, PremioQuini> ganadores;
 
 	public Quini() {
 		this.descripcion = "QUINI 6";
 
-		vecesGanadas = new HashMap<Jugador, Integer>();
-
+		ganadores = new HashMap<Jugador, PremioQuini>();
 	}
 
 	@Override
@@ -24,18 +23,9 @@ public class Quini extends Accion {
 	}
 
 	private int premioParaJugador(Jugador unJugador) {
-		
-		int premio = 50000;
-		
-		if (vecesGanadas.containsKey(unJugador)){
-			int cantidadDeVecesGanadas = vecesGanadas.get(unJugador);
-			if (cantidadDeVecesGanadas == 1) premio = 30000; else premio = 0;			
-			
-			vecesGanadas.put(unJugador, cantidadDeVecesGanadas + 1);
-		}else{
-			vecesGanadas.put(unJugador, 1);			
-		}
-		return premio;
+		if (!ganadores.containsKey(unJugador)) this.ganadores.put(unJugador, new PremioQuini());
+
+		return (this.ganadores.get(unJugador).cobrarPremio());
 	}
 
 }
