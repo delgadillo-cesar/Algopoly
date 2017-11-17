@@ -3,7 +3,7 @@ package entidades;
 import java.util.HashMap;
 import propiedades.Propiedad;
 
-public class JugadorConcreto extends Jugador{
+public class JugadorConcreto extends JugadorAbstracto{
 
 	private String nombre;
 	private int capital;
@@ -52,7 +52,7 @@ public class JugadorConcreto extends Jugador{
 
 	
 	@Override
-	public void cobrar(int unMonto, Jugador unJugador) {
+	public void cobrar(int unMonto, JugadorAbstracto unJugador) {
 		if (unJugador == this) throw new MismoJugadorException();
 		
 		capital += unJugador.pagar(unMonto);

@@ -18,6 +18,7 @@ public class Carcel extends Accion {
 
 	public void encarcelar(Jugador unJugador) {
 		this.diasRestantes.put(unJugador, this.sentencia);
+		unJugador.cambiarTipoDeMovimiento(new MovimientoEncarcelado());
 	}
 
 	private void revizarCondena(Jugador unJugador) {

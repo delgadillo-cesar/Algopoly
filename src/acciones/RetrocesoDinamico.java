@@ -2,6 +2,7 @@ package acciones;
 import juego.Dados;
 import tablero.Tablero;
 import entidades.Jugador;
+import entidades.JugadorAbstracto;
 
 public class RetrocesoDinamico extends Accion{
 	

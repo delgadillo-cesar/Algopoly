@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import entidades.Jugador;
-import entidades.JugadorConcreto;
+import entidades.Jugador;
 import entidades.MismoJugadorException;
 import propiedades.Aysa;
 import propiedades.Compania;
@@ -61,7 +61,7 @@ public class TerrenoTest {
 	@Test
 	public void test05TerrenoComprarTerreno() {
 		Terreno unTerreno = new Terreno("BS AS ZONA NORTE", 25000, construcciones);
-		Jugador unJugador = new JugadorConcreto("Jugador de prueba");
+		Jugador unJugador = new Jugador("Jugador de prueba");
 		
 		Assert.assertFalse(unJugador.tienePropiedad("BS AS ZONA NORTE"));
 
@@ -73,7 +73,7 @@ public class TerrenoTest {
 	@Test
 	public void test06TerrenoObtenerPropietarioDelTerreno() {
 		Terreno unTerreno = new Terreno("BS AS ZONA NORTE", 25000, construcciones);
-		Jugador unJugador = new JugadorConcreto("Jugador de prueba");
+		Jugador unJugador = new Jugador("Jugador de prueba");
 		
 		Assert.assertFalse(unJugador == unTerreno.propietario());
 
@@ -85,7 +85,7 @@ public class TerrenoTest {
 	@Test
 	public void test07TerrenoSinPropietarioAfectaJugadorDebeComprarlo() {
 		Terreno unTerreno = new Terreno("BS AS ZONA NORTE", 25000, construcciones);
-		Jugador unJugador = new JugadorConcreto("Jugador de prueba");
+		Jugador unJugador = new Jugador("Jugador de prueba");
 		
 		Assert.assertFalse(unJugador == unTerreno.propietario());
 
@@ -97,8 +97,8 @@ public class TerrenoTest {
 	@Test
 	public void test08TerrenoConComprarAfectarAUnJugadorPropietarioLeCobraAlquilerAljugador() {
 		Terreno unTerreno = new Terreno("BS AS ZONA NORTE", 25000, construcciones);
-		Jugador unPropietario = new JugadorConcreto("Propietario de prueba");
-		Jugador unJugador = new JugadorConcreto("Jugador de prueba");
+		Jugador unPropietario = new Jugador("Propietario de prueba");
+		Jugador unJugador = new Jugador("Jugador de prueba");
 		int capitalPropietario, capitalJugador, variacionPropietario, variacionJugador;
 
 		unTerreno.afectar(unPropietario); /*Compra la compania*/
@@ -115,7 +115,7 @@ public class TerrenoTest {
 	@Test(expected = MismoJugadorException.class)
 	public void test09TerrenoPropietarioCaeEnSuPropioTerrenoAfectaJugadorDebeLanzarUnaExcepcion() {
 		Terreno unTerreno = new Terreno("BS AS ZONA NORTE", 25000, construcciones);
-		Jugador unPropietario = new JugadorConcreto("Propietario de prueba");
+		Jugador unPropietario = new Jugador("Propietario de prueba");
 		
 		unTerreno.afectar(unPropietario); /*Compra la compania*/
 		unTerreno.afectar(unPropietario); /*Intenta cobrarle*/
@@ -131,7 +131,7 @@ public class TerrenoTest {
 	@Test
 	public void test11TerrenoConstruirUnaConstruccionLeCobraElPrecioDeConstruccionAlPropietario() {
 		Terreno unTerreno = new Terreno("BS AS ZONA NORTE", 25000, construcciones);
-		Jugador unPropietario = new JugadorConcreto("Propietario de prueba");
+		Jugador unPropietario = new Jugador("Propietario de prueba");
 		int capitalPropietario, variacionPropietario, costoConstruccion;
 		
 		unTerreno.afectar(unPropietario); /*Compra la compania*/
@@ -148,8 +148,8 @@ public class TerrenoTest {
 	@Test
 	public void test12TerrenoConstruirUnaConstruccionCambiaElPrecioDeAlquiler() {
 		Terreno unTerreno = new Terreno("BS AS ZONA NORTE", 25000, construcciones);
-		Jugador unPropietario = new JugadorConcreto("Propietario de prueba");
-		Jugador unJugador = new JugadorConcreto("Jugador de prueba");
+		Jugador unPropietario = new Jugador("Propietario de prueba");
+		Jugador unJugador = new Jugador("Jugador de prueba");
 		int capitalJugador, variacionJugador;
 
 		unTerreno.afectar(unPropietario); /*Compra la compania*/
@@ -172,7 +172,7 @@ public class TerrenoTest {
 	@Test(expected=NadaParaConstruirException.class)
 	public void test13TerrenoDespuesDeConstruirTodasLasConstruccionesPosiblesAlQuererConsultarElCostoDeConstruccionDaError() {
 		Terreno unTerreno = new Terreno("BS AS ZONA NORTE", 25000, construcciones);
-		Jugador unPropietario = new JugadorConcreto("Propietario de prueba");
+		Jugador unPropietario = new Jugador("Propietario de prueba");
 
 		unTerreno.afectar(unPropietario); /*Compra la compania*/
 		
@@ -191,7 +191,7 @@ public class TerrenoTest {
 	@Test(expected=NadaParaConstruirException.class)
 	public void test14TerrenoDespuesDeConstruirTodasLasConstruccionesPosiblesAlQuererConstruirDaError() {
 		Terreno unTerreno = new Terreno("BS AS ZONA NORTE", 25000, construcciones);
-		Jugador unPropietario = new JugadorConcreto("Propietario de prueba");
+		Jugador unPropietario = new Jugador("Propietario de prueba");
 
 		unTerreno.afectar(unPropietario); /*Compra la compania*/
 		

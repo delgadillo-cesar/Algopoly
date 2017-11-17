@@ -3,6 +3,7 @@ package acciones;
 import java.util.HashMap;
 
 import entidades.Jugador;
+import entidades.JugadorAbstracto;
 
 public class Quini extends Accion {
 
@@ -17,7 +18,7 @@ public class Quini extends Accion {
 	@Override
 	public void afectar(Jugador jugador) {
 
-		int premio = premioParaJugador(jugador);
+		int premio = this.premioParaJugador(jugador);
 		jugador.cobrar(premio);
 
 	}

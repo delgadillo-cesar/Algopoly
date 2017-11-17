@@ -1,6 +1,7 @@
 package acciones;
 
 import entidades.Jugador;
+import entidades.JugadorAbstracto;
 
 public class ImpuestoLujo extends Accion {
 

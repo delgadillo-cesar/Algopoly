@@ -12,10 +12,11 @@ import propiedades.*;
 public class Tablero {
 
 	private static Tablero elTablero;
-	private final Integer CANTIDAD_CASILLAS = 20;
+	private static final Integer CANTIDAD_CASILLAS = 20;
+	private static final Integer CASILLA_INICIAL = 1;
 	private HashMap<String, Casilla> casillas;
 	private HashMap<Integer, Casilla> numeroCasilla;
-	private HashMap<Jugador, Integer> jugadorNroCasilla;
+//	private HashMap<Jugador, Integer> jugadorNroCasilla;
 	
 	private Casilla crearBsAsZonaSur(){
 		List<Construccion> construcciones = new ArrayList<Construccion>();
@@ -117,7 +118,7 @@ public class Tablero {
 		
 		casillas = new HashMap<String, Casilla>();
 		numeroCasilla = new HashMap<Integer, Casilla>();
-		jugadorNroCasilla = new HashMap<Jugador, Integer>();
+//		jugadorNroCasilla = new HashMap<Jugador, Integer>();
 		
 		unaCasilla = new Salida();
 		unaCasilla.descripcion();
@@ -208,41 +209,53 @@ public class Tablero {
 		return elTablero;
 	}
 
-	private boolean estaEnRango(int unNroCasillero){
+	private static boolean estaEnRango(int unNroCasillero){
 		return ((0 < unNroCasillero) && (unNroCasillero <= CANTIDAD_CASILLAS ));
 	}
 	
-	public void desplazar(Jugador jugador, int desplazarCasilleros) {
+	public static PosicionTablero ajustarPosicionSegunBordes(PosicionTablero unaPosicion){
+		Integer nroCasilla = unaPosicion.getPosicion();
+		PosicionTablero nuevaPosicion = unaPosicion;
+		
+		while (!(estaEnRango(nroCasilla))){
+			if (nroCasilla > CANTIDAD_CASILLAS) nroCasilla -= CANTIDAD_CASILLAS;
+			if (nroCasilla <= 0) nroCasilla += CANTIDAD_CASILLAS;
+		}
+		nuevaPosicion.setPosicion(nroCasilla);
+		
+		return nuevaPosicion;
+	}
+
+	public void desplazar(Jugador unJugador, int desplazarCasilleros) {
 		Casilla nuevaCasilla;
-		Integer nroCasillaJugador = this.jugadorNroCasilla.get(jugador);
+		Integer nroCasillaJugador = unJugador.obtenerPosicion().getPosicion();
 		Integer nroCasillaNueva = nroCasillaJugador + desplazarCasilleros;
 		
-		while (!(this.estaEnRango(nroCasillaNueva))){
-			if (nroCasillaNueva > this.CANTIDAD_CASILLAS) nroCasillaNueva -= CANTIDAD_CASILLAS;
+		while (!(estaEnRango(nroCasillaNueva))){
+			if (nroCasillaNueva > CANTIDAD_CASILLAS) nroCasillaNueva -= CANTIDAD_CASILLAS;
 			if (nroCasillaNueva <= 0) nroCasillaNueva += CANTIDAD_CASILLAS;
 		}
 		
 		nuevaCasilla = numeroCasilla.get(nroCasillaNueva);
+		unJugador.obtenerPosicion().setPosicion(nroCasillaNueva);
 		
-		this.jugadorNroCasilla.remove(jugador);
-		this.jugadorNroCasilla.put(jugador, nroCasillaNueva);
-
-		
-		nuevaCasilla.afectar(jugador);
+		nuevaCasilla.afectar(unJugador);
 	}
-	
-	public void desplazar(Jugador jugador, String unaDescrripcionCasilla) {
+
+
+	public void desplazar(Jugador unJugador, String unaDescrripcionCasilla) {
 		Casilla nuevaCasilla = casillas.get(unaDescrripcionCasilla);
-		
 		
 		for (Map.Entry<Integer, Casilla>entry: this.numeroCasilla.entrySet()){
 			if(entry.getValue().descripcion() == nuevaCasilla.descripcion()){
-				this.jugadorNroCasilla.remove(jugador);
-				this.jugadorNroCasilla.put(jugador, entry.getKey());
-			}				
-		}		
+				PosicionTablero posicionJugador = unJugador.obtenerPosicion();
+				
+				posicionJugador.setPosicion(entry.getKey());
+				unJugador.cambiarPosicion(posicionJugador);
+			}
+		}
 		
-		nuevaCasilla.afectar(jugador);
+		this.elJugadorSeDesplazo(unJugador);
 	}
 
 	/**
@@ -250,9 +263,9 @@ public class Tablero {
 	 * @param jugador
 	 * @return
 	 */
-	public int casillaDeJugador(Jugador jugador) {
-		
-		return jugadorNroCasilla.get(jugador);
+	public int casillaDeJugador(Jugador unJugador) {
+		return unJugador.obtenerPosicion().getPosicion();
+//		return jugadorNroCasilla.get(jugador);
 	}
 	
 	/**
@@ -261,7 +274,8 @@ public class Tablero {
 	 * @return
 	 */
 	public boolean casillaEstaVacia(int unNumeroDeCasilla) {
-		return !jugadorNroCasilla.containsValue(unNumeroDeCasilla);
+		return true;
+		//return !jugadorNroCasilla.containsValue(unNumeroDeCasilla);
 	}
 	
 	/**
@@ -270,5 +284,23 @@ public class Tablero {
 	public static void resetear() {
 		
 		elTablero = new Tablero();
+	}
+
+	public static int getNumeroCasillas() {
+		return CANTIDAD_CASILLAS;
+	}
+
+	public void elJugadorSeDesplazo(Jugador unJugador) {
+		Casilla unaCasilla = numeroCasilla.get(unJugador.obtenerPosicion().getPosicion());
+		
+		unaCasilla.afectar(unJugador);
+	}
+
+	public static PosicionTablero obtenerPosicionInicial() {
+		PosicionTablero posicionInicial = new PosicionTablero();
+		
+		posicionInicial.setPosicion(CASILLA_INICIAL);
+		
+		return posicionInicial;
 	}
 }

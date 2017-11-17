@@ -1,6 +1,7 @@
 package acciones;
 
 import entidades.Jugador;
+import entidades.JugadorAbstracto;
 import entidades.MismoJugadorException;
 
 public class Salida extends Accion {
@@ -10,7 +11,7 @@ public class Salida extends Accion {
 	}
 	
 	@Override
-	public void afectar(Jugador jugador) throws MismoJugadorException {
+	public void afectar(Jugador jugador) {
 	}
 
 }

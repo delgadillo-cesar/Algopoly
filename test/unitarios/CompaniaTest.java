@@ -6,7 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import entidades.Jugador;
-import entidades.JugadorConcreto;
+import entidades.Jugador;
 import entidades.MismoJugadorException;
 import propiedades.Aysa;
 import propiedades.Compania;
@@ -55,7 +55,7 @@ public class CompaniaTest {
 
 	@Test
 	public void test04CompaniaSinPropietarioAfectaJugadorDebeComprarla() {
-		Jugador unJugador = new JugadorConcreto("Jugador de prueba");
+		Jugador unJugador = new Jugador("Jugador de prueba");
 		Compania unaCompania = new Aysa();
 		
 		Assert.assertFalse(unJugador == unaCompania.propietario());
@@ -68,7 +68,7 @@ public class CompaniaTest {
 
 	@Test
 	public void test05CompaniaObtenerPropietario() {
-		Jugador unJugador = new JugadorConcreto("Jugador de prueba");
+		Jugador unJugador = new Jugador("Jugador de prueba");
 		Compania unaCompania = new Aysa();
 		
 		unaCompania.afectar(unJugador);
@@ -79,8 +79,8 @@ public class CompaniaTest {
 	
 	@Test
 	public void test06CompaniaConPropietarioAfectaJugadorDebePagarAlPropietario() {
-		Jugador unPropietario = new JugadorConcreto("Propietario de prueba");
-		Jugador unJugador = new JugadorConcreto("Jugador de prueba");
+		Jugador unPropietario = new Jugador("Propietario de prueba");
+		Jugador unJugador = new Jugador("Jugador de prueba");
 		int capitalPropietario, capitalJugador, variacionPropietario, variacionJugador;
 
 		Compania unaCompania = new Aysa();
@@ -98,7 +98,7 @@ public class CompaniaTest {
 
 	@Test(expected = MismoJugadorException.class)
 	public void test07CompaniaPropietarioCaeEnSuPropiaCompaniaAfectaJugadorDebeLanzarUnaExcepcion() {
-		Jugador unPropietario = new JugadorConcreto("Propietario de prueba");
+		Jugador unPropietario = new Jugador("Propietario de prueba");
 		Compania unaCompania = new Aysa();
 		
 		unaCompania.afectar(unPropietario); /*Compra la compania*/
@@ -108,7 +108,7 @@ public class CompaniaTest {
 
 	@Test
 	public void test08CompaniaComprarAysaCuesta30000() {
-		Jugador unJugador = new JugadorConcreto("Jugador de prueba");
+		Jugador unJugador = new Jugador("Jugador de prueba");
 		int capitalInicial = unJugador.capital();
 
 		Compania unaCompania = new Aysa();
@@ -119,7 +119,7 @@ public class CompaniaTest {
 
 	@Test
 	public void test09CompaniaComprarEdesurCuesta35000() {
-		Jugador unJugador = new JugadorConcreto("Jugador de prueba");
+		Jugador unJugador = new Jugador("Jugador de prueba");
 		int capitalInicial = unJugador.capital();
 
 		Compania unaCompania = new Edesur();
@@ -130,7 +130,7 @@ public class CompaniaTest {
 
 	@Test
 	public void test10CompaniaComprarSubteCuesta40000() {
-		Jugador unJugador = new JugadorConcreto("Jugador de prueba");
+		Jugador unJugador = new Jugador("Jugador de prueba");
 		int capitalInicial = unJugador.capital();
 
 		Compania unaCompania = new Subte();
@@ -141,7 +141,7 @@ public class CompaniaTest {
 
 	@Test
 	public void test11CompaniaComprarTrenesCuesta38000() {
-		Jugador unJugador = new JugadorConcreto("Jugador de prueba");
+		Jugador unJugador = new Jugador("Jugador de prueba");
 		int capitalInicial = unJugador.capital();
 
 		Compania unaCompania = new Trenes();
@@ -152,8 +152,8 @@ public class CompaniaTest {
 
 	@Test
 	public void test12CompaniaAysaCobra300VecesLosDados() {
-		Jugador unPropietario = new JugadorConcreto("Propietario de prueba");
-		Jugador unJugador = new JugadorConcreto("Jugador de prueba");
+		Jugador unPropietario = new Jugador("Propietario de prueba");
+		Jugador unJugador = new Jugador("Jugador de prueba");
 		Dados losDados = Dados.getInstance();
 		int capitalInicial = unJugador.capital();
 		int valorACobrar;
@@ -170,8 +170,8 @@ public class CompaniaTest {
 
 	@Test
 	public void test13CompaniaAysaPropoetarioTieneEdesurCobra500VecesLosDados() {
-		Jugador unPropietario = new JugadorConcreto("Propietario de prueba");
-		Jugador unJugador = new JugadorConcreto("Jugador de prueba");
+		Jugador unPropietario = new Jugador("Propietario de prueba");
+		Jugador unJugador = new Jugador("Jugador de prueba");
 		Dados losDados = Dados.getInstance();
 		int capitalInicial = unJugador.capital();
 		int valorACobrar;
@@ -191,8 +191,8 @@ public class CompaniaTest {
 
 	@Test
 	public void test14CompaniaEdesurCobra500VecesLosDados() {
-		Jugador unPropietario = new JugadorConcreto("Propietario de prueba");
-		Jugador unJugador = new JugadorConcreto("Jugador de prueba");
+		Jugador unPropietario = new Jugador("Propietario de prueba");
+		Jugador unJugador = new Jugador("Jugador de prueba");
 		Dados losDados = Dados.getInstance();
 		int capitalInicial = unJugador.capital();
 		int valorACobrar;
@@ -209,8 +209,8 @@ public class CompaniaTest {
 
 	@Test
 	public void test15CompaniaEdesurPropoetarioTieneAysaCobra1000VecesLosDados() {
-		Jugador unPropietario = new JugadorConcreto("Propietario de prueba");
-		Jugador unJugador = new JugadorConcreto("Jugador de prueba");
+		Jugador unPropietario = new Jugador("Propietario de prueba");
+		Jugador unJugador = new Jugador("Jugador de prueba");
 		Dados losDados = Dados.getInstance();
 		int capitalInicial = unJugador.capital();
 		int valorACobrar;
@@ -230,8 +230,8 @@ public class CompaniaTest {
 
 	@Test
 	public void test16CompaniaSubteCobra600VecesLosDados() {
-		Jugador unPropietario = new JugadorConcreto("Propietario de prueba");
-		Jugador unJugador = new JugadorConcreto("Jugador de prueba");
+		Jugador unPropietario = new Jugador("Propietario de prueba");
+		Jugador unJugador = new Jugador("Jugador de prueba");
 		Dados losDados = Dados.getInstance();
 		int capitalInicial = unJugador.capital();
 		int valorACobrar;
@@ -248,8 +248,8 @@ public class CompaniaTest {
 
 	@Test
 	public void test17CompaniaSubtePropoetarioTieneTrenesCobra1100VecesLosDados() {
-		Jugador unPropietario = new JugadorConcreto("Propietario de prueba");
-		Jugador unJugador = new JugadorConcreto("Jugador de prueba");
+		Jugador unPropietario = new Jugador("Propietario de prueba");
+		Jugador unJugador = new Jugador("Jugador de prueba");
 		Dados losDados = Dados.getInstance();
 		int capitalInicial = unJugador.capital();
 		int valorACobrar;
@@ -269,8 +269,8 @@ public class CompaniaTest {
 
 	@Test
 	public void test18CompaniaTrenesCobra450VecesLosDados() {
-		Jugador unPropietario = new JugadorConcreto("Propietario de prueba");
-		Jugador unJugador = new JugadorConcreto("Jugador de prueba");
+		Jugador unPropietario = new Jugador("Propietario de prueba");
+		Jugador unJugador = new Jugador("Jugador de prueba");
 		Dados losDados = Dados.getInstance();
 		int capitalInicial = unJugador.capital();
 		int valorACobrar;
@@ -287,8 +287,8 @@ public class CompaniaTest {
 
 	@Test
 	public void test19CompaniaTrenesPropoetarioTieneSubteCobra800VecesLosDados() {
-		Jugador unPropietario = new JugadorConcreto("Propietario de prueba");
-		Jugador unJugador = new JugadorConcreto("Jugador de prueba");
+		Jugador unPropietario = new Jugador("Propietario de prueba");
+		Jugador unJugador = new Jugador("Jugador de prueba");
 		Dados losDados = Dados.getInstance();
 		int capitalInicial = unJugador.capital();
 		int valorACobrar;

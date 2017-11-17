@@ -3,7 +3,6 @@ package propiedades;
 import java.util.List;
 
 import entidades.Jugador;
-import entidades.JugadorNadieException;
 import entidades.MismoJugadorException;
 
 public class Terreno extends Propiedad {
@@ -41,10 +40,6 @@ public class Terreno extends Propiedad {
 	
 	@Override
 	public void afectar(Jugador jugador) throws MismoJugadorException {
-		try {
-			propietario.cobrar(construido.precioAlquiler(), jugador);
-		} catch (JugadorNadieException e) {
-			this.comprar(jugador);
-		}
+		propietario.cobrar(jugador.pagar(construido.precioAlquiler()));
 	}
 }

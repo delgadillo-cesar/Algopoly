@@ -1,6 +1,7 @@
 package propiedades;
 
 import entidades.Jugador;
+import entidades.JugadorAbstracto;
 import entidades.Nadie;
 import entidades.MismoJugadorException;
 import tablero.Casilla;
@@ -13,7 +14,7 @@ public abstract class Propiedad extends Casilla {
 
 	
 	public Propiedad() {
-		propietario = new Nadie();
+		propietario = new Jugador("Nadie");
 		precioCompra = 0;
 	}
 	
@@ -35,8 +36,7 @@ public abstract class Propiedad extends Casilla {
 	
 	public void comprar(Jugador unJugador){
 		unJugador.pagar(precioCompra);
-		propietario = unJugador;
-		unJugador.agregar(this);
+		this.propietario = unJugador;
 	}
 	
 	public abstract void afectar(Jugador jugador) throws MismoJugadorException;

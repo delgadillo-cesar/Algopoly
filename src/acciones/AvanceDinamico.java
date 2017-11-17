@@ -3,6 +3,7 @@ package acciones;
 import tablero.Tablero;
 import juego.Dados;
 import entidades.Jugador;
+import entidades.JugadorAbstracto;
 
 public class AvanceDinamico extends Accion {
 

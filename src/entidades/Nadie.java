@@ -2,7 +2,7 @@ package entidades;
 
 import propiedades.Propiedad;
 
-public class Nadie extends Jugador{
+public class Nadie extends JugadorAbstracto{
 
 
 	@Override
@@ -31,7 +31,7 @@ public class Nadie extends Jugador{
 	}
 
 	@Override
-	public void cobrar(int unMonto, Jugador unJugador) throws JugadorNadieException {
+	public void cobrar(int unMonto, JugadorAbstracto unJugador) throws JugadorNadieException {
 		throw new JugadorNadieException();
 	}
 
