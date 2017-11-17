@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import acciones.Carcel;
 import entidades.Jugador;
-import entidades.Jugador;
 
 public class CarcelTest {
 

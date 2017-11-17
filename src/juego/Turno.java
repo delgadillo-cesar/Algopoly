@@ -2,22 +2,22 @@ package juego;
 
 import java.util.LinkedList;
 
-import entidades.JugadorAbstracto;
+import entidades.Jugador;
 
 public class Turno {
 
-	private LinkedList<JugadorAbstracto> jugadores;
+	private LinkedList<Jugador> jugadores;
 
-	private JugadorAbstracto jugadorActual;
-	private JugadorAbstracto jugadorAnterior;
+	private Jugador jugadorActual;
+	private Jugador jugadorAnterior;
 
-	public Turno(LinkedList<JugadorAbstracto> jugadores) {
+	public Turno(LinkedList<Jugador> jugadores) {
 		this.jugadores = jugadores;
 		this.jugadorActual = this.jugadores.getFirst();
 		this.jugadorAnterior = this.jugadores.getLast();
 	}
 
-	public JugadorAbstracto cambiarTurno() {
+	public Jugador cambiarTurno() {
 		if (Dados.getInstance().salieronPares() && !this.jugadorActual.equals(this.jugadorAnterior)) { // Dados pares &&
 			this.repetirTurno();
 		} else {

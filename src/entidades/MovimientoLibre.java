@@ -1,16 +1,9 @@
 package entidades;
 
-import juego.Dados;
 import tablero.PosicionTablero;
 import tablero.Tablero;
 
 public class MovimientoLibre extends TipoMovimiento {
-
-	private int cantCasillas;
-	
-	public MovimientoLibre(){
-		cantCasillas = Tablero.getNumeroCasillas();
-	}
 
 	@Override
 	public void mover(Jugador unJugador, int cantidadDeCasilleros){

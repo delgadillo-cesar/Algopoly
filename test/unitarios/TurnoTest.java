@@ -5,8 +5,7 @@ import java.util.LinkedList;
 import org.junit.Assert;
 import org.junit.Test;
 
-import entidades.JugadorAbstracto;
-import entidades.JugadorConcreto;
+import entidades.Jugador;
 import juego.Dados;
 import juego.Turno;
 
@@ -14,9 +13,9 @@ public class TurnoTest {
 
 	@Test
 	public void testCrearTurnoyNoDevuelveNull() {
-		JugadorAbstracto primerJugador = new JugadorConcreto("Rich Uncle");
-		JugadorAbstracto segundoJugador = new JugadorConcreto("Milburn Pennybags");
-		LinkedList<JugadorAbstracto> jugadores = new LinkedList<JugadorAbstracto>();
+		Jugador primerJugador = new Jugador("Rich Uncle");
+		Jugador segundoJugador = new Jugador("Milburn Pennybags");
+		LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
 		jugadores.add(primerJugador);
 		jugadores.add(segundoJugador);
 		Turno turno = new Turno(jugadores);
@@ -25,9 +24,9 @@ public class TurnoTest {
 
 	@Test
 	public void testCambiarTurnoyJugadorActualEsSegundoJugador() {
-		JugadorAbstracto primerJugador = new JugadorConcreto("Rich Uncle");
-		JugadorAbstracto segundoJugador = new JugadorConcreto("Milburn Pennybags");
-		LinkedList<JugadorAbstracto> jugadores = new LinkedList<JugadorAbstracto>();
+		Jugador primerJugador = new Jugador("Rich Uncle");
+		Jugador segundoJugador = new Jugador("Milburn Pennybags");
+		LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
 		jugadores.add(primerJugador);
 		jugadores.add(segundoJugador);
 		Turno turno = new Turno(jugadores);
@@ -39,9 +38,9 @@ public class TurnoTest {
 
 	@Test
 	public void testCambiarTurnoDosVecesyJugadorActualEsPrimerJugador() {
-		JugadorAbstracto primerJugador = new JugadorConcreto("Rich Uncle");
-		JugadorAbstracto segundoJugador = new JugadorConcreto("Milburn Pennybags");
-		LinkedList<JugadorAbstracto> jugadores = new LinkedList<JugadorAbstracto>();
+		Jugador primerJugador = new Jugador("Rich Uncle");
+		Jugador segundoJugador = new Jugador("Milburn Pennybags");
+		LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
 		jugadores.add(primerJugador);
 		jugadores.add(segundoJugador);
 		Turno turno = new Turno(jugadores);
@@ -54,9 +53,9 @@ public class TurnoTest {
 
 	@Test
 	public void testCambiarTurnoConDadosIgualesyJugadorActualEsPrimerJugador() {
-		JugadorAbstracto primerJugador = new JugadorConcreto("Rich Uncle");
-		JugadorAbstracto segundoJugador = new JugadorConcreto("Milburn Pennybags");
-		LinkedList<JugadorAbstracto> jugadores = new LinkedList<JugadorAbstracto>();
+		Jugador primerJugador = new Jugador("Rich Uncle");
+		Jugador segundoJugador = new Jugador("Milburn Pennybags");
+		LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
 		jugadores.add(primerJugador);
 		jugadores.add(segundoJugador);
 		Turno turno = new Turno(jugadores);
@@ -68,9 +67,9 @@ public class TurnoTest {
 
 	@Test
 	public void testCambiarTurnoConDadosIgualesDosVecesyJugadorActualEsSegundoJugador() {
-		JugadorAbstracto primerJugador = new JugadorConcreto("Rich Uncle");
-		JugadorAbstracto segundoJugador = new JugadorConcreto("Milburn Pennybags");
-		LinkedList<JugadorAbstracto> jugadores = new LinkedList<JugadorAbstracto>();
+		Jugador primerJugador = new Jugador("Rich Uncle");
+		Jugador segundoJugador = new Jugador("Milburn Pennybags");
+		LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
 		jugadores.add(primerJugador);
 		jugadores.add(segundoJugador);
 		Turno turno = new Turno(jugadores);

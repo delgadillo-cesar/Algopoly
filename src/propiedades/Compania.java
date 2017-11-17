@@ -1,9 +1,6 @@
 package propiedades;
 
 import entidades.Jugador;
-import entidades.JugadorAbstracto;
-import entidades.JugadorNadieException;
-import entidades.MismoJugadorException;
 
 public abstract class Compania extends Propiedad {
 

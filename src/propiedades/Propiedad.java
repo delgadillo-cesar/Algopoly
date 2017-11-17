@@ -1,8 +1,6 @@
 package propiedades;
 
 import entidades.Jugador;
-import entidades.JugadorAbstracto;
-import entidades.Nadie;
 import entidades.MismoJugadorException;
 import tablero.Casilla;
 

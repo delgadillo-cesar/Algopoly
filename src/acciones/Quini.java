@@ -3,7 +3,6 @@ package acciones;
 import java.util.HashMap;
 
 import entidades.Jugador;
-import entidades.JugadorAbstracto;
 
 public class Quini extends Accion {
 

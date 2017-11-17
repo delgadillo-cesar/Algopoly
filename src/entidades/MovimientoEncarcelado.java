@@ -1,7 +1,4 @@
-package acciones;
-
-import entidades.Jugador;
-import entidades.TipoMovimiento;
+package entidades;
 
 public class MovimientoEncarcelado extends TipoMovimiento {
 

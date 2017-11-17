@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import entidades.Jugador;
-import entidades.Jugador;
 import tablero.Tablero;
 
 public class TableroTest {

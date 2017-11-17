@@ -5,8 +5,6 @@ import org.junit.Test;
 
 import acciones.ImpuestoLujo;
 import entidades.Jugador;
-import entidades.JugadorAbstracto;
-import entidades.JugadorConcreto;
 
 
 public class ImpuestoLujoTest {

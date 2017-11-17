@@ -3,6 +3,7 @@ package acciones;
 import java.util.HashMap;
 
 import entidades.Jugador;
+import entidades.MovimientoEncarcelado;
 
 public class Carcel extends Accion {
 

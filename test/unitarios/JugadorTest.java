@@ -6,7 +6,6 @@ import org.junit.Test;
 import acciones.Carcel;
 import entidades.Jugador;
 import entidades.JugadorSinSaldoException;
-import juego.Dados;
 import propiedades.Aysa;
 import propiedades.Edesur;
 import propiedades.Propiedad;

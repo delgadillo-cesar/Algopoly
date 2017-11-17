@@ -6,7 +6,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import entidades.Jugador;
-import entidades.Jugador;
 import entidades.MismoJugadorException;
 import propiedades.Aysa;
 import propiedades.Compania;

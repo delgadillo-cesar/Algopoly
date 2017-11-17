@@ -8,10 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import entidades.Jugador;
-import entidades.Jugador;
 import entidades.MismoJugadorException;
-import propiedades.Aysa;
-import propiedades.Compania;
 import propiedades.Construccion;
 import propiedades.NadaParaConstruirException;
 import propiedades.Terreno;
