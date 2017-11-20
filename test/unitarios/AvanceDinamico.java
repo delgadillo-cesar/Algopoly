@@ -12,13 +12,13 @@ public class AvanceDinamico {
 /***********************************************/
 	
 	@Test
-	public void test01CaeEnAvanceDinamicoCon6EnLosDadosAvanza6Menos2() {
+	public void test01CaeEnAvanceDinamicoCon5EnLosDadosAvanza5Menos2() {
 		
 		Dados dados = Dados.getInstance();	
 		Jugador jugador = new Jugador ("Jose");
 		Tablero tablero = Tablero.getInstance();
 		tablero.desplazar(jugador,"BS AS ZONA SUR");
-		for(int i=0;dados.getValor()!=5;i++) 
+		while (dados.getValor()!=5) 
 			dados.lanzarDados();
 
 		tablero.desplazar(jugador, dados.getValor());
@@ -39,7 +39,7 @@ public class AvanceDinamico {
 		Jugador jugador = new Jugador ("Jose");
 		Tablero tablero = Tablero.getInstance();
 		tablero.desplazar(jugador,"SALIDA");
-		for(int i=0;dados.getValor()!=8;i++) 
+		while (dados.getValor()!=8) 
 			dados.lanzarDados();
 		tablero.desplazar(jugador, dados.getValor());
 		Assert.assertEquals (9,tablero.casillaDeJugador(jugador));
@@ -52,13 +52,13 @@ public class AvanceDinamico {
 /***********************************************/
 	
 	@Test
-	public void test03CaeEnAvanceDinamicoCon12EnLosDados() {
+	public void test03CaeEnAvanceDinamicoCon11EnLosDados() {
 		
 		Dados dados = Dados.getInstance();	
 		Jugador jugador = new Jugador ("Jose");
 		Tablero tablero = Tablero.getInstance();
 		tablero.desplazar(jugador,"TRENES");
-		for(int i=0;dados.getValor()!=11;i++) 
+		while(dados.getValor()!=11) 
 			dados.lanzarDados();
 
 		Assert.assertEquals(17, tablero.casillaDeJugador(jugador));

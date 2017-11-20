@@ -9,7 +9,7 @@ public class Dados {
 	private Dados() {
 		
 		dado1 = 4;
-		dado2 = 3;
+		dado2 = 4;
 	}
 	
 	public static Dados getInstance() {
