@@ -14,11 +14,12 @@ public class Aysa extends Compania {
 	protected int cobrar() {
 		int dados = Dados.getInstance().getValor();
 		
-		if (this.propietario.tienePropiedad("EDESUR")){
+		if (this.propietario.esDuenoDe("EDESUR")){
 			return (500 * dados);
 		}else{
 			return (300 * dados);
 		}
-	}	
+	}
+
 
 }

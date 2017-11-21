@@ -2,7 +2,9 @@ package entidades;
 
 import java.util.HashMap;
 
-import propiedades.Propiedad;
+import propiedades.Compania;
+import propiedades.Comprable;
+import propiedades.Terreno;
 import tablero.PosicionTablero;
 import tablero.Tablero;
 
@@ -10,7 +12,8 @@ public class Jugador {
 
 	private String nombre;
 	private int capital;
-	private HashMap<String, Propiedad> propiedades;
+	private HashMap<String, Terreno> terrenos;
+	private HashMap<String, Compania> companias;
 	private TipoMovimiento tipoMovimiento;
 	private PosicionTablero miPosicion;
 
@@ -18,7 +21,8 @@ public class Jugador {
 	public Jugador(String unNombre) {
 		this.nombre = unNombre;
 		this.capital = 100000;
-		this.propiedades = new HashMap<String, Propiedad>();
+		this.terrenos = new HashMap<String, Terreno>();
+		this.companias = new HashMap<String, Compania>();
 		this.tipoMovimiento = new MovimientoLibre();
 		this.miPosicion = Tablero.obtenerPosicionInicial();
 	}
@@ -45,17 +49,24 @@ public class Jugador {
 		return unMonto;
 	}
 	
-	public void comprarPropiedad(Propiedad unaPropiedad){
-		unaPropiedad.comprar(this);
-		propiedades.put(unaPropiedad.nombre(), unaPropiedad);
+	public void comprarPropiedad(Comprable unComprable){
+		unComprable.comprar(this);
 	}
 
-	public int cantidadPropiedades ()	{
-		return this.propiedades.size();
+	public void agregarCompania(Compania unaCompania){
+		this.companias.put(unaCompania.nombre(), unaCompania);
+	}
+	
+	public void agregarTerreno(Terreno unTerreno){
+		this.terrenos.put(unTerreno.nombre(), unTerreno);
+	}
+	
+	public int cantidadPoseciones(){
+		return (this.terrenos.size() + this.companias.size());
 	}
 
-	public boolean tienePropiedad(String unaDescipcionDePropiedad) {
-		return (propiedades.get(unaDescipcionDePropiedad) != null);
+	public boolean esDuenoDe(String unaDescipcionDePropiedad) {
+		return ((this.terrenos.containsKey(unaDescipcionDePropiedad)) || (this.companias.containsKey(unaDescipcionDePropiedad)));
 	}
 	
 	public void mover(int cantidadDeCasilleros){

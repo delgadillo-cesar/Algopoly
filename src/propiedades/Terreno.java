@@ -4,9 +4,14 @@ import java.util.List;
 
 import entidades.Jugador;
 import entidades.MismoJugadorException;
+import tablero.Casilla;
 
-public class Terreno extends Propiedad {
+public class Terreno implements Casilla, Comprable  {
 	
+	protected String nombrePropiedad;
+	protected Jugador propietario;
+	protected int precioCompra;
+	protected String descripcion;
 	private Construccion construido;
 	private List<Construccion> construcciones;
 
@@ -19,6 +24,30 @@ public class Terreno extends Propiedad {
 		this.descripcion = nombreTerreno;
 	}
 
+	public Jugador propietario() {
+		return this.propietario;
+	}
+	
+	
+	public String nombre(){
+		return this.nombrePropiedad;
+	}
+	
+	
+	public int precioDeCompra(){
+		return this.precioCompra;
+	}
+	
+	
+	public void comprar(Jugador unJugador){
+		unJugador.pagar(precioCompra);
+		this.propietario = unJugador;
+		unJugador.agregarTerreno(this);
+	}
+
+	public String descripcion() {
+		return this.descripcion;
+	}		
 	
 	public void construir() throws NadaParaConstruirException{
 		if (this.construcciones.size() == 0) throw new NadaParaConstruirException();

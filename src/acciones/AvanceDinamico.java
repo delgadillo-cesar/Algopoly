@@ -43,7 +43,7 @@ public class AvanceDinamico extends Accion {
 		else if (buscarEnIntervalo(numero, this.intervalo2)) {
 			nuevoValor = (jugador.capital()) % numero;
 		} else if (buscarEnIntervalo(numero, this.intervalo3)) {
-			nuevoValor = numero - jugador.cantidadPropiedades();
+			nuevoValor = numero - jugador.cantidadPoseciones();
 		}
 		
 		Tablero.getInstance().desplazar(jugador, nuevoValor);

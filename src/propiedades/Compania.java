@@ -1,14 +1,45 @@
 package propiedades;
 
 import entidades.Jugador;
+import tablero.Casilla;
 
-public abstract class Compania extends Propiedad {
+public abstract class Compania implements Casilla, Comprable {
 
-	@Override
+	protected String nombrePropiedad;
+	protected Jugador propietario;
+	protected int precioCompra;
+	protected String descripcion;
+	
+
 	public void afectar(Jugador jugador) {
-		propietario.cobrar(jugador.pagar(this.cobrar()));
+		this.propietario.cobrar(jugador.pagar(this.cobrar()));
+	}
+
+	public Jugador propietario() {
+		return this.propietario;
 	}
 	
+	
+	public String nombre(){
+		return this.nombrePropiedad;
+	}
+	
+	
+	public int precioDeCompra(){
+		return this.precioCompra;
+	}
+	
+	
+	public void comprar(Jugador unJugador){
+		unJugador.pagar(precioCompra);
+		this.propietario = unJugador;
+		unJugador.agregarCompania(this);
+	}
+
+	public String descripcion() {
+		return this.descripcion;
+	}	
+
 	protected abstract int cobrar();
 
 }

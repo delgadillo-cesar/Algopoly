@@ -3,13 +3,8 @@ package tablero;
 import entidades.Jugador;
 import entidades.MismoJugadorException;
 
-public abstract class Casilla {
+public interface Casilla {
 	
-	protected String descripcion;
-	
-	public abstract void afectar(Jugador jugador) throws MismoJugadorException;
-	
-	public String descripcion(){
-		return this.descripcion;
-	}
+	public void afectar(Jugador jugador);
+	public String descripcion();
 }

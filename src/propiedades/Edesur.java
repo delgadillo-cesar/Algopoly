@@ -14,7 +14,7 @@ public class Edesur extends Compania {
 	protected int cobrar() {
 		int dados = Dados.getInstance().getValor();
 		
-		if (this.propietario.tienePropiedad("AYSA")){
+		if (this.propietario.esDuenoDe("AYSA")){
 			return (1000 * dados);
 		}else{
 			return (500 * dados);

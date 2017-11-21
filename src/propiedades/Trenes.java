@@ -14,7 +14,7 @@ public class Trenes extends Compania {
 	protected int cobrar() {
 		int dados = Dados.getInstance().getValor();
 		
-		if (this.propietario.tienePropiedad("SUBTE")){
+		if (this.propietario.esDuenoDe("SUBTE")){
 			return (800 * dados);
 		}else{
 			return (450 * dados);

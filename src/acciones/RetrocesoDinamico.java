@@ -41,7 +41,7 @@ public class RetrocesoDinamico extends Accion{
 		int numero = Dados.getInstance().getValor();
 		if (buscarEnIntervalo (numero,this.intervalo1))
 			{
-				temp = numero - jugador.cantidadPropiedades();
+				temp = numero - jugador.cantidadPoseciones();
 				if (temp >=0)
 					nuevoValor = temp;
 				else

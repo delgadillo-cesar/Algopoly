@@ -14,7 +14,7 @@ public class Subte extends Compania {
 	protected int cobrar() {
 		int dados = Dados.getInstance().getValor();
 		
-		if (this.propietario.tienePropiedad("TRENES")){
+		if (this.propietario.esDuenoDe("TRENES")){
 			return (1100 * dados);
 		}else{
 			return (600 * dados);

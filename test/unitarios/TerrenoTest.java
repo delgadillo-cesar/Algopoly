@@ -60,11 +60,11 @@ public class TerrenoTest {
 		Terreno unTerreno = new Terreno("BS AS ZONA NORTE", 25000, construcciones);
 		Jugador unJugador = new Jugador("Jugador de prueba");
 		
-		Assert.assertFalse(unJugador.tienePropiedad("BS AS ZONA NORTE"));
+		Assert.assertFalse(unJugador.esDuenoDe("BS AS ZONA NORTE"));
 
 		unTerreno.comprar(unJugador);
 		
-		Assert.assertTrue(unJugador.tienePropiedad("BS AS ZONA NORTE"));
+		Assert.assertTrue(unJugador.esDuenoDe("BS AS ZONA NORTE"));
 	}
 
 	@Test

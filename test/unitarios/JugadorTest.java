@@ -7,8 +7,8 @@ import acciones.Carcel;
 import entidades.Jugador;
 import entidades.JugadorSinSaldoException;
 import propiedades.Aysa;
+import propiedades.Comprable;
 import propiedades.Edesur;
-import propiedades.Propiedad;
 import propiedades.Subte;
 import tablero.Tablero;
 
@@ -70,70 +70,70 @@ public class JugadorTest {
 	
 	@Test
 	public void testJugadorCompraUnaPropiedadObtieneLaPropiedadYSuCapitalDisminuyeAlPagarElCostoDeCompra() {
-		Propiedad unaPropiedad = new Aysa();
+		Comprable unComprable = new Aysa();
 		Jugador unJugador = new Jugador("Jugador de prueba");
 		int capitalInicialJugador, costoPropiedad;
 		
-		Assert.assertFalse(unJugador.tienePropiedad("AYSA"));
+		Assert.assertFalse(unJugador.esDuenoDe("AYSA"));
 
 		capitalInicialJugador = unJugador.capital();
-		costoPropiedad = unaPropiedad.precioDeCompra();		
-		unJugador.comprarPropiedad(unaPropiedad);
+		costoPropiedad = unComprable.precioDeCompra();		
+		unJugador.comprarPropiedad(unComprable);
 		
-		Assert.assertTrue(unJugador.tienePropiedad("AYSA"));
+		Assert.assertTrue(unJugador.esDuenoDe("AYSA"));
 		Assert.assertEquals(costoPropiedad, (capitalInicialJugador - unJugador.capital()));
 	}
 	
 	@Test(expected=JugadorSinSaldoException.class)
 	public void testJugadorIntentaCompraUnaPropiedadPeroNoLeAlcanzaElCapitalDaError() {
-		Propiedad unaPropiedad = new Aysa();
+		Comprable unComprable = new Aysa();
 		Jugador unJugador = new Jugador("Jugador de prueba");
 		
-		Assert.assertFalse(unJugador.tienePropiedad("AYSA"));
+		Assert.assertFalse(unJugador.esDuenoDe("AYSA"));
 
 		unJugador.pagar(unJugador.capital() - 1);
-		unaPropiedad.comprar(unJugador);
+		unComprable.comprar(unJugador);
 	}
 
 	@Test
 	public void testJugadorCantidadDePropiedadesQuePosee() {
-		Propiedad unaPropiedad;
+		Comprable unComprable;
 		Jugador unJugador = new Jugador("Jugador de prueba");
 		
-		Assert.assertEquals(0, unJugador.cantidadPropiedades());
+		Assert.assertEquals(0, unJugador.cantidadPoseciones());
 
 		unJugador.cobrar(1000000);
-		unaPropiedad = new Aysa();
+		unComprable = new Aysa();
 		
-		unJugador.comprarPropiedad(unaPropiedad);
-		Assert.assertEquals(1, unJugador.cantidadPropiedades());
+		unJugador.comprarPropiedad(unComprable);
+		Assert.assertEquals(1, unJugador.cantidadPoseciones());
 
-		unaPropiedad = new Edesur();
-		unJugador.comprarPropiedad(unaPropiedad);
-		unaPropiedad = new Subte();
-		unJugador.comprarPropiedad(unaPropiedad);
-		Assert.assertEquals(3, unJugador.cantidadPropiedades());
+		unComprable = new Edesur();
+		unJugador.comprarPropiedad(unComprable);
+		unComprable = new Subte();
+		unJugador.comprarPropiedad(unComprable);
+		Assert.assertEquals(3, unJugador.cantidadPoseciones());
 	}
 
 	@Test
 	public void testJugadorBuscaSiTieneUnPropiedadEspecifica() {
-		Propiedad unaPropiedad;
+		Comprable unComprable;
 		Jugador unJugador = new Jugador("Jugador de prueba");
 		
-		Assert.assertFalse(unJugador.tienePropiedad("AYSA"));
+		Assert.assertFalse(unJugador.esDuenoDe("AYSA"));
 
 		unJugador.cobrar(1000000);
-		unaPropiedad = new Aysa();
+		unComprable = new Aysa();
 		
-		unJugador.comprarPropiedad(unaPropiedad);
-		Assert.assertTrue(unJugador.tienePropiedad("AYSA"));
+		unJugador.comprarPropiedad(unComprable);
+		Assert.assertTrue(unJugador.esDuenoDe("AYSA"));
 
-		unaPropiedad = new Edesur();
-		unJugador.comprarPropiedad(unaPropiedad);
-		unaPropiedad = new Subte();
-		unJugador.comprarPropiedad(unaPropiedad);
-		Assert.assertTrue(unJugador.tienePropiedad("SUBTE"));
-		Assert.assertTrue(unJugador.tienePropiedad("EDESUR"));
+		unComprable = new Edesur();
+		unJugador.comprarPropiedad(unComprable);
+		unComprable = new Subte();
+		unJugador.comprarPropiedad(unComprable);
+		Assert.assertTrue(unJugador.esDuenoDe("SUBTE"));
+		Assert.assertTrue(unJugador.esDuenoDe("EDESUR"));
 	}
 
 	@Test
@@ -149,7 +149,7 @@ public class JugadorTest {
 	}
 	
 	@Test
-	public void testJugadorPricioneroMoverDevuelveCero() {
+	public void testJugadorPricioneroMoverNoSeMueve() {
 		Jugador unJugador = new Jugador("Jugador de Prueba");
 		Carcel laCarcel = new Carcel();
 		int casillaInicial, casillaFinal;
