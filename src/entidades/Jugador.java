@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import propiedades.Compania;
 import propiedades.Comprable;
-import propiedades.Terreno;
+import propiedades.Barrio;
 import tablero.PosicionTablero;
 import tablero.Tablero;
 
@@ -12,7 +12,7 @@ public class Jugador {
 
 	private String nombre;
 	private int capital;
-	private HashMap<String, Terreno> terrenos;
+	private HashMap<String, Barrio> barrios;
 	private HashMap<String, Compania> companias;
 	private TipoMovimiento tipoMovimiento;
 	private PosicionTablero miPosicion;
@@ -21,7 +21,7 @@ public class Jugador {
 	public Jugador(String unNombre) {
 		this.nombre = unNombre;
 		this.capital = 100000;
-		this.terrenos = new HashMap<String, Terreno>();
+		this.barrios = new HashMap<String, Barrio>();
 		this.companias = new HashMap<String, Compania>();
 		this.tipoMovimiento = new MovimientoLibre();
 		this.miPosicion = Tablero.obtenerPosicionInicial();
@@ -57,16 +57,16 @@ public class Jugador {
 		this.companias.put(unaCompania.nombre(), unaCompania);
 	}
 	
-	public void agregarTerreno(Terreno unTerreno){
-		this.terrenos.put(unTerreno.nombre(), unTerreno);
+	public void agregarBarrio(Barrio unBarrio){
+		this.barrios.put(unBarrio.nombre(), unBarrio);
 	}
 	
 	public int cantidadPoseciones(){
-		return (this.terrenos.size() + this.companias.size());
+		return (this.barrios.size() + this.companias.size());
 	}
 
 	public boolean esDuenoDe(String unaDescipcionDePropiedad) {
-		return ((this.terrenos.containsKey(unaDescipcionDePropiedad)) || (this.companias.containsKey(unaDescipcionDePropiedad)));
+		return ((this.barrios.containsKey(unaDescipcionDePropiedad)) || (this.companias.containsKey(unaDescipcionDePropiedad)));
 	}
 	
 	public void mover(int cantidadDeCasilleros){

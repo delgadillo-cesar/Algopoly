@@ -6,7 +6,7 @@ import entidades.Jugador;
 import entidades.MismoJugadorException;
 import tablero.Casilla;
 
-public class Terreno implements Casilla, Comprable  {
+public class Barrio implements Casilla, Comprable  {
 	
 	protected String nombrePropiedad;
 	protected Jugador propietario;
@@ -16,12 +16,12 @@ public class Terreno implements Casilla, Comprable  {
 	private List<Construccion> construcciones;
 
 	
-	public Terreno(String nombreTerreno, int precioCompra, List<Construccion> construcciones) {
+	public Barrio(String nombreDelBarrio, int precioCompra, List<Construccion> construcciones) {
 		this.construido = construcciones.remove(0);
 		this.construcciones = construcciones;
 		this.precioCompra = precioCompra;
-		this.nombrePropiedad = nombreTerreno;
-		this.descripcion = nombreTerreno;
+		this.nombrePropiedad = nombreDelBarrio;
+		this.descripcion = nombreDelBarrio;
 	}
 
 	public Jugador propietario() {
@@ -42,7 +42,7 @@ public class Terreno implements Casilla, Comprable  {
 	public void comprar(Jugador unJugador){
 		unJugador.pagar(precioCompra);
 		this.propietario = unJugador;
-		unJugador.agregarTerreno(this);
+		unJugador.agregarBarrio(this);
 	}
 
 	public String descripcion() {

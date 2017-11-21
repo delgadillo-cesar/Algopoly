@@ -26,7 +26,7 @@ public class Tablero {
 		construcciones.add(Construccion.construirDosCasa(5000, 3500));
 		construcciones.add(Construccion.construirUnHotel(8000, 5000));
 		
-		return (new Terreno("BS AS ZONA SUR", 20000, construcciones));
+		return (new Barrio("BS AS ZONA SUR", 20000, construcciones));
 	}
 	
 	private Casilla crearBsAsZonaNorte(){
@@ -37,7 +37,7 @@ public class Tablero {
 		construcciones.add(Construccion.construirDosCasa(5500, 4000));
 		construcciones.add(Construccion.construirUnHotel(9000, 6000));
 		
-		return (new Terreno("BS AS ZONA NORTE", 25000, construcciones));
+		return (new Barrio("BS AS ZONA NORTE", 25000, construcciones));
 	}
 	
 	private Casilla crearCordobaSur(){
@@ -48,7 +48,7 @@ public class Tablero {
 		construcciones.add(Construccion.construirDosCasa(2000, 2500));
 		construcciones.add(Construccion.construirUnHotel(3000, 3000));
 		
-		return (new Terreno("CORDOBA SUR", 18000, construcciones));
+		return (new Barrio("CORDOBA SUR", 18000, construcciones));
 	}
 	
 	private Casilla crearCordobaNorte(){
@@ -59,7 +59,7 @@ public class Tablero {
 		construcciones.add(Construccion.construirDosCasa(2200, 2900));
 		construcciones.add(Construccion.construirUnHotel(3500, 3500));
 		
-		return (new Terreno("CORDOBA NORTE", 20000, construcciones));
+		return (new Barrio("CORDOBA NORTE", 20000, construcciones));
 	}
 	
 	private Casilla crearSantaFe(){
@@ -68,7 +68,7 @@ public class Tablero {
 		construcciones.add(Construccion.construirUnTerreno(1500));
 		construcciones.add(Construccion.construirUnaCasa(4000, 3500));
 		
-		return (new Terreno("SANTA FE", 15000, construcciones));
+		return (new Barrio("SANTA FE", 15000, construcciones));
 	}
 
 	private Casilla crearSaltaNorte(){
@@ -79,7 +79,7 @@ public class Tablero {
 		construcciones.add(Construccion.construirDosCasa(4500, 3850));
 		construcciones.add(Construccion.construirUnHotel(7500, 5500));
 		
-		return (new Terreno("SALTA NORTE", 23000, construcciones));
+		return (new Barrio("SALTA NORTE", 23000, construcciones));
 	}
 	
 	private Casilla crearSaltaSur(){
@@ -90,7 +90,7 @@ public class Tablero {
 		construcciones.add(Construccion.construirDosCasa(4500, 3850));
 		construcciones.add(Construccion.construirUnHotel(7500, 5500));
 		
-		return (new Terreno("SALTA SUR", 23000, construcciones));
+		return (new Barrio("SALTA SUR", 23000, construcciones));
 	}
 	
 	private Casilla crearNeuquen(){
@@ -99,7 +99,7 @@ public class Tablero {
 		construcciones.add(Construccion.construirUnTerreno(1800));
 		construcciones.add(Construccion.construirUnaCasa(4800, 3800));
 		
-		return (new Terreno("NEUQUEN", 17000, construcciones));
+		return (new Barrio("NEUQUEN", 17000, construcciones));
 	}
 
 	private Casilla crearTucuman(){
@@ -108,7 +108,7 @@ public class Tablero {
 		construcciones.add(Construccion.construirUnTerreno(1800));
 		construcciones.add(Construccion.construirUnEdificioHistorico(7000, 4500));
 		
-		return (new Terreno("TUCUMAN", 25000, construcciones));
+		return (new Barrio("TUCUMAN", 25000, construcciones));
 	}
 
 	

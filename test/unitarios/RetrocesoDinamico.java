@@ -11,7 +11,7 @@ import entidades.Jugador;
 import juego.Dados;
 import tablero.Tablero;
 import propiedades.Construccion;
-import propiedades.Terreno;
+import propiedades.Barrio;
 import propiedades.Trenes;
 
 public class RetrocesoDinamico {
@@ -54,7 +54,7 @@ public class RetrocesoDinamico {
 		Dados dados = Dados.getInstance();	
 		Jugador jugador = new Jugador ("Jose");
 		Tablero tablero = Tablero.getInstance();
-		Terreno unTerreno = new Terreno("SANTA FE",15000, construcciones);
+		Barrio unTerreno = new Barrio("SANTA FE",15000, construcciones);
 		jugador.comprarPropiedad(unTerreno);
 		tablero.desplazar(jugador,"SANTA FE");
 		Assert.assertEquals(12, tablero.casillaDeJugador(jugador));
