@@ -1,4 +1,4 @@
-package propiedades;
+package comprables;
 
 public class NadaParaConstruirException extends RuntimeException {
 

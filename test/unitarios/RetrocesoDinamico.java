@@ -7,12 +7,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import comprables.Barrio;
+import comprables.Construccion;
+import comprables.Trenes;
 import entidades.Jugador;
 import juego.Dados;
 import tablero.Tablero;
-import propiedades.Construccion;
-import propiedades.Barrio;
-import propiedades.Trenes;
 
 public class RetrocesoDinamico {
 

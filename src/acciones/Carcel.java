@@ -5,8 +5,11 @@ import java.util.HashMap;
 import entidades.Jugador;
 import entidades.MovimientoEncarcelado;
 
+
 public class Carcel extends Accion {
 
+	private static String tag = "CARCEL";
+	
 	private HashMap<Jugador, Integer> diasRestantes;
 	private final Integer sentencia = Integer.valueOf(3);
 	private final Integer diasSinFianza = Integer.valueOf(1);
@@ -55,9 +58,13 @@ public class Carcel extends Accion {
 		diasRestantes.remove(unJugador);
 	}
 
-	@Override
+	
 	public void afectar(Jugador jugador) {
 		this.encarcelar(jugador);
+	}
+
+	public static String getTag(){
+		return tag;
 	}
 
 }

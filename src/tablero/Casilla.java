@@ -1,7 +1,6 @@
 package tablero;
 
 import entidades.Jugador;
-import entidades.MismoJugadorException;
 
 public interface Casilla {
 	

@@ -1,9 +1,11 @@
-package propiedades;
+package comprables;
 
 import juego.Dados;
 
 public class Subte extends Compania {
 
+	private static String tag = "SUBTE";
+	
 	public Subte(){
 		this.descripcion = "SUBTE";
 		this.nombrePropiedad = "SUBTE";
@@ -19,5 +21,9 @@ public class Subte extends Compania {
 		}else{
 			return (600 * dados);
 		}
-	}	
+	}
+	
+	public static String getTag(){
+		return tag;
+	}
 }

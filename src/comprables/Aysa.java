@@ -1,9 +1,11 @@
-package propiedades;
+package comprables;
 
 import juego.Dados;
 
 public class Aysa extends Compania {
 
+	private static String tag = "AYSA";
+	
 	public Aysa(){
 		this.descripcion = "AYSA";
 		this.nombrePropiedad = "AYSA";
@@ -19,6 +21,10 @@ public class Aysa extends Compania {
 		}else{
 			return (300 * dados);
 		}
+	}
+
+	public static String getTag(){
+		return tag;
 	}
 
 

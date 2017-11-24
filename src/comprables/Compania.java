@@ -1,4 +1,4 @@
-package propiedades;
+package comprables;
 
 import entidades.Jugador;
 import tablero.Casilla;
@@ -12,10 +12,12 @@ public abstract class Compania implements Casilla, Comprable {
 	
 
 	public void afectar(Jugador jugador) {
+		if (this.propietario == null) return;
 		this.propietario.cobrar(jugador.pagar(this.cobrar()));
 	}
 
-	public Jugador propietario() {
+	public Jugador propietario(){
+		if (this.propietario == null) throw new SinPropietarioException();
 		return this.propietario;
 	}
 	

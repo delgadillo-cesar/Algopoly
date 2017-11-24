@@ -4,12 +4,12 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import acciones.Carcel;
+import comprables.Aysa;
+import comprables.Comprable;
+import comprables.Edesur;
+import comprables.Subte;
 import entidades.Jugador;
 import entidades.JugadorSinSaldoException;
-import propiedades.Aysa;
-import propiedades.Comprable;
-import propiedades.Edesur;
-import propiedades.Subte;
 import tablero.Tablero;
 
 

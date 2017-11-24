@@ -11,5 +11,5 @@ public abstract class Accion implements Casilla {
 	
 	public String descripcion(){
 		return this.descripcion;
-	}	
+	}
 }

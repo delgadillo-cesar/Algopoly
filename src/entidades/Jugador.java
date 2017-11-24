@@ -1,10 +1,12 @@
 package entidades;
 
 import java.util.HashMap;
+import java.util.Map;
 
-import propiedades.Compania;
-import propiedades.Comprable;
-import propiedades.Barrio;
+import comprables.Barrio;
+import comprables.Compania;
+import comprables.Comprable;
+import tablero.Casilla;
 import tablero.PosicionTablero;
 import tablero.Tablero;
 
@@ -83,5 +85,15 @@ public class Jugador {
 	
 	public void cambiarPosicion(PosicionTablero unaNuevaPosicion){
 		this.miPosicion = unaNuevaPosicion;
+	}
+
+	public int cantidadPropiedades() {
+		int cantPropiedades = 0;
+		
+		for (Map.Entry<String, Barrio>entry: this.barrios.entrySet()){
+			cantPropiedades += entry.getValue().cantidadDePropiedades();
+		}
+
+		return cantPropiedades;
 	}
 }

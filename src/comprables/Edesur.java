@@ -1,8 +1,10 @@
-package propiedades;
+package comprables;
 
 import juego.Dados;
 
 public class Edesur extends Compania {
+
+	private static String tag = "EDESUR";
 
 	public Edesur(){
 		this.descripcion = "EDESUR";
@@ -21,4 +23,8 @@ public class Edesur extends Compania {
 		}
 	}	
 
+	
+	public static String getTag(){
+		return tag;
+	}
 }

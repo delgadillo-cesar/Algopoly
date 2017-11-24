@@ -1,8 +1,10 @@
-package propiedades;
+package comprables;
 
 import juego.Dados;
 
 public class Trenes extends Compania {
+
+	private static String tag = "TRENES";
 
 	public Trenes(){
 		this.descripcion = "TRENES";
@@ -19,6 +21,11 @@ public class Trenes extends Compania {
 		}else{
 			return (450 * dados);
 		}
-	}	
+	}
+
+	
+	public static String getTag(){
+		return tag;
+	}
 
 }

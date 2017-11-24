@@ -7,11 +7,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import comprables.Barrio;
+import comprables.Construccion;
+import comprables.NadaParaConstruirException;
 import entidades.Jugador;
 import entidades.MismoJugadorException;
-import propiedades.Construccion;
-import propiedades.NadaParaConstruirException;
-import propiedades.Barrio;
 
 public class BarrioTest {
 

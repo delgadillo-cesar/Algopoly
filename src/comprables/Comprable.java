@@ -1,4 +1,4 @@
-package propiedades;
+package comprables;
 
 import entidades.Jugador;
 

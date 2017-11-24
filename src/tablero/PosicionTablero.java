@@ -2,10 +2,10 @@ package tablero;
 
 public class PosicionTablero {
 
-	protected int nroCasilla;
+	private int nroCasilla;
 	
 	public PosicionTablero(){
-		this.nroCasilla = 0;
+		this.nroCasilla = 1;
 	}
 	
 	public int getPosicion(){
@@ -14,5 +14,9 @@ public class PosicionTablero {
 	
 	public void setPosicion(int unNroCasilla){
 		this.nroCasilla = unNroCasilla;
+	}
+
+	public void sumarUnaPosicion() {
+		this.nroCasilla += 1;
 	}
 }

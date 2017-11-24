@@ -1,64 +1,53 @@
 package acciones;
 import juego.Dados;
-import tablero.Tablero;
+
+import java.util.HashMap;
+
 import entidades.Jugador;
+import entidades.MovimientoDesplazamietoDinamico;
+import entidades.MovimientoDesplazamietoDinamico1;
+import entidades.MovimientoDesplazamietoDinamico2;
+import entidades.MovimientoDesplazamietoDinamico3;
 
 public class RetrocesoDinamico extends Accion{
 	
-	private
+	private static String tag = "RETROCESO_DINAMICO";
+	private HashMap<Integer,MovimientoDesplazamietoDinamico> tipoDeDesplazamiento;
 	
-		int [] intervalo1;
-		int [] intervalo2;
-		int [] intervalo3;
-	
-	private boolean buscarEnIntervalo (int numero,int[] intervalo)
-		{
-			boolean status = false;
-			int i,largo;
-			largo = intervalo.length;
-			for (i=0;i<largo;i++)
-				if (numero == intervalo[i])
-					status = true;				
-			return status;		
-		}
-		
-/***********************************************/
 	
 	public	RetrocesoDinamico (){
 		this.descripcion = "RETROCESO DINAMICO";
-		
-		intervalo1 = new int [] {2,3,4,5,6};
-		intervalo2 = new int [] {7,8,9,10};
-		intervalo3 = new int [] {11,12};
-	}
+		this.tipoDeDesplazamiento = new HashMap<Integer,MovimientoDesplazamietoDinamico>();
+		this.tipoDeDesplazamiento.put(2, new MovimientoDesplazamietoDinamico3());
+		this.tipoDeDesplazamiento.put(3, new MovimientoDesplazamietoDinamico3());
+		this.tipoDeDesplazamiento.put(4, new MovimientoDesplazamietoDinamico3());
+		this.tipoDeDesplazamiento.put(5, new MovimientoDesplazamietoDinamico3());
+		this.tipoDeDesplazamiento.put(6, new MovimientoDesplazamietoDinamico3());
+		this.tipoDeDesplazamiento.put(7, new MovimientoDesplazamietoDinamico2());
+		this.tipoDeDesplazamiento.put(8, new MovimientoDesplazamietoDinamico2());
+		this.tipoDeDesplazamiento.put(9, new MovimientoDesplazamietoDinamico2());
+		this.tipoDeDesplazamiento.put(10, new MovimientoDesplazamietoDinamico2());
+		this.tipoDeDesplazamiento.put(11, new MovimientoDesplazamietoDinamico1());
+		this.tipoDeDesplazamiento.put(12, new MovimientoDesplazamietoDinamico1());
+}
 	
 /***********************************************/
 	
+	@Override
 	public void afectar(Jugador jugador) {
 		
-		int nuevoValor=0;
-		int temp=0;
-		int numero = Dados.getInstance().getValor();
-		if (buscarEnIntervalo (numero,this.intervalo1))
-			{
-				temp = numero - jugador.cantidadPoseciones();
-				if (temp >=0)
-					nuevoValor = temp;
-				else
-					nuevoValor = numero;				
-			}
-				
-		else if (buscarEnIntervalo (numero,this.intervalo2))
-				{
-					nuevoValor = (jugador.capital())%numero;
-				}
-		else if (buscarEnIntervalo (numero,this.intervalo3))
-				{
-					nuevoValor = numero-2;
-				}	
-
-		Tablero.getInstance().desplazar(jugador,  -1 * nuevoValor);
+		int dados = Dados.getInstance().getValor();
+		
+		MovimientoDesplazamietoDinamico tipoMovimiento = this.tipoDeDesplazamiento.get(dados);
+		tipoMovimiento.setDireccion(MovimientoDesplazamietoDinamico.direccionRetroceso);
+		
+		jugador.cambiarTipoDeMovimiento(tipoMovimiento);
+		jugador.mover(dados);
 	}
-			
-/***********************************************/
+
+	/***********************************************/
+	
+	public static String getTag(){
+		return tag;
+	}
 }

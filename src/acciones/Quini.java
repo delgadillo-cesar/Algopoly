@@ -6,6 +6,9 @@ import entidades.Jugador;
 
 public class Quini extends Accion {
 
+	private static String tag = "QUINI";
+	
+	
 	private HashMap<Jugador, PremioQuini> ganadores;
 
 	public Quini() {
@@ -26,6 +29,11 @@ public class Quini extends Accion {
 		if (!ganadores.containsKey(unJugador)) this.ganadores.put(unJugador, new PremioQuini());
 
 		return (this.ganadores.get(unJugador).cobrarPremio());
+	}
+
+	
+	public static String getTag(){
+		return tag;
 	}
 
 }

@@ -5,13 +5,13 @@ import juego.Dados;
 import org.junit.Assert;
 import org.junit.Test;
 
+import comprables.Aysa;
+import comprables.Compania;
+import comprables.Edesur;
+import comprables.Subte;
+import comprables.Trenes;
 import entidades.Jugador;
 import entidades.MismoJugadorException;
-import propiedades.Aysa;
-import propiedades.Compania;
-import propiedades.Edesur;
-import propiedades.Subte;
-import propiedades.Trenes;
 
 public class CompaniaTest {
 
