@@ -14,12 +14,16 @@ public class PoliciaTest {
 	@Test
 	public void test01JugadorCaeEnPoliciaYTerminaEnLaCarcel() {
 		
-		Jugador jugador = new Jugador ("Jose PEPE Argento");
+		Jugador jugadorPrueba = new Jugador ("Jugador de prueba");
+		Jugador jugadorReferencia = new Jugador ("Jugador de referencia");
 		Casilla policia = new Policia ();
 		Tablero tablero = Tablero.getInstance();
-		tablero.desplazar(jugador,"POLICIA");
-		policia.afectar(jugador);	
-		Assert.assertEquals(6,tablero.casillaDeJugador(jugador));
+
+		tablero.desplazar(jugadorReferencia,"CARCEL");
+		
+		tablero.desplazar(jugadorPrueba,"POLICIA");
+		policia.afectar(jugadorPrueba);	
+		Assert.assertEquals(jugadorReferencia.obtenerPosicion().getPosicion(), jugadorPrueba.obtenerPosicion().getPosicion());
 		
 	}
 

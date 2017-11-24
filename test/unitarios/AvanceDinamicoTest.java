@@ -30,7 +30,7 @@ public class AvanceDinamicoTest {
 		}while(!((dados.getValor() >= 2) && (dados.getValor() <= 6)));
 		
 		avanceDinamico.afectar(unJugador);
-		Assert.assertEquals((1 + dados.getValor() -2), unJugador.obtenerPosicion().getPosicion());
+		Assert.assertEquals((1 + (dados.getValor() -2)), unJugador.obtenerPosicion().getPosicion());
 	}
 	
 	@Test
@@ -89,6 +89,10 @@ public class AvanceDinamicoTest {
 
 		unJugadorConPropiedades.cambiarPosicion(new PosicionTablero());
 		Assert.assertEquals(1, unJugadorConPropiedades.obtenerPosicion().getPosicion());
+
+		do{
+			dados.lanzarDados();
+		}while(!((dados.getValor() >= 11) && (dados.getValor() <= 12)));
 
 		avanceDinamico.afectar(unJugadorConPropiedades);
 
