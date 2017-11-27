@@ -85,12 +85,21 @@ public class CompaniaPoseibleTest {
 		Assert.assertEquals(variacionPropietario, variacionJugador);
 	}
 
-	@Test(expected = MismoJugadorException.class)
-	public void test07CompaniaPropietarioCaeEnSuPropiaCompaniaAfectaJugadorDebeLanzarUnaExcepcion() {
+	@Test
+	public void test07CompaniaPropietarioCaeEnSuPropiaCompaniaAfectaJugadorNoLeCobra() {
 		Jugador unPropietario = new JugadorUno("Propietario de prueba");
 		Casilla unaCompania = new Aysa(propietario);
+		int capitalInicial = unPropietario.capital();
+
+		unaCompania.afectar(unPropietario);
+		Assert.assertEquals(capitalInicial, unPropietario.capital());
 		
-		unaCompania.afectar(unPropietario); /*Intenta cobrarle*/
+		/*Sin capital*/
+		unPropietario.pagarA(Banco.getInstance(), unPropietario.capital());
+		Assert.assertEquals(0, unPropietario.capital());
+
+		unaCompania.afectar(unPropietario);
+		Assert.assertEquals(0, unPropietario.capital());
 	}
 
 /*

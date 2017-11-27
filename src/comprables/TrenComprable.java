@@ -21,6 +21,6 @@ public class TrenComprable implements Comprable {
 		unJugador.pagarA(Banco.getInstance(), precioCompra);
 		Tren tren = new Tren(unJugador);
 		unJugador.agregarCompania(tren);
-		Tablero.getInstance().cambiarCasillaPor(this, tren);
+		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_TREN, tren);
 	}
 }

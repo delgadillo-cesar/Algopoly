@@ -2,21 +2,20 @@ package acciones;
 
 import java.util.HashMap;
 
+import entidades.Banco;
 import entidades.Jugador;
 import entidades.MovimientoEncarcelado;
+import tablero.Casilla;
 
 
-public class Carcel extends Accion {
+public class Carcel implements Casilla {
 
-	private static String tag = "CARCEL";
-	
 	private HashMap<Jugador, Integer> diasRestantes;
 	private final Integer sentencia = Integer.valueOf(3);
 	private final Integer diasSinFianza = Integer.valueOf(1);
 	private final Integer fianza = Integer.valueOf(45000);
 
 	public Carcel() {
-		this.descripcion = "CARCEL";
 		this.diasRestantes = new HashMap<Jugador, Integer>();
 	}
 
@@ -54,17 +53,13 @@ public class Carcel extends Accion {
 	}
 
 	public void pagarFianza(Jugador unJugador) {
-		unJugador.pagar(this.fianza);
+		unJugador.pagarA(Banco.getInstance(),this.fianza);
 		diasRestantes.remove(unJugador);
 	}
 
 	
 	public void afectar(Jugador jugador) {
 		this.encarcelar(jugador);
-	}
-
-	public static String getTag(){
-		return tag;
 	}
 
 }

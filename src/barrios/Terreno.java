@@ -1,26 +1,23 @@
 package barrios;
 
+import entidades.Banco;
 import poseibles.Barrio;
 import poseibles.Construccion;
 
 public class Terreno implements Construible {
 	private int precioAlquiler;
-	private int costoConstuccion;
 	private String unaDescripcion;
 
-	public Terreno(int precioAlquiler){
-		this.costoConstuccion = 0;
-		this.precioAlquiler = precioAlquiler;
+	public Terreno(){
 		this.unaDescripcion = "un terreno";
 	}
-
-	
-	public int precioAlquiler() {
-		return this.precioAlquiler;
+	@Override
+	public void precioAlquiler(int precio) {
+		this.precioAlquiler = precio;
 	}
 
-	public int costoConstruccion() {
-		return this.costoConstuccion;
+	@Override
+	public void costoCosntruccion(int costo) {
 	}
 
 	public String descripcion() {
@@ -28,7 +25,13 @@ public class Terreno implements Construible {
 	}
 
 	public Construccion construirEn(Barrio unBarrio) {
+		unBarrio.valoresDeTerreno(this);
+		unBarrio.propietario().pagarA(Banco.getInstance(), 0);
 		return new Construccion(this.descripcion(), this.precioAlquiler, this,1);
 	}
 
+	@Override
+	public int costoConstruccionEn(Barrio unBarrio) {
+		return 0;
+	}
 }

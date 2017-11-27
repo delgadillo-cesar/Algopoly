@@ -1,7 +1,6 @@
 package poseibles;
 
 import entidades.Jugador;
-import tablero.*;
 import juego.Dados;
 
 public class Aysa implements Compania {
@@ -28,7 +27,7 @@ public class Aysa implements Compania {
 	}
 
 	public void afectar(Jugador jugador) {
-		this.propietario.cobrar(jugador.pagar(this.cobrar()));
+		jugador.pagarA(this.propietario, this.cobrar());
 	}
 
 	public int cobrarCon(Compania otraCompania) {

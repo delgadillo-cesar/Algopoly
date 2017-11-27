@@ -1,22 +1,16 @@
 package acciones;
 
+import tablero.Casilla;
 import tablero.Tablero;
 import entidades.Jugador;
 
-public class Policia extends Accion {
-
-	private static String tag = "POLICIA";
+public class Policia implements Casilla {
 	
 	public Policia(){
-		this.descripcion = "POLICIA";
 	}
 	
 	@Override
 	public void afectar(Jugador jugador) {
-		Tablero.getInstance().desplazar(jugador, "CARCEL");
-	}
-
-	public static String getTag(){
-		return tag;
+		Tablero.getInstance().desplazar(jugador, Tablero.CASILLA_CARCEL);
 	}
 }

@@ -17,27 +17,32 @@ public class Banco extends Jugador {
 
 	@Override
 	public void pagarA(Jugador cobrador, int monto) {
-		cobrador.cobrarABanco(monto);
+		cobrador.cobrarABanco(this, monto);
 	}
 
 	@Override
-	public int cobrarAJugador1(int monto) {
-		return 0;
-	}
-
-	@Override
-	public int cobrarAJugador2(int monto) {
-		return 0;
-	}
-
-	@Override
-	public int cobrarAJugador3(int monto) {
-		return 0;
-	}
-
-	@Override
-	public int cobrarABanco(int monto) {
+	public int cobrarAJugador1(Jugador pagador, int monto) {
+		this.capital += pagador.pagar(monto);
+		
 		return monto;
 	}
 
+	@Override
+	public int cobrarAJugador2(Jugador pagador, int monto) {
+		this.capital += pagador.pagar(monto);
+		
+		return monto;
+	}
+
+	@Override
+	public int cobrarAJugador3(Jugador pagador, int monto) {
+		this.capital += pagador.pagar(monto);
+		
+		return monto;
+	}
+
+	@Override
+	public int cobrarABanco(Jugador pagador, int monto) {
+		return 0;
+	}
 }

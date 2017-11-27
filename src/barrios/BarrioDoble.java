@@ -2,11 +2,16 @@ package barrios;
 
 import java.util.HashMap;
 
+import entidades.Jugador;
 import poseibles.Barrio;
 import poseibles.NadaParaConstruirException;
 
 
 public abstract class BarrioDoble extends Barrio {
+
+	public BarrioDoble(Jugador propietario) {
+		super(propietario);
+	}
 
 	protected HashMap<Construible, Boolean> espacioCompleto;
 	protected HashMap<Construible, CondicionConstruccion> condicionConstruccion;

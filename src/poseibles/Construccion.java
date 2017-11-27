@@ -1,6 +1,7 @@
 package poseibles;
 
 import barrios.Construible;
+import entidades.Jugador;
 
 public class Construccion {
 
@@ -16,11 +17,10 @@ public class Construccion {
 		this.cantPropiedades = cantPropiedades;
 	}
 	
-	
-	public int precioAlquiler(){
-		return this.precioAlquiler;
+	public void cobrarAlquiler(Jugador propietario, Jugador unVisitante){
+		unVisitante.pagarA(propietario, this.precioAlquiler);
 	}
-
+	
 	public String descripcion(){
 		return this.unaDescripcion;
 	}

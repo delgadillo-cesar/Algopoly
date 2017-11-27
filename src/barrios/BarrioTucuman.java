@@ -1,27 +1,45 @@
 package barrios;
 
-import java.util.HashMap;
-
+import entidades.Jugador;
 import poseibles.Barrio;
 
 
 public class BarrioTucuman  extends Barrio {
 
-	private static String tag = "TUCUMAN";
+	public BarrioTucuman(Jugador propietario) {
+		super(propietario);
 
-	public BarrioTucuman() {
-		Terreno terreno = new Terreno(1800);
-		EdificioHistorico unEdificio = new EdificioHistorico(7000, 4500, "la casita de Tucumán");
-		
-		this.construcciones = new HashMap<Construible,Construible>();
-		this.construcciones.put(terreno, unEdificio);
-		this.precioCompra = 17000;
-		this.nombrePropiedad = "TUCUMAN";
-		this.descripcion =  "TUCUMAN";
-		this.construido = terreno.construirEn(this);
+		this.construcciones = new SoloCasa();
 	}
 	
-	public static String getTag(){
-		return tag;
+	@Override
+	public void valoresDeTerreno(Construible unConstruible) {
+		unConstruible.costoCosntruccion(0);
+		unConstruible.precioAlquiler(1800);	
+	}
+
+	@Override
+	public void valoresDeUnaCasa(Construible unConstruible) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void valoresDeDosCasas(Construible unConstruible) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void valoresDeHotel(Construible unConstruible) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void valoresDeEdificioHistorico(Construible unConstruible) {
+		unConstruible.costoCosntruccion(7000);
+		unConstruible.precioAlquiler(4500);
+		((EdificioHistorico) unConstruible).nombreEdificioHistorico("la casita de Tucumán");
 	}
 }

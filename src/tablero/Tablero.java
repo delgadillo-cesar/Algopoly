@@ -1,71 +1,69 @@
 package tablero;
 
 import java.util.HashMap;
-import java.util.Map;
 
-import poseibles.Aysa;
-
+import acciones.*;
+import comprables.*;
 import entidades.Jugador;
-import juego.Dados;
 
 public class Tablero {
 
 	private static Tablero elTablero;
 	private static final Integer CANTIDAD_CASILLAS = 20;
 	private static final Integer CASILLA_INICIAL = 1;
-	private HashMap<String, Casilla> casillas;
+
+	public static final Integer CASILLA_SALIDA = 1;
+	public static final Integer CASILLA_QUINI = 2;
+	public static final Integer CASILLA_BUENOS_AIRES_SUR = 3;
+	public static final Integer CASILLA_EDESUR = 4;
+	public static final Integer CASILLA_BUENOS_AIRES_NORTE = 5;
+	public static final Integer CASILLA_CARCEL = 6;
+	public static final Integer CASILLA_CORDOBA_SUR = 7;
+	public static final Integer CASILLA_AVANCE_DINAMICO = 8;
+	public static final Integer CASILLA_SUBTE = 9;
+	public static final Integer CASILLA_CORDOBA_NORTE = 10;
+	public static final Integer CASILLA_IMPUESTO_DE_LUJO = 11;
+	public static final Integer CASILLA_SANTA_FE = 12;
+	public static final Integer CASILLA_AYSA = 13;
+	public static final Integer CASILLA_SALTA_NORTE = 14;
+	public static final Integer CASILLA_SALTA_SUR = 15;
+	public static final Integer CASILLA_POLICIA = 16;
+	public static final Integer CASILLA_TREN = 17;
+	public static final Integer CASILLA_NEUQUEN = 18;
+	public static final Integer CASILLA_RETROCESO_DINAMICO = 19;
+	public static final Integer CASILLA_TUCUMAN = 20;
+
+	
 	private HashMap<Integer, Casilla> posicoinCasilla;
 	
-	private void crearCasillas(){
-		FactoryCasillas fabricaCasillas = new FactoryAcciones();
-		casillas.putAll(fabricaCasillas.crearCasillas());
-
-		fabricaCasillas = new FactoryCompanias();
-		casillas.putAll(fabricaCasillas.crearCasillas());
-
-		fabricaCasillas = new FactoryBarriosSimples();
-		casillas.putAll(fabricaCasillas.crearCasillas());
-
-		fabricaCasillas = new FactoryBarriosDobles();
-		casillas.putAll(fabricaCasillas.crearCasillas());
-	}
-	
-	public void armarTablero(){
-		this.crearCasillas();
-		
-		posicoinCasilla.put(1, casillas.get("SALIDA"));
-		posicoinCasilla.put(2, casillas.get("QUINI"));
-		posicoinCasilla.put(3, casillas.get("BUENOS_AIRES_SUR"));
-		posicoinCasilla.put(4, casillas.get("EDESUR"));
-		posicoinCasilla.put(5, casillas.get("BUENOS_AIRES_NORTE"));
-		posicoinCasilla.put(6, casillas.get("CARCEL"));
-		posicoinCasilla.put(7, casillas.get("CORDOBA_SUR"));
-		posicoinCasilla.put(8, casillas.get("AVANCE_DINAMICO"));
-		posicoinCasilla.put(9, casillas.get("SUBTE"));
-		posicoinCasilla.put(10, casillas.get("CORDOBA_NORTE"));
-		posicoinCasilla.put(11, casillas.get("IMPUESTO_LUJO"));
-		posicoinCasilla.put(12, casillas.get("SANTA_FE"));
-		posicoinCasilla.put(13, casillas.get("AYSA"));
-		posicoinCasilla.put(14, casillas.get("SALTA_NORTE"));
-		posicoinCasilla.put(15, casillas.get("SALTA_SUR"));
-		posicoinCasilla.put(16, casillas.get("POLICIA"));
-		posicoinCasilla.put(17, casillas.get("TRENES"));
-		posicoinCasilla.put(18, casillas.get("NEUQUEN"));
-		posicoinCasilla.put(19, casillas.get("RETROCESO_DINAMICO"));
-		posicoinCasilla.put(20, casillas.get("TUCUMAN"));		
+	private void crearCasillas(){		
+		this.posicoinCasilla.put(CASILLA_SALIDA, new Salida());
+		this.posicoinCasilla.put(CASILLA_QUINI, new Quini());
+		this.posicoinCasilla.put(CASILLA_BUENOS_AIRES_SUR, new BuenosAiresSurComprable());
+		this.posicoinCasilla.put(CASILLA_EDESUR, new EdesurComprable());
+		this.posicoinCasilla.put(CASILLA_BUENOS_AIRES_NORTE, new BuenosAiresNorteComprable());
+		this.posicoinCasilla.put(CASILLA_CARCEL, new Carcel());
+		this.posicoinCasilla.put(CASILLA_CORDOBA_SUR, new CordobaSurComprable());
+		this.posicoinCasilla.put(CASILLA_AVANCE_DINAMICO, new AvanceDinamico());
+		this.posicoinCasilla.put(CASILLA_SUBTE, new SubteComprable());
+		this.posicoinCasilla.put(CASILLA_CORDOBA_NORTE, new CordobaNorteComprable());
+		this.posicoinCasilla.put(CASILLA_IMPUESTO_DE_LUJO, new ImpuestoLujo());
+		this.posicoinCasilla.put(CASILLA_SANTA_FE, new SantaFeComprable());
+		this.posicoinCasilla.put(CASILLA_AYSA, new AysaComprable());
+		this.posicoinCasilla.put(CASILLA_SALTA_NORTE, new SaltaNorteComprable());
+		this.posicoinCasilla.put(CASILLA_SALTA_SUR, new SaltaSurComprable());
+		this.posicoinCasilla.put(CASILLA_POLICIA, new Policia());
+		this.posicoinCasilla.put(CASILLA_TREN, new TrenComprable());
+		this.posicoinCasilla.put(CASILLA_NEUQUEN, new NeuquenComprable());
+		this.posicoinCasilla.put(CASILLA_RETROCESO_DINAMICO, new RetrocesoDinamico());
+		this.posicoinCasilla.put(CASILLA_TUCUMAN, new TucumanComprable());
 	}
 	
 	
 	private Tablero(){
-		casillas = new HashMap<String, Casilla>();
 		posicoinCasilla = new HashMap<Integer, Casilla>();
 		
-		for(int i=0; i<CANTIDAD_CASILLAS; i++){
-			posicoinCasilla.put(i, new CasillaVacia());
-		}
-		
-//		this.crearCasillas();
-//		this.armarTablero();
+		this.crearCasillas();
 }
 
 	public static Tablero getInstance() {
@@ -92,16 +90,10 @@ public class Tablero {
 		return nuevaPosicion;
 	}
 
-	public void desplazar(Jugador unJugador, String unaDescrripcionCasilla) {
-		Casilla nuevaCasilla = casillas.get(unaDescrripcionCasilla);
-		
-		for (Map.Entry<Integer, Casilla>entry: this.posicoinCasilla.entrySet()){
-			if(entry.getValue() == nuevaCasilla){
-				PosicionTablero unaPosicion = new PosicionTablero();
-				unaPosicion.setPosicion(entry.getKey());
-				unJugador.cambiarPosicion(unaPosicion);
-			}
-		}
+	public void desplazar(Jugador unJugador, int tagCasilla) {
+		PosicionTablero unaPosicion = new PosicionTablero();
+		unaPosicion.setPosicion(tagCasilla);
+		unJugador.cambiarPosicion(unaPosicion);
 		
 		this.elJugadorSeDesplazo(unJugador);
 	}
@@ -128,8 +120,7 @@ public class Tablero {
 		return posicionInicial;
 	}
 
-	public void cambiarCasillaPor(Casilla casillaActual, Casilla nuevaCasilla) {
-		// TODO Auto-generated method stub
-		
+	public void cambiarCasillaPor(int tagCasilla, Casilla nuevaCasilla) {
+		this.posicoinCasilla.put(tagCasilla, nuevaCasilla);
 	}
 }

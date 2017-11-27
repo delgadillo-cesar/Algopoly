@@ -9,32 +9,33 @@ public class JugadorDos extends Jugador {
 
 	@Override
 	public void pagarA(Jugador cobrador, int monto) {
-		// TODO Auto-generated method stub
-
+		cobrador.cobrarAJugador2(this, monto);
 	}
 
 	@Override
-	public int cobrarAJugador1(int monto) {
-		// TODO Auto-generated method stub
+	public int cobrarAJugador1(Jugador pagador, int monto) {
+		this.capital += pagador.pagar(monto);
+		
+		return monto;
+	}
+
+	@Override
+	public int cobrarAJugador2(Jugador pagador, int monto) {
 		return 0;
 	}
 
 	@Override
-	public int cobrarAJugador2(int monto) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int cobrarAJugador3(Jugador pagador, int monto) {
+		this.capital += pagador.pagar(monto);
+		
+		return monto;
 	}
 
 	@Override
-	public int cobrarAJugador3(int monto) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int cobrarABanco(int monto) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int cobrarABanco(Jugador pagador, int monto) {
+		this.capital += pagador.pagar(monto);
+		
+		return monto;
 	}
 
 }

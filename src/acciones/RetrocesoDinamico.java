@@ -1,5 +1,6 @@
 package acciones;
 import juego.Dados;
+import tablero.Casilla;
 
 import java.util.HashMap;
 
@@ -9,14 +10,12 @@ import entidades.MovimientoDesplazamietoDinamico1;
 import entidades.MovimientoDesplazamietoDinamico2;
 import entidades.MovimientoDesplazamietoDinamico3;
 
-public class RetrocesoDinamico extends Accion{
+public class RetrocesoDinamico implements Casilla {
 	
-	private static String tag = "RETROCESO_DINAMICO";
 	private HashMap<Integer,MovimientoDesplazamietoDinamico> tipoDeDesplazamiento;
 	
 	
 	public	RetrocesoDinamico (){
-		this.descripcion = "RETROCESO DINAMICO";
 		this.tipoDeDesplazamiento = new HashMap<Integer,MovimientoDesplazamietoDinamico>();
 		this.tipoDeDesplazamiento.put(2, new MovimientoDesplazamietoDinamico3());
 		this.tipoDeDesplazamiento.put(3, new MovimientoDesplazamietoDinamico3());
@@ -47,7 +46,4 @@ public class RetrocesoDinamico extends Accion{
 
 	/***********************************************/
 	
-	public static String getTag(){
-		return tag;
-	}
 }

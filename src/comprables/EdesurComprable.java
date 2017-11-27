@@ -21,6 +21,6 @@ public class EdesurComprable implements Comprable {
 		unJugador.pagarA(Banco.getInstance(), precioCompra);
 		Edesur edesur = new Edesur(unJugador);
 		unJugador.agregarCompania(edesur);
-		Tablero.getInstance().cambiarCasillaPor(this, edesur);
+		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_EDESUR, edesur);
 	}
 }

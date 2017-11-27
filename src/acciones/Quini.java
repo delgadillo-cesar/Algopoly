@@ -3,17 +3,13 @@ package acciones;
 import java.util.HashMap;
 
 import entidades.Jugador;
+import tablero.Casilla;
 
-public class Quini extends Accion {
+public class Quini implements Casilla {
 
-	private static String tag = "QUINI";
-	
-	
 	private HashMap<Jugador, PremioQuini> ganadores;
 
 	public Quini() {
-		this.descripcion = "QUINI 6";
-
 		ganadores = new HashMap<Jugador, PremioQuini>();
 	}
 
@@ -30,10 +26,4 @@ public class Quini extends Accion {
 
 		return (this.ganadores.get(unJugador).cobrarPremio());
 	}
-
-	
-	public static String getTag(){
-		return tag;
-	}
-
 }

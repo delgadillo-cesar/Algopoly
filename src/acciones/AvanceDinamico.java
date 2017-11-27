@@ -3,17 +3,15 @@ package acciones;
 import java.util.HashMap;
 import entidades.Jugador;
 import juego.Dados;
+import tablero.Casilla;
 import entidades.*;
 
-public class AvanceDinamico extends Accion {
+public class AvanceDinamico implements Casilla {
 
-	private static String tag = "AVANCE_DINAMICO";
 	private HashMap<Integer,MovimientoDesplazamietoDinamico> tipoDeDesplazamiento;
 
-	/***********************************************/
 
 	public AvanceDinamico() {
-		this.descripcion = "AVANCE DINAMICO";
 		this.tipoDeDesplazamiento = new HashMap<Integer,MovimientoDesplazamietoDinamico>();
 		this.tipoDeDesplazamiento.put(2, new MovimientoDesplazamietoDinamico1());
 		this.tipoDeDesplazamiento.put(3, new MovimientoDesplazamietoDinamico1());
@@ -29,8 +27,6 @@ public class AvanceDinamico extends Accion {
 
 	}
 
-	/***********************************************/
-
 	@Override
 	public void afectar(Jugador jugador) {
 		
@@ -41,12 +37,6 @@ public class AvanceDinamico extends Accion {
 		
 		jugador.cambiarTipoDeMovimiento(tipoMovimiento);
 		jugador.mover(dados);
-	}
-
-	/***********************************************/
-	
-	public static String getTag(){
-		return tag;
 	}
 
 }

@@ -1,28 +1,45 @@
 package barrios;
 
-import java.util.HashMap;
-
+import entidades.Jugador;
 import poseibles.Barrio;
 
 
 public class BarrioSantaFe extends Barrio {
 
-	private static String tag = "SANTA_FE";
+	public BarrioSantaFe(Jugador propietario) {
+		super(propietario);
 
-	public BarrioSantaFe() {
-		Terreno terreno = new Terreno(1500);
-		UnaCasa unaCasa = new UnaCasa(4000, 3500);
-		
-		this.construcciones = new HashMap<Construible,Construible>();
-		this.construcciones.put(terreno, unaCasa);
-		this.precioCompra = 15000;
-		this.nombrePropiedad = "SANTA FE";
-		this.descripcion =  "SANTA FE";
-		this.construido = terreno.construirEn(this);
+		this.construcciones = new SoloCasa();
 	}
 
-	public static String getTag(){
-		return tag;
+	@Override
+	public void valoresDeTerreno(Construible unConstruible) {
+		unConstruible.costoCosntruccion(0);
+		unConstruible.precioAlquiler(1500);	
+	}
+
+	@Override
+	public void valoresDeUnaCasa(Construible unConstruible) {
+		unConstruible.costoCosntruccion(4000);
+		unConstruible.precioAlquiler(3500);	
+	}
+
+	@Override
+	public void valoresDeDosCasas(Construible unConstruible) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void valoresDeHotel(Construible unConstruible) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void valoresDeEdificioHistorico(Construible unConstruible) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

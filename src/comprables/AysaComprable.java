@@ -20,6 +20,6 @@ public class AysaComprable implements Comprable{
 		unJugador.pagarA(Banco.getInstance(), precioCompra);
 		Aysa aysa = new Aysa(unJugador);
 		unJugador.agregarCompania(aysa);
-		Tablero.getInstance().cambiarCasillaPor(this, aysa);
+		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_AYSA, aysa);
 	}
 }

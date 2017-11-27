@@ -2,11 +2,13 @@ package barrios;
 
 import java.util.HashMap;
 
+import entidades.Jugador;
+
 public class BarrioCordobaNorte extends BarrioDoble {
 
 	private static String tag = "CORDOBA_NORTE";
 
-	public BarrioCordobaNorte() {
+	public BarrioCordobaNorte(Jugador propietario) {
 		Terreno terreno = new Terreno(1300);
 		UnaCasa unaCasa = new UnaCasa(2200, 1800);
 		DosCasas dosCasas = new DosCasas(2200, 2900);
@@ -30,10 +32,8 @@ public class BarrioCordobaNorte extends BarrioDoble {
 		this.condicionConstruccion.put(hotel, new ComplementoCompleto());
 		
 		
-		this.precioCompra = 20000;
-		this.nombrePropiedad = "CORDOBA NORTE";
-		this.descripcion =  "CORDOBA NORTE";
 		this.construido = terreno.construirEn(this);
+		this.propietario = propietario;
 	}
 	
 	public static String getTag(){

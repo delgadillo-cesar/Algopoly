@@ -17,8 +17,8 @@ import tablero.Tablero;
 public abstract class Jugador {
 
 	private String nombre;
-	private int capital;
-	private HashMap<String, Barrio> barrios;
+	protected int capital;
+	private List<Barrio> barrios;
 	private List<Compania> companias;
 	private TipoMovimiento tipoMovimiento;
 	private PosicionTablero miPosicion;
@@ -27,7 +27,7 @@ public abstract class Jugador {
 	public Jugador(String unNombre) {
 		this.nombre = unNombre;
 		this.capital = 100000;
-		this.barrios = new HashMap<String, Barrio>();
+		this.barrios = new ArrayList<Barrio>();
 		this.companias = new ArrayList<Compania>();
 		this.tipoMovimiento = new MovimientoLibre();
 		this.miPosicion = Tablero.obtenerPosicionInicial();
@@ -46,15 +46,15 @@ public abstract class Jugador {
 		
 		return unMonto;
 	}
-/*
-	public int pagar(int unMonto) {
+	
+	protected int pagar(int unMonto) {
 		if (unMonto > this.capital) throw new JugadorSinSaldoException();
 		
 		capital -= unMonto;
 		
 		return unMonto;
 	}
-*/	
+
 	public void comprarPropiedad(Comprable unComprable){
 		unComprable.comprar(this);
 	}
@@ -64,7 +64,7 @@ public abstract class Jugador {
 	}
 	
 	public void agregarBarrio(Barrio unBarrio){
-		this.barrios.put(unBarrio.nombre(), unBarrio);
+		this.barrios.add(unBarrio);
 	}
 	
 	public int cantidadPoseciones(){
@@ -94,17 +94,17 @@ public abstract class Jugador {
 	public int cantidadPropiedades() {
 		int cantPropiedades = 0;
 		
-		for (Map.Entry<String, Barrio>entry: this.barrios.entrySet()){
-			cantPropiedades += entry.getValue().cantidadDePropiedades();
+		for (Barrio barrio: this.barrios){
+			cantPropiedades += barrio.cantidadDePropiedades();
 		}
 
 		return cantPropiedades;
 	}
 	
 	public abstract void pagarA (Jugador cobrador, int monto);
-	public abstract int cobrarAJugador1 (int monto);
-	public abstract int cobrarAJugador2 (int monto);
-	public abstract int cobrarAJugador3 (int monto);
-	public abstract int cobrarABanco (int monto);
+	public abstract int cobrarAJugador1 (Jugador pagador, int monto);
+	public abstract int cobrarAJugador2 (Jugador pagador, int monto);
+	public abstract int cobrarAJugador3 (Jugador pagador, int monto);
+	public abstract int cobrarABanco (Jugador pagador, int monto);
 	
 }

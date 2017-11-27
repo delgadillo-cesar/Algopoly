@@ -1,21 +1,16 @@
 package acciones;
 
 import entidades.Jugador;
+import tablero.Casilla;
 
-public class Salida extends Accion {
+public class Salida implements Casilla {
 
-	private static String tag = "SALIDA";
-	
 	public Salida(){
-		this.descripcion = "SALIDA";
 	}
 	
 	@Override
 	public void afectar(Jugador jugador) {
 	}
 
-	public static String getTag(){
-		return tag;
-	}
 
 }

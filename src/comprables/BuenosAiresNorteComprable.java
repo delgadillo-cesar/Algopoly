@@ -1,26 +1,29 @@
 package comprables;
 
-import poseibles.Subte;
+import barrios.BarrioBuenosAiresNorte;
 import entidades.Banco;
 import entidades.Jugador;
 import tablero.Comprable;
 import tablero.Tablero;
 
-public class SubteComprable implements Comprable {
+public class BuenosAiresNorteComprable implements Comprable {
 
 	private int precioCompra;
 
+	@Override
 	public void afectar(Jugador jugador) {
 	}
 
+	@Override
 	public int precioDeCompra() {
 		return this.precioCompra;
 	}
 
+	@Override
 	public void comprar(Jugador unJugador) {
 		unJugador.pagarA(Banco.getInstance(), precioCompra);
-		Subte subte = new Subte(unJugador);
-		unJugador.agregarCompania(subte);
-		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_SUBTE, subte);
+		BarrioBuenosAiresNorte bueNor= new BarrioBuenosAiresNorte(unJugador);
+		unJugador.agregarBarrio(bueNor);
+		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_BUENOS_AIRES_NORTE, bueNor);
 	}
 }

@@ -2,15 +2,11 @@ package barrios;
 
 import java.util.HashMap;
 
+import entidades.Jugador;
+
 public class BarrioBuenosAiresNorte extends BarrioDoble {
 
-	private static String tag = "BUENOS_AIRES_NORTE";
-
-	public BarrioBuenosAiresNorte() {
-		Terreno terreno = new Terreno(2500);
-		UnaCasa unaCasa = new UnaCasa(5500, 3500);
-		DosCasas dosCasas = new DosCasas(5500, 4000);
-		Hotel hotel = new Hotel(9000, 6000);
+	public BarrioBuenosAiresNorte(Jugador propietario) {
 		
 		this.construcciones = new HashMap<Construible,Construible>();
 		this.construcciones.put(terreno, unaCasa);
@@ -29,14 +25,41 @@ public class BarrioBuenosAiresNorte extends BarrioDoble {
 		this.condicionConstruccion.put(dosCasas, new SerDuenoDelComplemento());
 		this.condicionConstruccion.put(hotel, new ComplementoCompleto());
 		
+		Terreno terreno = new Terreno();
 		
-		this.precioCompra = 25000;
-		this.nombrePropiedad = "BUENOS AIRES NORTE";
-		this.descripcion =  "BUENOS AIRES NORTE";
 		this.construido = terreno.construirEn(this);
+		this.propietario = propietario;
+	}
+
+	@Override
+	public void valoresDeTerreno(Construible unConstruible) {
+		unConstruible.costoCosntruccion(0);
+		unConstruible.precioAlquiler(2500);	
+	}
+
+	@Override
+	public void valoresDeUnaCasa(Construible unConstruible) {
+		unConstruible.costoCosntruccion(5500);
+		unConstruible.precioAlquiler(3500);	
+	}
+
+	@Override
+	public void valoresDeDosCasas(Construible unConstruible) {
+		unConstruible.costoCosntruccion(5500);
+		unConstruible.precioAlquiler(4000);	
+	}		Hotel hotel = new Hotel(9000, 6000);
+
+
+	@Override
+	public void valoresDeHotel(Construible unConstruible) {
+		unConstruible.costoCosntruccion(9000);
+		unConstruible.precioAlquiler(6000);	
+	}
+
+	@Override
+	public void valoresDeEdificioHistorico(Construible unConstruible) {
+		// TODO Auto-generated method stub
+		
 	}
 	
-	public static String getTag(){
-		return tag;
-	}
 }
