@@ -1,4 +1,4 @@
-package comprables;
+package poseibles;
 
 import java.util.HashMap;
 
@@ -6,6 +6,7 @@ import barrios.Construible;
 import entidades.Jugador;
 import entidades.MismoJugadorException;
 import tablero.Casilla;
+import tablero.Comprable;
 
 public abstract class Barrio implements Casilla, Comprable  {
 	

@@ -3,7 +3,8 @@ package unitarios;
 import org.junit.Assert;
 import org.junit.Test;
 
-import comprables.Construccion;
+import poseibles.Construccion;
+
 
 public class ConstruccionTest {
 		

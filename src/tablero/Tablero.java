@@ -3,6 +3,8 @@ package tablero;
 import java.util.HashMap;
 import java.util.Map;
 
+import poseibles.Aysa;
+
 import entidades.Jugador;
 import juego.Dados;
 
@@ -124,5 +126,10 @@ public class Tablero {
 		posicionInicial.setPosicion(CASILLA_INICIAL);
 		
 		return posicionInicial;
+	}
+
+	public void cambiarCasillaPor(Casilla casillaActual, Casilla nuevaCasilla) {
+		// TODO Auto-generated method stub
+		
 	}
 }

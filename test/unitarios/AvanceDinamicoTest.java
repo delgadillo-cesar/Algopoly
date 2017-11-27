@@ -3,10 +3,11 @@ package unitarios;
 import org.junit.Assert;
 import org.junit.Test;
 
+import poseibles.Barrio;
+
 import acciones.AvanceDinamico;
 import barrios.BarrioNeuquen;
 import barrios.BarrioTucuman;
-import comprables.Barrio;
 import entidades.Jugador;
 import juego.Dados;
 import tablero.PosicionTablero;

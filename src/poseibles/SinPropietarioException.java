@@ -1,4 +1,4 @@
-package comprables;
+package poseibles;
 
 public class SinPropietarioException extends RuntimeException {
 

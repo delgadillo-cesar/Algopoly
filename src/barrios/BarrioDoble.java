@@ -2,8 +2,9 @@ package barrios;
 
 import java.util.HashMap;
 
-import comprables.Barrio;
-import comprables.NadaParaConstruirException;
+import poseibles.Barrio;
+import poseibles.NadaParaConstruirException;
+
 
 public abstract class BarrioDoble extends Barrio {
 

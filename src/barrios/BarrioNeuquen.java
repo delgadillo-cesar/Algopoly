@@ -2,7 +2,8 @@ package barrios;
 
 import java.util.HashMap;
 
-import comprables.Barrio;
+import poseibles.Barrio;
+
 
 public class BarrioNeuquen extends Barrio {
 

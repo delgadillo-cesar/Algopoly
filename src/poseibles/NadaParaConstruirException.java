@@ -1,4 +1,4 @@
-package comprables;
+package poseibles;
 
 public class NadaParaConstruirException extends RuntimeException {
 

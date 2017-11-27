@@ -7,9 +7,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import comprables.Barrio;
-import comprables.Construccion;
-import comprables.NadaParaConstruirException;
+import poseibles.Barrio;
+import poseibles.Construccion;
+import poseibles.NadaParaConstruirException;
+
 import entidades.Jugador;
 import entidades.MismoJugadorException;
 

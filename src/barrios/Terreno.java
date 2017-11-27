@@ -1,7 +1,7 @@
 package barrios;
 
-import comprables.Barrio;
-import comprables.Construccion;
+import poseibles.Barrio;
+import poseibles.Construccion;
 
 public class Terreno implements Construible {
 	private int precioAlquiler;

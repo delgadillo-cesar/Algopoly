@@ -1,21 +1,25 @@
 package entidades;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import comprables.Barrio;
-import comprables.Compania;
-import comprables.Comprable;
+import poseibles.Barrio;
+import poseibles.Compania;
+
 import tablero.Casilla;
+import tablero.Comprable;
+import tablero.Poseible;
 import tablero.PosicionTablero;
 import tablero.Tablero;
 
-public class Jugador {
+public abstract class Jugador {
 
 	private String nombre;
 	private int capital;
 	private HashMap<String, Barrio> barrios;
-	private HashMap<String, Compania> companias;
+	private List<Compania> companias;
 	private TipoMovimiento tipoMovimiento;
 	private PosicionTablero miPosicion;
 
@@ -24,7 +28,7 @@ public class Jugador {
 		this.nombre = unNombre;
 		this.capital = 100000;
 		this.barrios = new HashMap<String, Barrio>();
-		this.companias = new HashMap<String, Compania>();
+		this.companias = new ArrayList<Compania>();
 		this.tipoMovimiento = new MovimientoLibre();
 		this.miPosicion = Tablero.obtenerPosicionInicial();
 	}
@@ -42,7 +46,7 @@ public class Jugador {
 		
 		return unMonto;
 	}
-
+/*
 	public int pagar(int unMonto) {
 		if (unMonto > this.capital) throw new JugadorSinSaldoException();
 		
@@ -50,13 +54,13 @@ public class Jugador {
 		
 		return unMonto;
 	}
-	
+*/	
 	public void comprarPropiedad(Comprable unComprable){
 		unComprable.comprar(this);
 	}
 
 	public void agregarCompania(Compania unaCompania){
-		this.companias.put(unaCompania.nombre(), unaCompania);
+		this.companias.add(unaCompania);
 	}
 	
 	public void agregarBarrio(Barrio unBarrio){
@@ -66,11 +70,11 @@ public class Jugador {
 	public int cantidadPoseciones(){
 		return (this.barrios.size() + this.companias.size());
 	}
-
-	public boolean esDuenoDe(String unaDescipcionDePropiedad) {
-		return ((this.barrios.containsKey(unaDescipcionDePropiedad)) || (this.companias.containsKey(unaDescipcionDePropiedad)));
-	}
 	
+	public List<Compania> obtenerCompanias(){
+		return this.companias;
+	}
+
 	public void mover(int cantidadDeCasilleros){
 		this.tipoMovimiento.mover(this, cantidadDeCasilleros);
 	}
@@ -96,4 +100,11 @@ public class Jugador {
 
 		return cantPropiedades;
 	}
+	
+	public abstract void pagarA (Jugador cobrador, int monto);
+	public abstract int cobrarAJugador1 (int monto);
+	public abstract int cobrarAJugador2 (int monto);
+	public abstract int cobrarAJugador3 (int monto);
+	public abstract int cobrarABanco (int monto);
+	
 }

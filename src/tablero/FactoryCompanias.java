@@ -2,10 +2,11 @@ package tablero;
 
 import java.util.HashMap;
 
-import comprables.Aysa;
-import comprables.Edesur;
-import comprables.Subte;
-import comprables.Trenes;
+import poseibles.Aysa;
+import poseibles.Edesur;
+import poseibles.Subte;
+import poseibles.Tren;
+
 
 
 public class FactoryCompanias implements FactoryCasillas {
@@ -16,7 +17,7 @@ public class FactoryCompanias implements FactoryCasillas {
 		casillas.put(Aysa.getTag(), new Aysa());
 		casillas.put(Edesur.getTag(), new Edesur());
 		casillas.put(Subte.getTag(), new Subte());
-		casillas.put(Trenes.getTag(), new Trenes());
+		casillas.put(Tren.getTag(), new Tren());
 		
 		return casillas;
 	}

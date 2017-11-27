@@ -3,13 +3,14 @@ package unitarios;
 import org.junit.Assert;
 import org.junit.Test;
 
+import poseibles.Aysa;
+import poseibles.Edesur;
+import poseibles.Subte;
+
 import acciones.Carcel;
-import comprables.Aysa;
-import comprables.Comprable;
-import comprables.Edesur;
-import comprables.Subte;
 import entidades.Jugador;
 import entidades.JugadorSinSaldoException;
+import tablero.Comprable;
 import tablero.Tablero;
 
 

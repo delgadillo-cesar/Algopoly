@@ -1,4 +1,4 @@
-package comprables;
+package poseibles;
 
 import barrios.Construible;
 

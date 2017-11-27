@@ -1,6 +1,6 @@
 package barrios;
 
-import comprables.SinPropietarioException;
+import poseibles.SinPropietarioException;
 
 public class SerDuenoDelComplemento extends CondicionConstruccion {
 
