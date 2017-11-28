@@ -27,7 +27,6 @@ public class AvanceDinamico implements Casilla {
 
 	}
 
-	@Override
 	public void afectar(Jugador jugador) {
 		
 		int dados = Dados.getInstance().getValor();

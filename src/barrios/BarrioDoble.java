@@ -1,9 +1,8 @@
 package barrios;
 
-import java.util.HashMap;
 
 import entidades.Jugador;
-import poseibles.Barrio;
+import poseibles.Construccion;
 import poseibles.NadaParaConstruirException;
 
 
@@ -13,50 +12,35 @@ public abstract class BarrioDoble extends Barrio {
 		super(propietario);
 	}
 
-	protected HashMap<Construible, Boolean> espacioCompleto;
-	protected HashMap<Construible, CondicionConstruccion> condicionConstruccion;
-	protected BarrioDoble barrioComplementario;
-	
 		
-	public Boolean elEspacioEstaCompleto(){
-		return (this.espacioCompleto.get(this.construido.construidoPor()));
-	}
-	
-	public void setBarrioComplementario(BarrioDoble unBarrio){
-		this.barrioComplementario = unBarrio;
-	}
-	
-	public BarrioDoble getBarrioComplementario(){
-		return this.barrioComplementario;
-	}
-	
 	public void construir() throws NadaParaConstruirException{
-		Construible aConstruir = this.construcciones.get(this.construido.construidoPor());
-
-		try{
-			CondicionConstruccion laCondicion = condicionConstruccion.get(aConstruir);
-			if (!laCondicion.verificarCondicion(this)) throw new NoSePuedeConstruirException();
-			
-			this.construido = aConstruir.construirEn(this);
-		}catch(NullPointerException e){
-			throw new NadaParaConstruirException();
-		}
+		Construccion nuevaConstruccion = this.construcciones.construir(this);
+		this.construido = nuevaConstruccion;
+		this.chequearComplemento();
 	}
 	
 	public int costoConstruccion() throws NadaParaConstruirException{
-		int costo;
-		Construible aConstruir = this.construcciones.get(this.construido.construidoPor());
-
-		try{
-			CondicionConstruccion laCondicion = condicionConstruccion.get(aConstruir);
-			if (!laCondicion.verificarCondicion(this)) throw new NoSePuedeConstruirException();
-			
-			costo = aConstruir.costoConstruccion();
-		}catch(NullPointerException e){
-			throw new NadaParaConstruirException();
-		}
-		
-		return costo;
+		return this.construcciones.costoConstruccion(this);
 	}
 
+	private void chequearComplemento(){
+		for (Barrio barrio : this.propietario.obtenerBarios()){
+			barrio.interactuarCon(this);
+		}
+	}
+	
+	protected void actualizarConstrucciones(Barrio complemento){
+		if (complemento.propietario() == this.propietario){
+			this.construcciones = this.construcciones.actualizarCon(new HastaDosCasas());
+			complemento.construcciones = complemento.construcciones.actualizarCon(new HastaDosCasas());
+		}
+
+		if (complemento.cantidadDePropiedades() == 2){
+			this.construcciones = this.construcciones.actualizarCon(new HastaHotel());
+		}
+		
+		if (this.cantidadDePropiedades() == 2){
+			complemento.construcciones = complemento.construcciones.actualizarCon(new HastaHotel());
+		}
+	}
 }

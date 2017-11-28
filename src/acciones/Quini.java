@@ -13,7 +13,6 @@ public class Quini implements Casilla {
 		ganadores = new HashMap<Jugador, PremioQuini>();
 	}
 
-	@Override
 	public void afectar(Jugador jugador) {
 
 		int premio = this.premioParaJugador(jugador);

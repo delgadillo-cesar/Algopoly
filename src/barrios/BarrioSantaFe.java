@@ -1,7 +1,6 @@
 package barrios;
 
 import entidades.Jugador;
-import poseibles.Barrio;
 
 
 public class BarrioSantaFe extends Barrio {

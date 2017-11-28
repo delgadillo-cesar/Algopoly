@@ -7,7 +7,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import poseibles.Barrio;
+import barrios.Barrio;
+
 import poseibles.Construccion;
 import poseibles.NadaParaConstruirException;
 

@@ -1,7 +1,6 @@
 package barrios;
 
 import entidades.Banco;
-import poseibles.Barrio;
 import poseibles.Construccion;
 
 public class Terreno implements Construible {
@@ -11,12 +10,12 @@ public class Terreno implements Construible {
 	public Terreno(){
 		this.unaDescripcion = "un terreno";
 	}
-	@Override
+
+
 	public void precioAlquiler(int precio) {
 		this.precioAlquiler = precio;
 	}
 
-	@Override
 	public void costoCosntruccion(int costo) {
 	}
 
@@ -30,7 +29,6 @@ public class Terreno implements Construible {
 		return new Construccion(this.descripcion(), this.precioAlquiler, this,1);
 	}
 
-	@Override
 	public int costoConstruccionEn(Barrio unBarrio) {
 		return 0;
 	}

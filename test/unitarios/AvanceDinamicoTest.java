@@ -3,9 +3,9 @@ package unitarios;
 import org.junit.Assert;
 import org.junit.Test;
 
-import poseibles.Barrio;
 
 import acciones.AvanceDinamico;
+import barrios.Barrio;
 import barrios.BarrioNeuquen;
 import barrios.BarrioTucuman;
 import entidades.Jugador;

@@ -9,7 +9,6 @@ public class Policia implements Casilla {
 	public Policia(){
 	}
 	
-	@Override
 	public void afectar(Jugador jugador) {
 		Tablero.getInstance().desplazar(jugador, Tablero.CASILLA_CARCEL);
 	}

@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import poseibles.Barrio;
+import barrios.Barrio;
+
 import poseibles.Compania;
 
 import tablero.Casilla;
@@ -75,6 +76,10 @@ public abstract class Jugador {
 		return this.companias;
 	}
 
+	public List<Barrio> obtenerBarios() {
+		return this.barrios;
+	}
+
 	public void mover(int cantidadDeCasilleros){
 		this.tipoMovimiento.mover(this, cantidadDeCasilleros);
 	}
@@ -106,5 +111,6 @@ public abstract class Jugador {
 	public abstract int cobrarAJugador2 (Jugador pagador, int monto);
 	public abstract int cobrarAJugador3 (Jugador pagador, int monto);
 	public abstract int cobrarABanco (Jugador pagador, int monto);
+
 	
 }

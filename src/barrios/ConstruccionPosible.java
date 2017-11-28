@@ -2,7 +2,6 @@ package barrios;
 
 import java.util.List;
 
-import poseibles.Barrio;
 import poseibles.Construccion;
 import poseibles.NadaParaConstruirException;
 
@@ -32,4 +31,13 @@ public abstract class ConstruccionPosible {
 			throw new NadaParaConstruirException();
 		}
 	}
+
+
+	public abstract ConstruccionPosible actualizarCon(ConstruccionPosible otraConstruccionPosible);
+	public abstract ConstruccionPosible actualizarConNoConstruye(ConstruccionPosible otraConstruccionPosible);
+	public abstract ConstruccionPosible actualizarConSoloCasa(ConstruccionPosible otraConstruccionPosible);
+	public abstract ConstruccionPosible actualizarConHastaDosCasas(ConstruccionPosible otraConstruccionPosible);
+	public abstract ConstruccionPosible actualizarConHastaHotel(ConstruccionPosible otraConstruccionPosible);
+	public abstract ConstruccionPosible actualizarConSoloEdificioHistorico(ConstruccionPosible otraConstruccionPosible);
+
 }

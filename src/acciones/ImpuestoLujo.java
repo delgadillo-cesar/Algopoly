@@ -11,7 +11,6 @@ public class ImpuestoLujo implements Casilla {
 	public ImpuestoLujo(){
 	}
 	
-	@Override
 	public void afectar(Jugador jugador) {
 		jugador.pagarA(Banco.getInstance(), (int) (jugador.capital() * porcentajeImpuesto));
 	}

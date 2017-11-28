@@ -28,11 +28,9 @@ public class RetrocesoDinamico implements Casilla {
 		this.tipoDeDesplazamiento.put(10, new MovimientoDesplazamietoDinamico2());
 		this.tipoDeDesplazamiento.put(11, new MovimientoDesplazamietoDinamico1());
 		this.tipoDeDesplazamiento.put(12, new MovimientoDesplazamietoDinamico1());
-}
+	}
 	
-/***********************************************/
 	
-	@Override
 	public void afectar(Jugador jugador) {
 		
 		int dados = Dados.getInstance().getValor();
@@ -44,6 +42,4 @@ public class RetrocesoDinamico implements Casilla {
 		jugador.mover(dados);
 	}
 
-	/***********************************************/
-	
 }

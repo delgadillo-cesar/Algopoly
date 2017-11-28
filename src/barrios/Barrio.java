@@ -1,5 +1,7 @@
-package poseibles;
+package barrios;
 
+import poseibles.Construccion;
+import poseibles.NadaParaConstruirException;
 import barrios.*;
 import entidades.Jugador;
 import entidades.MismoJugadorException;
@@ -45,4 +47,15 @@ public abstract class Barrio implements Poseible  {
 	public abstract void valoresDeDosCasas(Construible unConstruible);
 	public abstract void valoresDeHotel(Construible unConstruible);
 	public abstract void valoresDeEdificioHistorico(Construible unConstruible);
+	
+	public void interactuarCon(Barrio otroBarrio){}
+	public void interactuarConBuenosAiresNorte(Barrio otroBarrio){}
+	public void interactuarConBuenosAiresSur(Barrio otroBarrio){}
+	public void interactuarConCordobaNorte(Barrio otroBarrio){}
+	public void interactuarConCordobaSur(Barrio otroBarrio){}
+	public void interactuarConSaltaNorte(Barrio otroBarrio){}
+	public void interactuarConSaltaSur(Barrio otroBarrio){}
+	public void interactuarConNeuquen(Barrio otroBarrio){}
+	public void interactuarConSantaFe(Barrio otroBarrio){}
+	public void interactuarConTucuman(Barrio otroBarrio){}
 }

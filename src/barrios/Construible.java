@@ -1,6 +1,5 @@
 package barrios;
 
-import poseibles.Barrio;
 import poseibles.Construccion;
 
 public interface Construible {
