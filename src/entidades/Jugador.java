@@ -1,17 +1,13 @@
 package entidades;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import barrios.Barrio;
 
 import poseibles.Compania;
 
-import tablero.Casilla;
 import tablero.Comprable;
-import tablero.Poseible;
 import tablero.PosicionTablero;
 import tablero.Tablero;
 
