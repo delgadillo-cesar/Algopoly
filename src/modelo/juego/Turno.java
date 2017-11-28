@@ -10,13 +10,30 @@ public class Turno {
 
 	private Jugador jugadorActual;
 	private Jugador jugadorAnterior;
+	private static Turno elTurno;
 
-	public Turno(LinkedList<Jugador> jugadores) {
+	private Turno(LinkedList<Jugador> jugadores) {
 		this.jugadores = jugadores;
 		this.jugadorActual = this.jugadores.getFirst();
 		this.jugadorAnterior = this.jugadores.getLast();
 	}
 
+	public static Turno inicializarTurno(LinkedList<Jugador> jugadores){
+		elTurno = new Turno(jugadores);
+		return elTurno;
+	}
+
+	
+	public static Turno getInstance(){
+		if(elTurno == null)
+			elTurno = new Turno(null);
+		return elTurno;
+	}
+	
+	public Jugador turnoActual(){
+		return this.jugadorActual;
+	}
+	
 	public Jugador cambiarTurno() {
 		if (Dados.getInstance().salieronPares() && !this.jugadorActual.equals(this.jugadorAnterior)) { // Dados pares &&
 			this.repetirTurno();

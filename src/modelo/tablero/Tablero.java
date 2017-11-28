@@ -123,4 +123,8 @@ public class Tablero {
 	public void cambiarCasillaPor(int tagCasilla, Casilla nuevaCasilla) {
 		this.posicoinCasilla.put(tagCasilla, nuevaCasilla);
 	}
+	
+	public Casilla obtenerCasilla(int tagCasilla){
+		return this.posicoinCasilla.get(tagCasilla);
+	}
 }
