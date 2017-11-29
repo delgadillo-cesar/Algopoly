@@ -1,25 +1,25 @@
-package Controlador;
+package Controlador.Comprables;
 
-import vista.tablero.VistaAysaPoseible;
-import vista.tablero.VistaTablero;
 import modelo.juego.Turno;
-import modelo.tablero.casillas.comprables.AysaComprable;
+import modelo.tablero.Comprable;
+import vista.tablero.VistaTablero;
+import vista.tablero.poseibles.VistaTrenPoseible;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
-public class AysaComprableHandler implements EventHandler<ActionEvent> {
+public class TrenComprableHandler implements EventHandler<ActionEvent> {
 
-	AysaComprable aysaComprable;
+	Comprable unComprable;
 	
-	public AysaComprableHandler(AysaComprable aysaComprable){
-		this.aysaComprable = aysaComprable;
+	public TrenComprableHandler(Comprable unComprable){
+		this.unComprable = unComprable;
 	}
 	
 	
     public void handle(ActionEvent actionEvent) {
-    	this.aysaComprable.comprar(Turno.getInstance().turnoActual());
+    	this.unComprable.comprar(Turno.getInstance().turnoActual());
 
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("FALTA IMPLEMENTAR");
@@ -30,8 +30,8 @@ public class AysaComprableHandler implements EventHandler<ActionEvent> {
 
     	
     	
-    	VistaAysaPoseible vistaAysa = new VistaAysaPoseible();
-    	VistaTablero.getInstance().setBotonAysa(vistaAysa);
+    	VistaTrenPoseible vistaTren = new VistaTrenPoseible();
+    	VistaTablero.getInstance().setTren(vistaTren);
+    	Turno.getInstance().cambiarTurno(); /*QUITAR*/
     }
-
 }

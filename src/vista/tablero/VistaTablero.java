@@ -1,25 +1,22 @@
 package vista.tablero;
 
+import vista.tablero.acciones.*;
+import vista.tablero.comprables.*;
+import vista.tablero.poseibles.VistaBuenosAiresNortePoseible;
+import vista.tablero.poseibles.VistaCordobaNortePoseible;
+import vista.tablero.poseibles.VistaSantaFePoseible;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 
 public class VistaTablero extends BorderPane {
 
-	protected static final int ANCHO_CASILLA_VERTICAL = 120;
-	protected static final int ALTO_CASILLA_VERTICAL = 90;
-	protected static final int ANCHO_CASILLA_HORIZONTAL = 90;
-	protected static final int ALTO_CASILLA_HORIZONTAL = 120;
-	protected static VistaTablero laVistaTablero;
+	public static final int ANCHO_CASILLA_VERTICAL = 120;
+	public static final int ALTO_CASILLA_VERTICAL = 90;
+	public static final int ANCHO_CASILLA_HORIZONTAL = 90;
+	public static final int ALTO_CASILLA_HORIZONTAL = 120;
+	private static VistaTablero laVistaTablero;
 
 	private Button botonSalida;
 	private Button botonQuini;
@@ -69,83 +66,26 @@ public class VistaTablero extends BorderPane {
 	    BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 	    this.setBackground(new Background(imagenDeFondo));
 	    
-        botonSalida = new Button();
-        botonSalida.setStyle("-fx-background-image: url('/vista/imagenes/CasillaSalida.png')");
-        botonSalida.setMinSize(ANCHO_CASILLA_VERTICAL, ALTO_CASILLA_HORIZONTAL);
-
-        botonQuini = new Button();
-        botonQuini.setStyle("-fx-background-image: url('/vista/imagenes/CasillaQuini.png')");
-        botonQuini.setMinSize(ANCHO_CASILLA_HORIZONTAL, ALTO_CASILLA_HORIZONTAL);
-        
-        botonBuenoAiresSur = new Button();
-        botonBuenoAiresSur.setStyle("-fx-background-image: url('/vista/imagenes/CasillaBuenosAiresSur.png')");
-        botonBuenoAiresSur.setMinSize(ANCHO_CASILLA_HORIZONTAL, ALTO_CASILLA_HORIZONTAL);
-        
-        botonEdesur = new Button();
-        botonEdesur.setStyle("-fx-background-image: url('/vista/imagenes/CasillaEdesur.png')");
-        botonEdesur.setMinSize(ANCHO_CASILLA_HORIZONTAL, ALTO_CASILLA_HORIZONTAL);
-        
-        botonBuenoAiresNorte = new Button();
-        botonBuenoAiresNorte.setStyle("-fx-background-image: url('/vista/imagenes/CasillaBuenosAiresNorte.png')");
-        botonBuenoAiresNorte.setMinSize(ANCHO_CASILLA_HORIZONTAL, ALTO_CASILLA_HORIZONTAL);
-	    
-        botonCarcel = new Button();
-        botonCarcel.setStyle("-fx-background-image: url('/vista/imagenes/CasillaCarcel.png')");
-        botonCarcel.setMinSize(ANCHO_CASILLA_VERTICAL, ALTO_CASILLA_HORIZONTAL);
-        
-        botonCordobaSur = new Button();
-        botonCordobaSur.setStyle("-fx-background-image: url('/vista/imagenes/CasillaCordobaSur.png')");
-        botonCordobaSur.setMinSize(ANCHO_CASILLA_VERTICAL, ALTO_CASILLA_VERTICAL);
-
-        botonAvanceDinamico = new Button();
-        botonAvanceDinamico.setStyle("-fx-background-image: url('/vista/imagenes/CasillaAvanceDinamico.png')");
-        botonAvanceDinamico.setMinSize(ANCHO_CASILLA_VERTICAL, ALTO_CASILLA_VERTICAL);
-        
-        botonSubte = new Button();
-        botonSubte.setStyle("-fx-background-image: url('/vista/imagenes/CasillaSubte.png')");
-        botonSubte.setMinSize(ANCHO_CASILLA_VERTICAL, ALTO_CASILLA_VERTICAL);
-        
-        botonCordobaNorte = new Button();
-        botonCordobaNorte.setStyle("-fx-background-image: url('/vista/imagenes/CasillaCordobaNorte.png')");
-        botonCordobaNorte.setMinSize(ANCHO_CASILLA_VERTICAL, ALTO_CASILLA_VERTICAL);
-
-        botonImpuestoLujo = new Button();
-        botonImpuestoLujo.setStyle("-fx-background-image: url('/vista/imagenes/CasillaImpuestoLujo.png')");
-        botonImpuestoLujo.setMinSize(ANCHO_CASILLA_VERTICAL, ALTO_CASILLA_HORIZONTAL);
-
-        botonSantaFe = new Button();
-        botonSantaFe.setStyle("-fx-background-image: url('/vista/imagenes/CasillaSantaFe.png')");
-        botonSantaFe.setMinSize(ANCHO_CASILLA_HORIZONTAL, ALTO_CASILLA_HORIZONTAL);
-        
+        botonSalida = new VistaSalida();
+        botonQuini = new VistaQuini();
+        botonBuenoAiresSur = new VistaBuenosAiresSurComprable();
+        botonEdesur = new VistaEdesurComprable();
+        botonBuenoAiresNorte = new VistaBuenosAiresNorteComprable();
+        botonCarcel = new VistaCarcel();
+        botonCordobaSur = new VistaCordobaSurComprable();
+        botonAvanceDinamico = new VistaAvanceDinamico();
+        botonSubte = new VistaSubteComprable();
+        botonCordobaNorte = new VistaCordobaNorteComprable();
+        botonImpuestoLujo = new VistaImpuestoLujo();
+        botonSantaFe = new VistaSantaFeComprable();
         botonAysa= new VistaAysaComprable();
-        
-        botonSaltaNorte = new Button();
-        botonSaltaNorte.setStyle("-fx-background-image: url('/vista/imagenes/CasillaSaltaNorte.png')");
-        botonSaltaNorte.setMinSize(ANCHO_CASILLA_HORIZONTAL, ALTO_CASILLA_HORIZONTAL);
-        
-        botonSaltaSur = new Button();
-        botonSaltaSur.setStyle("-fx-background-image: url('/vista/imagenes/CasillaSaltaSur.png')");
-        botonSaltaSur.setMinSize(ANCHO_CASILLA_HORIZONTAL, ALTO_CASILLA_HORIZONTAL);
-	    
-        botonPolicia = new Button();
-        botonPolicia.setStyle("-fx-background-image: url('/vista/imagenes/CasillaPolicia.png')");
-        botonPolicia.setMinSize(ANCHO_CASILLA_VERTICAL, ALTO_CASILLA_HORIZONTAL);
-        
-        botonTren = new Button();
-        botonTren.setStyle("-fx-background-image: url('/vista/imagenes/CasillaTren.png')");
-        botonTren.setMinSize(ANCHO_CASILLA_VERTICAL, ALTO_CASILLA_VERTICAL);
-
-        botonNeuquen = new Button();
-        botonNeuquen.setStyle("-fx-background-image: url('/vista/imagenes/CasillaNeuquen.png')");
-        botonNeuquen.setMinSize(ANCHO_CASILLA_VERTICAL, ALTO_CASILLA_VERTICAL);
-        
-        botonRetrocesoDinamico = new Button();
-        botonRetrocesoDinamico.setStyle("-fx-background-image: url('/vista/imagenes/CasillaRetrocesoDinamico.png')");
-        botonRetrocesoDinamico.setMinSize(ANCHO_CASILLA_VERTICAL, ALTO_CASILLA_VERTICAL);
-        
-        botonTucuman = new Button();
-        botonTucuman.setStyle("-fx-background-image: url('/vista/imagenes/CasillaTucuman.png')");
-        botonTucuman.setMinSize(ANCHO_CASILLA_VERTICAL, ALTO_CASILLA_VERTICAL);
+        botonSaltaNorte = new VistaSaltaNorteComprable();
+        botonSaltaSur = new VistaSaltaSurComprable();
+        botonPolicia = new VistaPolicia();
+        botonTren = new VistaTrenComprable();
+        botonNeuquen = new VistaNeuquenComprable();
+        botonRetrocesoDinamico = new VistaRetrocesoDinamico();
+        botonTucuman = new VistaTucumanComprable();
 
         this.dibujarTablero();
         this.setPadding(new Insets(0));
@@ -159,8 +99,69 @@ public class VistaTablero extends BorderPane {
 	}
 	
 	
-	public void setBotonAysa(Button unBoton){
+	public void setAysa(Button unBoton){
 		this.botonAysa = unBoton;
+		this.dibujarTablero();
+	}
+
+	public void setEdesur(Button unBoton) {
+		this.botonEdesur = unBoton;
+		this.dibujarTablero();
+	}
+
+	public void setTren(Button unBoton) {
+		this.botonTren = unBoton;
+		this.dibujarTablero();
+	}
+
+	public void setSubte(Button unBoton) {
+		this.botonSubte = unBoton;
+		this.dibujarTablero();
+	}
+	
+
+	public void setBuenosAiresNorte(Button unBoton){
+			this.botonBuenoAiresNorte = unBoton;
+			this.dibujarTablero();
+	}
+
+	public void setBuenosAiresSur(Button unBoton){
+		this.botonBuenoAiresSur = unBoton;
+		this.dibujarTablero();
+}
+
+	public void setCordobaNorte(Button unBoton) {
+		this.botonCordobaNorte = unBoton;
+		this.dibujarTablero();
+	}
+
+	public void setCordobaSur(Button unBoton) {
+		this.botonCordobaSur = unBoton;
+		this.dibujarTablero();
+	}
+
+	public void setSantaFe(Button unBoton) {
+		this.botonSantaFe = unBoton;
+		this.dibujarTablero();
+	}
+
+	public void setNeuquen(Button unBoton) {
+		this.botonNeuquen = unBoton;
+		this.dibujarTablero();
+	}
+
+	public void setTucuman(Button unBoton) {
+		this.botonTucuman = unBoton;
+		this.dibujarTablero();
+	}
+
+	public void setSaltaNorte(Button unBoton) {
+		this.botonSaltaNorte = unBoton;
+		this.dibujarTablero();
+	}
+
+	public void setSaltaSur(Button unBoton) {
+		this.botonSaltaSur = unBoton;
 		this.dibujarTablero();
 	}
 }

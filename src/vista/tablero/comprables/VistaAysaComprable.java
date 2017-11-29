@@ -1,8 +1,10 @@
-package vista.tablero;
+package vista.tablero.comprables;
 
+import vista.tablero.VistaTablero;
 import modelo.tablero.Tablero;
 import modelo.tablero.casillas.comprables.AysaComprable;
-import Controlador.AysaComprableHandler;
+import Controlador.Comprables.AysaComprableHandler;
+import Controlador.Comprables.OpcionesComprableHandler;
 import javafx.scene.control.Button;
 
 public class VistaAysaComprable extends Button {
@@ -16,7 +18,8 @@ public class VistaAysaComprable extends Button {
 		this.setStyle("-fx-background-image: url('/vista/imagenes/CasillaAysa.png')");
         this.setMinSize(VistaTablero.ANCHO_CASILLA_HORIZONTAL, VistaTablero.ALTO_CASILLA_HORIZONTAL);
 	
-        AysaComprableHandler aysaComprableHandler = new AysaComprableHandler(aysaComprable);
+        OpcionesComprableHandler aysaComprableHandler = new OpcionesComprableHandler(new AysaComprableHandler(aysaComprable));
+//        AysaComprableHandler aysaComprableHandler = new AysaComprableHandler(aysaComprable);
         this.setOnAction(aysaComprableHandler);
 	}
 }

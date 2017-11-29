@@ -9,7 +9,7 @@ public class Dados {
 	private Dados() {
 		
 		dado1 = 4;
-		dado2 = 4;
+		dado2 = 5;
 	}
 	
 	public static Dados getInstance() {
@@ -21,7 +21,6 @@ public class Dados {
 	}
 	
 	public void lanzarDados() {
-		
 		dado1 = (int) (Math.random() * 6) + 1;
 		dado2 = (int) (Math.random() * 6) + 1;
 	}
