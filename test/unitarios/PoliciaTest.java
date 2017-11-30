@@ -2,10 +2,13 @@ package unitarios;
 
 import org.junit.Assert;
 import org.junit.Test;
-import entidades.Jugador;
-import tablero.Casilla;
-import tablero.Tablero;
-import acciones.Policia;
+
+import modelo.entidades.Jugador;
+import modelo.entidades.JugadorDos;
+import modelo.entidades.JugadorUno;
+import modelo.tablero.Casilla;
+import modelo.tablero.Tablero;
+import modelo.tablero.casillas.acciones.Policia;
 
 public class PoliciaTest {
 
@@ -14,8 +17,8 @@ public class PoliciaTest {
 	@Test
 	public void test01JugadorCaeEnPoliciaYTerminaEnLaCarcel() {
 		
-		Jugador jugadorPrueba = new Jugador ("Jugador de prueba");
-		Jugador jugadorReferencia = new Jugador ("Jugador de referencia");
+		Jugador jugadorPrueba = new JugadorUno ("Jugador de prueba");
+		Jugador jugadorReferencia = new JugadorDos ("Jugador de referencia");
 		Casilla policia = new Policia ();
 		Tablero tablero = Tablero.getInstance();
 

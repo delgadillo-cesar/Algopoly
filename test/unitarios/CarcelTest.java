@@ -3,8 +3,9 @@ package unitarios;
 import org.junit.Assert;
 import org.junit.Test;
 
-import acciones.Carcel;
-import entidades.Jugador;
+import modelo.entidades.Jugador;
+import modelo.entidades.JugadorUno;
+import modelo.tablero.casillas.acciones.Carcel;
 
 public class CarcelTest {
 
@@ -16,7 +17,7 @@ public class CarcelTest {
 
 	@Test
 	public void testEncarcelarJugadoryVerificarEncarcelamiento() {
-		Jugador jugador = new Jugador("Rich Uncle-Milburn Pennybags");
+		Jugador jugador = new JugadorUno("Rich Uncle-Milburn Pennybags");
 		Carcel carcel = new Carcel();
 		carcel.afectar(jugador);
 		Assert.assertTrue(carcel.estaPreso(jugador));
@@ -24,14 +25,14 @@ public class CarcelTest {
 
 	@Test
 	public void testCrearJugadoryVerificarQueNoEsteEncarcelado() {
-		Jugador jugador = new Jugador("Rich Uncle-Milburn Pennybags");
+		Jugador jugador = new JugadorUno("Rich Uncle-Milburn Pennybags");
 		Carcel carcel = new Carcel();
 		Assert.assertFalse(carcel.estaPreso(jugador));
 	}
 
 	@Test
 	public void testEncarcelarJugadoryVerificarQueNoPuedaPagarFianza() {
-		Jugador jugador = new Jugador("Rich Uncle-Milburn Pennybags");
+		Jugador jugador = new JugadorUno("Rich Uncle-Milburn Pennybags");
 		Carcel carcel = new Carcel();
 		carcel.afectar(jugador);
 		Assert.assertFalse(carcel.puedePagarFianza(jugador));
@@ -43,7 +44,7 @@ public class CarcelTest {
 	 */
 	@Test
 	public void testEncarcelarJugadorVerSiEstaPresoyVerificarQueNoPuedaPagarFianza() {
-		Jugador jugador = new Jugador("Rich Uncle-Milburn Pennybags");
+		Jugador jugador = new JugadorUno("Rich Uncle-Milburn Pennybags");
 		Carcel carcel = new Carcel();
 		carcel.afectar(jugador);
 		carcel.estaPreso(jugador);
@@ -57,7 +58,7 @@ public class CarcelTest {
 	 */
 	@Test
 	public void testEncarcelarJugadorVerSiEstaPresoDosVecesyVerificarQuePuedaPagarFianza() {
-		Jugador jugador = new Jugador("Rich Uncle-Milburn Pennybags");
+		Jugador jugador = new JugadorUno("Rich Uncle-Milburn Pennybags");
 		Carcel carcel = new Carcel();
 		carcel.afectar(jugador);
 		carcel.estaPreso(jugador);
@@ -72,7 +73,7 @@ public class CarcelTest {
 	 */
 	@Test
 	public void testEncarcelarJugadorVerSiEstaPresoDosVecesPagarFianzayVerQueEsteLibre() {
-		Jugador jugador = new Jugador("Rich Uncle-Milburn Pennybags");
+		Jugador jugador = new JugadorUno("Rich Uncle-Milburn Pennybags");
 		Carcel carcel = new Carcel();
 		carcel.afectar(jugador);
 		carcel.estaPreso(jugador);
@@ -90,7 +91,7 @@ public class CarcelTest {
 	 */
 	@Test
 	public void testEncarcelarJugadorVerSiEstaPresoDosVecesyVerificarQueLaTerceraSigaPreso() {
-		Jugador jugador = new Jugador("Rich Uncle-Milburn Pennybags");
+		Jugador jugador = new JugadorUno("Rich Uncle-Milburn Pennybags");
 		Carcel carcel = new Carcel();
 		carcel.afectar(jugador);
 		carcel.estaPreso(jugador);
@@ -106,7 +107,7 @@ public class CarcelTest {
 	 */
 	@Test
 	public void testEncarcelarJugadorVerSiEstaPresoTresVecesyVerificarQueLaCuartaEsteLibre() {
-		Jugador jugador = new Jugador("Rich Uncle-Milburn Pennybags");
+		Jugador jugador = new JugadorUno("Rich Uncle-Milburn Pennybags");
 		Carcel carcel = new Carcel();
 		carcel.afectar(jugador);
 		carcel.estaPreso(jugador);

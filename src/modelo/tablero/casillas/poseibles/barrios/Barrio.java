@@ -13,9 +13,8 @@ public abstract class Barrio implements Poseible  {
 	
 	public Barrio(Jugador propietario) {
 		Terreno terreno = new Terreno();
-
-		this.construido = terreno.construirEn(this);
 		this.propietario = propietario;
+		this.construido = terreno.construirEn(this);
 	}
 
 

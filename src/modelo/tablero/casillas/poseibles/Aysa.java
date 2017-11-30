@@ -6,19 +6,19 @@ import modelo.juego.Dados;
 public class Aysa implements Compania {
 
 	private Jugador propietario;
-	
-	public Aysa(Jugador propietario){
+
+	public Aysa(Jugador propietario) {
 		this.propietario = propietario;
 	}
 
 	protected int cobrar() {
 		int dados = Dados.getInstance().getValor();
 		int veces = 300;
-		
-		for(Compania compania : this.propietario.obtenerCompanias()){
+
+		for (Compania compania : this.propietario.obtenerCompanias()) {
 			veces += this.cobrarCon(compania);
 		}
-		
+
 		return (dados * veces);
 	}
 

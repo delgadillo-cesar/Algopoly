@@ -3,7 +3,7 @@ package unitarios;
 import org.junit.Assert;
 import org.junit.Test;
 
-import juego.Dados;
+import modelo.juego.Dados;
 
 public class DadosTest {
 

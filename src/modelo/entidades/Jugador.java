@@ -37,7 +37,6 @@ public abstract class Jugador {
 	
 	public int cobrar(int unMonto) {
 		capital += unMonto;
-		
 		return unMonto;
 	}
 	
@@ -61,7 +60,7 @@ public abstract class Jugador {
 		this.barrios.add(unBarrio);
 	}
 	
-	public int cantidadPoseciones(){
+	public int cantidadPosesiones(){
 		return (this.barrios.size() + this.companias.size());
 	}
 	
@@ -69,7 +68,7 @@ public abstract class Jugador {
 		return this.companias;
 	}
 
-	public List<Barrio> obtenerBarios() {
+	public List<Barrio> obtenerBarrios() {
 		return this.barrios;
 	}
 

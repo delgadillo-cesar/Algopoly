@@ -3,14 +3,12 @@ package unitarios;
 import org.junit.Assert;
 import org.junit.Test;
 
-
-import acciones.AvanceDinamico;
-import barrios.Barrio;
-import barrios.BarrioNeuquen;
-import barrios.BarrioTucuman;
-import entidades.Jugador;
-import juego.Dados;
-import tablero.PosicionTablero;
+import modelo.entidades.JugadorUno;
+import modelo.juego.Dados;
+import modelo.tablero.PosicionTablero;
+import modelo.tablero.casillas.acciones.AvanceDinamico;
+import modelo.tablero.casillas.poseibles.barrios.BarrioNeuquen;
+import modelo.tablero.casillas.poseibles.barrios.BarrioTucuman;
 
 public class AvanceDinamicoTest {
 
@@ -19,7 +17,7 @@ public class AvanceDinamicoTest {
 	@Test
 	public void test01AvanceDinamicoConDadosEntre2Y6AvanzaElEquivalenteAlValoderDeLosDadosMenos2() {		
 		Dados dados = Dados.getInstance();
-		Jugador unJugador = new Jugador ("Jugador de Prueba");
+		JugadorUno unJugador = new JugadorUno ("Jugador de Prueba");
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
 		
@@ -37,7 +35,7 @@ public class AvanceDinamicoTest {
 	@Test
 	public void test02AvanceDinamicoConDadosEntr7Y10AvanzaElEquivalenteASuCantidadDeEfectivoModuloValorDeLosDados() {		
 		Dados dados = Dados.getInstance();
-		Jugador unJugador = new Jugador ("Jugador de Prueba");
+		JugadorUno unJugador = new JugadorUno ("Jugador de Prueba");
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
 		
@@ -57,7 +55,7 @@ public class AvanceDinamicoTest {
 	@Test
 	public void test03AvanceDinamicoConDadosEntr11Y12AvanzaElEquivalenteAlValorDeLosDadosMenosLaCantidadDePropiedadesJugadorSinPropiedades() {		
 		Dados dados = Dados.getInstance();
-		Jugador unJugadorSinPropiedades = new Jugador ("Jugador de Prueba sin propiedades");
+		JugadorUno unJugadorSinPropiedades = new JugadorUno ("Jugador de Prueba sin propiedades");
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
 		do{
@@ -79,12 +77,12 @@ public class AvanceDinamicoTest {
 		Dados dados = Dados.getInstance();
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
-		Jugador unJugadorConPropiedades = new Jugador ("Jugador de Prueba con propiedades");
-		Barrio unBarrio = new BarrioNeuquen();
+		JugadorUno unJugadorConPropiedades = new JugadorUno ("Jugador de Prueba con propiedades");
+		BarrioNeuquen unBarrio = new BarrioNeuquen(unJugadorConPropiedades);
 		unJugadorConPropiedades.comprarPropiedad(unBarrio);
 		unBarrio.construir();
 		
-		unBarrio = new BarrioTucuman();
+		unBarrio = new BarrioTucuman(unJugadorConPropiedades);
 		unJugadorConPropiedades.comprarPropiedad(unBarrio);
 		unBarrio.construir();
 

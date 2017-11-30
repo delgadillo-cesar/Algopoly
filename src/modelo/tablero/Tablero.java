@@ -34,34 +34,34 @@ public class Tablero {
 	public static final Integer CASILLA_TUCUMAN = 20;
 
 	
-	private HashMap<Integer, Casilla> posicoinCasilla;
+	private HashMap<Integer, Casilla> posicionCasilla;
 	
 	private void crearCasillas(){		
-		this.posicoinCasilla.put(CASILLA_SALIDA, new Salida());
-		this.posicoinCasilla.put(CASILLA_QUINI, new Quini());
-		this.posicoinCasilla.put(CASILLA_BUENOS_AIRES_SUR, new BuenosAiresSurComprable());
-		this.posicoinCasilla.put(CASILLA_EDESUR, new EdesurComprable());
-		this.posicoinCasilla.put(CASILLA_BUENOS_AIRES_NORTE, new BuenosAiresNorteComprable());
-		this.posicoinCasilla.put(CASILLA_CARCEL, new Carcel());
-		this.posicoinCasilla.put(CASILLA_CORDOBA_SUR, new CordobaSurComprable());
-		this.posicoinCasilla.put(CASILLA_AVANCE_DINAMICO, new AvanceDinamico());
-		this.posicoinCasilla.put(CASILLA_SUBTE, new SubteComprable());
-		this.posicoinCasilla.put(CASILLA_CORDOBA_NORTE, new CordobaNorteComprable());
-		this.posicoinCasilla.put(CASILLA_IMPUESTO_DE_LUJO, new ImpuestoLujo());
-		this.posicoinCasilla.put(CASILLA_SANTA_FE, new SantaFeComprable());
-		this.posicoinCasilla.put(CASILLA_AYSA, new AysaComprable());
-		this.posicoinCasilla.put(CASILLA_SALTA_NORTE, new SaltaNorteComprable());
-		this.posicoinCasilla.put(CASILLA_SALTA_SUR, new SaltaSurComprable());
-		this.posicoinCasilla.put(CASILLA_POLICIA, new Policia());
-		this.posicoinCasilla.put(CASILLA_TREN, new TrenComprable());
-		this.posicoinCasilla.put(CASILLA_NEUQUEN, new NeuquenComprable());
-		this.posicoinCasilla.put(CASILLA_RETROCESO_DINAMICO, new RetrocesoDinamico());
-		this.posicoinCasilla.put(CASILLA_TUCUMAN, new TucumanComprable());
+		this.posicionCasilla.put(CASILLA_SALIDA, new Salida());
+		this.posicionCasilla.put(CASILLA_QUINI, new Quini());
+		this.posicionCasilla.put(CASILLA_BUENOS_AIRES_SUR, new BuenosAiresSurComprable());
+		this.posicionCasilla.put(CASILLA_EDESUR, new EdesurComprable());
+		this.posicionCasilla.put(CASILLA_BUENOS_AIRES_NORTE, new BuenosAiresNorteComprable());
+		this.posicionCasilla.put(CASILLA_CARCEL, new Carcel());
+		this.posicionCasilla.put(CASILLA_CORDOBA_SUR, new CordobaSurComprable());
+		this.posicionCasilla.put(CASILLA_AVANCE_DINAMICO, new AvanceDinamico());
+		this.posicionCasilla.put(CASILLA_SUBTE, new SubteComprable());
+		this.posicionCasilla.put(CASILLA_CORDOBA_NORTE, new CordobaNorteComprable());
+		this.posicionCasilla.put(CASILLA_IMPUESTO_DE_LUJO, new ImpuestoLujo());
+		this.posicionCasilla.put(CASILLA_SANTA_FE, new SantaFeComprable());
+		this.posicionCasilla.put(CASILLA_AYSA, new AysaComprable());
+		this.posicionCasilla.put(CASILLA_SALTA_NORTE, new SaltaNorteComprable());
+		this.posicionCasilla.put(CASILLA_SALTA_SUR, new SaltaSurComprable());
+		this.posicionCasilla.put(CASILLA_POLICIA, new Policia());
+		this.posicionCasilla.put(CASILLA_TREN, new TrenComprable());
+		this.posicionCasilla.put(CASILLA_NEUQUEN, new NeuquenComprable());
+		this.posicionCasilla.put(CASILLA_RETROCESO_DINAMICO, new RetrocesoDinamico());
+		this.posicionCasilla.put(CASILLA_TUCUMAN, new TucumanComprable());
 	}
 	
 	
 	private Tablero(){
-		posicoinCasilla = new HashMap<Integer, Casilla>();
+		posicionCasilla = new HashMap<Integer, Casilla>();
 		
 		this.crearCasillas();
 }
@@ -107,7 +107,7 @@ public class Tablero {
 	}
 
 	public void elJugadorSeDesplazo(Jugador unJugador) {
-		Casilla unaCasilla = posicoinCasilla.get(unJugador.obtenerPosicion().getPosicion());
+		Casilla unaCasilla = posicionCasilla.get(unJugador.obtenerPosicion().getPosicion());
 		
 		unaCasilla.afectar(unJugador);
 	}
@@ -121,6 +121,6 @@ public class Tablero {
 	}
 
 	public void cambiarCasillaPor(int tagCasilla, Casilla nuevaCasilla) {
-		this.posicoinCasilla.put(tagCasilla, nuevaCasilla);
+		this.posicionCasilla.put(tagCasilla, nuevaCasilla);
 	}
 }

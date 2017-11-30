@@ -1,21 +1,20 @@
 package unitarios;
 
-import juego.Dados;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import poseibles.Aysa;
-import poseibles.Compania;
-import poseibles.Edesur;
-import poseibles.Subte;
-import poseibles.Tren;
-import tablero.Casilla;
-import tablero.Poseible;
-
-import entidades.*;
-import entidades.MismoJugadorException;
+import modelo.entidades.Banco;
+import modelo.entidades.Jugador;
+import modelo.entidades.JugadorDos;
+import modelo.entidades.JugadorUno;
+import modelo.juego.Dados;
+import modelo.tablero.Casilla;
+import modelo.tablero.casillas.poseibles.Aysa;
+import modelo.tablero.casillas.poseibles.Compania;
+import modelo.tablero.casillas.poseibles.Edesur;
+import modelo.tablero.casillas.poseibles.Subte;
+import modelo.tablero.casillas.poseibles.Tren;
 
 public class CompaniaPoseibleTest {
 
@@ -164,7 +163,7 @@ public class CompaniaPoseibleTest {
 	}
 
 	@Test
-	public void test13CompaniaAysaPropoetarioTieneEdesurCobra500VecesLosDados() {
+	public void test13CompaniaAysaPropietarioTieneEdesurCobra500VecesLosDados() {
 		Jugador unJugador = new JugadorDos("Jugador de prueba");
 		Dados losDados = Dados.getInstance();
 		int capitalInicial = unJugador.capital();
@@ -197,7 +196,7 @@ public class CompaniaPoseibleTest {
 	}
 
 	@Test
-	public void test15CompaniaEdesurPropoetarioTieneAysaCobra1000VecesLosDados() {
+	public void test15CompaniaEdesurPropietarioTieneAysaCobra1000VecesLosDados() {
 		Jugador unPropietario = new JugadorUno("Propietario de prueba");
 		Jugador unJugador = new JugadorDos("Jugador de prueba");
 		Dados losDados = Dados.getInstance();
@@ -231,7 +230,7 @@ public class CompaniaPoseibleTest {
 	}
 
 	@Test
-	public void test17CompaniaSubtePropoetarioTieneTrenesCobra1100VecesLosDados() {
+	public void test17CompaniaSubtePropietarioTieneTrenesCobra1100VecesLosDados() {
 		Jugador unJugador = new JugadorDos("Jugador de prueba");
 		Dados losDados = Dados.getInstance();
 		int capitalInicial = unJugador.capital();
@@ -264,7 +263,7 @@ public class CompaniaPoseibleTest {
 	}
 
 	@Test
-	public void test19CompaniaTrenesPropoetarioTieneSubteCobra800VecesLosDados() {
+	public void test19CompaniaTrenesPropietarioTieneSubteCobra800VecesLosDados() {
 		Jugador unJugador = new JugadorDos("Jugador de prueba");
 		Dados losDados = Dados.getInstance();
 		int capitalInicial = unJugador.capital();

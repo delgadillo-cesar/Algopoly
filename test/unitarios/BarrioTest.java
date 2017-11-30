@@ -7,13 +7,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import barrios.Barrio;
-
-import poseibles.Construccion;
-import poseibles.NadaParaConstruirException;
-
-import entidades.Jugador;
-import entidades.MismoJugadorException;
+import modelo.entidades.Jugador;
+import modelo.entidades.MismoJugadorException;
+import modelo.tablero.casillas.poseibles.NadaParaConstruirException;
+import modelo.tablero.casillas.poseibles.barrios.Barrio;
+import modelo.tablero.casillas.poseibles.barrios.Construccion;
 
 public class BarrioTest {
 

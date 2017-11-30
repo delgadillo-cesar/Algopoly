@@ -24,7 +24,7 @@ public abstract class BarrioDoble extends Barrio {
 	}
 
 	private void chequearComplemento(){
-		for (Barrio barrio : this.propietario.obtenerBarios()){
+		for (Barrio barrio : this.propietario.obtenerBarrios()){
 			barrio.interactuarCon(this);
 		}
 	}

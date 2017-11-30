@@ -3,20 +3,21 @@ package unitarios;
 import org.junit.Assert;
 import org.junit.Test;
 
-import acciones.RetrocesoDinamico;
-import barrios.BarrioNeuquen;
-import barrios.BarrioTucuman;
-import comprables.Barrio;
-import entidades.Jugador;
-import juego.Dados;
-import tablero.PosicionTablero;
+import modelo.entidades.Jugador;
+import modelo.entidades.JugadorUno;
+import modelo.juego.Dados;
+import modelo.tablero.PosicionTablero;
+import modelo.tablero.casillas.acciones.RetrocesoDinamico;
+import modelo.tablero.casillas.poseibles.barrios.Barrio;
+import modelo.tablero.casillas.poseibles.barrios.BarrioNeuquen;
+import modelo.tablero.casillas.poseibles.barrios.BarrioTucuman;
 
 public class RetrocesoDinamicoTest {
 
 	@Test
 	public void test01retrocesoDinamicoConDadosEntre2Y6AvanzaElEquivalenteAlValorDeLosDadosMenosLaCantidadDePropiedadesJugadorSinPropiedades() {
 		Dados dados = Dados.getInstance();
-		Jugador unJugadorSinPropiedades = new Jugador("Jugador de Prueba sin propiedades");
+		Jugador unJugadorSinPropiedades = new JugadorUno("Jugador de Prueba sin propiedades");
 		RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
 		do {
@@ -38,7 +39,7 @@ public class RetrocesoDinamicoTest {
 		Dados dados = Dados.getInstance();
 		RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
-		Jugador unJugadorConPropiedades = new Jugador("Jugador de Prueba con propiedades");
+		Jugador unJugadorConPropiedades = new JugadorUno("Jugador de Prueba con propiedades");
 		Barrio unBarrio = new BarrioNeuquen();
 		unJugadorConPropiedades.comprarPropiedad(unBarrio);
 		unBarrio.construir();
@@ -64,7 +65,7 @@ public class RetrocesoDinamicoTest {
 	@Test
 	public void test03retrocesoDinamicoConDadosEntre7Y10AvanzaElEquivalenteASuCantidadDeEfectivoModuloValorDeLosDados() {
 		Dados dados = Dados.getInstance();
-		Jugador unJugador = new Jugador("Jugador de Prueba");
+		Jugador unJugador = new JugadorUno("Jugador de Prueba");
 		RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
 		unJugador.cambiarPosicion(new PosicionTablero(15));
@@ -83,7 +84,7 @@ public class RetrocesoDinamicoTest {
 	@Test
 	public void test04retrocesoDinamicoConDadosEntre11Y12AvanzaElEquivalenteAlValoderDeLosDadosMenos2() {
 		Dados dados = Dados.getInstance();
-		Jugador unJugador = new Jugador("Jugador de Prueba");
+		Jugador unJugador = new JugadorUno("Jugador de Prueba");
 		RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
 		unJugador.cambiarPosicion(new PosicionTablero(15));

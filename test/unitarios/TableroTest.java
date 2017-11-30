@@ -4,8 +4,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import entidades.Jugador;
-import tablero.Tablero;
+import modelo.entidades.Jugador;
+import modelo.entidades.JugadorUno;
+import modelo.tablero.Tablero;
 
 public class TableroTest {
 	
@@ -26,7 +27,7 @@ public class TableroTest {
 	public void testDesplazarJugadorUnaCasillaHaciaAdelanteLoDesplazaCorrectamente() {
 		
 		Tablero tablero = Tablero.getInstance();
-		Jugador jugador = new Jugador("Pepe");
+		Jugador jugador = new JugadorUno("Pepe");
 		tablero.desplazar(jugador, "SALIDA");
 		
 		tablero.desplazar(jugador, 1);
@@ -40,7 +41,7 @@ public class TableroTest {
 	public void testDesplazarJugadorveintiunCasillasHaciaAdelanteLoDesplazaCorrectamente() {
 		
 		Tablero tablero = Tablero.getInstance();
-		Jugador jugador = new Jugador("Pepe");
+		Jugador jugador = new JugadorUno("Pepe");
 		tablero.desplazar(jugador, "SALIDA");
 		
 		tablero.desplazar(jugador, 21);
@@ -54,7 +55,7 @@ public class TableroTest {
 	public void testDesplazarJugadorUnaCasillaHaciaAtrasLoDesplazaCorrectamente() {
 		
 		Tablero tablero = Tablero.getInstance();
-		Jugador jugador = new Jugador("Pepe");
+		Jugador jugador = new JugadorUno("Pepe");
 		tablero.desplazar(jugador, "SALIDA");
 		
 		tablero.desplazar(jugador, -1);
@@ -68,7 +69,7 @@ public class TableroTest {
 	public void testDesplazarJugadorVeintiunCasillaHaciaAtrasLoDesplazaCorrectamente() {
 		
 		Tablero tablero = Tablero.getInstance();
-		Jugador jugador = new Jugador("Pepe");
+		Jugador jugador = new JugadorUno("Pepe");
 		tablero.desplazar(jugador, "SALIDA");
 		
 		tablero.desplazar(jugador, -21);
@@ -82,7 +83,7 @@ public class TableroTest {
 	public void testDesplazarJugadorUnaPosicionHaciaAdelanteRemueveAlJugadorDeLaCasillaAnterior() {
 		
 		Tablero tablero = Tablero.getInstance();
-		Jugador jugador = new Jugador("Pepe");
+		Jugador jugador = new JugadorUno("Pepe");
 		tablero.desplazar(jugador, "SALIDA");
 		
 		tablero.desplazar(jugador, 1);
@@ -95,7 +96,7 @@ public class TableroTest {
 	public void testDesplazarJugadorUnaPosicionHaciAtrasRemueveAlJugadorDeLaCasillaAnterior() {
 		
 		Tablero tablero = Tablero.getInstance();
-		Jugador jugador = new Jugador("Pepe");
+		Jugador jugador = new JugadorUno("Pepe");
 		tablero.desplazar(jugador, "SALIDA");
 		
 		tablero.desplazar(jugador, -1);
@@ -108,7 +109,7 @@ public class TableroTest {
 	public void testMovimientoDesdeSalidaHastaBsAsZonaNorteDesplazaCorrectamenteAUnJugadorPorElTablero() {
 		
 		Tablero tablero = Tablero.getInstance();
-		Jugador jugador = new Jugador("Pepe");
+		Jugador jugador = new JugadorUno("Pepe");
 		tablero.desplazar(jugador, "SALIDA");
 		
 		for (int i = 1; i <= 4; i++) {			
@@ -125,7 +126,7 @@ public class TableroTest {
 	public void testMovimientoDesdeSubteHastaSaltaSurDesplazaCorrectamenteAUnJugadorPorElTablero() {
 		
 		Tablero tablero = Tablero.getInstance();
-		Jugador jugador = new Jugador("Pepe");
+		Jugador jugador = new JugadorUno("Pepe");
 		tablero.desplazar(jugador, "SUBTE");
 		jugador.cobrar(2000000); /*Se agrega capital para que tenga suficiente para la prueba*/
 		
