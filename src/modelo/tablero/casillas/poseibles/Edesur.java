@@ -10,6 +10,7 @@ public class Edesur implements Compania {
 	
 	public Edesur(Jugador propietario){
 		this.propietario = propietario;
+		this.propietario.agregarCompania(this);
 	}
 
 	protected int cobrar() {
@@ -36,7 +37,7 @@ public class Edesur implements Compania {
 	}
 
 	public int cobrarConAysa() {
-		return 500;
+		return 200;
 	}
 
 	public int cobrarConEdesur() {

@@ -66,13 +66,11 @@ public class DadosTest {
 
 		Dados dados = Dados.getInstance();
 
-		while ((dados.getValor() != 3) && (dados.getValor() != 5)
-				&& (dados.getValor() != 7) && (dados.getValor() != 9)
+		while ((dados.getValor() != 3) && (dados.getValor() != 5) && (dados.getValor() != 7) && (dados.getValor() != 9)
 				&& (dados.getValor() != 11)) {
 			dados.lanzarDados();
 		}
 
-		
 		Assert.assertFalse(dados.salieronPares());
 	}
 }

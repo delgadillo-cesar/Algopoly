@@ -9,6 +9,7 @@ public class Subte implements Compania {
 	
 	public Subte(Jugador propietario){
 		this.propietario = propietario;
+		this.propietario.agregarCompania(this);
 	}
 
 	protected int cobrar() {
@@ -43,7 +44,7 @@ public class Subte implements Compania {
 	}
 
 	public int cobrarConTren() {
-		return 500;
+		return 350;
 	}
 
 	public int cobrarConSubte() {

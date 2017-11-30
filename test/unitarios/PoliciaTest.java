@@ -12,24 +12,30 @@ import modelo.tablero.casillas.acciones.Policia;
 
 public class PoliciaTest {
 
-/***********************************************/	
-	
-	@Test
-	public void test01JugadorCaeEnPoliciaYTerminaEnLaCarcel() {
-		
-		Jugador jugadorPrueba = new JugadorUno ("Jugador de prueba");
-		Jugador jugadorReferencia = new JugadorDos ("Jugador de referencia");
-		Casilla policia = new Policia ();
-		Tablero tablero = Tablero.getInstance();
+	/***********************************************/
 
-		tablero.desplazar(jugadorReferencia,"CARCEL");
-		
-		tablero.desplazar(jugadorPrueba,"POLICIA");
-		policia.afectar(jugadorPrueba);	
-		Assert.assertEquals(jugadorReferencia.obtenerPosicion().getPosicion(), jugadorPrueba.obtenerPosicion().getPosicion());
-		
+	@Test
+	public void test01UnJugadorVaALaCarcelYSuPosicionCambia() {
+
+		Jugador jugadorPrueba = new JugadorUno("Jugador de prueba");
+		Jugador jugadorReferencia = new JugadorDos("Jugador de referencia");
+		Casilla policia = new Policia();
+		policia.afectar(jugadorPrueba);
+		Assert.assertNotEquals(jugadorReferencia.obtenerPosicion().getPosicion(),
+				jugadorPrueba.obtenerPosicion().getPosicion());
+
 	}
 
-/***********************************************/	
-	
+	@Test
+	public void test02UnJugadorVaALaCarcelYSuPosicionEsLaCasillaDeCarcel() {
+
+		Jugador jugadorPrueba = new JugadorUno("Jugador de prueba");
+		Casilla policia = new Policia();
+		policia.afectar(jugadorPrueba);
+		Assert.assertEquals(Tablero.CASILLA_CARCEL, Integer.valueOf(jugadorPrueba.obtenerPosicion().getPosicion()));
+
+	}
+
+	/***********************************************/
+
 }
