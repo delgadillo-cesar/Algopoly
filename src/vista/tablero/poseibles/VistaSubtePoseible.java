@@ -1,23 +1,28 @@
 package vista.tablero.poseibles;
 
-import javafx.scene.control.Button;
+import controlador.poseibles.OpcionesCompaniaPoseibleHandler;
+import javafx.scene.image.Image;
+import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.casillas.poseibles.Subte;
-import vista.tablero.VistaTablero;
-import Controlador.CompaniaPoseibleHandler;
+import vista.tablero.VistaCasilla;
 
-public class VistaSubtePoseible  extends Button {
+public class VistaSubtePoseible  extends VistaCasilla {
 
 	private Subte subte;
 	
 	public VistaSubtePoseible(){
 		this.subte = (Subte) Tablero.getInstance().obtenerCasilla(Tablero.CASILLA_SUBTE);
-		this.setText(subte.propietario().nombreJugador());
 
-		this.setStyle("-fx-background-image: url('/vista/imagenes/CasillaSubte.png')");
-        this.setMinSize(VistaTablero.ANCHO_CASILLA_VERTICAL, VistaTablero.ALTO_CASILLA_VERTICAL);
+		this.stringImagen = "file:src/vista/imagenes/CasillaSubte.png";
+        this.dibujarCasilla();
 
-        CompaniaPoseibleHandler subtePoseidaHandler = new CompaniaPoseibleHandler(subte);
-        this.setOnAction(subtePoseidaHandler);
+        OpcionesCompaniaPoseibleHandler opcionesCompaniaPoseibleHandler = new OpcionesCompaniaPoseibleHandler(imagen, subte);
+		this.setOnMouseClicked(opcionesCompaniaPoseibleHandler);
+	}
+
+	@Override
+	public void habilitarParaJugador(Jugador unJugador) {
+		this.setDisable(!(subte.propietario() == unJugador));
 	}
 }

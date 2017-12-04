@@ -8,6 +8,10 @@ public class EdesurComprable implements Comprable {
 
 	private int precioCompra;
 
+	public EdesurComprable(){
+		this.precioCompra = 35000;
+	}
+	
 	public void afectar(Jugador jugador) {
 	}
 

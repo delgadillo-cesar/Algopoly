@@ -1,23 +1,30 @@
 package vista.tablero.comprables;
 
-import Controlador.Comprables.CordobaSurComprableHandler;
+import controlador.Comprables.CordobaSurComprableHandler;
+import controlador.Comprables.OpcionesComprableHandler;
+import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.casillas.comprables.CordobaSurComprable;
-import vista.tablero.VistaTablero;
-import javafx.scene.control.Button;
+import vista.tablero.VistaCasilla;
+import javafx.scene.image.Image;
 
-public class VistaCordobaSurComprable extends Button {
+public class VistaCordobaSurComprable extends VistaCasilla {
 	
 	private CordobaSurComprable cordobaSurComprable;
 	
 	public VistaCordobaSurComprable(){
 		this.cordobaSurComprable = new CordobaSurComprable();
-		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_BUENOS_AIRES_SUR, this.cordobaSurComprable);
-
-	    this.setStyle("-fx-background-image: url('/vista/imagenes/CasillaCordobaSur.png')");
-        this.setMinSize(VistaTablero.ANCHO_CASILLA_VERTICAL, VistaTablero.ALTO_CASILLA_VERTICAL);
+		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_CORDOBA_SUR, this.cordobaSurComprable);
 	
-        CordobaSurComprableHandler cordobaSurComprableHandler = new CordobaSurComprableHandler(cordobaSurComprable);
-        this.setOnAction(cordobaSurComprableHandler);
+		this.stringImagen = "file:src/vista/imagenes/CasillaCordobaSur.png";
+        this.dibujarCasilla();
+
+        OpcionesComprableHandler cordobaSurComprableHandler = new OpcionesComprableHandler(imagen, new CordobaSurComprableHandler(cordobaSurComprable));
+		this.setOnMouseClicked(cordobaSurComprableHandler);
+	}
+
+	@Override
+	public void habilitarParaJugador(Jugador unJugador) {
+		this.setDisable(false);
 	}
 }

@@ -1,23 +1,27 @@
 package vista.tablero.poseibles;
 
+import controlador.poseibles.OpcionesBarrioPoseibleHandler;
+import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.casillas.poseibles.barrios.BarrioTucuman;
-import vista.tablero.VistaTablero;
-import Controlador.CompaniaPoseibleHandler;
-import javafx.scene.control.Button;
+import vista.tablero.VistaCasilla;
 
-public class VistaTucumanPoseible extends Button {
+public class VistaTucumanPoseible extends VistaCasilla {
 
 	private BarrioTucuman tucuman;
 	
 	public VistaTucumanPoseible(){
 		this.tucuman = (BarrioTucuman) Tablero.getInstance().obtenerCasilla(Tablero.CASILLA_TUCUMAN);
-		this.setText(tucuman.propietario().nombreJugador());
 
-        this.setStyle("-fx-background-image: url('/vista/imagenes/CasillaTucuman.png')");
-        this.setMinSize(VistaTablero.ANCHO_CASILLA_VERTICAL, VistaTablero.ALTO_CASILLA_VERTICAL);
+		this.stringImagen = "file:src/vista/imagenes/CasillaTucuman.png";
+        this.dibujarCasilla();
 
-        CompaniaPoseibleHandler tucumanPoseidaHandler = new CompaniaPoseibleHandler(tucuman);
-        this.setOnAction(tucumanPoseidaHandler);
+        OpcionesBarrioPoseibleHandler opcionesBarrioPoseibleHandler = new OpcionesBarrioPoseibleHandler(imagen, tucuman);
+		this.setOnMouseClicked(opcionesBarrioPoseibleHandler);
+	}
+
+	@Override
+	public void habilitarParaJugador(Jugador unJugador) {
+		this.setDisable(!(tucuman.propietario() == unJugador));
 	}
 }

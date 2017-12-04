@@ -1,23 +1,28 @@
 package vista.tablero.poseibles;
 
-import vista.tablero.VistaTablero;
+import controlador.poseibles.OpcionesCompaniaPoseibleHandler;
+import vista.tablero.VistaCasilla;
+import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.casillas.poseibles.Aysa;
-import Controlador.CompaniaPoseibleHandler;
-import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 
-public class VistaAysaPoseible extends Button {
+public class VistaAysaPoseible extends VistaCasilla {
 
 	private Aysa aysa;
 	
 	public VistaAysaPoseible(){
 		this.aysa = (Aysa) Tablero.getInstance().obtenerCasilla(Tablero.CASILLA_AYSA);
-		this.setText(aysa.propietario().nombreJugador());
 
-		this.setStyle("-fx-background-image: url('/vista/imagenes/CasillaAysa.png')");
-        this.setMinSize(VistaTablero.ANCHO_CASILLA_HORIZONTAL, VistaTablero.ALTO_CASILLA_HORIZONTAL);
+		this.stringImagen = "file:src/vista/imagenes/CasillaAysa.png";
+        this.dibujarCasilla();
 
-        CompaniaPoseibleHandler aysaPoseidaHandler = new CompaniaPoseibleHandler(aysa);
-        this.setOnAction(aysaPoseidaHandler);
+        OpcionesCompaniaPoseibleHandler opcionesCompaniaPoseibleHandler = new OpcionesCompaniaPoseibleHandler(imagen, aysa);
+		this.setOnMouseClicked(opcionesCompaniaPoseibleHandler);
+	}
+
+	@Override
+	public void habilitarParaJugador(Jugador unJugador) {
+		this.setDisable(!(aysa.propietario() == unJugador));
 	}
 }

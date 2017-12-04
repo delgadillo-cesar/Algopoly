@@ -8,6 +8,10 @@ public class SubteComprable implements Comprable {
 
 	private int precioCompra;
 
+	public SubteComprable(){
+		this.precioCompra = 40000;
+	}
+	
 	public void afectar(Jugador jugador) {
 	}
 

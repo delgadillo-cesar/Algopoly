@@ -1,13 +1,14 @@
 package vista.tablero.comprables;
 
+import javafx.scene.image.Image;
+import controlador.Comprables.BuenosAiresNorteComprableHandler;
+import controlador.Comprables.OpcionesComprableHandler;
+import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.casillas.comprables.BuenosAiresNorteComprable;
-import vista.tablero.VistaTablero;
-import Controlador.Comprables.BuenosAiresNorteComprableHandler;
-import Controlador.Comprables.OpcionesComprableHandler;
-import javafx.scene.control.Button;
+import vista.tablero.VistaCasilla;
 
-public class VistaBuenosAiresNorteComprable extends Button {
+public class VistaBuenosAiresNorteComprable extends VistaCasilla {
 	
 	private BuenosAiresNorteComprable buenosAiresNorteComprable;
 	
@@ -15,11 +16,14 @@ public class VistaBuenosAiresNorteComprable extends Button {
 		this.buenosAiresNorteComprable = new BuenosAiresNorteComprable();
 		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_BUENOS_AIRES_NORTE, this.buenosAiresNorteComprable);
 
-	    this.setStyle("-fx-background-image: url('/vista/imagenes/CasillaBuenosAiresNorte.png')");
-        this.setMinSize(VistaTablero.ANCHO_CASILLA_HORIZONTAL, VistaTablero.ALTO_CASILLA_HORIZONTAL);
-	
-        OpcionesComprableHandler buenosAiresNorteComprableHandler = new OpcionesComprableHandler(new BuenosAiresNorteComprableHandler(buenosAiresNorteComprable));
-//        BuenosAiresNorteComprableHandler buenosAiresNorteComprableHandler = new BuenosAiresNorteComprableHandler(buenosAiresNorteComprable);
-        this.setOnAction(buenosAiresNorteComprableHandler);
+		this.stringImagen = "file:src/vista/imagenes/CasillaBuenosAiresNorte.png";
+        this.dibujarCasilla();
+
+        OpcionesComprableHandler buenosAiresNorteComprableHandler = new OpcionesComprableHandler(imagen, new BuenosAiresNorteComprableHandler(buenosAiresNorteComprable));
+		this.setOnMouseClicked(buenosAiresNorteComprableHandler);
+	}
+
+	@Override
+	public void habilitarParaJugador(Jugador unJugador) {
 	}
 }

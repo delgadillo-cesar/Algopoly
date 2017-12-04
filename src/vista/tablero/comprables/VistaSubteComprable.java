@@ -1,12 +1,14 @@
 package vista.tablero.comprables;
 
-import Controlador.Comprables.SubteComprableHandler;
+import controlador.Comprables.OpcionesComprableHandler;
+import controlador.Comprables.SubteComprableHandler;
+import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.casillas.comprables.SubteComprable;
-import vista.tablero.VistaTablero;
-import javafx.scene.control.Button;
+import vista.tablero.VistaCasilla;
+import javafx.scene.image.Image;
 
-public class VistaSubteComprable extends Button {
+public class VistaSubteComprable extends VistaCasilla {
 
 	private SubteComprable subteComprable;
 	
@@ -14,10 +16,15 @@ public class VistaSubteComprable extends Button {
 		this.subteComprable = new SubteComprable();
 		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_SUBTE, this.subteComprable);
 
-		this.setStyle("-fx-background-image: url('/vista/imagenes/CasillaSubte.png')");
-        this.setMinSize(VistaTablero.ANCHO_CASILLA_VERTICAL, VistaTablero.ALTO_CASILLA_VERTICAL);
-	
-        SubteComprableHandler subteComprableHandler = new SubteComprableHandler(subteComprable);
-        this.setOnAction(subteComprableHandler);
+		this.stringImagen = "file:src/vista/imagenes/CasillaSubte.png";
+        this.dibujarCasilla();
+
+        OpcionesComprableHandler subteComprableHandler = new OpcionesComprableHandler(imagen, new SubteComprableHandler(subteComprable));
+		this.setOnMouseClicked(subteComprableHandler);
+	}
+
+	@Override
+	public void habilitarParaJugador(Jugador unJugador) {
+		this.setDisable(false);
 	}
 }

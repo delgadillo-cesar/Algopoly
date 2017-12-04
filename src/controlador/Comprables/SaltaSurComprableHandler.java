@@ -1,4 +1,4 @@
-package Controlador.Comprables;
+package controlador.Comprables;
 
 import modelo.juego.Turno;
 import modelo.tablero.Comprable;
@@ -6,8 +6,6 @@ import vista.tablero.VistaTablero;
 import vista.tablero.poseibles.VistaSaltaSurPoseible;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 
 public class SaltaSurComprableHandler implements EventHandler<ActionEvent> {
 
@@ -21,18 +19,8 @@ public class SaltaSurComprableHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
     	this.unComprable.comprar(Turno.getInstance().turnoActual());
 
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("FALTA IMPLEMENTAR");
-        alert.setHeaderText("Opciones de una casilla comprable");
-        String mensaje = "Por el momento se dispara a la accion de comprar en forma automatica";
-        alert.setContentText(mensaje);
-        alert.show();
-
-    	
-    	
     	VistaSaltaSurPoseible vistaSaltaSur = new VistaSaltaSurPoseible();
     	VistaTablero.getInstance().setSaltaSur(vistaSaltaSur);
-    	Turno.getInstance().cambiarTurno(); /*QUITAR*/
     }
 
 }

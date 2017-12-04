@@ -1,23 +1,28 @@
 package vista.tablero.poseibles;
 
+import controlador.poseibles.OpcionesCompaniaPoseibleHandler;
+import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.casillas.poseibles.Tren;
-import vista.tablero.VistaTablero;
-import Controlador.CompaniaPoseibleHandler;
-import javafx.scene.control.Button;
+import vista.tablero.VistaCasilla;
+import javafx.scene.image.Image;
 
-public class VistaTrenPoseible extends Button {
+public class VistaTrenPoseible extends VistaCasilla {
 
 	private Tren tren;
 	
 	public VistaTrenPoseible(){
 		this.tren = (Tren) Tablero.getInstance().obtenerCasilla(Tablero.CASILLA_TREN);
-		this.setText(tren.propietario().nombreJugador());
 
-		this.setStyle("-fx-background-image: url('/vista/imagenes/CasillaTren.png')");
-        this.setMinSize(VistaTablero.ANCHO_CASILLA_VERTICAL, VistaTablero.ALTO_CASILLA_VERTICAL);
+		this.stringImagen = "file:src/vista/imagenes/CasillaTren.png";
+        this.dibujarCasilla();
 
-        CompaniaPoseibleHandler trenPoseidaHandler = new CompaniaPoseibleHandler(tren);
-        this.setOnAction(trenPoseidaHandler);
+        OpcionesCompaniaPoseibleHandler opcionesCompaniaPoseibleHandler = new OpcionesCompaniaPoseibleHandler(imagen, tren);
+		this.setOnMouseClicked(opcionesCompaniaPoseibleHandler);
+	}
+
+	@Override
+	public void habilitarParaJugador(Jugador unJugador) {
+		this.setDisable(!(tren.propietario() == unJugador));
 	}
 }

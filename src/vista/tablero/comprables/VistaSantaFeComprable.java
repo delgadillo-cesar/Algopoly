@@ -1,12 +1,14 @@
 package vista.tablero.comprables;
 
-import Controlador.Comprables.SantaFeComprableHandler;
+import controlador.Comprables.OpcionesComprableHandler;
+import controlador.Comprables.SantaFeComprableHandler;
+import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.casillas.comprables.SantaFeComprable;
-import vista.tablero.VistaTablero;
-import javafx.scene.control.Button;
+import vista.tablero.VistaCasilla;
+import javafx.scene.image.Image;
 
-public class VistaSantaFeComprable extends Button {
+public class VistaSantaFeComprable extends VistaCasilla {
 	
 	private SantaFeComprable santaFeComprable;
 	
@@ -14,10 +16,15 @@ public class VistaSantaFeComprable extends Button {
 		this.santaFeComprable = new SantaFeComprable();
 		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_SANTA_FE, this.santaFeComprable);
 
-	    this.setStyle("-fx-background-image: url('/vista/imagenes/CasillaSantaFe.png')");
-        this.setMinSize(VistaTablero.ANCHO_CASILLA_HORIZONTAL, VistaTablero.ALTO_CASILLA_HORIZONTAL);
-	
-        SantaFeComprableHandler santaFeComprableHandler = new SantaFeComprableHandler(santaFeComprable);
-        this.setOnAction(santaFeComprableHandler);
+		this.stringImagen = "file:src/vista/imagenes/CasillaSantaFe.png";
+        this.dibujarCasilla();
+
+        OpcionesComprableHandler santaFeComprableHandler = new OpcionesComprableHandler(imagen, new SantaFeComprableHandler(santaFeComprable));
+		this.setOnMouseClicked(santaFeComprableHandler);
+	}
+
+	@Override
+	public void habilitarParaJugador(Jugador unJugador) {
+		this.setDisable(false);
 	}
 }

@@ -1,11 +1,12 @@
 package vista.tablero.acciones;
 
-import vista.tablero.VistaTablero;
+import vista.tablero.VistaCasilla;
+import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.casillas.acciones.AvanceDinamico;
-import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 
-public class VistaAvanceDinamico extends Button {
+public class VistaAvanceDinamico extends VistaCasilla {
 
 	private AvanceDinamico avanceDinamico;
 	
@@ -13,7 +14,12 @@ public class VistaAvanceDinamico extends Button {
 		this.avanceDinamico = new AvanceDinamico();
 		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_AVANCE_DINAMICO, this.avanceDinamico);
 
-	    this.setStyle("-fx-background-image: url('/vista/imagenes/CasillaAvanceDinamico.png')");
-        this.setMinSize(VistaTablero.ANCHO_CASILLA_VERTICAL, VistaTablero.ALTO_CASILLA_VERTICAL);
+		this.stringImagen = "file:src/vista/imagenes/CasillaAvanceDinamico.png";
+        this.dibujarCasilla();
+	}
+
+	@Override
+	public void habilitarParaJugador(Jugador unJugador) {
+		this.setDisable(false);
 	}
 }

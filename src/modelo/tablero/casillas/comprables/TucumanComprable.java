@@ -8,6 +8,10 @@ public class TucumanComprable implements Comprable {
 
 	private int precioCompra;
 
+	public TucumanComprable(){
+		this.precioCompra = 25000;
+	}
+	
 	public void afectar(Jugador jugador) {
 	}
 

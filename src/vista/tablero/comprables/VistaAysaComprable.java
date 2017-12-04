@@ -1,13 +1,14 @@
 package vista.tablero.comprables;
 
-import vista.tablero.VistaTablero;
+import controlador.Comprables.AysaComprableHandler;
+import controlador.Comprables.OpcionesComprableHandler;
+import vista.tablero.VistaCasilla;
+import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.casillas.comprables.AysaComprable;
-import Controlador.Comprables.AysaComprableHandler;
-import Controlador.Comprables.OpcionesComprableHandler;
-import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 
-public class VistaAysaComprable extends Button {
+public class VistaAysaComprable extends VistaCasilla {
 	
 	private AysaComprable aysaComprable;
 	
@@ -15,11 +16,15 @@ public class VistaAysaComprable extends Button {
 		this.aysaComprable = new AysaComprable();
 		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_AYSA, this.aysaComprable);
 
-		this.setStyle("-fx-background-image: url('/vista/imagenes/CasillaAysa.png')");
-        this.setMinSize(VistaTablero.ANCHO_CASILLA_HORIZONTAL, VistaTablero.ALTO_CASILLA_HORIZONTAL);
-	
-        OpcionesComprableHandler aysaComprableHandler = new OpcionesComprableHandler(new AysaComprableHandler(aysaComprable));
-//        AysaComprableHandler aysaComprableHandler = new AysaComprableHandler(aysaComprable);
-        this.setOnAction(aysaComprableHandler);
+		this.stringImagen = "file:src/vista/imagenes/CasillaAysa.png";
+        this.dibujarCasilla();
+
+        OpcionesComprableHandler aysaComprableHandler = new OpcionesComprableHandler(imagen, new AysaComprableHandler(aysaComprable));
+		this.setOnMouseClicked(aysaComprableHandler);
+	}
+
+	@Override
+	public void habilitarParaJugador(Jugador unJugador) {
+		this.setDisable(false);
 	}
 }

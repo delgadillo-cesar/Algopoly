@@ -1,11 +1,12 @@
 package vista.tablero.acciones;
 
+import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.casillas.acciones.Policia;
-import vista.tablero.VistaTablero;
-import javafx.scene.control.Button;
+import vista.tablero.VistaCasilla;
+import javafx.scene.image.Image;
 
-public class VistaPolicia extends Button {
+public class VistaPolicia extends VistaCasilla {
 
 	private Policia policia;
 	
@@ -13,7 +14,12 @@ public class VistaPolicia extends Button {
 		this.policia = new Policia();
 		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_POLICIA, this.policia);
 
-		this.setStyle("-fx-background-image: url('/vista/imagenes/CasillaPolicia.png')");
-        this.setMinSize(VistaTablero.ANCHO_CASILLA_VERTICAL, VistaTablero.ALTO_CASILLA_HORIZONTAL);
+		this.stringImagen = "file:src/vista/imagenes/CasillaPolicia.png";
+        this.dibujarCasilla();
+	}
+
+	@Override
+	public void habilitarParaJugador(Jugador unJugador) {
+		this.setDisable(false);
 	}
 }

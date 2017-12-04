@@ -1,23 +1,30 @@
 package vista.tablero.comprables;
 
-import Controlador.Comprables.CordobaNorteComprableHandler;
+import controlador.Comprables.CordobaNorteComprableHandler;
+import controlador.Comprables.OpcionesComprableHandler;
+import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.casillas.comprables.CordobaNorteComprable;
-import vista.tablero.VistaTablero;
-import javafx.scene.control.Button;
+import vista.tablero.VistaCasilla;
+import javafx.scene.image.Image;
 
-public class VistaCordobaNorteComprable extends Button {
+public class VistaCordobaNorteComprable extends VistaCasilla {
 	
 	private CordobaNorteComprable cordobaNorteComprable;
 	
 	public VistaCordobaNorteComprable(){
 		this.cordobaNorteComprable = new CordobaNorteComprable();
-		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_BUENOS_AIRES_NORTE, this.cordobaNorteComprable);
+		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_CORDOBA_NORTE, this.cordobaNorteComprable);
 
-	    this.setStyle("-fx-background-image: url('/vista/imagenes/CasillaCordobaNorte.png')");
-        this.setMinSize(VistaTablero.ANCHO_CASILLA_VERTICAL, VistaTablero.ALTO_CASILLA_VERTICAL);
-	
-        CordobaNorteComprableHandler cordobaNorteComprableHandler = new CordobaNorteComprableHandler(cordobaNorteComprable);
-        this.setOnAction(cordobaNorteComprableHandler);
+		this.stringImagen = "file:src/vista/imagenes/CasillaCordobaNorte.png";
+        this.dibujarCasilla();
+
+        OpcionesComprableHandler cordobaNorteComprableHandler = new OpcionesComprableHandler(imagen, new CordobaNorteComprableHandler(cordobaNorteComprable));
+		this.setOnMouseClicked(cordobaNorteComprableHandler);
+	}
+
+	@Override
+	public void habilitarParaJugador(Jugador unJugador) {
+		this.setDisable(false);
 	}
 }

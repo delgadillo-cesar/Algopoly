@@ -1,24 +1,29 @@
 package vista.tablero.poseibles;
 
+import controlador.poseibles.OpcionesBarrioPoseibleHandler;
+import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.casillas.poseibles.barrios.BarrioCordobaSur;
-import vista.tablero.VistaTablero;
-import Controlador.CompaniaPoseibleHandler;
-import javafx.scene.control.Button;
+import vista.tablero.VistaCasilla;
+import javafx.scene.image.Image;
 
-public class VistaCordobaSurPoseible extends Button {
+public class VistaCordobaSurPoseible extends VistaCasilla {
 
 	private BarrioCordobaSur cordSur;
 	
 	public VistaCordobaSurPoseible(){
 		this.cordSur = (BarrioCordobaSur) Tablero.getInstance().obtenerCasilla(Tablero.CASILLA_CORDOBA_SUR);
-		this.setText(cordSur.propietario().nombreJugador());
 
-	    this.setStyle("-fx-background-image: url('/vista/imagenes/CasillaCordobaSur.png')");
-        this.setMinSize(VistaTablero.ANCHO_CASILLA_VERTICAL, VistaTablero.ALTO_CASILLA_VERTICAL);
+		this.stringImagen = "file:src/vista/imagenes/CasillaCordobaSur.png";
+        this.dibujarCasilla();
 
-        CompaniaPoseibleHandler edesurPoseidaHandler = new CompaniaPoseibleHandler(cordSur);
-        this.setOnAction(edesurPoseidaHandler);
+        OpcionesBarrioPoseibleHandler opcionesBarrioPoseibleHandler = new OpcionesBarrioPoseibleHandler(imagen, cordSur);
+		this.setOnMouseClicked(opcionesBarrioPoseibleHandler);
+	}
+
+	@Override
+	public void habilitarParaJugador(Jugador unJugador) {
+		this.setDisable(!(cordSur.propietario() == unJugador));
 	}
 
 }

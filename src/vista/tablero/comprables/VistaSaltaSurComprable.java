@@ -1,12 +1,14 @@
 package vista.tablero.comprables;
 
-import Controlador.Comprables.SaltaSurComprableHandler;
+import controlador.Comprables.OpcionesComprableHandler;
+import controlador.Comprables.SaltaSurComprableHandler;
+import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.casillas.comprables.SaltaSurComprable;
-import vista.tablero.VistaTablero;
-import javafx.scene.control.Button;
+import vista.tablero.VistaCasilla;
+import javafx.scene.image.Image;
 
-public class VistaSaltaSurComprable extends Button {
+public class VistaSaltaSurComprable extends VistaCasilla {
 	
 	private SaltaSurComprable saltaSurComprable;
 	
@@ -14,10 +16,15 @@ public class VistaSaltaSurComprable extends Button {
 		this.saltaSurComprable = new SaltaSurComprable();
 		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_SALTA_SUR, this.saltaSurComprable);
 
-        this.setStyle("-fx-background-image: url('/vista/imagenes/CasillaSaltaSur.png')");
-        this.setMinSize(VistaTablero.ANCHO_CASILLA_HORIZONTAL, VistaTablero.ALTO_CASILLA_HORIZONTAL);
+		this.stringImagen = "file:src/vista/imagenes/CasillaSaltaSur.png";
+        this.dibujarCasilla();
 
-        SaltaSurComprableHandler saltaSurComprableHandler = new SaltaSurComprableHandler(saltaSurComprable);
-        this.setOnAction(saltaSurComprableHandler);
+        OpcionesComprableHandler saltaSurComprableHandler = new OpcionesComprableHandler(imagen, new SaltaSurComprableHandler(saltaSurComprable));
+		this.setOnMouseClicked(saltaSurComprableHandler);
+	}
+
+	@Override
+	public void habilitarParaJugador(Jugador unJugador) {
+		this.setDisable(false);
 	}
 }

@@ -1,18 +1,24 @@
 package vista.tablero.acciones;
 
-import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.casillas.acciones.Salida;
-import vista.tablero.VistaTablero;
+import vista.tablero.VistaCasilla;
 
-public class VistaSalida  extends Button {
+public class VistaSalida  extends VistaCasilla {
 	private Salida salida;
 	
 	public VistaSalida(){
 		this.salida = new Salida();
 		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_SALIDA, this.salida);
 
-		this.setStyle("-fx-background-image: url('/vista/imagenes/CasillaSalida.png')");
-        this.setMinSize(VistaTablero.ANCHO_CASILLA_VERTICAL, VistaTablero.ALTO_CASILLA_HORIZONTAL);
+		this.stringImagen = "file:src/vista/imagenes/CasillaSalida.png";
+        this.dibujarCasilla();
+	}
+
+	@Override
+	public void habilitarParaJugador(Jugador unJugador) {
+		this.setDisable(false);
 	}
 }

@@ -1,23 +1,28 @@
 package vista.tablero.poseibles;
 
+import controlador.poseibles.OpcionesBarrioPoseibleHandler;
+import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.casillas.poseibles.barrios.BarrioSantaFe;
-import vista.tablero.VistaTablero;
-import Controlador.CompaniaPoseibleHandler;
-import javafx.scene.control.Button;
+import vista.tablero.VistaCasilla;
+import javafx.scene.image.Image;
 
-public class VistaSantaFePoseible extends Button {
+public class VistaSantaFePoseible extends VistaCasilla {
 
 	private BarrioSantaFe santaFe;
 	
 	public VistaSantaFePoseible(){
 		this.santaFe = (BarrioSantaFe) Tablero.getInstance().obtenerCasilla(Tablero.CASILLA_SANTA_FE);
-		this.setText(santaFe.propietario().nombreJugador());
 
-		this.setStyle("-fx-background-image: url('/vista/imagenes/CasillaSantaFe.png')");
-        this.setMinSize(VistaTablero.ANCHO_CASILLA_HORIZONTAL, VistaTablero.ALTO_CASILLA_HORIZONTAL);
+		this.stringImagen = "file:src/vista/imagenes/CasillaSantaFe.png";
+        this.dibujarCasilla();
 
-        CompaniaPoseibleHandler santaFePoseidaHandler = new CompaniaPoseibleHandler(santaFe);
-        this.setOnAction(santaFePoseidaHandler);
+        OpcionesBarrioPoseibleHandler opcionesBarrioPoseibleHandler = new OpcionesBarrioPoseibleHandler(imagen, santaFe);
+		this.setOnMouseClicked(opcionesBarrioPoseibleHandler);
+	}
+
+	@Override
+	public void habilitarParaJugador(Jugador unJugador) {
+		this.setDisable(!(santaFe.propietario() == unJugador));
 	}
 }

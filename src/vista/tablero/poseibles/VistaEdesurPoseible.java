@@ -1,24 +1,29 @@
 package vista.tablero.poseibles;
 
-import vista.tablero.VistaTablero;
+import controlador.poseibles.OpcionesCompaniaPoseibleHandler;
+import vista.tablero.VistaCasilla;
+import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.casillas.poseibles.Edesur;
-import Controlador.CompaniaPoseibleHandler;
-import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 
-public class VistaEdesurPoseible extends Button {
+public class VistaEdesurPoseible extends VistaCasilla {
 
 	private Edesur edesur;
 	
 	public VistaEdesurPoseible(){
 		this.edesur = (Edesur) Tablero.getInstance().obtenerCasilla(Tablero.CASILLA_EDESUR);
-		this.setText(edesur.propietario().nombreJugador());
 
-        this.setStyle("-fx-background-image: url('/vista/imagenes/CasillaSaltaNorte.png')");
-        this.setMinSize(VistaTablero.ANCHO_CASILLA_HORIZONTAL, VistaTablero.ALTO_CASILLA_HORIZONTAL);
+		this.stringImagen = "file:src/vista/imagenes/CasillaSaltaNorte.png";
+        this.dibujarCasilla();
 
-        CompaniaPoseibleHandler edesurPoseidaHandler = new CompaniaPoseibleHandler(edesur);
-        this.setOnAction(edesurPoseidaHandler);
+        OpcionesCompaniaPoseibleHandler opcionesCompaniaPoseibleHandler = new OpcionesCompaniaPoseibleHandler(imagen, edesur);
+		this.setOnMouseClicked(opcionesCompaniaPoseibleHandler);
+	}
+
+	@Override
+	public void habilitarParaJugador(Jugador unJugador) {
+		this.setDisable(!(edesur.propietario() == unJugador));
 	}
 
 }

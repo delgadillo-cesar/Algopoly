@@ -1,12 +1,14 @@
 package vista.tablero.comprables;
 
+import controlador.Comprables.OpcionesComprableHandler;
+import controlador.Comprables.TucumanComprableHandler;
+import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.casillas.comprables.TucumanComprable;
-import vista.tablero.VistaTablero;
-import Controlador.Comprables.TucumanComprableHandler;
-import javafx.scene.control.Button;
+import vista.tablero.VistaCasilla;
+import javafx.scene.image.Image;
 
-public class VistaTucumanComprable extends Button {
+public class VistaTucumanComprable extends VistaCasilla {
 	
 	private TucumanComprable tucumanComprable;
 	
@@ -14,10 +16,15 @@ public class VistaTucumanComprable extends Button {
 		this.tucumanComprable = new TucumanComprable();
 		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_TUCUMAN, this.tucumanComprable);
 
-        this.setStyle("-fx-background-image: url('/vista/imagenes/CasillaTucuman.png')");
-        this.setMinSize(VistaTablero.ANCHO_CASILLA_VERTICAL, VistaTablero.ALTO_CASILLA_VERTICAL);
-	
-        TucumanComprableHandler tucumanComprableHandler = new TucumanComprableHandler(tucumanComprable);
-        this.setOnAction(tucumanComprableHandler);
+		this.stringImagen = "file:src/vista/imagenes/CasillaTucuman.png";
+        this.dibujarCasilla();
+
+        OpcionesComprableHandler tucumanComprableHandler = new OpcionesComprableHandler(imagen, new TucumanComprableHandler(tucumanComprable));
+		this.setOnMouseClicked(tucumanComprableHandler);
+	}
+
+	@Override
+	public void habilitarParaJugador(Jugador unJugador) {
+		this.setDisable(false);
 	}
 }

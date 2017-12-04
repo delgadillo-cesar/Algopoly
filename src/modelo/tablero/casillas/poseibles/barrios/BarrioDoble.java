@@ -12,7 +12,7 @@ public abstract class BarrioDoble extends Barrio {
 		super(propietario);
 	}
 
-		
+
 	public void construir() throws NadaParaConstruirException{
 		Construccion nuevaConstruccion = this.construcciones.construir(this);
 		this.construido = nuevaConstruccion;
@@ -20,6 +20,7 @@ public abstract class BarrioDoble extends Barrio {
 	}
 	
 	public int costoConstruccion() throws NadaParaConstruirException{
+		this.chequearComplemento();
 		return this.construcciones.costoConstruccion(this);
 	}
 
@@ -31,15 +32,20 @@ public abstract class BarrioDoble extends Barrio {
 	
 	protected void actualizarConstrucciones(Barrio complemento){
 		if (complemento.propietario() == this.propietario){
+			System.out.println(this.construcciones);
 			this.construcciones = this.construcciones.actualizarCon(new HastaDosCasas());
+			System.out.println(this.construcciones);
 			complemento.construcciones = complemento.construcciones.actualizarCon(new HastaDosCasas());
 		}
 
+		System.out.println(this.cantidadDePropiedades());
 		if (complemento.cantidadDePropiedades() == 2){
+			System.out.println("Hotel 1");
 			this.construcciones = this.construcciones.actualizarCon(new HastaHotel());
 		}
 		
 		if (this.cantidadDePropiedades() == 2){
+			System.out.println("Hotel 2");
 			complemento.construcciones = complemento.construcciones.actualizarCon(new HastaHotel());
 		}
 	}

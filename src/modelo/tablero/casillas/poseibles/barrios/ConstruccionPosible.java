@@ -7,7 +7,7 @@ import modelo.tablero.casillas.poseibles.*;
 
 public abstract class ConstruccionPosible {
 
-	List<Construible> construcciones;
+	protected List<Construible> construcciones;
 	
 	public Construccion construir(Barrio unBarrio) throws NadaParaConstruirException{
 		Construccion construccion = null;
@@ -15,7 +15,7 @@ public abstract class ConstruccionPosible {
 			Construible aConstruir = this.construcciones.get(0);
 			construccion = aConstruir.construirEn(unBarrio);
 			this.construcciones.remove(0);
-		}catch(NullPointerException e){
+		}catch(IndexOutOfBoundsException e){
 			throw new NadaParaConstruirException();
 		}
 		
@@ -27,7 +27,7 @@ public abstract class ConstruccionPosible {
 		try{
 			Construible aConstruir = this.construcciones.get(0);
 			return (aConstruir.costoConstruccionEn(unBarrio));
-		}catch(NullPointerException e){
+		}catch(IndexOutOfBoundsException e){
 			throw new NadaParaConstruirException();
 		}
 	}

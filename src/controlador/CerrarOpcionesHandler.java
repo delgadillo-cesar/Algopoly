@@ -1,5 +1,6 @@
-package Controlador;
+package controlador;
 
+import vista.Algopoly;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
@@ -15,9 +16,8 @@ public class CerrarOpcionesHandler implements EventHandler<ActionEvent> {
 	}
 
     public void handle(ActionEvent actionEvent) {
-    	System.out.println("Este funciona");
     	this.stage.close();
     	this.elEventHandler.handle(actionEvent);
+    	Algopoly.getInstance().redibujar();
     }
-
 }
