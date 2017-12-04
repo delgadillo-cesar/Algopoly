@@ -44,7 +44,6 @@ public abstract class Jugador {
 		if (unMonto > this.capital) throw new JugadorSinSaldoException();
 		
 		capital -= unMonto;
-		
 		return unMonto;
 	}
 

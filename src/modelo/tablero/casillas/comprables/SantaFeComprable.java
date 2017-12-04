@@ -8,6 +8,10 @@ public class SantaFeComprable implements Comprable {
 
 	private int precioCompra;
 
+	public SantaFeComprable(){
+		this.precioCompra = 15000;
+	}
+	
 	public void afectar(Jugador jugador) {
 	}
 

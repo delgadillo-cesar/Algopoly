@@ -9,6 +9,10 @@ public class BuenosAiresNorteComprable implements Comprable {
 
 	private int precioCompra;
 
+	public BuenosAiresNorteComprable(){
+		this.precioCompra = 25000;
+	}
+	
 	public void afectar(Jugador jugador) {
 	}
 

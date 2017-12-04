@@ -8,6 +8,10 @@ public class TrenComprable implements Comprable {
 
 	private int precioCompra;
 
+	public TrenComprable(){
+		this.precioCompra = 38000;
+	}
+	
 	public void afectar(Jugador jugador) {
 	}
 
