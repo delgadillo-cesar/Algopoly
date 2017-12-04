@@ -12,6 +12,6 @@ public class VistaCasillaCarcel extends VistaCasilla {
 
 		this.stringImagen = "file:src/vista/imagenes/CasillaCarcel.png";
         this.dibujarCasilla();
-        this.cambiarEstado(new EstadoAccion());
+        this.cambiarEstado(new EstadoCarcel());
 	}
 }
