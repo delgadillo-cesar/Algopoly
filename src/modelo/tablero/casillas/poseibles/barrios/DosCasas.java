@@ -28,7 +28,7 @@ public class DosCasas implements Construible {
 	public Construccion construirEn(Barrio unBarrio) {
 		unBarrio.valoresDeDosCasas(this);
 		unBarrio.propietario().pagarA(Banco.getInstance(), this.costoConstuccion);
-		return new Construccion(this.descripcion(), this.precioAlquiler, this,1);
+		return new Construccion(this.descripcion(), this.precioAlquiler, this,2);
 	}
 
 	public int costoConstruccionEn(Barrio unBarrio) {

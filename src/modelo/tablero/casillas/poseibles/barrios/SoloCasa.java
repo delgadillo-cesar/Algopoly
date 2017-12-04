@@ -1,7 +1,6 @@
 package modelo.tablero.casillas.poseibles.barrios;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SoloCasa extends ConstruccionPosible {
 
@@ -22,23 +21,25 @@ public class SoloCasa extends ConstruccionPosible {
 
 	@Override
 	public ConstruccionPosible actualizarConSoloCasa(ConstruccionPosible otraConstruccionPosible) {
-		return this;
+		return otraConstruccionPosible;
 	}
 
 	@Override
 	public ConstruccionPosible actualizarConHastaDosCasas(ConstruccionPosible otraConstruccionPosible) {
+/*
 		List<Construible> construccionesAux = new ArrayList<Construible>();
 
 		construccionesAux.addAll(this.construcciones);
 		construccionesAux.add(otraConstruccionPosible.construcciones.get(otraConstruccionPosible.construcciones.size() - 1));
 		
 		otraConstruccionPosible.construcciones = construccionesAux;
-		
+*/		
 		return otraConstruccionPosible;
 	}
 
 	@Override
 	public ConstruccionPosible actualizarConHastaHotel(ConstruccionPosible otraConstruccionPosible) {
+/*
 		List<Construible> construccionesAux = new ArrayList<Construible>();
 
 		construccionesAux.addAll(this.construcciones);
@@ -46,7 +47,7 @@ public class SoloCasa extends ConstruccionPosible {
 		construccionesAux.add(otraConstruccionPosible.construcciones.get(otraConstruccionPosible.construcciones.size() - 1));
 		
 		otraConstruccionPosible.construcciones = construccionesAux;
-		
+*/		
 		return otraConstruccionPosible;
 	}
 

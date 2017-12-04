@@ -13,7 +13,7 @@ public class HastaDosCasas extends ConstruccionPosible {
 
 	@Override
 	public ConstruccionPosible actualizarCon(ConstruccionPosible otraConstruccionPosible) {
-		return otraConstruccionPosible.actualizarConSoloCasa(this);
+		return otraConstruccionPosible.actualizarConHastaDosCasas(this);
 	}
 
 	@Override
@@ -23,23 +23,31 @@ public class HastaDosCasas extends ConstruccionPosible {
 
 	@Override
 	public ConstruccionPosible actualizarConSoloCasa(ConstruccionPosible otraConstruccionPosible) {
+		List<Construible> construccionesAux = new ArrayList<Construible>();
+
+		construccionesAux.addAll(otraConstruccionPosible.construcciones);
+		construccionesAux.add(this.construcciones.get(this.construcciones.size() - 1));
+		
+		this.construcciones = construccionesAux;
+		
 		return this;
 	}
 
 	@Override
 	public ConstruccionPosible actualizarConHastaDosCasas(ConstruccionPosible otraConstruccionPosible) {
-		return this;
+		return otraConstruccionPosible;
 	}
 
 	@Override
 	public ConstruccionPosible actualizarConHastaHotel(ConstruccionPosible otraConstruccionPosible) {
+/*
 		List<Construible> construccionesAux = new ArrayList<Construible>();
 
 		construccionesAux.addAll(this.construcciones);
 		construccionesAux.add(otraConstruccionPosible.construcciones.get(otraConstruccionPosible.construcciones.size() - 1));
 		
 		otraConstruccionPosible.construcciones = construccionesAux;
-		
+*/
 		return otraConstruccionPosible;
 	}
 

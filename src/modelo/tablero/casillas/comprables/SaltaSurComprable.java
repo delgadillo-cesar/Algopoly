@@ -8,6 +8,10 @@ public class SaltaSurComprable implements Comprable {
 
 	private int precioCompra;
 
+	public SaltaSurComprable(){
+		this.precioCompra = 23000;
+	}
+	
 	public void afectar(Jugador jugador) {
 	}
 

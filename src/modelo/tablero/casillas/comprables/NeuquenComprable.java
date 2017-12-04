@@ -8,6 +8,10 @@ public class NeuquenComprable implements Comprable {
 
 	private int precioCompra;
 
+	public NeuquenComprable(){
+		this.precioCompra = 17000;
+	}
+	
 	public void afectar(Jugador jugador) {
 	}
 
