@@ -10,7 +10,19 @@ import modelo.tablero.Tablero;
 import vista.Algopoly;
 import vista.jugador.VistaJugador;
 import vista.tablero.acciones.*;
-import vista.tablero.comprables.*;
+import vista.tablero.casilla.VistaCasillaAysa;
+import vista.tablero.casilla.VistaCasillaBuenosAiresNorte;
+import vista.tablero.casilla.VistaCasillaBuenosAiresSur;
+import vista.tablero.casilla.VistaCasillaCordobaNorte;
+import vista.tablero.casilla.VistaCasillaCordobaSur;
+import vista.tablero.casilla.VistaCasillaEdesur;
+import vista.tablero.casilla.VistaCasillaNeuquen;
+import vista.tablero.casilla.VistaCasillaSaltaNorte;
+import vista.tablero.casilla.VistaCasillaSaltaSur;
+import vista.tablero.casilla.VistaCasillaSantaFe;
+import vista.tablero.casilla.VistaCasillaSubte;
+import vista.tablero.casilla.VistaCasillaTren;
+import vista.tablero.casilla.VistaCasillaTucuman;
 import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -79,27 +91,29 @@ public class VistaTablero extends BorderPane {
 	    this.setBackground(new Background(imagenDeFondo));
 
 	    this.casillas = new HashMap<Integer, VistaCasilla>();
-	    this.casillas.put(Tablero.CASILLA_SALIDA, new VistaSalida());
-	    this.casillas.put(Tablero.CASILLA_QUINI, new VistaQuini());
-	    this.casillas.put(Tablero.CASILLA_BUENOS_AIRES_SUR, new VistaBuenosAiresSurComprable());
-	    this.casillas.put(Tablero.CASILLA_EDESUR, new VistaEdesurComprable());
-	    this.casillas.put(Tablero.CASILLA_BUENOS_AIRES_NORTE, new VistaBuenosAiresNorteComprable());
-	    this.casillas.put(Tablero.CASILLA_CARCEL, new VistaCarcel());
-	    this.casillas.put(Tablero.CASILLA_CORDOBA_SUR, new VistaCordobaSurComprable());
-	    this.casillas.put(Tablero.CASILLA_AVANCE_DINAMICO, new VistaAvanceDinamico());
-	    this.casillas.put(Tablero.CASILLA_SUBTE, new VistaSubteComprable());
-	    this.casillas.put(Tablero.CASILLA_CORDOBA_NORTE, new VistaCordobaNorteComprable());
-	    this.casillas.put(Tablero.CASILLA_IMPUESTO_DE_LUJO, new VistaImpuestoLujo());
-	    this.casillas.put(Tablero.CASILLA_SANTA_FE, new VistaSantaFeComprable());
-	    this.casillas.put(Tablero.CASILLA_AYSA, new VistaAysaComprable());
-	    this.casillas.put(Tablero.CASILLA_SALTA_NORTE, new VistaSaltaNorteComprable());
-	    this.casillas.put(Tablero.CASILLA_SALTA_SUR, new VistaSaltaSurComprable());
-	    this.casillas.put(Tablero.CASILLA_POLICIA, new VistaPolicia());
-	    this.casillas.put(Tablero.CASILLA_TREN, new VistaTrenComprable());
-	    this.casillas.put(Tablero.CASILLA_NEUQUEN, new VistaNeuquenComprable());
-	    this.casillas.put(Tablero.CASILLA_RETROCESO_DINAMICO, new VistaRetrocesoDinamico());
-	    this.casillas.put(Tablero.CASILLA_TUCUMAN, new VistaTucumanComprable());
 
+	    this.casillas.put(Tablero.CASILLA_SALIDA, new VistaCasillaSalida());
+	    this.casillas.put(Tablero.CASILLA_QUINI, new VistaCasillaQuini());
+	    this.casillas.put(Tablero.CASILLA_BUENOS_AIRES_SUR, new VistaCasillaBuenosAiresSur());
+	    this.casillas.put(Tablero.CASILLA_EDESUR, new VistaCasillaEdesur());
+	    this.casillas.put(Tablero.CASILLA_BUENOS_AIRES_NORTE, new VistaCasillaBuenosAiresNorte());
+	    this.casillas.put(Tablero.CASILLA_CARCEL, new VistaCasillaCarcel());
+	    this.casillas.put(Tablero.CASILLA_CORDOBA_SUR, new VistaCasillaCordobaSur());
+	    this.casillas.put(Tablero.CASILLA_AVANCE_DINAMICO, new VistaCasillaAvanceDinamico());
+	    this.casillas.put(Tablero.CASILLA_SUBTE, new VistaCasillaSubte());
+	    this.casillas.put(Tablero.CASILLA_CORDOBA_NORTE, new VistaCasillaCordobaNorte());
+	    this.casillas.put(Tablero.CASILLA_IMPUESTO_DE_LUJO, new VistaCasillaImpuestoLujo());
+	    this.casillas.put(Tablero.CASILLA_SANTA_FE, new VistaCasillaSantaFe());
+	    this.casillas.put(Tablero.CASILLA_AYSA, new VistaCasillaAysa());
+	    this.casillas.put(Tablero.CASILLA_SALTA_NORTE, new VistaCasillaSaltaNorte());
+	    this.casillas.put(Tablero.CASILLA_SALTA_SUR, new VistaCasillaSaltaSur());
+	    this.casillas.put(Tablero.CASILLA_POLICIA, new VistaCasillaPolicia());
+	    this.casillas.put(Tablero.CASILLA_TREN, new VistaCasillaTren());
+	    this.casillas.put(Tablero.CASILLA_NEUQUEN, new VistaCasillaNeuquen());
+	    this.casillas.put(Tablero.CASILLA_RETROCESO_DINAMICO, new VistaCasillaRetrocesoDinamico());
+	    this.casillas.put(Tablero.CASILLA_TUCUMAN, new VistaCasillaTucuman());
+
+	    
         this.dibujarTablero();
         this.setPadding(new Insets(0));
 	}
@@ -198,5 +212,9 @@ public class VistaTablero extends BorderPane {
 		casilla.jugadorCaeEnCasilla(Algopoly.getInstance().obtenerVistaJugador(unJugador));
 
 		this.dibujarTablero();
+	}
+
+	public VistaCasilla obtenerCasilla(Integer casilla) {
+		return this.casillas.get(casilla);
 	}
 }

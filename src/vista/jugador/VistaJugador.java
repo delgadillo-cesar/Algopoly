@@ -2,9 +2,6 @@ package vista.jugador;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import vista.tablero.VistaTablero;
-
 import modelo.entidades.Jugador;
 import modelo.juego.Turno;
 import javafx.geometry.Insets;

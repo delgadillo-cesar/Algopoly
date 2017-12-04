@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import vista.tablero.comprables.VistaOpcionesComprable;
+import vista.tablero.estadosComprables.VistaOpcionesComprable;
 
 public class OpcionesComprableHandler implements EventHandler<MouseEvent> {
 

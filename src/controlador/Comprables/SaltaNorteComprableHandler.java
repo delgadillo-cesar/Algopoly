@@ -2,8 +2,9 @@ package controlador.Comprables;
 
 import modelo.juego.Turno;
 import modelo.tablero.Comprable;
+import modelo.tablero.Tablero;
 import vista.tablero.VistaTablero;
-import vista.tablero.poseibles.VistaSaltaNortePoseible;
+import vista.tablero.estadosPoseibles.SaltaNorteEstadoPoseible;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -18,9 +19,7 @@ public class SaltaNorteComprableHandler implements EventHandler<ActionEvent> {
 	
     public void handle(ActionEvent actionEvent) {
     	this.unComprable.comprar(Turno.getInstance().turnoActual());
-
-    	VistaSaltaNortePoseible vistaSaltaNorte = new VistaSaltaNortePoseible();
-    	VistaTablero.getInstance().setSaltaNorte(vistaSaltaNorte);
+    	VistaTablero.getInstance().obtenerCasilla(Tablero.CASILLA_SALTA_NORTE).cambiarEstado(new SaltaNorteEstadoPoseible());
     }
 
 }

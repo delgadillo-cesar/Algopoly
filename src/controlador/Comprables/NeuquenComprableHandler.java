@@ -4,8 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.juego.Turno;
 import modelo.tablero.Comprable;
+import modelo.tablero.Tablero;
 import vista.tablero.VistaTablero;
-import vista.tablero.poseibles.VistaNeuquenPoseible;
+import vista.tablero.estadosPoseibles.NeuquenEstadoPoseible;
 
 public class NeuquenComprableHandler implements EventHandler<ActionEvent> {
 
@@ -18,9 +19,7 @@ public class NeuquenComprableHandler implements EventHandler<ActionEvent> {
 	
     public void handle(ActionEvent actionEvent) {
     	this.unComprable.comprar(Turno.getInstance().turnoActual());
-
-    	VistaNeuquenPoseible vistaNeuquen = new VistaNeuquenPoseible();
-    	VistaTablero.getInstance().setNeuquen(vistaNeuquen);
+    	VistaTablero.getInstance().obtenerCasilla(Tablero.CASILLA_NEUQUEN).cambiarEstado(new NeuquenEstadoPoseible());
     }
 
 }

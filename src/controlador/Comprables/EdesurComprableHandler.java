@@ -2,8 +2,9 @@ package controlador.Comprables;
 
 import modelo.juego.Turno;
 import modelo.tablero.Comprable;
+import modelo.tablero.Tablero;
 import vista.tablero.VistaTablero;
-import vista.tablero.poseibles.VistaEdesurPoseible;
+import vista.tablero.estadosPoseibles.EdesurEstadoPoseible;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -19,8 +20,6 @@ public class EdesurComprableHandler implements EventHandler<ActionEvent> {
 	
     public void handle(ActionEvent actionEvent) {
     	this.unComprable.comprar(Turno.getInstance().turnoActual());
-
-    	VistaEdesurPoseible vistaEdesur = new VistaEdesurPoseible();
-    	VistaTablero.getInstance().setEdesur(vistaEdesur);
+    	VistaTablero.getInstance().obtenerCasilla(Tablero.CASILLA_EDESUR).cambiarEstado(new EdesurEstadoPoseible());
     }
 }

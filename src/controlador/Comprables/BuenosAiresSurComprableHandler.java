@@ -4,8 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.juego.Turno;
 import modelo.tablero.Comprable;
+import modelo.tablero.Tablero;
 import vista.tablero.VistaTablero;
-import vista.tablero.poseibles.VistaBuenosAiresSurPoseible;
+import vista.tablero.estadosPoseibles.BuenosAiresSurEstadoPoseible;
 
 public class BuenosAiresSurComprableHandler  implements EventHandler<ActionEvent> {
 
@@ -19,10 +20,7 @@ public class BuenosAiresSurComprableHandler  implements EventHandler<ActionEvent
 	
     public void handle(ActionEvent actionEvent) {
     	this.unComprable.comprar(Turno.getInstance().turnoActual());
-
-    	
-    	VistaBuenosAiresSurPoseible vistaBuenosAiresSurr = new VistaBuenosAiresSurPoseible();
-    	VistaTablero.getInstance().setBuenosAiresSur(vistaBuenosAiresSurr);
+    	VistaTablero.getInstance().obtenerCasilla(Tablero.CASILLA_BUENOS_AIRES_SUR).cambiarEstado(new BuenosAiresSurEstadoPoseible());
     }
 
 }

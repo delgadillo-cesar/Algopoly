@@ -14,7 +14,9 @@ import javafx.scene.layout.VBox;
 
 public abstract class VistaCasilla extends VBox {
 
-	protected String stringImagen;
+	protected EstadoVista estadoVista;
+	protected String stringImagen;	
+	
 	protected Image imagen;
 	protected Canvas canvas;
 	protected HashSet<VistaJugador> jugadores;
@@ -68,11 +70,19 @@ public abstract class VistaCasilla extends VBox {
 
 	public void jugadorCaeEnCasilla(VistaJugador unJugador){
 		this.jugadores.add(unJugador);
+		this.estadoVista.jugadorCayoEnCasilla(unJugador);
 	}
-	
+
 	public void jugadorSaleDeCasilla(VistaJugador unJugador){
 		this.jugadores.remove(unJugador);
 	}
 	
-	public abstract void habilitarParaJugador(Jugador unJugador);
+	public void habilitarParaJugador(Jugador unJugador){
+		this.setDisable(!this.estadoVista.habilitarParaJugador(unJugador));
+	}
+	
+	public void cambiarEstado(EstadoVista estado){
+		this.estadoVista = estado;
+		this.setOnMouseClicked(this.estadoVista.obtenerHandler(this.imagen));
+	}
 }

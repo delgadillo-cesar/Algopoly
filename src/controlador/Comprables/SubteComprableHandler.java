@@ -4,8 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.juego.Turno;
 import modelo.tablero.Comprable;
+import modelo.tablero.Tablero;
 import vista.tablero.VistaTablero;
-import vista.tablero.poseibles.VistaSubtePoseible;
+import vista.tablero.estadosPoseibles.SubteEstadoPoseible;
 
 public class SubteComprableHandler implements EventHandler<ActionEvent> {
 
@@ -18,8 +19,6 @@ public class SubteComprableHandler implements EventHandler<ActionEvent> {
 	
     public void handle(ActionEvent actionEvent) {
     	this.unComprable.comprar(Turno.getInstance().turnoActual());
-
-    	VistaSubtePoseible vistaSubte = new VistaSubtePoseible();
-    	VistaTablero.getInstance().setSubte(vistaSubte);
+    	VistaTablero.getInstance().obtenerCasilla(Tablero.CASILLA_SUBTE).cambiarEstado(new SubteEstadoPoseible());
     }
 }

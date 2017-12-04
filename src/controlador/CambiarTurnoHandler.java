@@ -11,6 +11,7 @@ public class CambiarTurnoHandler implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent arg0) {
 		Turno.getInstance().cambiarTurno();
 		Algopoly.getInstance().tirarDadosSetDisable(false);
+		Algopoly.getInstance().terminarTurnoSetDisable(true);
 		Algopoly.getInstance().redibujar();
 	}
 
