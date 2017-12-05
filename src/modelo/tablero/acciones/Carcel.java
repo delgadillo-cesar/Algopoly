@@ -9,51 +9,66 @@ import modelo.tablero.Casilla;
 
 public class Carcel implements Casilla {
 
-	private HashMap<Jugador, Integer> diasRestantes;
-	private final Integer sentencia = Integer.valueOf(3);
-	private final Integer diasSinFianza = Integer.valueOf(1);
-	private final Integer fianza = Integer.valueOf(45000);
+	private HashMap<Jugador, Condena> condenados;
+	private HashMap<Condena, Condena> cicloDeCondenas;
+	private final int fianza = 45000;
+	Condena turnoActual;
+	Condena primerTurno;
+	Condena segundoTurno;
+	Condena tercerTurno;
+	Condena libre;
 
 	public Carcel() {
-		this.diasRestantes = new HashMap<Jugador, Integer>();
+		
+		cicloDeCondenas = new HashMap <Condena, Condena> ();
+		condenados = new HashMap <Jugador, Condena> ();
+		
+		turnoActual = new CondenaRealSinFianza(0);
+		primerTurno = new CondenaRealSinFianza(1);
+		segundoTurno = new CondenaRealConFianza(2);
+		tercerTurno = new CondenaRealConFianza(3);
+		libre = new NoCondena(4);
+		
+		cicloDeCondenas.put(turnoActual, primerTurno);
+		cicloDeCondenas.put(primerTurno, segundoTurno);
+		cicloDeCondenas.put(segundoTurno, tercerTurno);
+		cicloDeCondenas.put(tercerTurno, libre);
+		cicloDeCondenas.put(libre, libre);
 	}
 
-	public void encarcelar(Jugador unJugador) {
-		this.diasRestantes.put(unJugador, this.sentencia);
-		unJugador.cambiarTipoDeMovimiento(new MovimientoEncarcelado());
+	public void encarcelar(Jugador unJugador) {		
+		
+		condenados.put(unJugador, turnoActual);
+		turnoActual.afectarJugador(unJugador);
 	}
 
 	private void revizarCondena(Jugador unJugador) {
-		if (diasRestantes.containsKey(unJugador)) {
-			Integer condenaRestante = diasRestantes.get(unJugador);
-
-			diasRestantes.remove(unJugador);
-			if (condenaRestante > 0)
-				diasRestantes.put(unJugador, --condenaRestante);
-		}
+		
+		Condena siguiente = cicloDeCondenas.get(condenados.get(unJugador));
+		condenados.put(unJugador, siguiente);
+		siguiente.afectarJugador(unJugador);
+		
 	}
 
 	public boolean estaPreso(Jugador unJugador) {
-		this.revizarCondena(unJugador);
+		
+		try {
+			this.revizarCondena(unJugador);
+		} catch (Exception e) {
+			return false;
+		}
 
-		return (diasRestantes.containsKey(unJugador));
+		return (condenados.get(unJugador) != libre);
 	}
 
 	public boolean puedePagarFianza(Jugador unJugador) {
-		Boolean fianzaDisponible = false;
-
-		if (diasRestantes.containsKey(unJugador)) {
-			Integer condenaRestante = diasRestantes.get(unJugador);
-			if (condenaRestante < sentencia - diasSinFianza)
-				fianzaDisponible = true;
-		}
-
-		return fianzaDisponible;
+		
+		return condenados.get(unJugador).fianzaDisponible();
 	}
 
 	public void pagarFianza(Jugador unJugador) {
 		unJugador.pagarA(Banco.getInstance(),this.fianza);
-		diasRestantes.remove(unJugador);
+		condenados.remove(unJugador);
 	}
 
 	
