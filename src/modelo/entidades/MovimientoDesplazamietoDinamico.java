@@ -18,13 +18,15 @@ public abstract class MovimientoDesplazamietoDinamico extends TipoMovimiento {
 		  int nroNuevaCasilla;
 		  PosicionTablero posicionJugador = unJugador.obtenerPosicion();
 
-		  nroNuevaCasilla = posicionJugador.getPosicion() + ((this.calcularCantidadCasillerosADesplazar(unJugador, cantidadDeCasilleros)) * this.direccion);
+		  int cantidadAMover = (this.calcularCantidadCasillerosADesplazar(unJugador, cantidadDeCasilleros)) * this.direccion;
+		  nroNuevaCasilla = posicionJugador.getPosicion() + cantidadAMover;
 		  posicionJugador.setPosicion(nroNuevaCasilla);
 		  Tablero.ajustarPosicionSegunBordes(posicionJugador);
 		  
 		  unJugador.cambiarPosicion(posicionJugador);
 		  unJugador.cambiarTipoDeMovimiento(new MovimientoLibre());
-		  Tablero.getInstance().elJugadorSeDesplazo(unJugador); /*Para la interaccion con la nueva casilla*/
+		  
+		  if (cantidadAMover != 0) Tablero.getInstance().elJugadorSeDesplazo(unJugador); /*Para la interaccion con la nueva casilla*/
 	}
 
 	public void setDireccion(int unaDireccion) {

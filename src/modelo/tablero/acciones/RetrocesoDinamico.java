@@ -11,7 +11,6 @@ public class RetrocesoDinamico implements Casilla {
 	
 	private HashMap<Integer,MovimientoDesplazamietoDinamico> tipoDeDesplazamiento;
 	
-	
 	public	RetrocesoDinamico (){
 		this.tipoDeDesplazamiento = new HashMap<Integer,MovimientoDesplazamietoDinamico>();
 		this.tipoDeDesplazamiento.put(2, new MovimientoDesplazamietoDinamico3());
@@ -27,9 +26,7 @@ public class RetrocesoDinamico implements Casilla {
 		this.tipoDeDesplazamiento.put(12, new MovimientoDesplazamietoDinamico1());
 	}
 	
-	
 	public void afectar(Jugador jugador) {
-		
 		int dados = Dados.getInstance().getValor();
 		
 		MovimientoDesplazamietoDinamico tipoMovimiento = this.tipoDeDesplazamiento.get(dados);
@@ -38,5 +35,4 @@ public class RetrocesoDinamico implements Casilla {
 		jugador.cambiarTipoDeMovimiento(tipoMovimiento);
 		jugador.mover(dados);
 	}
-
 }
