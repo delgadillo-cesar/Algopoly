@@ -19,7 +19,7 @@ public class TurnoTest {
 		LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
 		jugadores.add(primerJugador);
 		jugadores.add(segundoJugador);
-		Turno turno = new Turno(jugadores);
+		Turno turno = Turno.inicializarTurno(jugadores);
 		Assert.assertNotNull(turno);
 	}
 
@@ -30,7 +30,7 @@ public class TurnoTest {
 		LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
 		jugadores.add(primerJugador);
 		jugadores.add(segundoJugador);
-		Turno turno = new Turno(jugadores);
+		Turno turno = Turno.inicializarTurno(jugadores);
 		do {
 			Dados.getInstance().lanzarDados();
 		} while (Dados.getInstance().salieronPares());
@@ -44,7 +44,7 @@ public class TurnoTest {
 		LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
 		jugadores.add(primerJugador);
 		jugadores.add(segundoJugador);
-		Turno turno = new Turno(jugadores);
+		Turno turno = Turno.inicializarTurno(jugadores);
 		do {
 			Dados.getInstance().lanzarDados();
 		} while (Dados.getInstance().salieronPares());
@@ -59,7 +59,7 @@ public class TurnoTest {
 		LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
 		jugadores.add(primerJugador);
 		jugadores.add(segundoJugador);
-		Turno turno = new Turno(jugadores);
+		Turno turno = Turno.inicializarTurno(jugadores);
 		do {
 			Dados.getInstance().lanzarDados();
 		} while (!Dados.getInstance().salieronPares());
@@ -73,7 +73,7 @@ public class TurnoTest {
 		LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
 		jugadores.add(primerJugador);
 		jugadores.add(segundoJugador);
-		Turno turno = new Turno(jugadores);
+		Turno turno = Turno.inicializarTurno(jugadores);
 		do {
 			Dados.getInstance().lanzarDados();
 		} while (!Dados.getInstance().salieronPares());

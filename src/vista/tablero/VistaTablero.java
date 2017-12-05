@@ -6,7 +6,7 @@ import java.util.Map;
 import modelo.entidades.Jugador;
 import modelo.juego.Turno;
 import modelo.tablero.Tablero;
-
+import modelo.tablero.acciones.Carcel;
 import vista.Algopoly;
 import vista.jugador.VistaJugador;
 import vista.tablero.acciones.*;
@@ -200,6 +200,8 @@ public class VistaTablero extends BorderPane {
 
 	public void moverJugadrDeTurno(int cantidadAMover) {
 		Jugador unJugador = Turno.getInstance().turnoActual();
+		Carcel laCarcel = (Carcel) Tablero.getInstance().obtenerCasilla(6);
+		laCarcel.revizarCondena(unJugador);
 		int casillaAnterior = Tablero.getInstance().casillaDeJugador(unJugador);
 		unJugador.mover(cantidadAMover);
 		int casillaPosterior = Tablero.getInstance().casillaDeJugador(unJugador);

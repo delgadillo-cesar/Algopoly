@@ -26,7 +26,8 @@ public class Dados {
 	}
 	
 	public int getValor() {
-		return dado1 + dado2;
+		
+	return dado1 + dado2;
 	}
 	
 	public boolean salieronPares ()	{
