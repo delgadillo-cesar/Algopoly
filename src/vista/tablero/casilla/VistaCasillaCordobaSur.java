@@ -1,15 +1,15 @@
 package vista.tablero.casilla;
 
-import vista.tablero.VistaCasilla;
 import vista.tablero.estadosComprables.CordobaSurEstadoComprable;
 
-public class VistaCasillaCordobaSur extends VistaCasilla {
+public class VistaCasillaCordobaSur extends VistaCasillaBarrio {
 	
 	public VistaCasillaCordobaSur(){
 		super();
 		this.stringImagen = "file:src/vista/imagenes/CasillaCordobaSur.png";
-        this.dibujarCasilla();
+		this.dibujarFondo();
         this.cambiarEstado(new CordobaSurEstadoComprable());
+        this.dibujarCasilla();
 	}
 
 }

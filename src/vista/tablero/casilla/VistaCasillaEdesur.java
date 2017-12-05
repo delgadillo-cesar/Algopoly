@@ -8,7 +8,8 @@ public class VistaCasillaEdesur extends VistaCasilla {
 	public VistaCasillaEdesur(){
 		super();
 		this.stringImagen = "file:src/vista/imagenes/CasillaEdesur.png";
-        this.dibujarCasilla();
+		this.dibujarFondo();
         this.cambiarEstado(new EdesurEstadoComprable());
+        this.dibujarCasilla();
 	}
 }

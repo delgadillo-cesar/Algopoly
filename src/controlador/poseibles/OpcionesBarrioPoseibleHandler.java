@@ -1,10 +1,10 @@
 package controlador.poseibles;
 
-import modelo.tablero.casillas.poseibles.barrios.Barrio;
 import vista.tablero.estadosPoseibles.VistaOpcionesBarrioPoseible;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import modelo.tablero.poseibles.barrios.Barrio;
 
 public class OpcionesBarrioPoseibleHandler implements EventHandler<MouseEvent> {
 

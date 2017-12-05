@@ -9,9 +9,9 @@ import org.junit.Test;
 
 import modelo.entidades.Jugador;
 import modelo.entidades.MismoJugadorException;
-import modelo.tablero.casillas.poseibles.NadaParaConstruirException;
-import modelo.tablero.casillas.poseibles.barrios.Barrio;
-import modelo.tablero.casillas.poseibles.barrios.Construccion;
+import modelo.tablero.poseibles.NadaParaConstruirException;
+import modelo.tablero.poseibles.barrios.Barrio;
+import modelo.tablero.poseibles.barrios.construcciones.Construccion;
 
 public class BarrioTest {
 

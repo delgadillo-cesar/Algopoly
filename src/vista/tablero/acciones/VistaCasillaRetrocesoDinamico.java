@@ -1,7 +1,7 @@
 package vista.tablero.acciones;
 
 import modelo.tablero.Tablero;
-import modelo.tablero.casillas.acciones.RetrocesoDinamico;
+import modelo.tablero.acciones.RetrocesoDinamico;
 import vista.tablero.VistaCasilla;
 
 public class VistaCasillaRetrocesoDinamico extends VistaCasilla {
@@ -11,7 +11,7 @@ public class VistaCasillaRetrocesoDinamico extends VistaCasilla {
 		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_RETROCESO_DINAMICO, new RetrocesoDinamico());
 
 		this.stringImagen = "file:src/vista/imagenes/CasillaRetrocesoDinamico.png";
-        this.dibujarCasilla();
         this.cambiarEstado(new EstadoAccion());
+        this.dibujarCasilla();
 	}
 }

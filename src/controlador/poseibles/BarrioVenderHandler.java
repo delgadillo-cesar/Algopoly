@@ -1,8 +1,8 @@
 package controlador.poseibles;
 
-import modelo.tablero.casillas.poseibles.barrios.Barrio;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import modelo.tablero.poseibles.barrios.Barrio;
 
 public class BarrioVenderHandler implements EventHandler<ActionEvent> {
 

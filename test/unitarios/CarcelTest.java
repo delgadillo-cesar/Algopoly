@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import modelo.entidades.Jugador;
 import modelo.entidades.JugadorUno;
-import modelo.tablero.casillas.acciones.Carcel;
+import modelo.tablero.acciones.Carcel;
 
 public class CarcelTest {
 

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelo.tablero.*;
-import modelo.tablero.casillas.poseibles.Compania;
-import modelo.tablero.casillas.poseibles.barrios.Barrio;
+import modelo.tablero.poseibles.Compania;
+import modelo.tablero.poseibles.barrios.Barrio;
 
 
 public abstract class Jugador {

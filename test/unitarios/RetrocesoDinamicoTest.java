@@ -7,10 +7,10 @@ import modelo.entidades.Jugador;
 import modelo.entidades.JugadorUno;
 import modelo.juego.Dados;
 import modelo.tablero.PosicionTablero;
-import modelo.tablero.casillas.acciones.RetrocesoDinamico;
-import modelo.tablero.casillas.poseibles.barrios.Barrio;
-import modelo.tablero.casillas.poseibles.barrios.BarrioNeuquen;
-import modelo.tablero.casillas.poseibles.barrios.BarrioTucuman;
+import modelo.tablero.acciones.RetrocesoDinamico;
+import modelo.tablero.poseibles.barrios.Barrio;
+import modelo.tablero.poseibles.barrios.BarrioNeuquen;
+import modelo.tablero.poseibles.barrios.BarrioTucuman;
 
 public class RetrocesoDinamicoTest {
 

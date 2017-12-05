@@ -12,7 +12,7 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import modelo.tablero.casillas.poseibles.Compania;
+import modelo.tablero.poseibles.Compania;
 import controlador.CerrarOpcionesHandler;
 import controlador.poseibles.CompaniaVenderHandler;
 

@@ -8,8 +8,9 @@ public class VistaCasillaSubte extends VistaCasilla {
 	public VistaCasillaSubte(){
 		super();
 		this.stringImagen = "file:src/vista/imagenes/CasillaSubte.png";
-        this.dibujarCasilla();
+		this.dibujarFondo();
         this.cambiarEstado(new SubteEstadoComprable());
+        this.dibujarCasilla();
 	}
 
 }

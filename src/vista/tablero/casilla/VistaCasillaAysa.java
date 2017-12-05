@@ -8,7 +8,8 @@ public class VistaCasillaAysa extends VistaCasilla {
 	public VistaCasillaAysa(){
 		super();
 		this.stringImagen = "file:src/vista/imagenes/CasillaAysa.png";
-        this.dibujarCasilla();
+		this.dibujarFondo();
         this.cambiarEstado(new AysaEstadoComprable());
+        this.dibujarCasilla();
 	}
 }

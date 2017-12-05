@@ -6,9 +6,10 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
-import modelo.tablero.casillas.acciones.Carcel;
+import modelo.tablero.acciones.Carcel;
 import vista.jugador.VistaJugador;
 import vista.tablero.EstadoVista;
+import vista.tablero.VistaCasilla;
 
 public class EstadoCarcel extends EstadoVista {
 
@@ -27,5 +28,11 @@ public class EstadoCarcel extends EstadoVista {
 	@Override
 	public EventHandler<MouseEvent> obtenerHandler(Image imagen) {
 		return new OpcionesCarcelHandler(imagen);
+	}
+
+	@Override
+	public void dibujame(VistaCasilla vistaCasilla) {
+		vistaCasilla.dibujarFondo();
+		vistaCasilla.dibujarJugadores();
 	}
 }

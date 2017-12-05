@@ -8,7 +8,8 @@ public class VistaCasillaTren extends VistaCasilla {
 	public VistaCasillaTren(){
 		super();
 		this.stringImagen = "file:src/vista/imagenes/CasillaTren.png";
-        this.dibujarCasilla();
+		this.dibujarFondo();
         this.cambiarEstado(new TrenEstadoComprable());
+        this.dibujarCasilla();
 	}
 }

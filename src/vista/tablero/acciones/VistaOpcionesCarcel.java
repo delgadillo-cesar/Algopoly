@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import modelo.entidades.Jugador;
 import modelo.juego.Turno;
 import modelo.tablero.Tablero;
-import modelo.tablero.casillas.acciones.Carcel;
+import modelo.tablero.acciones.Carcel;
 
 public class VistaOpcionesCarcel extends Stage {
 

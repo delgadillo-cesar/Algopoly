@@ -1,7 +1,7 @@
 package vista.tablero.acciones;
 
 import modelo.tablero.Tablero;
-import modelo.tablero.casillas.acciones.Carcel;
+import modelo.tablero.acciones.Carcel;
 import vista.tablero.VistaCasilla;
 
 public class VistaCasillaCarcel extends VistaCasilla {
@@ -11,7 +11,8 @@ public class VistaCasillaCarcel extends VistaCasilla {
 		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_CARCEL, new Carcel());
 
 		this.stringImagen = "file:src/vista/imagenes/CasillaCarcel.png";
-        this.dibujarCasilla();
+		this.dibujarFondo();
         this.cambiarEstado(new EstadoCarcel());
+        this.dibujarCasilla();
 	}
 }

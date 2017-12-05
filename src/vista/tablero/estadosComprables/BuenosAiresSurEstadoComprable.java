@@ -5,31 +5,16 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import controlador.Comprables.BuenosAiresSurComprableHandler;
 import controlador.Comprables.OpcionesComprableHandler;
-import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
-import modelo.tablero.casillas.comprables.BuenosAiresSurComprable;
-import vista.jugador.VistaJugador;
-import vista.tablero.EstadoVista;
+import modelo.tablero.comprables.BuenosAiresSurComprable;
 
-public class BuenosAiresSurEstadoComprable extends EstadoVista {
+public class BuenosAiresSurEstadoComprable extends EstadoVistaComprable {
 	
 	private BuenosAiresSurComprable buenosAiresSurComprable;
-	private boolean habilitarCasilla;
 	
 	public BuenosAiresSurEstadoComprable(){
 		this.buenosAiresSurComprable = new BuenosAiresSurComprable();
 		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_BUENOS_AIRES_SUR, this.buenosAiresSurComprable);
-	}
-
-	public boolean habilitarParaJugador(Jugador unJugador) {
-		boolean habilitar = this.habilitarCasilla;
-		this.habilitarCasilla = false;
-		return habilitar;
-	}
-	
-	@Override
-	public void jugadorCayoEnCasilla(VistaJugador unJugador){
-		this.habilitarCasilla = true;
 	}
 
 	@Override

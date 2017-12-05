@@ -7,11 +7,11 @@ import modelo.entidades.Jugador;
 import modelo.entidades.JugadorDos;
 import modelo.entidades.JugadorUno;
 import modelo.juego.Dados;
-import modelo.tablero.casillas.poseibles.Tren;
-import modelo.tablero.casillas.poseibles.Aysa;
-import modelo.tablero.casillas.poseibles.Compania;
-import modelo.tablero.casillas.poseibles.Edesur;
-import modelo.tablero.casillas.poseibles.Subte;
+import modelo.tablero.poseibles.Aysa;
+import modelo.tablero.poseibles.Compania;
+import modelo.tablero.poseibles.Edesur;
+import modelo.tablero.poseibles.Subte;
+import modelo.tablero.poseibles.Tren;
 
 public class CompaniaTrenTest {
 

@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
-import modelo.tablero.casillas.acciones.Carcel;
+import modelo.tablero.acciones.Carcel;
 
 public class CarcelFianzaHandler implements EventHandler<ActionEvent> {
 

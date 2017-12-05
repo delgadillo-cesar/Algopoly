@@ -26,7 +26,6 @@ public class Dados {
 	}
 	
 	public int getValor() {
-		
 		return dado1 + dado2;
 	}
 	

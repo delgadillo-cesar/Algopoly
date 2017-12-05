@@ -1,14 +1,14 @@
 package vista.tablero.casilla;
 
-import vista.tablero.VistaCasilla;
 import vista.tablero.estadosComprables.SaltaNorteEstadoComprable;
 
-public class VistaCasillaSaltaNorte extends VistaCasilla {
+public class VistaCasillaSaltaNorte extends VistaCasillaBarrio {
 	
 	public VistaCasillaSaltaNorte(){
 		super();
 		this.stringImagen = "file:src/vista/imagenes/CasillaSaltaNorte.png";
-        this.dibujarCasilla();
+		this.dibujarFondo();
         this.cambiarEstado(new SaltaNorteEstadoComprable());
+        this.dibujarCasilla();
 	}
 }

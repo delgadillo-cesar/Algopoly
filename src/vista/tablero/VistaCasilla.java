@@ -48,10 +48,7 @@ public abstract class VistaCasilla extends VBox {
 	    this.distribucionFichas.put(3, posFichas);
 	}
 	
-	public void dibujarCasilla(){
-	    this.imagen = new Image(stringImagen, VistaTablero.ANCHO_CASILLA, VistaTablero.ALTO_CASILLA, true, false);
-		this.canvas.getGraphicsContext2D().drawImage(this.imagen, 0, 0);
-		
+	public void dibujarJugadores(){
 		Iterator<VistaJugador> i = this.jugadores.iterator();
 		VistaJugador jugador;
 
@@ -66,6 +63,15 @@ public abstract class VistaCasilla extends VBox {
 				index ++;
 			}
 		}
+	}
+	
+	public void dibujarFondo(){
+	    this.imagen = new Image(stringImagen, VistaTablero.ANCHO_CASILLA, VistaTablero.ALTO_CASILLA, true, true);
+		this.canvas.getGraphicsContext2D().drawImage(this.imagen, 0, 0);
+	}
+
+	public void dibujarCasilla(){
+		this.estadoVista.dibujame(this);
 	}
 
 	public void jugadorCaeEnCasilla(VistaJugador unJugador){

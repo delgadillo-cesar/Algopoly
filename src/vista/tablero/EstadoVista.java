@@ -11,5 +11,6 @@ public abstract class EstadoVista {
 	public abstract boolean habilitarParaJugador(Jugador unJugador);
 	public abstract void jugadorCayoEnCasilla(VistaJugador unJugador);
 	public abstract EventHandler<MouseEvent> obtenerHandler(Image imagen);
+	public abstract void dibujame(VistaCasilla vistaCasilla);
 
 }

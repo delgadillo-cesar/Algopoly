@@ -8,7 +8,7 @@ import modelo.entidades.JugadorDos;
 import modelo.entidades.JugadorUno;
 import modelo.tablero.Casilla;
 import modelo.tablero.Tablero;
-import modelo.tablero.casillas.acciones.Policia;
+import modelo.tablero.acciones.Policia;
 
 public class PoliciaTest {
 

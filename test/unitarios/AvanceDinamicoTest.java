@@ -6,9 +6,9 @@ import org.junit.Test;
 import modelo.entidades.JugadorUno;
 import modelo.juego.Dados;
 import modelo.tablero.PosicionTablero;
-import modelo.tablero.casillas.acciones.AvanceDinamico;
-import modelo.tablero.casillas.poseibles.barrios.BarrioNeuquen;
-import modelo.tablero.casillas.poseibles.barrios.BarrioTucuman;
+import modelo.tablero.acciones.AvanceDinamico;
+import modelo.tablero.poseibles.barrios.BarrioNeuquen;
+import modelo.tablero.poseibles.barrios.BarrioTucuman;
 
 public class AvanceDinamicoTest {
 

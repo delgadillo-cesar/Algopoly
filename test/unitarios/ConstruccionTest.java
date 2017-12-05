@@ -3,7 +3,7 @@ package unitarios;
 import org.junit.Assert;
 import org.junit.Test;
 
-import modelo.tablero.casillas.poseibles.barrios.Construccion;
+import modelo.tablero.poseibles.barrios.construcciones.Construccion;
 
 
 public class ConstruccionTest {

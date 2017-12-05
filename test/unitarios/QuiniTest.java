@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import modelo.entidades.JugadorUno;
-import modelo.tablero.casillas.acciones.Quini;
+import modelo.tablero.acciones.Quini;
 
 public class QuiniTest {
 

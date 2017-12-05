@@ -3,8 +3,8 @@ package modelo.tablero;
 import java.util.HashMap;
 
 import modelo.entidades.Jugador;
-import modelo.tablero.casillas.acciones.*;
-import modelo.tablero.casillas.comprables.*;
+import modelo.tablero.acciones.*;
+import modelo.tablero.comprables.*;
 
 public class Tablero {
 

@@ -1,8 +1,8 @@
 package controlador.poseibles;
 
-import modelo.tablero.casillas.poseibles.Compania;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import modelo.tablero.poseibles.Compania;
 
 public class CompaniaVenderHandler implements EventHandler<ActionEvent> {
 
