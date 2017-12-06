@@ -18,10 +18,12 @@ import javafx.scene.text.TextAlignment;
 public class VistaJugador extends VBox {
 
 	private static List<Image> fichas;
-	private static final Background focusBackground = new Background( new BackgroundFill( Color.web( "#FFFFFF" ), CornerRadii.EMPTY, Insets.EMPTY ) );
-	private  final Background unfocusBackground = new Background( new BackgroundFill( Color.web( "#FF3333" ), CornerRadii.EMPTY, Insets.EMPTY ) );
+	private static List<Background> colores;
+
+	private static final Background unfocusBackground = new Background( new BackgroundFill( Color.web( "#FFFFFF" ), CornerRadii.EMPTY, Insets.EMPTY ) );
 	
 	private Image ficha;
+	private Background color;
 	private Jugador elJugador;
 	
 	
@@ -35,6 +37,14 @@ public class VistaJugador extends VBox {
 	    fichas.add(new Image("file:src/vista/imagenes/fucsia.png", 20, 30, true, false));
 	}
 	
+	private static void crearColores(){
+		colores = new ArrayList<Background>();
+
+		colores.add(new Background(new BackgroundFill( Color.web( "#FF3333" ), CornerRadii.EMPTY, Insets.EMPTY )));
+		colores.add(new Background(new BackgroundFill( Color.web( "#FFFF33" ), CornerRadii.EMPTY, Insets.EMPTY )));
+		colores.add(new Background(new BackgroundFill( Color.web( "#FF00FF" ), CornerRadii.EMPTY, Insets.EMPTY )));
+	}
+	
 
 	public VistaJugador(Jugador unJugador){
 		this.setSpacing(10);
@@ -44,6 +54,12 @@ public class VistaJugador extends VBox {
 		if (fichas.size() > 0){
 			this.ficha = fichas.get(0);
 			fichas.remove(0);
+		}
+
+		if (colores == null) crearColores();
+		if (colores.size() > 0){
+			this.color = colores.get(0);
+			colores.remove(0);
 		}
 	}
 
@@ -55,9 +71,9 @@ public class VistaJugador extends VBox {
 		this.getChildren().clear();
 
 		if (Turno.getInstance().turnoActual() == this.elJugador)
-			this.setBackground( unfocusBackground );
+			this.setBackground( color );
 		else
-			this.setBackground( focusBackground );
+			this.setBackground( unfocusBackground );
 		
 		Text nombreJugador = new Text();
 		nombreJugador.setFont(new Font(18));
