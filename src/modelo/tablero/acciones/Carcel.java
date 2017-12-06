@@ -66,6 +66,7 @@ public class Carcel implements Casilla {
 	public void pagarFianza(Jugador unJugador) {
 		unJugador.pagarA(Banco.getInstance(),this.fianza);
 		condenados.remove(unJugador);
+		libre.afectarJugador(unJugador);
 	}
 
 	
