@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import modelo.entidades.Jugador;
 import modelo.entidades.JugadorUno;
+import modelo.tablero.Tablero;
 import modelo.tablero.acciones.Carcel;
 
 public class CarcelTest {
@@ -115,5 +116,16 @@ public class CarcelTest {
 		carcel.revizarCondena(jugador);
 		carcel.revizarCondena(jugador);
 		Assert.assertFalse(carcel.estaPreso(jugador));
+	}
+	
+	@Test
+	public void testEncarcelarJugadorVerQueNoPuedeDesplazarse() {
+		Jugador jugador = new JugadorUno("Rich Uncle-Milburn Pennybags");
+		Tablero tablero = Tablero.getInstance(); 
+		tablero.desplazar(jugador, 1); 
+		Carcel carcel = new Carcel();
+		carcel.afectar(jugador);
+		jugador.mover(5);
+		Assert.assertEquals(tablero.casillaDeJugador(jugador), 1); 
 	}
 }
