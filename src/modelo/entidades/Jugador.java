@@ -54,9 +54,17 @@ public abstract class Jugador {
 	public void agregarCompania(Compania unaCompania){
 		this.companias.add(unaCompania);
 	}
-	
+
+	public void quitarCompania(Compania unaCompania){
+		this.companias.remove(unaCompania);
+	}
+
 	public void agregarBarrio(Barrio unBarrio){
 		this.barrios.add(unBarrio);
+	}
+	
+	public void quitarBarrio(Barrio unBarrio){
+		this.barrios.remove(unBarrio);
 	}
 	
 	public int cantidadPosesiones(){

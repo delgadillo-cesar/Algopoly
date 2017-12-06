@@ -1,6 +1,9 @@
 package modelo.tablero.poseibles.barrios;
 
+import modelo.entidades.Banco;
 import modelo.entidades.Jugador;
+import modelo.tablero.Tablero;
+import modelo.tablero.comprables.NeuquenComprable;
 import modelo.tablero.poseibles.barrios.construcciones.Construible;
 import modelo.tablero.poseibles.barrios.construcciones.SoloCasa;
 
@@ -36,4 +39,13 @@ public class BarrioNeuquen extends Barrio {
 	@Override
 	public void valoresDeEdificioHistorico(Construible unConstruible) {
 	}
+	
+	@Override
+	public void vender() {
+		NeuquenComprable barrio = new NeuquenComprable();
+		this.propietario.quitarBarrio(this);
+		Banco.getInstance().pagarA(this.propietario, (int) (barrio.precioDeCompra() * 0.85));
+		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_NEUQUEN, barrio);
+	}
+
 }

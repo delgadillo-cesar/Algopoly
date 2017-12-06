@@ -1,6 +1,9 @@
 package modelo.tablero.poseibles.barrios;
 
+import modelo.entidades.Banco;
 import modelo.entidades.Jugador;
+import modelo.tablero.Tablero;
+import modelo.tablero.comprables.BuenosAiresSurComprable;
 import modelo.tablero.poseibles.barrios.construcciones.Construible;
 import modelo.tablero.poseibles.barrios.construcciones.NoConstruye;
 
@@ -49,4 +52,13 @@ public class BarrioBuenosAiresSur extends BarrioDoble {
 	public void interactuarConBuenosAiresNorte(Barrio otroBarrio){
 		this.actualizarConstrucciones(otroBarrio);
 	}
+	
+	@Override
+	public void vender() {
+		BuenosAiresSurComprable barrio = new BuenosAiresSurComprable();
+		this.propietario.quitarBarrio(this);
+		Banco.getInstance().pagarA(this.propietario, (int) (barrio.precioDeCompra() * 0.85));
+		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_BUENOS_AIRES_SUR, barrio);
+	}
+
 }

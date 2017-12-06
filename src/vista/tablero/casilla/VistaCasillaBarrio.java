@@ -3,7 +3,6 @@ package vista.tablero.casilla;
 import java.util.HashMap;
 
 import javafx.scene.image.Image;
-import modelo.tablero.Casilla;
 import modelo.tablero.poseibles.barrios.construcciones.*;
 import vista.tablero.VistaCasilla;
 import vista.tablero.VistaTablero;

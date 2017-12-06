@@ -1,7 +1,10 @@
 package modelo.tablero.poseibles;
 
+import modelo.entidades.Banco;
 import modelo.entidades.Jugador;
 import modelo.juego.Dados;
+import modelo.tablero.Tablero;
+import modelo.tablero.comprables.SubteComprable;
 
 public class Subte implements Compania {
 
@@ -50,4 +53,13 @@ public class Subte implements Compania {
 	public int cobrarConSubte() {
 		return 0;
 	}
+	
+	@Override
+	public void vender() {
+		SubteComprable subte = new SubteComprable();
+		this.propietario.quitarCompania(this);
+		Banco.getInstance().pagarA(this.propietario, (int) (subte.precioDeCompra() * 0.85));
+		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_SUBTE, subte);
+	}
+
 }

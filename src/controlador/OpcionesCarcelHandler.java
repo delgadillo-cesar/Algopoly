@@ -3,7 +3,6 @@ package controlador;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import modelo.entidades.Jugador;
 import vista.tablero.acciones.VistaOpcionesCarcel;
 
 public class OpcionesCarcelHandler implements EventHandler<MouseEvent> {

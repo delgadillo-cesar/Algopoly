@@ -1,7 +1,10 @@
 package modelo.tablero.poseibles;
 
+import modelo.entidades.Banco;
 import modelo.entidades.Jugador;
 import modelo.juego.Dados;
+import modelo.tablero.Tablero;
+import modelo.tablero.comprables.TrenComprable;
 
 public class Tren implements Compania {
 
@@ -50,4 +53,13 @@ public class Tren implements Compania {
 	public int cobrarConSubte() {
 		return 500;
 	}
+	
+	@Override
+	public void vender() {
+		TrenComprable tren = new TrenComprable();
+		this.propietario.quitarCompania(this);
+		Banco.getInstance().pagarA(this.propietario, (int) (tren.precioDeCompra() * 0.85));
+		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_TREN, tren);
+	}
+
 }

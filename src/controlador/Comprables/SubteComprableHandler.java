@@ -16,9 +16,9 @@ public class SubteComprableHandler implements EventHandler<ActionEvent> {
 		this.unComprable = unComprable;
 	}
 	
-	
-    public void handle(ActionEvent actionEvent) {
+	@Override
+	public void handle(ActionEvent actionEvent) {
     	this.unComprable.comprar(Turno.getInstance().turnoActual());
     	VistaTablero.getInstance().obtenerCasilla(Tablero.CASILLA_SUBTE).cambiarEstado(new SubteEstadoPoseible());
-    }
+	}
 }

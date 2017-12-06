@@ -1,7 +1,10 @@
 package modelo.tablero.poseibles;
 
+import modelo.entidades.Banco;
 import modelo.entidades.Jugador;
 import modelo.juego.Dados;
+import modelo.tablero.Tablero;
+import modelo.tablero.comprables.EdesurComprable;
 
 
 public class Edesur implements Compania {
@@ -51,4 +54,13 @@ public class Edesur implements Compania {
 	public int cobrarConSubte() {
 		return 0;
 	}
+	
+	@Override
+	public void vender() {
+		EdesurComprable edesur = new EdesurComprable();
+		this.propietario.quitarCompania(this);
+		Banco.getInstance().pagarA(this.propietario, (int) (edesur.precioDeCompra() * 0.85));
+		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_EDESUR, edesur);
+	}
+
 }
