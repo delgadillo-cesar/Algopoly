@@ -8,6 +8,8 @@ import modelo.entidades.JugadorUno;
 import modelo.juego.Dados;
 import modelo.tablero.PosicionTablero;
 import modelo.tablero.acciones.RetrocesoDinamico;
+import modelo.tablero.comprables.NeuquenComprable;
+import modelo.tablero.comprables.TucumanComprable;
 import modelo.tablero.poseibles.barrios.Barrio;
 import modelo.tablero.poseibles.barrios.BarrioNeuquen;
 import modelo.tablero.poseibles.barrios.BarrioTucuman;
@@ -40,13 +42,16 @@ public class RetrocesoDinamicoTest {
 		RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 
 		Jugador unJugadorConPropiedades = new JugadorUno("Jugador de Prueba con propiedades");
-		Barrio unBarrio = new BarrioNeuquen();
-		unJugadorConPropiedades.comprarPropiedad(unBarrio);
-		unBarrio.construir();
 
-		unBarrio = new BarrioTucuman();
-		unJugadorConPropiedades.comprarPropiedad(unBarrio);
-		unBarrio.construir();
+		NeuquenComprable neuquen = new NeuquenComprable(); 
+		neuquen.comprar(unJugadorConPropiedades);
+
+		TucumanComprable tucuman = new TucumanComprable();
+		tucuman.comprar(unJugadorConPropiedades);
+
+		for (Barrio unBarrio : unJugadorConPropiedades.obtenerBarrios()){
+			unBarrio.construir();
+		}
 
 		unJugadorConPropiedades.cambiarPosicion(new PosicionTablero(15));
 		Assert.assertEquals(15, unJugadorConPropiedades.obtenerPosicion().getPosicion());

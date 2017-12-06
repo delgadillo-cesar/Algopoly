@@ -8,6 +8,10 @@ public class PosicionTablero {
 		this.nroCasilla = 1;
 	}
 	
+	public PosicionTablero(int nroCasilla){
+		this.nroCasilla = nroCasilla;
+	}
+	
 	public int getPosicion(){
 		return this.nroCasilla;
 	}

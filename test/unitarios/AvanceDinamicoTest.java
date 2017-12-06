@@ -7,6 +7,9 @@ import modelo.entidades.JugadorUno;
 import modelo.juego.Dados;
 import modelo.tablero.PosicionTablero;
 import modelo.tablero.acciones.AvanceDinamico;
+import modelo.tablero.comprables.NeuquenComprable;
+import modelo.tablero.comprables.TucumanComprable;
+import modelo.tablero.poseibles.barrios.Barrio;
 import modelo.tablero.poseibles.barrios.BarrioNeuquen;
 import modelo.tablero.poseibles.barrios.BarrioTucuman;
 
@@ -78,13 +81,16 @@ public class AvanceDinamicoTest {
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
 
 		JugadorUno unJugadorConPropiedades = new JugadorUno ("Jugador de Prueba con propiedades");
-		BarrioNeuquen unBarrio = new BarrioNeuquen(unJugadorConPropiedades);
-		unJugadorConPropiedades.comprarPropiedad(unBarrio);
-		unBarrio.construir();
-		
-		unBarrio = new BarrioTucuman(unJugadorConPropiedades);
-		unJugadorConPropiedades.comprarPropiedad(unBarrio);
-		unBarrio.construir();
+
+		NeuquenComprable neuquen = new NeuquenComprable(); 
+		neuquen.comprar(unJugadorConPropiedades);
+
+		TucumanComprable tucuman = new TucumanComprable();
+		tucuman.comprar(unJugadorConPropiedades);
+
+		for (Barrio unBarrio : unJugadorConPropiedades.obtenerBarrios()){
+			unBarrio.construir();
+		}
 
 		unJugadorConPropiedades.cambiarPosicion(new PosicionTablero());
 		Assert.assertEquals(1, unJugadorConPropiedades.obtenerPosicion().getPosicion());
