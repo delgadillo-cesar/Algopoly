@@ -1,8 +1,10 @@
 package controlador.Comprables;
 
+import modelo.entidades.JugadorSinSaldoException;
 import modelo.juego.Turno;
 import modelo.tablero.Comprable;
 import modelo.tablero.Tablero;
+import vista.jugador.AlertaSaldoInsuficiente;
 import vista.tablero.VistaTablero;
 import vista.tablero.estadosPoseibles.SaltaNorteEstadoPoseible;
 import javafx.event.ActionEvent;
@@ -18,8 +20,12 @@ public class SaltaNorteComprableHandler implements EventHandler<ActionEvent> {
 	
 	
     public void handle(ActionEvent actionEvent) {
-    	this.unComprable.comprar(Turno.getInstance().turnoActual());
-    	VistaTablero.getInstance().obtenerCasilla(Tablero.CASILLA_SALTA_NORTE).cambiarEstado(new SaltaNorteEstadoPoseible());
+    	try{
+        	this.unComprable.comprar(Turno.getInstance().turnoActual());
+        	VistaTablero.getInstance().obtenerCasilla(Tablero.CASILLA_SALTA_NORTE).cambiarEstado(new SaltaNorteEstadoPoseible());
+    	}catch(JugadorSinSaldoException e){
+    		new AlertaSaldoInsuficiente();
+    	}
     }
 
 }

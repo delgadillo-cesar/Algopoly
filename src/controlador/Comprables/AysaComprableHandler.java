@@ -1,7 +1,9 @@
 package controlador.Comprables;
 
+import vista.jugador.AlertaSaldoInsuficiente;
 import vista.tablero.VistaTablero;
 import vista.tablero.estadosPoseibles.AysaEstadoPoseible;
+import modelo.entidades.JugadorSinSaldoException;
 import modelo.juego.Turno;
 import modelo.tablero.Comprable;
 import modelo.tablero.Tablero;
@@ -18,10 +20,14 @@ public class AysaComprableHandler implements EventHandler<ActionEvent> {
 	
 	
     public void handle(ActionEvent actionEvent) {
-    	this.unComprable.comprar(Turno.getInstance().turnoActual());
+    	try{
+        	this.unComprable.comprar(Turno.getInstance().turnoActual());
 
-    	AysaEstadoPoseible aysaPoseible = new AysaEstadoPoseible();
-    	VistaTablero.getInstance().obtenerCasilla(Tablero.CASILLA_AYSA).cambiarEstado(aysaPoseible);
+        	AysaEstadoPoseible aysaPoseible = new AysaEstadoPoseible();
+        	VistaTablero.getInstance().obtenerCasilla(Tablero.CASILLA_AYSA).cambiarEstado(aysaPoseible);
+    	}catch(JugadorSinSaldoException e){
+    		new AlertaSaldoInsuficiente();
+    	}
     }
 
 }
