@@ -8,6 +8,11 @@ import modelo.tablero.poseibles.Aysa;
 public class AysaComprable implements Comprable{
 
 	private int precioCompra;
+
+	public AysaComprable(){
+		this.precioCompra = 3000;
+	}
+
 	
 	public void afectar(Jugador jugador) {
 	}
