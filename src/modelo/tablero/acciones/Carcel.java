@@ -23,6 +23,7 @@ public class Carcel implements Casilla {
 		cicloDeCondenas = new HashMap <Condena, Condena> ();
 		condenados = new HashMap <Jugador, Condena> ();
 		
+		turnoActual = new CondenaRealSinFianza(0);
 		primerTurno = new CondenaRealSinFianza(1);
 		segundoTurno = new CondenaRealConFianza(2);
 		tercerTurno = new CondenaRealConFianza(3);
@@ -37,7 +38,7 @@ public class Carcel implements Casilla {
 
 	public void encarcelar(Jugador unJugador) {		
 		
-		condenados.put(unJugador, primerTurno);
+		condenados.put(unJugador, turnoActual);
 		primerTurno.afectarJugador(unJugador);
 	}
 
@@ -54,7 +55,7 @@ public class Carcel implements Casilla {
 	public boolean estaPreso(Jugador unJugador) {
 		
 		Condena condena = condenados.get(unJugador);
-		return condena != libre && condena != null;
+		return (condena != libre) && (condena != null);
 	}
 
 	public boolean puedePagarFianza(Jugador unJugador) {

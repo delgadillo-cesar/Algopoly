@@ -3,6 +3,8 @@ package modelo.juego;
 import java.util.LinkedList;
 
 import modelo.entidades.Jugador;
+import modelo.tablero.Tablero;
+import modelo.tablero.acciones.Carcel;
 
 public class Turno {
 
@@ -39,6 +41,10 @@ public class Turno {
 			this.repetirTurno();
 		} else {
 			this.avanzarTurno();
+		}
+		if (!Dados.getInstance().salieronPares()) {
+			Carcel laCarcel = (Carcel) Tablero.getInstance().obtenerCasilla(6);
+			laCarcel.revizarCondena(jugadorActual);
 		}
 		return this.jugadorActual;
 	}
