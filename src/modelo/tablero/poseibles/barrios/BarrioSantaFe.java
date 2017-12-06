@@ -49,6 +49,9 @@ public class BarrioSantaFe extends Barrio {
 	@Override
 	public void vender() {
 		SantaFeComprable barrio = new SantaFeComprable();
+		while(this.construido.sePuedeVender()){
+			this.construido = this.construido.vender();
+		}
 		this.propietario.quitarBarrio(this);
 		Banco.getInstance().pagarA(this.propietario, (int) (barrio.precioDeCompra() * 0.85));
 		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_SANTA_FE, barrio);

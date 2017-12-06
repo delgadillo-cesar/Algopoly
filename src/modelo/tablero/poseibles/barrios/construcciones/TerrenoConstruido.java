@@ -14,4 +14,10 @@ public class TerrenoConstruido extends Construccion {
 		return null;
 	}
 
+
+	@Override
+	public boolean sePuedeVender() {
+		return false;
+	}
+
 }

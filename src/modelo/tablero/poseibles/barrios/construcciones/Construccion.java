@@ -22,5 +22,6 @@ public abstract class Construccion {
 		return this.cantPropiedades;
 	}
 	
+	public abstract boolean sePuedeVender();
 	public abstract Construccion vender();
 }

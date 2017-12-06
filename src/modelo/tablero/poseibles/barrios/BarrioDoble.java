@@ -27,7 +27,7 @@ public abstract class BarrioDoble extends Barrio {
 		return this.construcciones.costoConstruccion(this);
 	}
 
-	private void chequearComplemento(){
+	protected void chequearComplemento(){
 		for (Barrio barrio : this.propietario.obtenerBarrios()){
 			barrio.interactuarCon(this);
 		}
@@ -48,4 +48,10 @@ public abstract class BarrioDoble extends Barrio {
 			complemento.construcciones = complemento.construcciones.actualizarCon(new HastaHotel());
 		}
 	}
+	
+	public void venderConstruccion(){
+		this.construido.vender();
+		this.chequearComplemento();
+	}
+
 }

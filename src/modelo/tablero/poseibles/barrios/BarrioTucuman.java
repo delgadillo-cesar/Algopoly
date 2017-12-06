@@ -51,6 +51,9 @@ public class BarrioTucuman  extends Barrio {
 	@Override
 	public void vender() {
 		TucumanComprable barrio = new TucumanComprable();
+		while(this.construido.sePuedeVender()){
+			this.construido = this.construido.vender();
+		}
 		this.propietario.quitarBarrio(this);
 		Banco.getInstance().pagarA(this.propietario, (int) (barrio.precioDeCompra() * 0.85));
 		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_TUCUMAN, barrio);

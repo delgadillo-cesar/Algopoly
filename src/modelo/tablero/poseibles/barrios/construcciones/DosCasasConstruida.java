@@ -24,4 +24,9 @@ public class DosCasasConstruida extends Construccion {
 		Banco.getInstance().pagarA(this.elBarrio.propietario(), (int) (dosCasa.costoConstruccionEn(this.elBarrio) * 0.85));
 		return unaCasa.construirEn(this.elBarrio);
 	}
+
+	@Override
+	public boolean sePuedeVender() {
+		return true;
+	}
 }

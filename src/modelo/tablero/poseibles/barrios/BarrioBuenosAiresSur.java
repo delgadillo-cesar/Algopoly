@@ -56,9 +56,13 @@ public class BarrioBuenosAiresSur extends BarrioDoble {
 	@Override
 	public void vender() {
 		BuenosAiresSurComprable barrio = new BuenosAiresSurComprable();
+		while(this.construido.sePuedeVender()){
+			this.construido = this.construido.vender();
+		}
 		this.propietario.quitarBarrio(this);
 		Banco.getInstance().pagarA(this.propietario, (int) (barrio.precioDeCompra() * 0.85));
 		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_BUENOS_AIRES_SUR, barrio);
+		this.chequearComplemento();
 	}
 
 }

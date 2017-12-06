@@ -46,6 +46,14 @@ public abstract class Barrio implements Poseible  {
 	public void afectar(Jugador jugador) throws MismoJugadorException {
 		this.construido.cobrarAlquiler(this.propietario, jugador);
 	}
+	
+	public boolean sePuedeVenderConstruccion(){
+		return this.construido.sePuedeVender();
+	}
+	
+	public void venderConstruccion(){
+		this.construido.vender();
+	}
 
 	public abstract void valoresDeTerreno(Construible unConstruible);
 	public abstract void valoresDeUnaCasa(Construible unConstruible);

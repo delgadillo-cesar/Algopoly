@@ -24,4 +24,9 @@ public class HotelConstruido extends Construccion {
 		Banco.getInstance().pagarA(this.elBarrio.propietario(), (int) (unHotel.costoConstruccionEn(this.elBarrio) * 0.85));
 		return terreno.construirEn(this.elBarrio);
 	}
+
+	@Override
+	public boolean sePuedeVender() {
+		return true;
+	}
 }
