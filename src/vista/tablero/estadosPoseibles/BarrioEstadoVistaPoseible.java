@@ -1,9 +1,5 @@
 package vista.tablero.estadosPoseibles;
 
-import controlador.poseibles.OpcionesBarrioPoseibleHandler;
-import javafx.event.EventHandler;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import modelo.entidades.Jugador;
 import modelo.tablero.poseibles.barrios.Barrio;
 import vista.jugador.VistaJugador;
@@ -25,11 +21,6 @@ public abstract class BarrioEstadoVistaPoseible extends EstadoVista {
 
 	@Override
 	public void jugadorCayoEnCasilla(VistaJugador unJugador) {
-	}
-
-	@Override
-	public EventHandler<MouseEvent> obtenerHandler(Image imagen) {
-		return new OpcionesBarrioPoseibleHandler(imagen, this.barrio);
 	}
 
 	@Override

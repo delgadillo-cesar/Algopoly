@@ -7,8 +7,6 @@ import modelo.tablero.poseibles.barrios.construcciones.HastaDosCasas;
 import modelo.tablero.poseibles.barrios.construcciones.HastaHotel;
 
 
-
-
 public abstract class BarrioDoble extends Barrio {
 
 	public BarrioDoble(Jugador propietario) {

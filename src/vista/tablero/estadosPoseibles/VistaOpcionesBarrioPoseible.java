@@ -4,7 +4,9 @@ import modelo.tablero.poseibles.NadaParaConstruirException;
 import modelo.tablero.poseibles.barrios.Barrio;
 import controlador.CerrarOpcionesHandler;
 import controlador.poseibles.BarrioConstruirHandler;
-import controlador.poseibles.BarrioVenderHandler;
+import controlador.poseibles.BarrioVenderConstruccionHandler;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -20,11 +22,11 @@ import javafx.stage.Stage;
 
 public class VistaOpcionesBarrioPoseible extends Stage {
 	
-	public VistaOpcionesBarrioPoseible(Image imagen, Barrio unBarrio){
+	public VistaOpcionesBarrioPoseible(Image imagen, Barrio unBarrio, EventHandler<ActionEvent> handlerVenta){
 		
 	    this.initModality(Modality.APPLICATION_MODAL);
 	    VBox dialogVbox = new VBox();
-	    dialogVbox.setPadding(new Insets(180, 20, 50, 20));
+	    dialogVbox.setPadding(new Insets(120, 20, 50, 20));
 	    dialogVbox.setSpacing(10);
 
 	    BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(200, 260, false, false, false, false));
@@ -42,12 +44,19 @@ public class VistaOpcionesBarrioPoseible extends Stage {
 	    }
 	    
 
-	    cerrarOpciones = new CerrarOpcionesHandler(((Stage)this), new BarrioVenderHandler(unBarrio));
+	    cerrarOpciones = new CerrarOpcionesHandler(((Stage)this), handlerVenta);
 	    Button botonVender = new Button("Vender");
-	    botonVender.setDisable(true);
 	    botonVender.setOnAction(cerrarOpciones);
 	    botonVender.setMaxWidth(Double.MAX_VALUE);
 	    dialogVbox.getChildren().add(botonVender);
+	    
+	    cerrarOpciones = new CerrarOpcionesHandler(((Stage)this), new BarrioVenderConstruccionHandler(unBarrio));
+	    Button botonVenderConstruccion = new Button("Vender Construccion");
+//	    botonVenderConstruccion.setDisable(true);
+	    botonVenderConstruccion.setVisible(unBarrio.sePuedeVenderConstruccion());
+	    botonVenderConstruccion.setOnAction(cerrarOpciones);
+	    botonVenderConstruccion.setMaxWidth(Double.MAX_VALUE);
+	    dialogVbox.getChildren().add(botonVenderConstruccion);
 	    
 	    Scene dialogScene = new Scene(dialogVbox, 200, 260);
 	    this.setScene(dialogScene);

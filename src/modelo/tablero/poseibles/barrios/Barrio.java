@@ -52,7 +52,7 @@ public abstract class Barrio implements Poseible  {
 	}
 	
 	public void venderConstruccion(){
-		this.construido.vender();
+		this.construido = this.construido.vender();
 	}
 
 	public abstract void valoresDeTerreno(Construible unConstruible);
