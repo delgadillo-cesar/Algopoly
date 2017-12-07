@@ -1,28 +1,28 @@
-package modelo.tablero.poseibles;
+package modelo.tablero.poseibles.compania;
 
 import modelo.entidades.Banco;
 import modelo.entidades.Jugador;
 import modelo.juego.Dados;
 import modelo.tablero.Tablero;
-import modelo.tablero.comprables.TrenComprable;
+import modelo.tablero.comprables.AysaComprable;
 
-public class Tren implements Compania {
+public class Aysa implements Compania {
 
 	private Jugador propietario;
-	
-	public Tren(Jugador propietario){
+
+	public Aysa(Jugador propietario) {
 		this.propietario = propietario;
 		this.propietario.agregarCompania(this);
 	}
 
 	protected int cobrar() {
 		int dados = Dados.getInstance().getValor();
-		int veces = 450;
-		
-		for(Compania compania : this.propietario.obtenerCompanias()){
+		int veces = 300;
+
+		for (Compania compania : this.propietario.obtenerCompanias()) {
 			veces += this.cobrarCon(compania);
 		}
-		
+
 		return (dados * veces);
 	}
 
@@ -35,7 +35,7 @@ public class Tren implements Compania {
 	}
 
 	public int cobrarCon(Compania otraCompania) {
-		return otraCompania.cobrarConTren();
+		return otraCompania.cobrarConAysa();
 	}
 
 	public int cobrarConAysa() {
@@ -43,7 +43,7 @@ public class Tren implements Compania {
 	}
 
 	public int cobrarConEdesur() {
-		return 0;
+		return 500;
 	}
 
 	public int cobrarConTren() {
@@ -51,15 +51,14 @@ public class Tren implements Compania {
 	}
 
 	public int cobrarConSubte() {
-		return 500;
-	}
-	
-	@Override
-	public void vender() {
-		TrenComprable tren = new TrenComprable();
-		this.propietario.quitarCompania(this);
-		Banco.getInstance().pagarA(this.propietario, (int) (tren.precioDeCompra() * 0.85));
-		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_TREN, tren);
+		return 0;
 	}
 
+	@Override
+	public void vender() {
+		AysaComprable aysa = new AysaComprable();
+		this.propietario.quitarCompania(this);
+		Banco.getInstance().pagarA(this.propietario, (int) (aysa.precioDeCompra() * 0.85));
+		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_AYSA, aysa);
+	}
 }

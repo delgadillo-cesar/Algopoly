@@ -2,12 +2,12 @@ package modelo.tablero.poseibles.barrios;
 
 import modelo.entidades.*;
 import modelo.tablero.Poseible;
-import modelo.tablero.poseibles.*;
 import modelo.tablero.poseibles.barrios.construcciones.Construccion;
 import modelo.tablero.poseibles.barrios.construcciones.ConstruccionPosible;
 import modelo.tablero.poseibles.barrios.construcciones.Construible;
 import modelo.tablero.poseibles.barrios.construcciones.NadaParaConstruirException;
 import modelo.tablero.poseibles.barrios.construcciones.TerrenoConstruible;
+import modelo.tablero.poseibles.compania.*;
 
 
 public abstract class Barrio implements Poseible  {

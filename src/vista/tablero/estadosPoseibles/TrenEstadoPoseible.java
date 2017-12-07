@@ -6,8 +6,8 @@ import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import modelo.tablero.Tablero;
-import modelo.tablero.poseibles.Compania;
-import modelo.tablero.poseibles.Tren;
+import modelo.tablero.poseibles.compania.Compania;
+import modelo.tablero.poseibles.compania.Tren;
 
 public class TrenEstadoPoseible extends CompaniaEstadoVistaPoseible {
 

@@ -1,23 +1,24 @@
-package modelo.tablero.poseibles;
+package modelo.tablero.poseibles.compania;
 
 import modelo.entidades.Banco;
 import modelo.entidades.Jugador;
 import modelo.juego.Dados;
 import modelo.tablero.Tablero;
-import modelo.tablero.comprables.SubteComprable;
+import modelo.tablero.comprables.EdesurComprable;
 
-public class Subte implements Compania {
+
+public class Edesur implements Compania {
 
 	private Jugador propietario;
 	
-	public Subte(Jugador propietario){
+	public Edesur(Jugador propietario){
 		this.propietario = propietario;
 		this.propietario.agregarCompania(this);
 	}
 
 	protected int cobrar() {
 		int dados = Dados.getInstance().getValor();
-		int veces = 600;
+		int veces = 500;
 		
 		for(Compania compania : this.propietario.obtenerCompanias()){
 			veces += this.cobrarCon(compania);
@@ -35,11 +36,11 @@ public class Subte implements Compania {
 	}
 
 	public int cobrarCon(Compania otraCompania) {
-		return otraCompania.cobrarConSubte();
+		return otraCompania.cobrarConEdesur();
 	}
 
 	public int cobrarConAysa() {
-		return 0;
+		return 200;
 	}
 
 	public int cobrarConEdesur() {
@@ -47,7 +48,7 @@ public class Subte implements Compania {
 	}
 
 	public int cobrarConTren() {
-		return 350;
+		return 0;
 	}
 
 	public int cobrarConSubte() {
@@ -56,10 +57,10 @@ public class Subte implements Compania {
 	
 	@Override
 	public void vender() {
-		SubteComprable subte = new SubteComprable();
+		EdesurComprable edesur = new EdesurComprable();
 		this.propietario.quitarCompania(this);
-		Banco.getInstance().pagarA(this.propietario, (int) (subte.precioDeCompra() * 0.85));
-		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_SUBTE, subte);
+		Banco.getInstance().pagarA(this.propietario, (int) (edesur.precioDeCompra() * 0.85));
+		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_EDESUR, edesur);
 	}
 
 }

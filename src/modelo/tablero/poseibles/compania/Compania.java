@@ -1,4 +1,4 @@
-package modelo.tablero.poseibles;
+package modelo.tablero.poseibles.compania;
 
 import modelo.tablero.Poseible;
 

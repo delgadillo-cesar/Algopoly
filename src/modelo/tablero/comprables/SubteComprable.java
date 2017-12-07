@@ -4,7 +4,7 @@ import modelo.entidades.Banco;
 import modelo.entidades.Jugador;
 import modelo.tablero.Comprable;
 import modelo.tablero.Tablero;
-import modelo.tablero.poseibles.Subte;
+import modelo.tablero.poseibles.compania.Subte;
 
 public class SubteComprable implements Comprable {
 

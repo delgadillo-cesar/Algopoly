@@ -2,7 +2,7 @@ package modelo.tablero.comprables;
 
 import modelo.entidades.*;
 import modelo.tablero.*;
-import modelo.tablero.poseibles.Aysa;
+import modelo.tablero.poseibles.compania.Aysa;
 
 
 public class AysaComprable implements Comprable{

@@ -14,7 +14,7 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import modelo.tablero.poseibles.Compania;
+import modelo.tablero.poseibles.compania.Compania;
 import controlador.CerrarOpcionesHandler;
 
 public class VistaOpcionesCompaniaPoseible extends Stage{

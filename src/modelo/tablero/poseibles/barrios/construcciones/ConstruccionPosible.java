@@ -2,8 +2,8 @@ package modelo.tablero.poseibles.barrios.construcciones;
 
 import java.util.List;
 
-import modelo.tablero.poseibles.*;
 import modelo.tablero.poseibles.barrios.Barrio;
+import modelo.tablero.poseibles.compania.*;
 
 
 public abstract class ConstruccionPosible {

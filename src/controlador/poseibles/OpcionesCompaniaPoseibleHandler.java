@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import modelo.tablero.poseibles.Compania;
+import modelo.tablero.poseibles.compania.Compania;
 import vista.tablero.estadosPoseibles.VistaOpcionesCompaniaPoseible;
 
 public class OpcionesCompaniaPoseibleHandler implements EventHandler<MouseEvent> {

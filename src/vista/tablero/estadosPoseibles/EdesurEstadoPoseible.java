@@ -6,8 +6,8 @@ import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import modelo.tablero.Tablero;
-import modelo.tablero.poseibles.Compania;
-import modelo.tablero.poseibles.Edesur;
+import modelo.tablero.poseibles.compania.Compania;
+import modelo.tablero.poseibles.compania.Edesur;
 
 public class EdesurEstadoPoseible extends CompaniaEstadoVistaPoseible {
 
