@@ -3,7 +3,10 @@ package unitarios;
 import org.junit.Assert;
 import org.junit.Test;
 
+import modelo.entidades.Jugador;
+import modelo.entidades.JugadorUno;
 import modelo.juego.Dados;
+import modelo.tablero.Tablero;
 
 public class DadosTest {
 
@@ -72,5 +75,14 @@ public class DadosTest {
 		}
 
 		Assert.assertFalse(dados.salieronPares());
+	}
+
+	@Test
+	public void testTirarDadosYVerificarNuevaPosicion() {
+		Dados dados = Dados.getInstance();
+		Jugador jugador = new JugadorUno("Jugador de prueba");
+		Tablero.getInstance().desplazar(jugador, 1);
+		jugador.mover(dados.getValor());
+		Assert.assertTrue(jugador.obtenerPosicion().getPosicion() == 1 + dados.getValor());
 	}
 }
