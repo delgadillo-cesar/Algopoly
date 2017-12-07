@@ -97,7 +97,7 @@ public class Tablero {
 		return ((0 < unNroCasillero) && (unNroCasillero <= CANTIDAD_CASILLAS));
 	}
 
-	public static PosicionTablero ajustarPosicionSegunBordes(PosicionTablero unaPosicion) {
+	public PosicionTablero ajustarPosicionSegunBordes(PosicionTablero unaPosicion) {
 		Integer nroCasilla = unaPosicion.getPosicion();
 
 		while (!(estaEnRango(nroCasilla))) {
@@ -106,7 +106,7 @@ public class Tablero {
 			if (nroCasilla <= 0)
 				nroCasilla += CANTIDAD_CASILLAS;
 		}
-
+		
 		return Tablero.nroCasilla.get(nroCasilla);
 	}
 

@@ -19,7 +19,7 @@ public abstract class MovimientoDesplazamietoDinamico extends TipoMovimiento {
 
 		  int cantidadAMover = (this.calcularCantidadCasillerosADesplazar(unJugador, cantidadDeCasilleros)) * this.direccion;
 		  nroNuevaCasilla = unJugador.obtenerPosicion().getPosicion() + cantidadAMover;
-		  unJugador.cambiarPosicion(Tablero.ajustarPosicionSegunBordes(new PosicionTablero(nroNuevaCasilla)));
+		  unJugador.cambiarPosicion(Tablero.getInstance().ajustarPosicionSegunBordes(new PosicionTablero(nroNuevaCasilla)));
 		  unJugador.cambiarTipoDeMovimiento(new MovimientoLibre());
 	}
 
