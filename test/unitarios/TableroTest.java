@@ -13,7 +13,7 @@ public class TableroTest {
 
 	@Before
 	public void setUp() throws Exception {
-		Tablero.resetear();
+		//Tablero.resetear();
 	}
 
 	@Test
@@ -34,7 +34,7 @@ public class TableroTest {
 		jugador.mover(1);
 
 		PosicionTablero casillaActual = tablero.casillaDeJugador(jugador);
-		Assert.assertEquals(casillaActual, 2);
+		Assert.assertEquals(casillaActual, new PosicionTablero(2));
 
 	}
 
@@ -48,7 +48,7 @@ public class TableroTest {
 		jugador.mover(21);
 
 		PosicionTablero casillaActual = tablero.casillaDeJugador(jugador);
-		Assert.assertEquals(casillaActual, 2);
+		Assert.assertEquals(casillaActual,  new PosicionTablero(2));
 
 	}
 
@@ -62,7 +62,7 @@ public class TableroTest {
 		jugador.mover(-1);
 
 		PosicionTablero casillaActual = tablero.casillaDeJugador(jugador);
-		Assert.assertEquals(casillaActual, 20);
+		Assert.assertEquals(casillaActual,  new PosicionTablero(20));
 
 	}
 
@@ -76,7 +76,7 @@ public class TableroTest {
 		jugador.mover(-21);
 
 		PosicionTablero casillaActual = tablero.casillaDeJugador(jugador);
-		Assert.assertEquals(casillaActual, 20);
+		Assert.assertEquals(casillaActual,  new PosicionTablero(20));
 
 	}
 

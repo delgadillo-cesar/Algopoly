@@ -23,4 +23,13 @@ public class PosicionTablero {
 	public void sumarUnaPosicion() {
 		this.nroCasilla += 1;
 	}
+	@Override
+	public int hashCode() {
+		return this.nroCasilla *31;
+	}
+	@Override
+	public boolean equals(Object otraPosicion) {
+		PosicionTablero otra = (PosicionTablero)otraPosicion;
+		return (otra.nroCasilla == this.nroCasilla);
+	}
 }
