@@ -2,6 +2,7 @@ package modelo.tablero.comprables;
 
 import modelo.entidades.*;
 import modelo.tablero.*;
+import modelo.tablero.poseibles.BarrioYaHabiaSidoCompradoException;
 import modelo.tablero.poseibles.barrios.BarrioSaltaNorte;
 
 public class SaltaNorteComprable implements Comprable {
@@ -11,7 +12,7 @@ public class SaltaNorteComprable implements Comprable {
 	public SaltaNorteComprable(){
 		this.precioCompra = 23000;
 	}
-	
+
 	public void afectar(Jugador jugador) {
 	}
 
@@ -20,9 +21,14 @@ public class SaltaNorteComprable implements Comprable {
 	}
 
 	public void comprar(Jugador unJugador) {
-		unJugador.pagarA(Banco.getInstance(), precioCompra);
-		BarrioSaltaNorte saltaNor= new BarrioSaltaNorte(unJugador);
-		unJugador.agregarBarrio(saltaNor);
-		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_SALTA_NORTE, saltaNor);
+		if (precioCompra > 0) {
+			unJugador.pagarA(Banco.getInstance(), precioCompra);
+			BarrioSaltaNorte saltaNor= new BarrioSaltaNorte(unJugador);
+			unJugador.agregarBarrio(saltaNor);
+			Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_SALTA_NORTE, saltaNor);
+			precioCompra = 0;
+		} else {
+			throw new BarrioYaHabiaSidoCompradoException();
+		}
 	}
 }
