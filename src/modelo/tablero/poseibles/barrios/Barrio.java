@@ -42,7 +42,7 @@ public abstract class Barrio implements Poseible {
 		return this.construido;
 	}
 
-	public void afectar(Jugador jugador) throws MismoJugadorException {
+	public void afectar(Jugador jugador) {
 		this.construido.cobrarAlquiler(this.propietario, jugador);
 	}
 

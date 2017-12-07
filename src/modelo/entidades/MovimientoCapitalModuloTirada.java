@@ -1,6 +1,6 @@
 package modelo.entidades;
 
-public class MovimientoDesplazamietoDinamico2  extends MovimientoDesplazamietoDinamico {
+public class MovimientoCapitalModuloTirada  extends MovimientoDesplazamietoDinamico {
 
 	@Override
 	public int calcularCantidadCasillerosADesplazar(Jugador unJugador, int cantidadDeCasilleros) {
