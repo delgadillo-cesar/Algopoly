@@ -32,7 +32,7 @@ public class PoliciaTest {
 		Jugador jugadorPrueba = new JugadorUno("Jugador de prueba");
 		Casilla policia = new Policia();
 		policia.afectar(jugadorPrueba);
-		Assert.assertEquals(Tablero.CASILLA_CARCEL, Integer.valueOf(jugadorPrueba.obtenerPosicion().getPosicion()));
+		Assert.assertEquals(Tablero.CASILLA_CARCEL.getPosicion(), jugadorPrueba.obtenerPosicion().getPosicion());
 
 	}
 
