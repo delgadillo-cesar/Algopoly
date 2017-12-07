@@ -106,10 +106,10 @@ public abstract class Jugador {
 	}
 	
 	public abstract void pagarA (Jugador cobrador, int monto);
-	public abstract int cobrarAJugador1 (Jugador pagador, int monto);
-	public abstract int cobrarAJugador2 (Jugador pagador, int monto);
-	public abstract int cobrarAJugador3 (Jugador pagador, int monto);
-	public abstract int cobrarABanco (Jugador pagador, int monto);
+	public abstract int cobrarAJugador (JugadorUno pagador, int monto);
+	public abstract int cobrarAJugador (JugadorDos pagador, int monto);
+	public abstract int cobrarAJugador (JugadorTres pagador, int monto);
+	public abstract int cobrarABanco (Banco pagador, int monto);
 
 	
 }
