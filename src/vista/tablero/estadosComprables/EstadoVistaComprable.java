@@ -8,6 +8,10 @@ import vista.tablero.VistaCasilla;
 public abstract class EstadoVistaComprable extends EstadoVista {
 	protected boolean habilitarCasilla;
 
+	public EstadoVistaComprable(){
+		this.habilitarCasilla = false;
+	}
+	
 	@Override
 	public boolean habilitarParaJugador(Jugador unJugador) {
 		boolean habilitar = this.habilitarCasilla;

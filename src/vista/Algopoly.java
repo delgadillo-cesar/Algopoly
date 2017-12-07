@@ -105,8 +105,8 @@ public class Algopoly extends BorderPane {
 
 	public Algopoly() {
 		this.vistaJugadores = new HashMap<Jugador, VistaJugador>();
-		this.crearElementos();
 		this.iniciarJuego();		
+		this.crearElementos();
 		this.redibujar();
 	}
 

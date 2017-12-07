@@ -8,6 +8,7 @@ import java.util.List;
 
 import vista.jugador.VistaJugador;
 import modelo.entidades.Jugador;
+import modelo.juego.Turno;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
@@ -98,6 +99,7 @@ public abstract class VistaCasilla extends VBox {
 	
 	public void cambiarEstado(EstadoVista estado){
 		this.estadoVista = estado;
+		this.habilitarParaJugador(Turno.getInstance().turnoActual());
 		this.setOnMouseClicked(this.estadoVista.obtenerHandler(this.imagen));
 	}
 }
