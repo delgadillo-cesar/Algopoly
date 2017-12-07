@@ -42,7 +42,7 @@ public class Carcel implements Casilla {
 		primerTurno.afectarJugador(unJugador);
 	}
 
-	public void revizarCondena(Jugador unJugador) {
+	public void revisarCondena(Jugador unJugador) {
 		
 		if (!condenados.containsKey(unJugador)) return;
 		
@@ -63,7 +63,7 @@ public class Carcel implements Casilla {
 		return condenados.get(unJugador).fianzaDisponible();
 	}
 
-	public void pagarFianza(Jugador unJugador) {
+	public void pagarFianzaDeJugador(Jugador unJugador) {
 		unJugador.pagarA(Banco.getInstance(),this.fianza);
 		condenados.remove(unJugador);
 		libre.afectarJugador(unJugador);

@@ -20,7 +20,7 @@ public class CarcelFianzaHandler implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent event) {
 	    Carcel laCarcel= (Carcel)Tablero.getInstance().obtenerCasilla(Tablero.CASILLA_CARCEL);
 		try{
-		    laCarcel.pagarFianza(elJugdor);
+		    laCarcel.pagarFianzaDeJugador(elJugdor);
 		}catch(JugadorSinSaldoException e){
 			new AlertaSaldoInsuficiente();
 		}

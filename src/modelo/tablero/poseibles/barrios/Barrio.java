@@ -6,22 +6,21 @@ import modelo.tablero.poseibles.barrios.construcciones.Construccion;
 import modelo.tablero.poseibles.barrios.construcciones.NadaParaConstruirException;
 import modelo.tablero.poseibles.barrios.construcciones.Terreno;
 
+public abstract class Barrio implements Poseible {
 
-public abstract class Barrio implements Poseible  {
-	
 	protected Jugador propietario;
 	protected Construccion construido;
-	
+
 	public Barrio(Jugador propietario) {
 		this.propietario = propietario;
 		this.construido = new Terreno(this);
 	}
 
-	public Jugador propietario(){
+	public Jugador propietario() {
 		return this.propietario;
 	}
-	
-	public int cantidadDePropiedades(){
+
+	public int cantidadDePropiedades() {
 		return (this.construido.cantidadDePropiedades());
 	}
 	
@@ -32,20 +31,21 @@ public abstract class Barrio implements Poseible  {
 	public int costoConstruccion() throws NadaParaConstruirException{
 		return this.construido.costoConstruirEnBarrioSimple(this);
 	}
-	
-	public Construccion construccionActual(){
+
+
+	public Construccion construccionActual() {
 		return this.construido;
 	}
-	
-	public void afectar(Jugador jugador) throws MismoJugadorException {
+
+	public void afectar(Jugador jugador) {
 		this.construido.cobrarAlquiler(this.propietario, jugador);
 	}
-	
-	public boolean sePuedeVenderConstruccion(){
+
+	public boolean sePuedeVenderConstruccion() {
 		return this.construido.sePuedeVender();
 	}
-	
-	public void venderConstruccion(){
+
+	public void venderConstruccion() {
 		this.construido = this.construido.vender();
 	}
 

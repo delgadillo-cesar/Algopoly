@@ -13,17 +13,17 @@ public class RetrocesoDinamico implements Casilla {
 	
 	public	RetrocesoDinamico (){
 		this.tipoDeDesplazamiento = new HashMap<Integer,MovimientoDesplazamietoDinamico>();
-		this.tipoDeDesplazamiento.put(2, new MovimientoDesplazamietoDinamico3());
-		this.tipoDeDesplazamiento.put(3, new MovimientoDesplazamietoDinamico3());
-		this.tipoDeDesplazamiento.put(4, new MovimientoDesplazamietoDinamico3());
-		this.tipoDeDesplazamiento.put(5, new MovimientoDesplazamietoDinamico3());
-		this.tipoDeDesplazamiento.put(6, new MovimientoDesplazamietoDinamico3());
-		this.tipoDeDesplazamiento.put(7, new MovimientoDesplazamietoDinamico2());
-		this.tipoDeDesplazamiento.put(8, new MovimientoDesplazamietoDinamico2());
-		this.tipoDeDesplazamiento.put(9, new MovimientoDesplazamietoDinamico2());
-		this.tipoDeDesplazamiento.put(10, new MovimientoDesplazamietoDinamico2());
-		this.tipoDeDesplazamiento.put(11, new MovimientoDesplazamietoDinamico1());
-		this.tipoDeDesplazamiento.put(12, new MovimientoDesplazamietoDinamico1());
+		this.tipoDeDesplazamiento.put(2, new MovimientoTiradaMenosPropiedades());
+		this.tipoDeDesplazamiento.put(3, new MovimientoTiradaMenosPropiedades());
+		this.tipoDeDesplazamiento.put(4, new MovimientoTiradaMenosPropiedades());
+		this.tipoDeDesplazamiento.put(5, new MovimientoTiradaMenosPropiedades());
+		this.tipoDeDesplazamiento.put(6, new MovimientoTiradaMenosPropiedades());
+		this.tipoDeDesplazamiento.put(7, new MovimientoCapitalModuloTirada());
+		this.tipoDeDesplazamiento.put(8, new MovimientoCapitalModuloTirada());
+		this.tipoDeDesplazamiento.put(9, new MovimientoCapitalModuloTirada());
+		this.tipoDeDesplazamiento.put(10, new MovimientoCapitalModuloTirada());
+		this.tipoDeDesplazamiento.put(11, new MovimientoTiradaMenosDos());
+		this.tipoDeDesplazamiento.put(12, new MovimientoTiradaMenosDos());
 	}
 	
 	public void afectar(Jugador jugador) {
