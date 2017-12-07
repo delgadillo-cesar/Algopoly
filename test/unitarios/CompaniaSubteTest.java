@@ -7,6 +7,11 @@ import modelo.entidades.Jugador;
 import modelo.entidades.JugadorDos;
 import modelo.entidades.JugadorUno;
 import modelo.juego.Dados;
+import modelo.tablero.Casilla;
+import modelo.tablero.PosicionTablero;
+import modelo.tablero.Tablero;
+import modelo.tablero.comprables.SubteComprable;
+import modelo.tablero.comprables.TrenComprable;
 import modelo.tablero.poseibles.compania.Aysa;
 import modelo.tablero.poseibles.compania.Compania;
 import modelo.tablero.poseibles.compania.Edesur;
@@ -45,12 +50,15 @@ public class CompaniaSubteTest {
 	public void testJugadorTieneSubteYTrenYSuCapitalIncrementa1100Veces() {
 		Jugador jugadorUno = new JugadorUno("Juan");
 		Jugador jugadorDos = new JugadorDos("Pepe");
-		Compania companiaUno = new Subte(jugadorUno);
-		Compania companiaDos = new Tren(jugadorUno);
+		SubteComprable companiaUno = new SubteComprable();
+		TrenComprable companiaDos = new TrenComprable();
+		jugadorUno.comprarPropiedad(companiaUno);
+		jugadorUno.comprarPropiedad(companiaDos);
 		int capitalInicial = jugadorUno.capital();
 		Dados.getInstance().lanzarDados();
 		int valorACobrar = 1100 * Dados.getInstance().getValor();
-		companiaUno.afectar(jugadorDos);
+		Casilla subte = Tablero.getInstance().obtenerCasilla(new PosicionTablero(9));
+		subte.afectar(jugadorDos);
 		Assert.assertEquals(capitalInicial + valorACobrar, jugadorUno.capital());
 	}
 

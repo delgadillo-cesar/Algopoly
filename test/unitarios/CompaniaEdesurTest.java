@@ -7,6 +7,11 @@ import modelo.entidades.Jugador;
 import modelo.entidades.JugadorDos;
 import modelo.entidades.JugadorUno;
 import modelo.juego.Dados;
+import modelo.tablero.Casilla;
+import modelo.tablero.PosicionTablero;
+import modelo.tablero.Tablero;
+import modelo.tablero.comprables.AysaComprable;
+import modelo.tablero.comprables.EdesurComprable;
 import modelo.tablero.poseibles.compania.Aysa;
 import modelo.tablero.poseibles.compania.Compania;
 import modelo.tablero.poseibles.compania.Edesur;
@@ -45,12 +50,15 @@ public class CompaniaEdesurTest {
 	public void testJugadorTieneAysaYEdesurYSuCapitalIncrementa1000Veces() {
 		Jugador jugadorUno = new JugadorUno("Juan");
 		Jugador jugadorDos = new JugadorDos("Pepe");
-		Compania companiaUno = new Aysa(jugadorUno);
-		Compania companiaDos = new Edesur(jugadorUno);
+		AysaComprable companiaUno = new AysaComprable();
+		EdesurComprable companiaDos = new EdesurComprable();
+		jugadorUno.comprarPropiedad(companiaUno);
+		jugadorUno.comprarPropiedad(companiaDos);		
 		int capitalInicial = jugadorUno.capital();
 		Dados.getInstance().lanzarDados();
 		int valorACobrar = 1000 * Dados.getInstance().getValor();
-		companiaDos.afectar(jugadorDos);
+		Casilla edesur = Tablero.getInstance().obtenerCasilla(new PosicionTablero(4));
+		edesur.afectar(jugadorDos);
 		Assert.assertEquals(capitalInicial + valorACobrar, jugadorUno.capital());
 	}
 
@@ -58,12 +66,15 @@ public class CompaniaEdesurTest {
 	public void testJugadorCaeEnEdesurConAysaYSuCapitalDecrementa1000Veces() {
 		Jugador jugadorUno = new JugadorUno("Juan");
 		Jugador jugadorDos = new JugadorDos("Pepe");
-		Compania companiaUno = new Aysa(jugadorUno);
-		Compania companiaDos = new Edesur(jugadorUno);
+		AysaComprable companiaUno = new AysaComprable();
+		EdesurComprable companiaDos = new EdesurComprable();
+		jugadorUno.comprarPropiedad(companiaUno);
+		jugadorUno.comprarPropiedad(companiaDos);		
 		int capitalInicial = jugadorDos.capital();
 		Dados.getInstance().lanzarDados();
 		int valorACobrar = 1000 * Dados.getInstance().getValor();
-		companiaDos.afectar(jugadorDos);
+		Casilla edesur = Tablero.getInstance().obtenerCasilla(new PosicionTablero(4));
+		edesur.afectar(jugadorDos);
 		Assert.assertEquals(capitalInicial - valorACobrar, jugadorDos.capital());
 	}
 

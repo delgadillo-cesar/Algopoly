@@ -7,6 +7,9 @@ import modelo.entidades.Jugador;
 import modelo.entidades.JugadorDos;
 import modelo.entidades.JugadorUno;
 import modelo.juego.Dados;
+import modelo.tablero.Casilla;
+import modelo.tablero.PosicionTablero;
+import modelo.tablero.Tablero;
 import modelo.tablero.comprables.AysaComprable;
 import modelo.tablero.comprables.EdesurComprable;
 import modelo.tablero.poseibles.compania.Aysa;
@@ -57,8 +60,8 @@ public class CompaniaAysaTest {
 		} while (Dados.getInstance().getValor() != 10);
 		int valorACobrar = 500 * Dados.getInstance().getValor();
 		int capitalInicial = jugadorUno.capital();
-		Dados.getInstance().lanzarDados();
-		companiaUno.afectar(jugadorDos);
+		Casilla aysa = Tablero.getInstance().obtenerCasilla(new PosicionTablero(13));
+		aysa.afectar(jugadorDos);
 		Assert.assertEquals(capitalInicial + valorACobrar, jugadorUno.capital());
 	}
 
