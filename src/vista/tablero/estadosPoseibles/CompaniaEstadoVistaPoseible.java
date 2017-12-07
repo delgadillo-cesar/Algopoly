@@ -2,6 +2,7 @@ package vista.tablero.estadosPoseibles;
 
 import modelo.entidades.Jugador;
 import modelo.tablero.Poseible;
+import vista.Algopoly;
 import vista.jugador.VistaJugador;
 import vista.tablero.EstadoVista;
 import vista.tablero.VistaCasilla;
@@ -26,11 +27,8 @@ public abstract class CompaniaEstadoVistaPoseible extends EstadoVista {
 	public void dibujame(VistaCasilla vistaCasilla) {
 		vistaCasilla.dibujarFondo();
 		vistaCasilla.dibujarJugadores();
-	}
-/*
-	@Override
-	public EventHandler<MouseEvent> obtenerHandler(Image imagen) {
-		return new OpcionesCompaniaPoseibleHandler(imagen, (Compania) this.poseible);
-	}
-*/
+
+		VistaJugador vj = Algopoly.getInstance().obtenerVistaJugador(poseible.propietario());
+		vistaCasilla.dibujarMarco(vj.getColor());
+}
 }

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import modelo.entidades.Jugador;
+import modelo.entidades.JugadorSinSaldoException;
 import modelo.juego.Turno;
 import modelo.tablero.PosicionTablero;
 import modelo.tablero.Tablero;
@@ -201,6 +202,21 @@ public class VistaTablero extends BorderPane {
 		casilla.jugadorCaeEnCasilla(unJugador);
 	}
 
+	private void jugadorVolvioAMoverse(Jugador unJugador, PosicionTablero anterior, PosicionTablero posterior){
+		VistaCasilla casilla = this.casillas.get(anterior);
+		VistaJugador elJugador = Algopoly.getInstance().obtenerVistaJugador(unJugador);
+		casilla.jugadorSaleDeCasilla(elJugador);
+
+		casilla = this.casillas.get(posterior);
+		casilla.jugadorCaeEnCasilla(Algopoly.getInstance().obtenerVistaJugador(unJugador));
+
+		Tablero.getInstance().elJugadorSeDesplazo(unJugador);
+
+		PosicionTablero actual = Tablero.getInstance().casillaDeJugador(unJugador);
+		if (posterior != actual) this.jugadorVolvioAMoverse(unJugador, posterior, actual);
+	}
+	
+	
 	public void moverJugadrDeTurno(int cantidadAMover) {
 		Jugador unJugador = Turno.getInstance().turnoActual();		
 		PosicionTablero anterior = Tablero.getInstance().casillaDeJugador(unJugador);
@@ -213,7 +229,17 @@ public class VistaTablero extends BorderPane {
 
 		casilla = this.casillas.get(posterior);
 		casilla.jugadorCaeEnCasilla(Algopoly.getInstance().obtenerVistaJugador(unJugador));
-	}
+		
+		try{
+			if (anterior != posterior) Tablero.getInstance().elJugadorSeDesplazo(unJugador);
+			PosicionTablero actual = Tablero.getInstance().casillaDeJugador(unJugador);
+			if (posterior != actual) this.jugadorVolvioAMoverse(unJugador, posterior, actual);
+		}catch(JugadorSinSaldoException e){
+			Tablero tablero = Tablero.getInstance();
+			Algopoly.getInstance().pagoPendiente(tablero.obtenerCasilla(tablero.casillaDeJugador(unJugador)));
+			Algopoly.getInstance().redibujar();
+		}
+}
 
 	public VistaCasilla obtenerCasilla(PosicionTablero casilla) {
 		return this.casillas.get(casilla);

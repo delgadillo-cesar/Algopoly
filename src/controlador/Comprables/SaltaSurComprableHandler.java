@@ -22,7 +22,7 @@ public class SaltaSurComprableHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
     	try{
         	this.unComprable.comprar(Turno.getInstance().turnoActual());
-        	VistaTablero.getInstance().obtenerCasilla(Tablero.CASILLA_BUENOS_AIRES_SUR).cambiarEstado(new SaltaSurEstadoPoseible());
+        	VistaTablero.getInstance().obtenerCasilla(Tablero.CASILLA_SALTA_SUR).cambiarEstado(new SaltaSurEstadoPoseible());
     	}catch(JugadorSinSaldoException e){
     		new AlertaSaldoInsuficiente();
     	}

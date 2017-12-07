@@ -12,7 +12,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 public abstract class VistaCasilla extends VBox {
 
@@ -74,12 +73,8 @@ public abstract class VistaCasilla extends VBox {
 //		this.dibujarMarco();
 	}
 
-	public void dibujarMarco(){
-		Rectangle rect = new Rectangle(20,20,200,200);
-		rect.setFill(Color.TRANSPARENT);
-		rect.setStroke(Color.BLACK);
-
-		this.canvas.getGraphicsContext2D().setStroke(Color.BLUE);
+	public void dibujarMarco(Color color){
+		this.canvas.getGraphicsContext2D().setStroke(color);
 		this.canvas.getGraphicsContext2D().setLineWidth(5);
         this.canvas.getGraphicsContext2D().strokeRoundRect(0, 0, VistaTablero.ANCHO_CASILLA, VistaTablero.ALTO_CASILLA, 5, 5);
 	}

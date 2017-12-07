@@ -3,7 +3,6 @@ package modelo.tablero.comprables;
 import modelo.entidades.*;
 import modelo.tablero.*;
 import modelo.tablero.poseibles.BarrioYaHabiaSidoCompradoException;
-import modelo.tablero.poseibles.barrios.Barrio;
 import modelo.tablero.poseibles.barrios.BarrioCordobaNorte;
 
 public class CordobaNorteComprable implements Comprable {

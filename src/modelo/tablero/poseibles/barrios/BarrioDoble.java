@@ -37,7 +37,6 @@ public abstract class BarrioDoble extends Barrio {
 			complemento.construcciones = complemento.construcciones.actualizarCon(new HastaDosCasas());
 		}
 
-		System.out.println(this.cantidadDePropiedades());
 		if (complemento.cantidadDePropiedades() == 2){
 			this.construcciones = this.construcciones.actualizarCon(new HastaHotel());
 		}

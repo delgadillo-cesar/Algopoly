@@ -2,6 +2,7 @@ package vista.tablero.estadosPoseibles;
 
 import modelo.entidades.Jugador;
 import modelo.tablero.poseibles.barrios.Barrio;
+import vista.Algopoly;
 import vista.jugador.VistaJugador;
 import vista.tablero.EstadoVista;
 import vista.tablero.VistaCasilla;
@@ -29,6 +30,9 @@ public abstract class BarrioEstadoVistaPoseible extends EstadoVista {
 		((VistaCasillaBarrio) vistaCasilla).setConstruccion(this.barrio.construccionActual());
 		((VistaCasillaBarrio) vistaCasilla).dibujarConstruccion();
 		vistaCasilla.dibujarJugadores();
+		
+		VistaJugador vj = Algopoly.getInstance().obtenerVistaJugador(barrio.propietario());
+		vistaCasilla.dibujarMarco(vj.getColor());
 	}
 
 }

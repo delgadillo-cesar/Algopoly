@@ -6,7 +6,9 @@ import java.util.LinkedList;
 import controlador.*;
 
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -15,7 +17,11 @@ import javafx.scene.text.TextAlignment;
 import modelo.entidades.*;
 import modelo.juego.Dados;
 import modelo.juego.Turno;
+import modelo.tablero.Casilla;
+import modelo.tablero.Tablero;
+import vista.jugador.AlertaSaldoInsuficiente;
 import vista.jugador.VistaJugador;
+import vista.tablero.VistaCasilla;
 import vista.tablero.VistaTablero;
 
 public class Algopoly extends BorderPane {
@@ -130,5 +136,44 @@ public class Algopoly extends BorderPane {
 
 	public VistaJugador obtenerVistaJugador(Jugador unJugador) {
 		return this.vistaJugadores.get(unJugador);
+	}
+
+	private void jugadorPierde(Jugador jugador){
+		Alert alerta = new Alert(AlertType.ERROR);
+		alerta.setTitle("Saldo insuficiente");
+		alerta.setHeaderText("Perdes la partida");
+		alerta.setContentText("No tenes sufiente dinero y no tenes nada para vender.");
+		alerta.showAndWait();
+		
+		Turno.getInstance().quitarJugadorActual();
+		VistaJugador vj = this.vistaJugadores.get(jugador);
+		vj.gameOver();
+		
+		Tablero tablero = Tablero.getInstance();
+		VistaTablero vt = VistaTablero.getInstance();
+		
+		VistaCasilla vc = vt.obtenerCasilla(tablero.casillaDeJugador(jugador));
+		vc.jugadorSaleDeCasilla(vj);
+		
+		Jugador proximoJugador = Turno.getInstance().turnoActual();
+		VistaTablero.getInstance().habilitarCasillas(proximoJugador);
+		Algopoly.getInstance().tirarDadosSetDisable(false);
+		Algopoly.getInstance().terminarTurnoSetDisable(true);
+		Algopoly.getInstance().redibujar();
+	}
+	
+	public void pagoPendiente(Casilla casillaPendienteDePago){
+		Jugador jugadorActual = Turno.getInstance().turnoActual();
+		if (jugadorActual.cantidadPosesiones() == 0){
+			this.jugadorPierde(jugadorActual);
+			/*Pierde el juego*/
+		}else{
+			new AlertaSaldoInsuficiente();
+			botonTerminarTurno.setOnAction(new PagarPendienteHandler());
+		}
+	}
+	
+	public void pendientePagado(){
+		botonTerminarTurno.setOnAction(new CambiarTurnoHandler());
 	}
 }

@@ -14,6 +14,6 @@ public class MovimientoLibre extends TipoMovimiento {
 		  nroNuevaCasilla = posicionJugador.getPosicion() + cantidadDeCasilleros;
 		  
 		  unJugador.cambiarPosicion(Tablero.ajustarPosicionSegunBordes(new PosicionTablero(nroNuevaCasilla)));
-		  Tablero.getInstance().elJugadorSeDesplazo(unJugador); /*Para la interaccion con la nueva casilla*/
+//		  Tablero.getInstance().elJugadorSeDesplazo(unJugador); /*Para la interaccion con la nueva casilla*/
 		}
 }

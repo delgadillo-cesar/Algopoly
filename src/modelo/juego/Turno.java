@@ -60,4 +60,11 @@ public class Turno {
 		this.jugadorActual = this.jugadores.getFirst();
 	}
 
+	public void quitarJugadorActual() {
+		jugadores.remove(this.jugadorActual);
+		this.jugadorActual = this.jugadores.getFirst();
+		this.jugadorAnterior = this.jugadores.getLast();
+		this.jugadores.removeLast();
+	}
+
 }

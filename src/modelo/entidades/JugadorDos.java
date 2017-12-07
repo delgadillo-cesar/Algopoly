@@ -4,7 +4,6 @@ public class JugadorDos extends Jugador {
 
 	public JugadorDos(String unNombre) {
 		super(unNombre);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
