@@ -1,7 +1,7 @@
 package vista.tablero.estadosPoseibles;
 
-import modelo.tablero.poseibles.NadaParaConstruirException;
 import modelo.tablero.poseibles.barrios.Barrio;
+import modelo.tablero.poseibles.barrios.construcciones.NadaParaConstruirException;
 import controlador.CerrarOpcionesHandler;
 import controlador.poseibles.BarrioConstruirHandler;
 import controlador.poseibles.BarrioVenderConstruccionHandler;

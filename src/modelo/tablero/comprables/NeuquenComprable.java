@@ -1,15 +1,16 @@
 package modelo.tablero.comprables;
 
-import modelo.entidades.*;
-import modelo.tablero.*;
-import modelo.tablero.poseibles.BarrioYaHabiaSidoCompradoException;
+import modelo.entidades.Banco;
+import modelo.entidades.Jugador;
+import modelo.tablero.Comprable;
+import modelo.tablero.Tablero;
 import modelo.tablero.poseibles.barrios.BarrioNeuquen;
 
 public class NeuquenComprable implements Comprable {
 
 	private int precioCompra;
 
-	public NeuquenComprable(){
+	public NeuquenComprable() {
 		this.precioCompra = 17000;
 	}
 
@@ -21,14 +22,10 @@ public class NeuquenComprable implements Comprable {
 	}
 
 	public void comprar(Jugador unJugador) {
-		if (precioCompra > 0) {
-			unJugador.pagarA(Banco.getInstance(), precioCompra);
-			BarrioNeuquen neuquen= new BarrioNeuquen(unJugador);
-			unJugador.agregarBarrio(neuquen);
-			Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_NEUQUEN, neuquen);
-			precioCompra = 0;
-		} else {
-			throw new BarrioYaHabiaSidoCompradoException();
-		}
+		unJugador.pagarA(Banco.getInstance(), precioCompra);
+		BarrioNeuquen neuquen = new BarrioNeuquen(unJugador);
+		unJugador.agregarBarrio(neuquen);
+		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_NEUQUEN, neuquen);
+		precioCompra = 0;
 	}
 }

@@ -6,6 +6,7 @@ import modelo.tablero.poseibles.*;
 import modelo.tablero.poseibles.barrios.construcciones.Construccion;
 import modelo.tablero.poseibles.barrios.construcciones.ConstruccionPosible;
 import modelo.tablero.poseibles.barrios.construcciones.Construible;
+import modelo.tablero.poseibles.barrios.construcciones.NadaParaConstruirException;
 import modelo.tablero.poseibles.barrios.construcciones.TerrenoConstruible;
 
 

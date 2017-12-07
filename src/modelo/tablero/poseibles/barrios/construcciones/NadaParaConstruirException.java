@@ -1,4 +1,4 @@
-package modelo.tablero.poseibles;
+package modelo.tablero.poseibles.barrios.construcciones;
 
 public class NadaParaConstruirException extends RuntimeException {
 

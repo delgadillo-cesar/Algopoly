@@ -1,15 +1,16 @@
 package modelo.tablero.comprables;
 
-import modelo.entidades.*;
-import modelo.tablero.*;
-import modelo.tablero.poseibles.BarrioYaHabiaSidoCompradoException;
+import modelo.entidades.Banco;
+import modelo.entidades.Jugador;
+import modelo.tablero.Comprable;
+import modelo.tablero.Tablero;
 import modelo.tablero.poseibles.Subte;
 
 public class SubteComprable implements Comprable {
 
 	private int precioCompra;
 
-	public SubteComprable(){
+	public SubteComprable() {
 		this.precioCompra = 40000;
 	}
 
@@ -21,14 +22,10 @@ public class SubteComprable implements Comprable {
 	}
 
 	public void comprar(Jugador unJugador) {
-		if (precioCompra > 0) {
-			unJugador.pagarA(Banco.getInstance(), precioCompra);
-			Subte subte = new Subte(unJugador);
-			unJugador.agregarCompania(subte);
-			Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_SUBTE, subte);
-			precioCompra = 0;
-		} else {
-			throw new BarrioYaHabiaSidoCompradoException();
-		}
+		unJugador.pagarA(Banco.getInstance(), precioCompra);
+		Subte subte = new Subte(unJugador);
+		unJugador.agregarCompania(subte);
+		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_SUBTE, subte);
+		precioCompra = 0;
 	}
 }

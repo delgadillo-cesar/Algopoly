@@ -1,10 +1,10 @@
 package modelo.tablero.poseibles.barrios;
 
 import modelo.entidades.Jugador;
-import modelo.tablero.poseibles.NadaParaConstruirException;
 import modelo.tablero.poseibles.barrios.construcciones.Construccion;
 import modelo.tablero.poseibles.barrios.construcciones.HastaDosCasas;
 import modelo.tablero.poseibles.barrios.construcciones.HastaHotel;
+import modelo.tablero.poseibles.barrios.construcciones.NadaParaConstruirException;
 
 
 public abstract class BarrioDoble extends Barrio {
