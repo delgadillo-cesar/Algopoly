@@ -8,7 +8,6 @@ import modelo.entidades.JugadorUno;
 import modelo.tablero.poseibles.barrios.Barrio;
 import modelo.tablero.poseibles.barrios.BarrioNeuquen;
 import modelo.tablero.poseibles.barrios.construcciones.NadaParaConstruirException;
-import modelo.tablero.poseibles.barrios.construcciones.Terreno;
 
 public class BarrioNeuquenTest {
 

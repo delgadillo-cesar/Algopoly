@@ -10,8 +10,6 @@ import modelo.tablero.acciones.AvanceDinamico;
 import modelo.tablero.comprables.NeuquenComprable;
 import modelo.tablero.comprables.TucumanComprable;
 import modelo.tablero.poseibles.barrios.Barrio;
-import modelo.tablero.poseibles.barrios.BarrioNeuquen;
-import modelo.tablero.poseibles.barrios.BarrioTucuman;
 
 public class AvanceDinamicoTest {
 

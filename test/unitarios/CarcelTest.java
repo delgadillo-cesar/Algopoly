@@ -6,7 +6,6 @@ import org.junit.Test;
 import modelo.entidades.Jugador;
 import modelo.entidades.JugadorUno;
 import modelo.tablero.PosicionTablero;
-import modelo.tablero.Tablero;
 import modelo.tablero.acciones.Carcel;
 
 public class CarcelTest {
