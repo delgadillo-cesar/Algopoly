@@ -55,6 +55,19 @@ public class CompaniaEdesurTest {
 	}
 
 	@Test
+	public void testJugadorCaeEnEdesurConAysaYSuCapitalDecrementa1000Veces() {
+		Jugador jugadorUno = new JugadorUno("Juan");
+		Jugador jugadorDos = new JugadorDos("Pepe");
+		Compania companiaUno = new Aysa(jugadorUno);
+		Compania companiaDos = new Edesur(jugadorUno);
+		int capitalInicial = jugadorDos.capital();
+		Dados.getInstance().lanzarDados();
+		int valorACobrar = 1000 * Dados.getInstance().getValor();
+		companiaDos.afectar(jugadorDos);
+		Assert.assertEquals(capitalInicial - valorACobrar, jugadorDos.capital());
+	}
+
+	@Test
 	public void testJugadorTieneTodasLasCompaniasSalvoAysaYSuCapitalIncrementa500Veces() {
 		Jugador jugadorUno = new JugadorUno("Juan");
 		Jugador jugadorDos = new JugadorDos("Pepe");
