@@ -7,7 +7,7 @@ import modelo.entidades.JugadorUno;
 import modelo.tablero.Comprable;
 import modelo.tablero.comprables.CordobaNorteComprable;
 
-public class CompraBarriosTest {
+public class BarriosComprableTest {
 
 	@Test
 	public void testVerificaCapitalDeJugadorTrasComprarBarrio() {
