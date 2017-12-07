@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import modelo.entidades.Jugador;
 import modelo.entidades.JugadorUno;
+import modelo.tablero.PosicionTablero;
 import modelo.tablero.Tablero;
 
 public class TableroTest {
@@ -28,11 +29,11 @@ public class TableroTest {
 
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador = new JugadorUno("Pepe");
-		tablero.desplazar(jugador, 1);
+		tablero.desplazar(jugador, new PosicionTablero(1));
 
 		jugador.mover(1);
 
-		int casillaActual = tablero.casillaDeJugador(jugador);
+		PosicionTablero casillaActual = tablero.casillaDeJugador(jugador);
 		Assert.assertEquals(casillaActual, 2);
 
 	}
@@ -42,11 +43,11 @@ public class TableroTest {
 
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador = new JugadorUno("Pepe");
-		tablero.desplazar(jugador, 1);
+		tablero.desplazar(jugador, new PosicionTablero(1));
 
 		jugador.mover(21);
 
-		int casillaActual = tablero.casillaDeJugador(jugador);
+		PosicionTablero casillaActual = tablero.casillaDeJugador(jugador);
 		Assert.assertEquals(casillaActual, 2);
 
 	}
@@ -56,11 +57,11 @@ public class TableroTest {
 
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador = new JugadorUno("Pepe");
-		tablero.desplazar(jugador, 1);
+		tablero.desplazar(jugador, new PosicionTablero(1));
 
 		jugador.mover(-1);
 
-		int casillaActual = tablero.casillaDeJugador(jugador);
+		PosicionTablero casillaActual = tablero.casillaDeJugador(jugador);
 		Assert.assertEquals(casillaActual, 20);
 
 	}
@@ -70,11 +71,11 @@ public class TableroTest {
 
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador = new JugadorUno("Pepe");
-		tablero.desplazar(jugador, 1);
+		tablero.desplazar(jugador, new PosicionTablero(1));
 
 		jugador.mover(-21);
 
-		int casillaActual = tablero.casillaDeJugador(jugador);
+		PosicionTablero casillaActual = tablero.casillaDeJugador(jugador);
 		Assert.assertEquals(casillaActual, 20);
 
 	}
@@ -84,7 +85,7 @@ public class TableroTest {
 
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador = new JugadorUno("Pepe");
-		tablero.desplazar(jugador, 1);
+		tablero.desplazar(jugador, new PosicionTablero(1));
 
 		jugador.mover(1);
 
@@ -97,7 +98,7 @@ public class TableroTest {
 
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador = new JugadorUno("Pepe");
-		tablero.desplazar(jugador, 1);
+		tablero.desplazar(jugador, new PosicionTablero(1));
 
 		jugador.mover(-1);
 
@@ -110,11 +111,11 @@ public class TableroTest {
 
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador = new JugadorUno("Pepe");
-		tablero.desplazar(jugador, 1);
+		tablero.desplazar(jugador, new PosicionTablero(1));
 
 		jugador.mover(4);
-		
-		Assert.assertTrue(jugador.obtenerPosicion().getPosicion() == 5);	
+
+		Assert.assertTrue(jugador.obtenerPosicion().getPosicion() == 5);
 
 	}
 
@@ -123,15 +124,14 @@ public class TableroTest {
 
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador = new JugadorUno("Pepe");
-		tablero.desplazar(jugador, 9);
+		tablero.desplazar(jugador, new PosicionTablero(9));
 
-		
 		jugador.cobrar(2000000); /* Se agrega capital para que tenga suficiente para la prueba */
 
 		for (int i = 1; i <= 6; i++) {
 			jugador.mover(1);
-		}	
-		
+		}
+
 		Assert.assertTrue(jugador.obtenerPosicion().getPosicion() == 15);
 	}
 }

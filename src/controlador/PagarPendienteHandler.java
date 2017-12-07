@@ -17,10 +17,6 @@ public class PagarPendienteHandler implements EventHandler<ActionEvent> {
 		Jugador jugadorActual = Turno.getInstance().turnoActual();
 		Tablero tablero = Tablero.getInstance();
 		Casilla casilla = tablero.obtenerCasilla(tablero.casillaDeJugador(jugadorActual));
-
-		System.out.println("Handler");
-
-
 		try{
 			casilla.afectar(jugadorActual);
 			Algopoly.getInstance().pendientePagado();

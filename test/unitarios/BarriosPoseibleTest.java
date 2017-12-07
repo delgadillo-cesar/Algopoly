@@ -5,12 +5,11 @@ import org.junit.Test;
 
 import modelo.entidades.JugadorDos;
 import modelo.entidades.JugadorUno;
-import modelo.entidades.MismoJugadorException;
 import modelo.tablero.poseibles.barrios.Barrio;
 import modelo.tablero.poseibles.barrios.BarrioNeuquen;
 import modelo.tablero.poseibles.barrios.construcciones.NadaParaConstruirException;
-import modelo.tablero.poseibles.barrios.construcciones.TerrenoConstruido;
-import modelo.tablero.poseibles.barrios.construcciones.UnaCasaConstruida;
+import modelo.tablero.poseibles.barrios.construcciones.Terreno;
+import modelo.tablero.poseibles.barrios.construcciones.UnaCasa;
 
 public class BarriosPoseibleTest {
 
@@ -81,10 +80,10 @@ public class BarriosPoseibleTest {
 	}
 
 	@Test
-	public void testSeCreaBarrioYConstruccionActualNoEsNull() {
+	public void testSeCreaBarrioYConstruccionActualEsTerreno() {
 		JugadorUno unJugador = new JugadorUno("jugador");
 		Barrio barrio = new BarrioNeuquen(unJugador);
-		Assert.assertEquals(TerrenoConstruido.class, barrio.construccionActual().getClass());
+		Assert.assertEquals(Terreno.class, barrio.construccionActual().getClass());
 	}
 
 	@Test
@@ -92,7 +91,7 @@ public class BarriosPoseibleTest {
 		JugadorUno unJugador = new JugadorUno("jugador");
 		Barrio barrio = new BarrioNeuquen(unJugador);
 		barrio.construir();
-		Assert.assertEquals(UnaCasaConstruida.class, barrio.construccionActual().getClass());
+		Assert.assertEquals(UnaCasa.class, barrio.construccionActual().getClass());
 	}
 
 	@Test
@@ -139,10 +138,4 @@ public class BarriosPoseibleTest {
 		barrio.venderConstruccion();
 		Assert.assertTrue(capitalInicial < unJugador.capital());
 	}
-
-	@Test
-	public void test() {
-
-	}
-
 }
