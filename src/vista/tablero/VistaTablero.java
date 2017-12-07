@@ -5,6 +5,7 @@ import java.util.Map;
 
 import modelo.entidades.Jugador;
 import modelo.juego.Turno;
+import modelo.tablero.PosicionTablero;
 import modelo.tablero.Tablero;
 import vista.Algopoly;
 import vista.jugador.VistaJugador;
@@ -31,14 +32,19 @@ public class VistaTablero extends BorderPane {
 	public static final int ANCHO_CASILLA = 100;
 	public static final int ALTO_CASILLA = 100;
 	private static VistaTablero laVistaTablero;
-	private HashMap<Integer, VistaCasilla> casillas;
+	private HashMap<PosicionTablero, VistaCasilla> casillas;
 
-	
-	public void dibujarTablero(){
-		
-		for(Map.Entry<Integer, VistaCasilla> casilla : this.casillas.entrySet()){
+	public void habilitarCasillas(Jugador unJugador){
+		for(Map.Entry<PosicionTablero, VistaCasilla> casilla : this.casillas.entrySet()){
 			try{
 				casilla.getValue().habilitarParaJugador(Turno.getInstance().turnoActual());
+			}catch(NullPointerException e){}
+		}
+	}
+	
+	public void dibujarTablero(){
+		for(Map.Entry<PosicionTablero, VistaCasilla> casilla : this.casillas.entrySet()){
+			try{
 				casilla.getValue().dibujarCasilla();
 			}catch(NullPointerException e){}
 		}
@@ -89,7 +95,7 @@ public class VistaTablero extends BorderPane {
 	    BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 	    this.setBackground(new Background(imagenDeFondo));
 
-	    this.casillas = new HashMap<Integer, VistaCasilla>();
+	    this.casillas = new HashMap<PosicionTablero, VistaCasilla>();
 
 	    this.casillas.put(Tablero.CASILLA_SALIDA, new VistaCasillaSalida());
 	    this.casillas.put(Tablero.CASILLA_QUINI, new VistaCasillaQuini());
@@ -113,7 +119,6 @@ public class VistaTablero extends BorderPane {
 	    this.casillas.put(Tablero.CASILLA_TUCUMAN, new VistaCasillaTucuman());
 
 	    
-        this.dibujarTablero();
         this.setPadding(new Insets(0));
 	}
 
@@ -190,30 +195,27 @@ public class VistaTablero extends BorderPane {
 		this.dibujarTablero();
 	}
 
-	public void dibujarFichaJugador(VistaJugador unJugador) {
-		int posJugador = Tablero.getInstance().casillaDeJugador(unJugador.getJugador());
-		VistaCasilla casilla = this.casillas.get(posJugador);
+	public void ponerFichaDeJugadorEnTablero(VistaJugador unJugador) {
+		unJugador.getJugador().cambiarPosicion(Tablero.obtenerPosicionInicial());
+		VistaCasilla casilla = this.casillas.get(Tablero.obtenerPosicionInicial());
 		casilla.jugadorCaeEnCasilla(unJugador);
-		this.dibujarTablero();
 	}
 
 	public void moverJugadrDeTurno(int cantidadAMover) {
 		Jugador unJugador = Turno.getInstance().turnoActual();		
-		int casillaAnterior = Tablero.getInstance().casillaDeJugador(unJugador);
+		PosicionTablero anterior = Tablero.getInstance().casillaDeJugador(unJugador);
 		unJugador.mover(cantidadAMover);
-		int casillaPosterior = Tablero.getInstance().casillaDeJugador(unJugador);
+		PosicionTablero posterior = Tablero.getInstance().casillaDeJugador(unJugador);
 		
-		
-		VistaCasilla casilla = this.casillas.get(casillaAnterior);
-		casilla.jugadorSaleDeCasilla(Algopoly.getInstance().obtenerVistaJugador(unJugador));
+		VistaCasilla casilla = this.casillas.get(anterior);
+		VistaJugador elJugador = Algopoly.getInstance().obtenerVistaJugador(unJugador);
+		casilla.jugadorSaleDeCasilla(elJugador);
 
-		casilla = this.casillas.get(casillaPosterior);
+		casilla = this.casillas.get(posterior);
 		casilla.jugadorCaeEnCasilla(Algopoly.getInstance().obtenerVistaJugador(unJugador));
-
-		this.dibujarTablero();
 	}
 
-	public VistaCasilla obtenerCasilla(Integer casilla) {
+	public VistaCasilla obtenerCasilla(PosicionTablero casilla) {
 		return this.casillas.get(casilla);
 	}
 }

@@ -10,30 +10,30 @@ public class Tablero {
 
 	private static Tablero elTablero;
 	private static final Integer CANTIDAD_CASILLAS = 20;
-	private static final Integer CASILLA_INICIAL = 1;
+	private static HashMap<Integer, PosicionTablero> nroCasilla;
 
-	public static final Integer CASILLA_SALIDA = 1;
-	public static final Integer CASILLA_QUINI = 2;
-	public static final Integer CASILLA_BUENOS_AIRES_SUR = 3;
-	public static final Integer CASILLA_EDESUR = 4;
-	public static final Integer CASILLA_BUENOS_AIRES_NORTE = 5;
-	public static final Integer CASILLA_CARCEL = 6;
-	public static final Integer CASILLA_CORDOBA_SUR = 7;
-	public static final Integer CASILLA_AVANCE_DINAMICO = 8;
-	public static final Integer CASILLA_SUBTE = 9;
-	public static final Integer CASILLA_CORDOBA_NORTE = 10;
-	public static final Integer CASILLA_IMPUESTO_DE_LUJO = 11;
-	public static final Integer CASILLA_SANTA_FE = 12;
-	public static final Integer CASILLA_AYSA = 13;
-	public static final Integer CASILLA_SALTA_NORTE = 14;
-	public static final Integer CASILLA_SALTA_SUR = 15;
-	public static final Integer CASILLA_POLICIA = 16;
-	public static final Integer CASILLA_TREN = 17;
-	public static final Integer CASILLA_NEUQUEN = 18;
-	public static final Integer CASILLA_RETROCESO_DINAMICO = 19;
-	public static final Integer CASILLA_TUCUMAN = 20;
-
-	private HashMap<Integer, Casilla> posicionCasilla;
+	public static final PosicionTablero CASILLA_SALIDA = new PosicionTablero(1);
+	public static final PosicionTablero CASILLA_QUINI = new PosicionTablero(2);
+	public static final PosicionTablero CASILLA_BUENOS_AIRES_SUR = new PosicionTablero(3);
+	public static final PosicionTablero CASILLA_EDESUR = new PosicionTablero(4);
+	public static final PosicionTablero CASILLA_BUENOS_AIRES_NORTE = new PosicionTablero(5);
+	public static final PosicionTablero CASILLA_CARCEL = new PosicionTablero(6);
+	public static final PosicionTablero CASILLA_CORDOBA_SUR = new PosicionTablero(7);
+	public static final PosicionTablero CASILLA_AVANCE_DINAMICO = new PosicionTablero(8);
+	public static final PosicionTablero CASILLA_SUBTE = new PosicionTablero(9);
+	public static final PosicionTablero CASILLA_CORDOBA_NORTE = new PosicionTablero(10);
+	public static final PosicionTablero CASILLA_IMPUESTO_DE_LUJO = new PosicionTablero(11);
+	public static final PosicionTablero CASILLA_SANTA_FE = new PosicionTablero(12);
+	public static final PosicionTablero CASILLA_AYSA = new PosicionTablero(13);
+	public static final PosicionTablero CASILLA_SALTA_NORTE = new PosicionTablero(14);
+	public static final PosicionTablero CASILLA_SALTA_SUR = new PosicionTablero(15);
+	public static final PosicionTablero CASILLA_POLICIA = new PosicionTablero(16);
+	public static final PosicionTablero CASILLA_TREN = new PosicionTablero(17);
+	public static final PosicionTablero CASILLA_NEUQUEN = new PosicionTablero(18);
+	public static final PosicionTablero CASILLA_RETROCESO_DINAMICO = new PosicionTablero(19);
+	public static final PosicionTablero CASILLA_TUCUMAN = new PosicionTablero(20);
+	
+	private HashMap<PosicionTablero, Casilla> posicionCasilla;
 
 	private void crearCasillas() {
 		this.posicionCasilla.put(CASILLA_SALIDA, new Salida());
@@ -59,13 +59,35 @@ public class Tablero {
 	}
 
 	private Tablero() {
-		posicionCasilla = new HashMap<Integer, Casilla>();
+		posicionCasilla = new HashMap<PosicionTablero, Casilla>();
 
 		this.crearCasillas();
 	}
 
 	public static Tablero getInstance() {
 		if (elTablero == null) {
+			nroCasilla = new HashMap<Integer, PosicionTablero>();
+			nroCasilla.put(1, CASILLA_SALIDA);
+			nroCasilla.put(2, CASILLA_QUINI);
+			nroCasilla.put(3, CASILLA_BUENOS_AIRES_SUR);
+			nroCasilla.put(4, CASILLA_EDESUR);
+			nroCasilla.put(5, CASILLA_BUENOS_AIRES_NORTE);
+			nroCasilla.put(6, CASILLA_CARCEL);
+			nroCasilla.put(7, CASILLA_CORDOBA_SUR);
+			nroCasilla.put(8, CASILLA_AVANCE_DINAMICO);
+			nroCasilla.put(9, CASILLA_SUBTE);
+			nroCasilla.put(10, CASILLA_CORDOBA_NORTE);
+			nroCasilla.put(11, CASILLA_IMPUESTO_DE_LUJO);
+			nroCasilla.put(12, CASILLA_SANTA_FE);
+			nroCasilla.put(13, CASILLA_AYSA);
+			nroCasilla.put(14, CASILLA_SALTA_NORTE);
+			nroCasilla.put(15, CASILLA_SALTA_SUR);
+			nroCasilla.put(16, CASILLA_POLICIA);
+			nroCasilla.put(17, CASILLA_TREN);
+			nroCasilla.put(18, CASILLA_NEUQUEN);
+			nroCasilla.put(19, CASILLA_RETROCESO_DINAMICO);
+			nroCasilla.put(20, CASILLA_TUCUMAN);
+
 			elTablero = new Tablero();
 		}
 		return elTablero;
@@ -77,7 +99,6 @@ public class Tablero {
 
 	public static PosicionTablero ajustarPosicionSegunBordes(PosicionTablero unaPosicion) {
 		Integer nroCasilla = unaPosicion.getPosicion();
-		PosicionTablero nuevaPosicion = unaPosicion;
 
 		while (!(estaEnRango(nroCasilla))) {
 			if (nroCasilla > CANTIDAD_CASILLAS)
@@ -85,21 +106,18 @@ public class Tablero {
 			if (nroCasilla <= 0)
 				nroCasilla += CANTIDAD_CASILLAS;
 		}
-		nuevaPosicion.setPosicion(nroCasilla);
 
-		return nuevaPosicion;
+		return Tablero.nroCasilla.get(nroCasilla);
 	}
 
-	public void desplazar(Jugador unJugador, int tagCasilla) {
-		PosicionTablero unaPosicion = new PosicionTablero();
-		unaPosicion.setPosicion(tagCasilla);
-		unJugador.cambiarPosicion(unaPosicion);
+	public void desplazar(Jugador unJugador, PosicionTablero posCasilla) {
+		unJugador.cambiarPosicion(posCasilla);
 
 		this.elJugadorSeDesplazo(unJugador);
 	}
 
-	public int casillaDeJugador(Jugador unJugador) {
-		return unJugador.obtenerPosicion().getPosicion();
+	public PosicionTablero casillaDeJugador(Jugador unJugador) {
+		return unJugador.obtenerPosicion();
 	}
 
 	public static void resetear() {
@@ -107,24 +125,20 @@ public class Tablero {
 	}
 
 	public void elJugadorSeDesplazo(Jugador unJugador) {
-		Casilla unaCasilla = posicionCasilla.get(unJugador.obtenerPosicion().getPosicion());
+		Casilla unaCasilla = posicionCasilla.get(unJugador.obtenerPosicion());
 
 		unaCasilla.afectar(unJugador);
 	}
 
 	public static PosicionTablero obtenerPosicionInicial() {
-		PosicionTablero posicionInicial = new PosicionTablero();
-
-		posicionInicial.setPosicion(CASILLA_INICIAL);
-
-		return posicionInicial;
+		return CASILLA_SALIDA;
 	}
 
-	public void cambiarCasillaPor(int tagCasilla, Casilla nuevaCasilla) {
+	public void cambiarCasillaPor(PosicionTablero tagCasilla, Casilla nuevaCasilla) {
 		this.posicionCasilla.put(tagCasilla, nuevaCasilla);
 	}
 	
-	public Casilla obtenerCasilla(int tagCasilla){
+	public Casilla obtenerCasilla(PosicionTablero tagCasilla){
 		return this.posicionCasilla.get(tagCasilla);
 	}
 }

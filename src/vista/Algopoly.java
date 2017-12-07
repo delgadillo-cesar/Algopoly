@@ -15,7 +15,6 @@ import javafx.scene.text.TextAlignment;
 import modelo.entidades.*;
 import modelo.juego.Dados;
 import modelo.juego.Turno;
-import modelo.tablero.Tablero;
 import vista.jugador.VistaJugador;
 import vista.tablero.VistaTablero;
 
@@ -69,7 +68,8 @@ public class Algopoly extends BorderPane {
 		valorDados.setWrappingWidth(200);
 		valorDados.setTextAlignment(TextAlignment.CENTER);
 
-		this.setCenter(VistaTablero.getInstance());
+		VistaTablero tablero = VistaTablero.getInstance();
+		this.setCenter(tablero);
 		this.setPadding(new Insets(0));
 	}
 
@@ -92,19 +92,16 @@ public class Algopoly extends BorderPane {
 		jugadores.add(j3);
 		Turno.inicializarTurno(jugadores);
 
-		Tablero.getInstance().desplazar(j1, Tablero.CASILLA_SALIDA);
-		Tablero.getInstance().desplazar(j2, Tablero.CASILLA_SALIDA);
-		Tablero.getInstance().desplazar(j3, Tablero.CASILLA_SALIDA);
-		VistaTablero.getInstance().dibujarFichaJugador(vj1);
-		VistaTablero.getInstance().dibujarFichaJugador(vj2);
-		VistaTablero.getInstance().dibujarFichaJugador(vj3);
+		VistaTablero.getInstance().ponerFichaDeJugadorEnTablero(vj1);
+		VistaTablero.getInstance().ponerFichaDeJugadorEnTablero(vj2);
+		VistaTablero.getInstance().ponerFichaDeJugadorEnTablero(vj3);
 	}
 
 	public Algopoly() {
 		this.vistaJugadores = new HashMap<Jugador, VistaJugador>();
 		this.crearElementos();
-		this.iniciarJuego();
-		this.dibujarPanel();
+		this.iniciarJuego();		
+		this.redibujar();
 	}
 
 	public static Algopoly getInstance() {
@@ -115,8 +112,12 @@ public class Algopoly extends BorderPane {
 	}
 
 	public void redibujar() {
+		VistaTablero tablero = VistaTablero.getInstance();
+
+		tablero.dibujarTablero();
+		this.setCenter(tablero);
+
 		this.dibujarPanel();
-		VistaTablero.getInstance().dibujarTablero();
 	}
 
 	public void tirarDadosSetDisable(boolean estado) {

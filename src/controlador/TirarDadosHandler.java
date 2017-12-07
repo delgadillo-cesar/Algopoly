@@ -1,6 +1,7 @@
 package controlador;
 
 import modelo.juego.Dados;
+import modelo.juego.Turno;
 import vista.Algopoly;
 import vista.tablero.VistaTablero;
 import javafx.event.ActionEvent;
@@ -13,8 +14,9 @@ public class TirarDadosHandler implements EventHandler<ActionEvent> {
 		Dados.getInstance().lanzarDados();
 		Algopoly.getInstance().tirarDadosSetDisable(true);
 		Algopoly.getInstance().terminarTurnoSetDisable(false);
-		Algopoly.getInstance().redibujar();
 		VistaTablero.getInstance().moverJugadrDeTurno(Dados.getInstance().getValor());
+		VistaTablero.getInstance().habilitarCasillas(Turno.getInstance().turnoActual());
+		Algopoly.getInstance().redibujar();
 	}
 
 }

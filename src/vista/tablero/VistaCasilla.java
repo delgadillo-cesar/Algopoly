@@ -11,6 +11,8 @@ import modelo.entidades.Jugador;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 public abstract class VistaCasilla extends VBox {
 
@@ -46,6 +48,7 @@ public abstract class VistaCasilla extends VBox {
 	    posFichas.add(0);
 	    posFichas.add(12);
 	    this.distribucionFichas.put(3, posFichas);
+	    this.setDisable(true);
 	}
 	
 	public void dibujarJugadores(){
@@ -68,8 +71,19 @@ public abstract class VistaCasilla extends VBox {
 	public void dibujarFondo(){
 	    this.imagen = new Image(stringImagen, VistaTablero.ANCHO_CASILLA, VistaTablero.ALTO_CASILLA, true, true);
 		this.canvas.getGraphicsContext2D().drawImage(this.imagen, 0, 0);
+//		this.dibujarMarco();
 	}
 
+	public void dibujarMarco(){
+		Rectangle rect = new Rectangle(20,20,200,200);
+		rect.setFill(Color.TRANSPARENT);
+		rect.setStroke(Color.BLACK);
+
+		this.canvas.getGraphicsContext2D().setStroke(Color.BLUE);
+		this.canvas.getGraphicsContext2D().setLineWidth(5);
+        this.canvas.getGraphicsContext2D().strokeRoundRect(0, 0, VistaTablero.ANCHO_CASILLA, VistaTablero.ALTO_CASILLA, 5, 5);
+	}
+	
 	public void dibujarCasilla(){
 		this.estadoVista.dibujame(this);
 	}
