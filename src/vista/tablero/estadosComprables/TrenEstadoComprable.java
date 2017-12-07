@@ -17,6 +17,6 @@ public class TrenEstadoComprable extends EstadoVistaComprable {
 		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_TREN, this.trenComprable);
 	}
 	public EventHandler<MouseEvent> obtenerHandler(Image imagen){
-		return new OpcionesComprableHandler(imagen, new TrenComprableHandler(trenComprable));
+		return new OpcionesComprableHandler(imagen, trenComprable, new TrenComprableHandler(trenComprable));
 	}
 }

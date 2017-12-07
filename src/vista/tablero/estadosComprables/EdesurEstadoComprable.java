@@ -18,6 +18,6 @@ public class EdesurEstadoComprable extends EstadoVistaComprable {
 	}
 	
 	public EventHandler<MouseEvent> obtenerHandler(Image imagen){
-		return new OpcionesComprableHandler(imagen, new EdesurComprableHandler(edesurComprable));
+		return new OpcionesComprableHandler(imagen, edesurComprable, new EdesurComprableHandler(edesurComprable));
 	}
 }

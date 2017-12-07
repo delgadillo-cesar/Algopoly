@@ -19,6 +19,6 @@ public class SaltaSurEstadoComprable extends EstadoVistaComprable {
 
 	@Override
 	public EventHandler<MouseEvent> obtenerHandler(Image imagen) {
-		return new OpcionesComprableHandler(imagen, new SaltaSurComprableHandler(saltaSurComprable));
+		return new OpcionesComprableHandler(imagen, saltaSurComprable, new SaltaSurComprableHandler(saltaSurComprable));
 	}
 }

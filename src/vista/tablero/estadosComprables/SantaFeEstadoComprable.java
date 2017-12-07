@@ -19,6 +19,6 @@ public class SantaFeEstadoComprable extends EstadoVistaComprable {
 
 	@Override
 	public EventHandler<MouseEvent> obtenerHandler(Image imagen) {
-		return new OpcionesComprableHandler(imagen, new SantaFeComprableHandler(santaFeComprable));
+		return new OpcionesComprableHandler(imagen, santaFeComprable, new SantaFeComprableHandler(santaFeComprable));
 	}
 }

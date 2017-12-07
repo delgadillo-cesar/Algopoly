@@ -18,6 +18,6 @@ public class AysaEstadoComprable extends EstadoVistaComprable {
 	}
 	
 	public EventHandler<MouseEvent> obtenerHandler(Image imagen){
-		return new OpcionesComprableHandler(imagen, new AysaComprableHandler(aysaComprable));
+		return new OpcionesComprableHandler(imagen, aysaComprable, new AysaComprableHandler(aysaComprable));
 	}
 }

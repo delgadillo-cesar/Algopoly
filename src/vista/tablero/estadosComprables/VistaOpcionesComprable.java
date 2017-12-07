@@ -15,10 +15,11 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import modelo.tablero.Comprable;
 
 public class VistaOpcionesComprable extends Stage {
 
-	public VistaOpcionesComprable(Image imagen, EventHandler<ActionEvent> elEventHandler){
+	public VistaOpcionesComprable(Image imagen, Comprable unComprable, EventHandler<ActionEvent> elEventHandler){
 		
 	    this.initModality(Modality.APPLICATION_MODAL);
 	    VBox dialogVbox = new VBox();
@@ -29,7 +30,7 @@ public class VistaOpcionesComprable extends Stage {
 	    dialogVbox.setBackground(new Background(imagenDeFondo));
 	    
 	    CerrarOpcionesHandler cerrarOpciones = new CerrarOpcionesHandler(((Stage)this), elEventHandler);
-	    Button botonComprar = new Button("Comprar");
+	    Button botonComprar = new Button("Comprar: $" + unComprable.precioDeCompra());
 	    botonComprar.setOnAction(cerrarOpciones);
 	    botonComprar.setMaxWidth(Double.MAX_VALUE);
 	    dialogVbox.getChildren().add(botonComprar);

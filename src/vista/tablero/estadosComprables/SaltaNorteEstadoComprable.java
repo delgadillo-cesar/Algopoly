@@ -19,6 +19,6 @@ public class SaltaNorteEstadoComprable extends EstadoVistaComprable {
 
 	@Override
 	public EventHandler<MouseEvent> obtenerHandler(Image imagen) {
-		return new OpcionesComprableHandler(imagen, new SaltaNorteComprableHandler(saltaNorteComprable));
+		return new OpcionesComprableHandler(imagen, saltaNorteComprable, new SaltaNorteComprableHandler(saltaNorteComprable));
 	}
 }

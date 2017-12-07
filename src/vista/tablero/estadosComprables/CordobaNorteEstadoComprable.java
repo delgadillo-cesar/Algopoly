@@ -19,6 +19,6 @@ public class CordobaNorteEstadoComprable extends EstadoVistaComprable {
 
 	@Override
 	public EventHandler<MouseEvent> obtenerHandler(Image imagen) {
-		return new OpcionesComprableHandler(imagen, new CordobaNorteComprableHandler(cordobaNorteComprable));
+		return new OpcionesComprableHandler(imagen, cordobaNorteComprable, new CordobaNorteComprableHandler(cordobaNorteComprable));
 	}
 }

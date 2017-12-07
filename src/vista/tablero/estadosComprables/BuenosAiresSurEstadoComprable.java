@@ -19,6 +19,6 @@ public class BuenosAiresSurEstadoComprable extends EstadoVistaComprable {
 
 	@Override
 	public EventHandler<MouseEvent> obtenerHandler(Image imagen) {
-		return new OpcionesComprableHandler(imagen, new BuenosAiresSurComprableHandler(buenosAiresSurComprable));
+		return new OpcionesComprableHandler(imagen, buenosAiresSurComprable, new BuenosAiresSurComprableHandler(buenosAiresSurComprable));
 	}
 }

@@ -19,6 +19,6 @@ public class TucumanEstadoComprable extends EstadoVistaComprable {
 
 	@Override
 	public EventHandler<MouseEvent> obtenerHandler(Image imagen) {
-		return new OpcionesComprableHandler(imagen, new TucumanComprableHandler(tucumanComprable));
+		return new OpcionesComprableHandler(imagen, tucumanComprable, new TucumanComprableHandler(tucumanComprable));
 	}
 }

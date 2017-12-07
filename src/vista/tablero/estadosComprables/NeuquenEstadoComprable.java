@@ -19,6 +19,6 @@ public class NeuquenEstadoComprable extends EstadoVistaComprable {
 
 	@Override
 	public EventHandler<MouseEvent> obtenerHandler(Image imagen) {
-		return new OpcionesComprableHandler(imagen, new NeuquenComprableHandler(neuquenComprable));
+		return new OpcionesComprableHandler(imagen, neuquenComprable, new NeuquenComprableHandler(neuquenComprable));
 	}
 }

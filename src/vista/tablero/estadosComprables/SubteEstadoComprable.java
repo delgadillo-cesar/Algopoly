@@ -18,6 +18,6 @@ public class SubteEstadoComprable extends EstadoVistaComprable {
 	}
 	
 	public EventHandler<MouseEvent> obtenerHandler(Image imagen){
-		return new OpcionesComprableHandler(imagen, new SubteComprableHandler(subteComprable));
+		return new OpcionesComprableHandler(imagen, subteComprable, new SubteComprableHandler(subteComprable));
 	}
 }
