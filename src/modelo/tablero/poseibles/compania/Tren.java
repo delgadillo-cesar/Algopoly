@@ -12,7 +12,6 @@ public class Tren implements Compania {
 	
 	public Tren(Jugador propietario){
 		this.propietario = propietario;
-		this.propietario.agregarCompania(this);
 	}
 
 	protected int cobrar() {

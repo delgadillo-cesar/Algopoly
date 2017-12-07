@@ -12,7 +12,6 @@ public class Subte implements Compania {
 	
 	public Subte(Jugador propietario){
 		this.propietario = propietario;
-		this.propietario.agregarCompania(this);
 	}
 
 	protected int cobrar() {
