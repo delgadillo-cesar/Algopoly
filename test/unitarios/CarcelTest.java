@@ -49,7 +49,7 @@ public class CarcelTest {
 		Jugador jugador = new JugadorUno("Rich Uncle-Milburn Pennybags");
 		Carcel carcel = new Carcel();
 		carcel.afectar(jugador);
-		carcel.revizarCondena(jugador);
+		carcel.revisarCondena(jugador);
 		Assert.assertFalse(carcel.puedePagarFianza(jugador));
 	}
 
@@ -63,8 +63,8 @@ public class CarcelTest {
 		Jugador jugador = new JugadorUno("Rich Uncle-Milburn Pennybags");
 		Carcel carcel = new Carcel();
 		carcel.afectar(jugador);
-		carcel.revizarCondena(jugador);
-		carcel.revizarCondena(jugador);
+		carcel.revisarCondena(jugador);
+		carcel.revisarCondena(jugador);
 		Assert.assertTrue(carcel.puedePagarFianza(jugador));
 	}
 
@@ -78,8 +78,8 @@ public class CarcelTest {
 		Jugador jugador = new JugadorUno("Rich Uncle-Milburn Pennybags");
 		Carcel carcel = new Carcel();
 		carcel.afectar(jugador);
-		carcel.revizarCondena(jugador);
-		carcel.revizarCondena(jugador);
+		carcel.revisarCondena(jugador);
+		carcel.revisarCondena(jugador);
 		if (carcel.puedePagarFianza(jugador)) {
 			carcel.pagarFianzaDeJugador(jugador);
 		}
@@ -96,8 +96,8 @@ public class CarcelTest {
 		Jugador jugador = new JugadorUno("Rich Uncle-Milburn Pennybags");
 		Carcel carcel = new Carcel();
 		carcel.afectar(jugador);
-		carcel.revizarCondena(jugador);
-		carcel.revizarCondena(jugador);
+		carcel.revisarCondena(jugador);
+		carcel.revisarCondena(jugador);
 		Assert.assertTrue(carcel.estaPreso(jugador));
 	}
 
@@ -112,10 +112,10 @@ public class CarcelTest {
 		Jugador jugador = new JugadorUno("Rich Uncle-Milburn Pennybags");
 		Carcel carcel = new Carcel();
 		carcel.afectar(jugador);
-		carcel.revizarCondena(jugador);
-		carcel.revizarCondena(jugador);
-		carcel.revizarCondena(jugador);
-		carcel.revizarCondena(jugador);
+		carcel.revisarCondena(jugador);
+		carcel.revisarCondena(jugador);
+		carcel.revisarCondena(jugador);
+		carcel.revisarCondena(jugador);
 		Assert.assertFalse(carcel.estaPreso(jugador));
 	}
 	

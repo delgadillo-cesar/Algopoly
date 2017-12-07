@@ -8,7 +8,7 @@ public class MovimientoEncarcelado extends TipoMovimiento {
 	@Override
 	public void mover(Jugador unJugador, int cantidadDeCasilleros) {
 		Carcel laCarcel = (Carcel) Tablero.getInstance().obtenerCasilla(Tablero.CASILLA_CARCEL);
-		laCarcel.revizarCondena(unJugador);
+		laCarcel.revisarCondena(unJugador);
 	}
 
 }

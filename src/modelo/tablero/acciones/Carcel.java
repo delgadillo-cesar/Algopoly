@@ -42,7 +42,7 @@ public class Carcel implements Casilla {
 		primerTurno.afectarJugador(unJugador);
 	}
 
-	public void revizarCondena(Jugador unJugador) {
+	public void revisarCondena(Jugador unJugador) {
 		
 		if (!condenados.containsKey(unJugador)) return;
 		
