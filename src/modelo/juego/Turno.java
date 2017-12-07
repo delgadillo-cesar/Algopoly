@@ -41,6 +41,7 @@ public class Turno {
 		}
 		Jugador actual = jugadores.poll();
 		jugadores.add(actual);
+		jugadorAnterior = actual;
 		return jugadores.peek();
 	}	
 
