@@ -81,7 +81,7 @@ public class CarcelTest {
 		carcel.revizarCondena(jugador);
 		carcel.revizarCondena(jugador);
 		if (carcel.puedePagarFianza(jugador)) {
-			carcel.pagarFianza(jugador);
+			carcel.pagarFianzaDeJugador(jugador);
 		}
 		Assert.assertFalse(carcel.estaPreso(jugador));
 	}
