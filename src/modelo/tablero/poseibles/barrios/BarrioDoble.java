@@ -1,28 +1,28 @@
 package modelo.tablero.poseibles.barrios;
 
 import modelo.entidades.Jugador;
-import modelo.tablero.poseibles.barrios.construcciones.Construccion;
-import modelo.tablero.poseibles.barrios.construcciones.HastaDosCasas;
-import modelo.tablero.poseibles.barrios.construcciones.HastaHotel;
 import modelo.tablero.poseibles.barrios.construcciones.NadaParaConstruirException;
 
 
 public abstract class BarrioDoble extends Barrio {
 
+	private boolean puedeConstruirCasas;
+	private boolean puedeConstruirHotel;
+	
+	
 	public BarrioDoble(Jugador propietario) {
 		super(propietario);
 	}
 
 
 	public void construir() throws NadaParaConstruirException{
-		Construccion nuevaConstruccion = this.construcciones.construir(this);
-		this.construido = nuevaConstruccion;
+		this.construido = this.construido.construirEnBarrioDoble(this);
 		this.chequearComplemento();
 	}
 	
 	public int costoConstruccion() throws NadaParaConstruirException{
 		this.chequearComplemento();
-		return this.construcciones.costoConstruccion(this);
+		return this.construido.costoConstruirEnBarrioDoble(this);
 	}
 
 	protected void chequearComplemento(){
@@ -32,23 +32,23 @@ public abstract class BarrioDoble extends Barrio {
 	}
 	
 	protected void actualizarConstrucciones(Barrio complemento){
-		if (complemento.propietario() == this.propietario){
-			this.construcciones = this.construcciones.actualizarCon(new HastaDosCasas());
-			complemento.construcciones = complemento.construcciones.actualizarCon(new HastaDosCasas());
-		}
-
-		if (complemento.cantidadDePropiedades() == 2){
-			this.construcciones = this.construcciones.actualizarCon(new HastaHotel());
-		}
-		
-		if (this.cantidadDePropiedades() == 2){
-			complemento.construcciones = complemento.construcciones.actualizarCon(new HastaHotel());
-		}
+		this.puedeConstruirCasas = (complemento.propietario() == this.propietario);
+		this.puedeConstruirHotel = (complemento.construido.nivelConstruccion() >= 2);
 	}
 	
 	public void venderConstruccion(){
-		this.construido.vender();
+		this.construido = this.construido.vender();
 		this.chequearComplemento();
 	}
 
+
+	public boolean podesConstruirCasas(){
+		this.chequearComplemento();
+		return this.puedeConstruirCasas;
+	}
+
+	public boolean podesConstruirHotel(){
+		this.chequearComplemento();
+		return this.puedeConstruirHotel;
+	}
 }

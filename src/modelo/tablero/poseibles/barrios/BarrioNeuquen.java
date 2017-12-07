@@ -4,40 +4,37 @@ import modelo.entidades.Banco;
 import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.comprables.NeuquenComprable;
-import modelo.tablero.poseibles.barrios.construcciones.Construible;
-import modelo.tablero.poseibles.barrios.construcciones.SoloCasa;
+import modelo.tablero.poseibles.barrios.construcciones.Construccion;
 
 
 public class BarrioNeuquen extends Barrio {
 
 	public BarrioNeuquen(Jugador propietario) {
 		super(propietario);
-
-		this.construcciones = new SoloCasa();
 	}
 	
 	@Override
-	public void valoresDeTerreno(Construible unConstruible) {
-		unConstruible.costoCosntruccion(0);
-		unConstruible.precioAlquiler(1800);	
+	public void valoresDeTerreno(Construccion construccion) {
+		construccion.costoCosntruccion(0);
+		construccion.precioAlquiler(1800);	
 	}
 
 	@Override
-	public void valoresDeUnaCasa(Construible unConstruible) {
-		unConstruible.costoCosntruccion(4800);
-		unConstruible.precioAlquiler(3800);	
+	public void valoresDeUnaCasa(Construccion construccion) {
+		construccion.costoCosntruccion(4800);
+		construccion.precioAlquiler(3800);	
 	}
 
 	@Override
-	public void valoresDeDosCasas(Construible unConstruible) {
+	public void valoresDeDosCasas(Construccion construccion) {
 	}
 
 	@Override
-	public void valoresDeHotel(Construible unConstruible) {
+	public void valoresDeHotel(Construccion construccion) {
 	}
 
 	@Override
-	public void valoresDeEdificioHistorico(Construible unConstruible) {
+	public void valoresDeEdificioHistorico(Construccion construccion) {
 	}
 	
 	@Override

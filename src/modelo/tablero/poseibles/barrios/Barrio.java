@@ -3,24 +3,18 @@ package modelo.tablero.poseibles.barrios;
 import modelo.entidades.*;
 import modelo.tablero.Poseible;
 import modelo.tablero.poseibles.barrios.construcciones.Construccion;
-import modelo.tablero.poseibles.barrios.construcciones.ConstruccionPosible;
-import modelo.tablero.poseibles.barrios.construcciones.Construible;
 import modelo.tablero.poseibles.barrios.construcciones.NadaParaConstruirException;
-import modelo.tablero.poseibles.barrios.construcciones.TerrenoConstruible;
-import modelo.tablero.poseibles.compania.*;
+import modelo.tablero.poseibles.barrios.construcciones.Terreno;
 
 
 public abstract class Barrio implements Poseible  {
 	
 	protected Jugador propietario;
 	protected Construccion construido;
-	protected ConstruccionPosible construcciones;
 	
 	public Barrio(Jugador propietario) {
-		TerrenoConstruible terreno = new TerrenoConstruible();
-
 		this.propietario = propietario;
-		this.construido = terreno.construirEn(this);
+		this.construido = new Terreno(this);
 	}
 
 	public Jugador propietario(){
@@ -32,12 +26,11 @@ public abstract class Barrio implements Poseible  {
 	}
 	
 	public void construir() throws NadaParaConstruirException{
-		Construccion nuevaConstruccion = this.construcciones.construir(this);
-		this.construido = nuevaConstruccion;
+		this.construido = this.construido.construirEnBarrioSimple(this);
 	}
 	
 	public int costoConstruccion() throws NadaParaConstruirException{
-		return this.construcciones.costoConstruccion(this);
+		return this.construido.costoConstruirEnBarrioSimple(this);
 	}
 	
 	public Construccion construccionActual(){
@@ -56,11 +49,11 @@ public abstract class Barrio implements Poseible  {
 		this.construido = this.construido.vender();
 	}
 
-	public abstract void valoresDeTerreno(Construible unConstruible);
-	public abstract void valoresDeUnaCasa(Construible unConstruible);
-	public abstract void valoresDeDosCasas(Construible unConstruible);
-	public abstract void valoresDeHotel(Construible unConstruible);
-	public abstract void valoresDeEdificioHistorico(Construible unConstruible);
+	public abstract void valoresDeTerreno(Construccion construccion);
+	public abstract void valoresDeUnaCasa(Construccion construccion);
+	public abstract void valoresDeDosCasas(Construccion construccion);
+	public abstract void valoresDeHotel(Construccion construccion);
+	public abstract void valoresDeEdificioHistorico(Construccion construccion);
 	
 	public void interactuarCon(Barrio otroBarrio){}
 	public void interactuarConBuenosAiresNorte(Barrio otroBarrio){}

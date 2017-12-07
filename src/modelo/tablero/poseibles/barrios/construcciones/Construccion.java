@@ -3,25 +3,28 @@ package modelo.tablero.poseibles.barrios.construcciones;
 import modelo.entidades.Jugador;
 import modelo.tablero.poseibles.barrios.Barrio;
 
-public abstract class Construccion {
+public interface Construccion {
 
-	protected int precioAlquiler;
-	protected String unaDescripcion;
-	protected int cantPropiedades;
-	protected Barrio elBarrio;
+	public void costoCosntruccion(int costo);
+	public int costoCosntruccion(Barrio unBarrio);
+	public void precioAlquiler(int precio);
+	public int precioAlquiler(Barrio unBarrio);
 
-	public void cobrarAlquiler(Jugador propietario, Jugador unVisitante){
-		unVisitante.pagarA(propietario, this.precioAlquiler);
-	}
+	public int costoConstruirEnBarrioSimple(Barrio unBarrio);
+	public Construccion construirEnBarrioSimple(Barrio unBarrio);
+
+	public int	costoConstruirEnBarrioDoble(Barrio unBarrio);
+	public Construccion construirEnBarrioDoble(Barrio unBarrio);
+
+	public int	costoConstruirEnBarrioHistorico(Barrio unBarrio);
+	public Construccion construirEnBarrioHistorico(Barrio unBarrio);
 	
-	public String descripcion(){
-		return this.unaDescripcion;
-	}
-
-	public int cantidadDePropiedades(){
-		return this.cantPropiedades;
-	}
-	
+	public void cobrarAlquiler(Jugador propietario, Jugador unVisitante);
+	public String descripcion();
+	public int cantidadDePropiedades();	
 	public abstract boolean sePuedeVender();
 	public abstract Construccion vender();
+
+	public int nivelConstruccion();
+
 }

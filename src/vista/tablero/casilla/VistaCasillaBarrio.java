@@ -17,11 +17,11 @@ public class VistaCasillaBarrio extends VistaCasilla {
 	public VistaCasillaBarrio(){
 		int ancho = VistaTablero.ANCHO_CASILLA - (2 * MARGEN_LATERAL);
 		this.construccionImagen = new HashMap<Class<? extends Construccion>, Image>();
-		this.construccionImagen.put(TerrenoConstruido.class, new Image("file:src/vista/imagenes/TerrenoTablero.png", ancho, 0, false, false));
-		this.construccionImagen.put(UnaCasaConstruida.class, new Image("file:src/vista/imagenes/CasaTablero.png", ancho, 50, false, false));
-		this.construccionImagen.put(DosCasasConstruida.class, new Image("file:src/vista/imagenes/DosCasasTablero.png", ancho, 50, false, false));
-		this.construccionImagen.put(HotelConstruido.class, new Image("file:src/vista/imagenes/HotelTablero.png", ancho, 50, false, false));
-		this.construccionImagen.put(EdificioHistoricoConstruido.class, new Image("file:src/vista/imagenes/CasaTablero.png", ancho, 50, false, false));
+		this.construccionImagen.put(Terreno.class, new Image("file:src/vista/imagenes/TerrenoTablero.png", ancho, 0, false, false));
+		this.construccionImagen.put(UnaCasa.class, new Image("file:src/vista/imagenes/CasaTablero.png", ancho, 50, false, false));
+		this.construccionImagen.put(DosCasas.class, new Image("file:src/vista/imagenes/DosCasasTablero.png", ancho, 50, false, false));
+		this.construccionImagen.put(Hotel.class, new Image("file:src/vista/imagenes/HotelTablero.png", ancho, 50, false, false));
+		this.construccionImagen.put(Edificio.class, new Image("file:src/vista/imagenes/CasaTablero.png", ancho, 50, false, false));
 	}
 	
 	public void setConstruccion(Construccion unaConstruccion){

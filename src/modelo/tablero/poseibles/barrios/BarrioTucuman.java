@@ -4,48 +4,54 @@ import modelo.entidades.Banco;
 import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.comprables.TucumanComprable;
-import modelo.tablero.poseibles.barrios.construcciones.Construible;
-import modelo.tablero.poseibles.barrios.construcciones.EdificioHistoricoConstruible;
-import modelo.tablero.poseibles.barrios.construcciones.SoloCasa;
+import modelo.tablero.poseibles.barrios.construcciones.Construccion;
+import modelo.tablero.poseibles.barrios.construcciones.Edificio;
+import modelo.tablero.poseibles.barrios.construcciones.NadaParaConstruirException;
 
 
 public class BarrioTucuman  extends Barrio {
 
 	public BarrioTucuman(Jugador propietario) {
 		super(propietario);
-
-		this.construcciones = new SoloCasa();
 	}
 	
-	@Override
-	public void valoresDeTerreno(Construible unConstruible) {
-		unConstruible.costoCosntruccion(0);
-		unConstruible.precioAlquiler(1800);	
+	public void construir() throws NadaParaConstruirException{
+		this.construido = this.construido.construirEnBarrioHistorico(this);
+	}
+	
+	public int costoConstruccion() throws NadaParaConstruirException{
+		return this.construido.costoConstruirEnBarrioHistorico(this);
 	}
 
 	@Override
-	public void valoresDeUnaCasa(Construible unConstruible) {
+	public void valoresDeTerreno(Construccion construccion) {
+		construccion.costoCosntruccion(0);
+		construccion.precioAlquiler(1800);	
+	}
+
+	@Override
+	public void valoresDeUnaCasa(Construccion construccion) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void valoresDeDosCasas(Construible unConstruible) {
+	public void valoresDeDosCasas(Construccion construccion) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void valoresDeHotel(Construible unConstruible) {
+	public void valoresDeHotel(Construccion construccion) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void valoresDeEdificioHistorico(Construible unConstruible) {
-		unConstruible.costoCosntruccion(7000);
-		unConstruible.precioAlquiler(4500);
-		((EdificioHistoricoConstruible) unConstruible).nombreEdificioHistorico("la casita de Tucumán");
+	public void valoresDeEdificioHistorico(Construccion construccion) {
+		construccion.costoCosntruccion(7000);
+		construccion.precioAlquiler(4500);
+		((Edificio) construccion).nombreEdificioHistorico("la casita de Tucumán");
 	}
 	
 	@Override

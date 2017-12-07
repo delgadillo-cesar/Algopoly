@@ -4,43 +4,41 @@ import modelo.entidades.Banco;
 import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.comprables.BuenosAiresNorteComprable;
-import modelo.tablero.poseibles.barrios.construcciones.Construible;
-import modelo.tablero.poseibles.barrios.construcciones.NoConstruye;
+import modelo.tablero.poseibles.barrios.construcciones.Construccion;
 
 public class BarrioBuenosAiresNorte extends BarrioDoble {
 
 	public BarrioBuenosAiresNorte(Jugador propietario) {
 		super(propietario);
-		this.construcciones = new NoConstruye();
 	}
 
 	@Override
-	public void valoresDeTerreno(Construible unConstruible) {
-		unConstruible.costoCosntruccion(0);
-		unConstruible.precioAlquiler(2500);	
+	public void valoresDeTerreno(Construccion construccion) {
+		construccion.costoCosntruccion(0);
+		construccion.precioAlquiler(2500);	
 	}
 
 	@Override
-	public void valoresDeUnaCasa(Construible unConstruible) {
-		unConstruible.costoCosntruccion(5500);
-		unConstruible.precioAlquiler(3500);	
+	public void valoresDeUnaCasa(Construccion construccion) {
+		construccion.costoCosntruccion(5500);
+		construccion.precioAlquiler(3500);	
 	}
 
 	@Override
-	public void valoresDeDosCasas(Construible unConstruible) {
-		unConstruible.costoCosntruccion(5500);
-		unConstruible.precioAlquiler(4000);	
+	public void valoresDeDosCasas(Construccion construccion) {
+		construccion.costoCosntruccion(5500);
+		construccion.precioAlquiler(4000);	
 	}
 
 
 	@Override
-	public void valoresDeHotel(Construible unConstruible) {
-		unConstruible.costoCosntruccion(9000);
-		unConstruible.precioAlquiler(6000);	
+	public void valoresDeHotel(Construccion construccion) {
+		construccion.costoCosntruccion(9000);
+		construccion.precioAlquiler(6000);	
 	}
 
 	@Override
-	public void valoresDeEdificioHistorico(Construible unConstruible) {
+	public void valoresDeEdificioHistorico(Construccion construccion) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -64,5 +62,4 @@ public class BarrioBuenosAiresNorte extends BarrioDoble {
 		Tablero.getInstance().cambiarCasillaPor(Tablero.CASILLA_BUENOS_AIRES_NORTE, barrio);
 		this.chequearComplemento();
 	}
-
 }

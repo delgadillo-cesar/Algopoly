@@ -4,44 +4,42 @@ import modelo.entidades.Banco;
 import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.comprables.SaltaSurComprable;
-import modelo.tablero.poseibles.barrios.construcciones.Construible;
-import modelo.tablero.poseibles.barrios.construcciones.NoConstruye;
+import modelo.tablero.poseibles.barrios.construcciones.Construccion;
 
 public class BarrioSaltaSur extends BarrioDoble {
 
 	public BarrioSaltaSur(Jugador propietario) {
 		super(propietario);
-		this.construcciones = new NoConstruye();
 	}
 	
 
 	@Override
-	public void valoresDeTerreno(Construible unConstruible) {
-		unConstruible.costoCosntruccion(0);
-		unConstruible.precioAlquiler(2000);	
+	public void valoresDeTerreno(Construccion construccion) {
+		construccion.costoCosntruccion(0);
+		construccion.precioAlquiler(2000);	
 	}
 
 	@Override
-	public void valoresDeUnaCasa(Construible unConstruible) {
-		unConstruible.costoCosntruccion(4500);
-		unConstruible.precioAlquiler(3250);	
+	public void valoresDeUnaCasa(Construccion construccion) {
+		construccion.costoCosntruccion(4500);
+		construccion.precioAlquiler(3250);	
 	}
 
 	@Override
-	public void valoresDeDosCasas(Construible unConstruible) {
-		unConstruible.costoCosntruccion(4500);
-		unConstruible.precioAlquiler(3850);	
+	public void valoresDeDosCasas(Construccion construccion) {
+		construccion.costoCosntruccion(4500);
+		construccion.precioAlquiler(3850);	
 	}
 
 
 	@Override
-	public void valoresDeHotel(Construible unConstruible) {
-		unConstruible.costoCosntruccion(7500);
-		unConstruible.precioAlquiler(5500);	
+	public void valoresDeHotel(Construccion construccion) {
+		construccion.costoCosntruccion(7500);
+		construccion.precioAlquiler(5500);	
 	}
 
 	@Override
-	public void valoresDeEdificioHistorico(Construible unConstruible) {
+	public void valoresDeEdificioHistorico(Construccion construccion) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -4,44 +4,41 @@ import modelo.entidades.Banco;
 import modelo.entidades.Jugador;
 import modelo.tablero.Tablero;
 import modelo.tablero.comprables.SantaFeComprable;
-import modelo.tablero.poseibles.barrios.construcciones.Construible;
-import modelo.tablero.poseibles.barrios.construcciones.SoloCasa;
+import modelo.tablero.poseibles.barrios.construcciones.Construccion;
 
 
 public class BarrioSantaFe extends Barrio {
 
 	public BarrioSantaFe(Jugador propietario) {
 		super(propietario);
-
-		this.construcciones = new SoloCasa();
 	}
 
 	@Override
-	public void valoresDeTerreno(Construible unConstruible) {
-		unConstruible.costoCosntruccion(0);
-		unConstruible.precioAlquiler(1500);	
+	public void valoresDeTerreno(Construccion construccion) {
+		construccion.costoCosntruccion(0);
+		construccion.precioAlquiler(1500);	
 	}
 
 	@Override
-	public void valoresDeUnaCasa(Construible unConstruible) {
-		unConstruible.costoCosntruccion(4000);
-		unConstruible.precioAlquiler(3500);	
+	public void valoresDeUnaCasa(Construccion construccion) {
+		construccion.costoCosntruccion(4000);
+		construccion.precioAlquiler(3500);	
 	}
 
 	@Override
-	public void valoresDeDosCasas(Construible unConstruible) {
+	public void valoresDeDosCasas(Construccion construccion) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void valoresDeHotel(Construible unConstruible) {
+	public void valoresDeHotel(Construccion construccion) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void valoresDeEdificioHistorico(Construible unConstruible) {
+	public void valoresDeEdificioHistorico(Construccion construccion) {
 		// TODO Auto-generated method stub
 		
 	}
