@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import modelo.entidades.JugadorDos;
 import modelo.entidades.JugadorUno;
-import modelo.tablero.comprables.TucumanComprable;
 import modelo.tablero.poseibles.barrios.Barrio;
 import modelo.tablero.poseibles.barrios.BarrioTucuman;
 import modelo.tablero.poseibles.barrios.construcciones.NadaParaConstruirException;
@@ -15,24 +14,24 @@ public class BarrioTucumanTest {
 	@Test
 	public void testSeCreaBarrioTucumanYSuPropietarioEsJugador() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new TucumanComprable());
 		Barrio barrioTucuman = new BarrioTucuman(unJugador);
+		unJugador.agregarBarrio(barrioTucuman);
 		Assert.assertEquals(unJugador, barrioTucuman.propietario());
 	}
 
 	@Test
 	public void testSeCreaBarrioTucumanYCostoConstruccionEs7000() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new TucumanComprable());
 		Barrio barrioTucuman = new BarrioTucuman(unJugador);
+		unJugador.agregarBarrio(barrioTucuman);
 		Assert.assertTrue(barrioTucuman.costoConstruccion() == 7000);
 	}
 	
 	@Test(expected = NadaParaConstruirException.class)
 	public void testSeConstruyeUnEdificioYCostoConstruccionLanzaExcepcion() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new TucumanComprable());
 		Barrio barrioTucuman = new BarrioTucuman(unJugador);
+		unJugador.agregarBarrio(barrioTucuman);
 		barrioTucuman.construir();
 		barrioTucuman.costoConstruccion();
 	}
@@ -40,8 +39,8 @@ public class BarrioTucumanTest {
 	@Test
 	public void testSeConstruyeUnEdificioYCapitalDisminuyeEn7000() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new TucumanComprable());
 		Barrio barrioTucuman = new BarrioTucuman(unJugador);
+		unJugador.agregarBarrio(barrioTucuman);
 		int capitalInicial = unJugador.capital();
 		barrioTucuman.construir();
 		Assert.assertTrue((capitalInicial - 7000) == unJugador.capital());
@@ -51,9 +50,9 @@ public class BarrioTucumanTest {
 	public void testSeConstruyeUnEdificioYCostoDeAlquilerEs4500() {
 		//Construccion Actual Es Edificio
 		JugadorUno unJugador = new JugadorUno("jugadorUno");
-		unJugador.comprarPropiedad(new TucumanComprable());
 		JugadorDos otroJugador = new JugadorDos("jugadorDos");
 		Barrio barrioTucuman = new BarrioTucuman(unJugador);
+		unJugador.agregarBarrio(barrioTucuman);
 		barrioTucuman.construir();
 		int capitalInicial = otroJugador.capital();
 		barrioTucuman.afectar(otroJugador);
@@ -64,9 +63,9 @@ public class BarrioTucumanTest {
 	public void testSeCreaUnBarrioTucumanYCostoDeAlquilerEs2500() {
 		//Construccion Actual Es Terreno
 		JugadorUno unJugador = new JugadorUno("jugadorUno");
-		unJugador.comprarPropiedad(new TucumanComprable());
 		JugadorDos otroJugador = new JugadorDos("jugadorDos");
 		Barrio barrioTucuman = new BarrioTucuman(unJugador);
+		unJugador.agregarBarrio(barrioTucuman);
 		int capitalInicial = otroJugador.capital();
 		barrioTucuman.afectar(otroJugador);
 		Assert.assertTrue((capitalInicial - 2500) == otroJugador.capital());
@@ -75,9 +74,9 @@ public class BarrioTucumanTest {
 	@Test
 	public void testSeVendeUnEdificioYCapitalAumenta() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new TucumanComprable());
 		Barrio barrioTucuman = new BarrioTucuman(unJugador);
 		barrioTucuman.construir();
+		unJugador.agregarBarrio(barrioTucuman);
 		int capitalInicial = unJugador.capital();
 		barrioTucuman.venderConstruccion();
 		Assert.assertTrue((capitalInicial + (7000 * 0.85)) == unJugador.capital());
@@ -86,9 +85,9 @@ public class BarrioTucumanTest {
 	@Test
 	public void testBarrioTucumanConUnaCasaSeVendeElBarrioYElCapitalAumenta() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new TucumanComprable());
 		Barrio barrioTucuman = new BarrioTucuman(unJugador);
 		barrioTucuman.construir();
+		unJugador.agregarBarrio(barrioTucuman);
 		int capitalInicial = unJugador.capital();
 		barrioTucuman.vender();
 		Assert.assertTrue((capitalInicial + (7000 + 25000) * 0.85) == unJugador.capital());
@@ -97,8 +96,8 @@ public class BarrioTucumanTest {
 	@Test
 	public void testSeVendeElBarrioTucumanYElCapitalAumenta() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new TucumanComprable());
 		Barrio barrioTucuman = new BarrioTucuman(unJugador);
+		unJugador.agregarBarrio(barrioTucuman);
 		int capitalInicial = unJugador.capital();
 		barrioTucuman.vender();
 		Assert.assertTrue((capitalInicial + (25000 * 0.85)) == unJugador.capital());

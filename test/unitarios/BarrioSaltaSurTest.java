@@ -5,10 +5,6 @@ import org.junit.Test;
 
 import modelo.entidades.JugadorDos;
 import modelo.entidades.JugadorUno;
-import modelo.tablero.PosicionTablero;
-import modelo.tablero.Tablero;
-import modelo.tablero.comprables.SaltaNorteComprable;
-import modelo.tablero.comprables.SaltaSurComprable;
 import modelo.tablero.poseibles.barrios.Barrio;
 import modelo.tablero.poseibles.barrios.BarrioSaltaNorte;
 import modelo.tablero.poseibles.barrios.BarrioSaltaSur;
@@ -27,26 +23,38 @@ public class BarrioSaltaSurTest {
 	public void testSeCreaBarrioSaltaSurYCostoConstruccionLanzaExcepcion() {
 		JugadorUno unJugador = new JugadorUno("jugador");
 		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
+		unJugador.agregarBarrio(barrioSaltaSur);
 		barrioSaltaSur.costoConstruccion();
 	}
 
 	@Test
 	public void testSeCreaBarrioSaltaSurYSaltaNorteYCostoConstruccionEs4500() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new SaltaSurComprable());
-		unJugador.comprarPropiedad(new SaltaNorteComprable());
 		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
 		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		unJugador.agregarBarrio(barrioSaltaNorte);
+		unJugador.agregarBarrio(barrioSaltaSur);
 		Assert.assertTrue(barrioSaltaSur.costoConstruccion() == 4500);
+	}
+
+	@Test(expected = NadaParaConstruirException.class)
+	public void testSeCreaBarrioSaltaSurYSaltaNorteConDistintosPropietariosCostoConstruccionLanzaExcepcion() {
+		JugadorUno unJugador = new JugadorUno("jugador");
+		JugadorDos otroJugador = new JugadorDos("jugador");
+		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
+		Barrio barrioSaltaNorte = new BarrioSaltaNorte(otroJugador);
+		unJugador.agregarBarrio(barrioSaltaSur);
+		otroJugador.agregarBarrio(barrioSaltaNorte);
+		barrioSaltaSur.costoConstruccion();
 	}
 
 	@Test
 	public void testSeCreaBarrioSaltaSurYSaltaNorteSeConstruyeUnaCasaYCostoConstruccionEs4500() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new SaltaSurComprable());
-		unJugador.comprarPropiedad(new SaltaNorteComprable());
 		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
 		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		unJugador.agregarBarrio(barrioSaltaNorte);
+		unJugador.agregarBarrio(barrioSaltaSur);
 		barrioSaltaSur.construir();
 		Assert.assertTrue(barrioSaltaSur.costoConstruccion() == 4500);
 	}
@@ -54,10 +62,10 @@ public class BarrioSaltaSurTest {
 	@Test(expected = NadaParaConstruirException.class)
 	public void testSeConstruyenDosCasasYCostoConstruccionLanzaExcepcion() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new SaltaSurComprable());
-		unJugador.comprarPropiedad(new SaltaNorteComprable());
 		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
 		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		unJugador.agregarBarrio(barrioSaltaNorte);
+		unJugador.agregarBarrio(barrioSaltaSur);
 		barrioSaltaSur.construir();
 		barrioSaltaSur.construir();
 		barrioSaltaSur.costoConstruccion();
@@ -66,10 +74,10 @@ public class BarrioSaltaSurTest {
 	@Test
 	public void testSeConstruyenDosCasasEnAmbosBarriosYCostoConstruccionEs7500() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new SaltaSurComprable());
-		unJugador.comprarPropiedad(new SaltaNorteComprable());
-		Barrio barrioSaltaSur = (Barrio)Tablero.getInstance().obtenerCasilla(new PosicionTablero(15));
-		Barrio barrioSaltaNorte = (Barrio)Tablero.getInstance().obtenerCasilla(new PosicionTablero(14));
+		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
+		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		unJugador.agregarBarrio(barrioSaltaNorte);
+		unJugador.agregarBarrio(barrioSaltaSur);
 		barrioSaltaSur.construir();
 		barrioSaltaSur.construir();
 		barrioSaltaNorte.construir();
@@ -80,10 +88,10 @@ public class BarrioSaltaSurTest {
 	@Test(expected = NadaParaConstruirException.class)
 	public void testSeConstruyenDosCasasYAlIntentarConstruirLanzaExcepcion() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new SaltaSurComprable());
-		unJugador.comprarPropiedad(new SaltaNorteComprable());
 		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
 		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		unJugador.agregarBarrio(barrioSaltaNorte);
+		unJugador.agregarBarrio(barrioSaltaSur);
 		barrioSaltaSur.construir();
 		barrioSaltaSur.construir();
 		barrioSaltaSur.construir();
@@ -92,8 +100,6 @@ public class BarrioSaltaSurTest {
 	@Test(expected = NadaParaConstruirException.class)
 	public void testSeConstruyeUnhotelYAlIntentarConstruirLanzaExcepcion() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new SaltaSurComprable());
-		unJugador.comprarPropiedad(new SaltaNorteComprable());
 		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
 		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
 		barrioSaltaSur.construir();
@@ -107,10 +113,10 @@ public class BarrioSaltaSurTest {
 	@Test
 	public void testSeConstruyeUnaCasaYCapitalDisminuyeEn4500() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new SaltaSurComprable());
-		unJugador.comprarPropiedad(new SaltaNorteComprable());
 		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
 		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		unJugador.agregarBarrio(barrioSaltaNorte);
+		unJugador.agregarBarrio(barrioSaltaSur);
 		int capitalInicial = unJugador.capital();
 		barrioSaltaSur.construir();
 		Assert.assertTrue((capitalInicial - 4500) == unJugador.capital());
@@ -119,10 +125,10 @@ public class BarrioSaltaSurTest {
 	@Test
 	public void testSeConstruyenDosCasasYCapitalDisminuyeEn4500DespuesDeLaSegunda() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new SaltaSurComprable());
-		unJugador.comprarPropiedad(new SaltaNorteComprable());
 		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
 		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		unJugador.agregarBarrio(barrioSaltaNorte);
+		unJugador.agregarBarrio(barrioSaltaSur);
 		barrioSaltaSur.construir();
 		int capitalInicial = unJugador.capital();
 		barrioSaltaSur.construir();
@@ -132,10 +138,10 @@ public class BarrioSaltaSurTest {
 	@Test
 	public void testSeConstruyeUnHotelYCapitalDisminuyeEn7500DespuesDelHotel() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new SaltaSurComprable());
-		unJugador.comprarPropiedad(new SaltaNorteComprable());
-		Barrio barrioSaltaSur = (Barrio)Tablero.getInstance().obtenerCasilla(new PosicionTablero(15));
-		Barrio barrioSaltaNorte = (Barrio)Tablero.getInstance().obtenerCasilla(new PosicionTablero(14));
+		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
+		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		unJugador.agregarBarrio(barrioSaltaNorte);
+		unJugador.agregarBarrio(barrioSaltaSur);
 		barrioSaltaSur.construir();
 		barrioSaltaSur.construir();
 		barrioSaltaNorte.construir();
@@ -161,10 +167,10 @@ public class BarrioSaltaSurTest {
 		// Construccion Actual Es UnaCasa
 		JugadorUno unJugador = new JugadorUno("jugadorUno");
 		JugadorDos otroJugador = new JugadorDos("jugadorDos");
-		unJugador.comprarPropiedad(new SaltaSurComprable());
-		unJugador.comprarPropiedad(new SaltaNorteComprable());
 		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
 		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		unJugador.agregarBarrio(barrioSaltaNorte);
+		unJugador.agregarBarrio(barrioSaltaSur);
 		barrioSaltaSur.construir();
 		int capitalInicial = otroJugador.capital();
 		barrioSaltaSur.afectar(otroJugador);
@@ -176,10 +182,10 @@ public class BarrioSaltaSurTest {
 		// Construccion Actual Es DosCasas
 		JugadorUno unJugador = new JugadorUno("jugadorUno");
 		JugadorDos otroJugador = new JugadorDos("jugadorDos");
-		unJugador.comprarPropiedad(new SaltaSurComprable());
-		unJugador.comprarPropiedad(new SaltaNorteComprable());
 		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
 		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		unJugador.agregarBarrio(barrioSaltaNorte);
+		unJugador.agregarBarrio(barrioSaltaSur);
 		barrioSaltaSur.construir();
 		barrioSaltaSur.construir();
 		int capitalInicial = otroJugador.capital();
@@ -192,10 +198,10 @@ public class BarrioSaltaSurTest {
 		// Construccion Actual Es DosCasas
 		JugadorUno unJugador = new JugadorUno("jugadorUno");
 		JugadorDos otroJugador = new JugadorDos("jugadorDos");
-		unJugador.comprarPropiedad(new SaltaSurComprable());
-		unJugador.comprarPropiedad(new SaltaNorteComprable());
-		Barrio barrioSaltaSur = (Barrio)Tablero.getInstance().obtenerCasilla(new PosicionTablero(15));
-		Barrio barrioSaltaNorte = (Barrio)Tablero.getInstance().obtenerCasilla(new PosicionTablero(14));
+		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
+		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		unJugador.agregarBarrio(barrioSaltaNorte);
+		unJugador.agregarBarrio(barrioSaltaSur);
 		barrioSaltaNorte.construir();
 		barrioSaltaNorte.construir();
 		barrioSaltaSur.construir();
@@ -209,10 +215,10 @@ public class BarrioSaltaSurTest {
 	@Test
 	public void testSeVendeUnaCasaYCapitalAumenta() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new SaltaSurComprable());
-		unJugador.comprarPropiedad(new SaltaNorteComprable());
 		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
 		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		unJugador.agregarBarrio(barrioSaltaNorte);
+		unJugador.agregarBarrio(barrioSaltaSur);
 		barrioSaltaSur.construir();
 		int capitalInicial = unJugador.capital();
 		barrioSaltaSur.venderConstruccion();
@@ -222,10 +228,10 @@ public class BarrioSaltaSurTest {
 	@Test
 	public void testSeVendeSegundaCasaYCapitalAumenta() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new SaltaSurComprable());
-		unJugador.comprarPropiedad(new SaltaNorteComprable());
 		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
 		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		unJugador.agregarBarrio(barrioSaltaNorte);
+		unJugador.agregarBarrio(barrioSaltaSur);
 		barrioSaltaSur.construir();
 		barrioSaltaSur.construir();
 		int capitalInicial = unJugador.capital();
@@ -236,10 +242,10 @@ public class BarrioSaltaSurTest {
 	@Test
 	public void testSeVendeHotelaYCapitalAumenta() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new SaltaSurComprable());
-		unJugador.comprarPropiedad(new SaltaNorteComprable());
-		Barrio barrioSaltaSur = (Barrio)Tablero.getInstance().obtenerCasilla(new PosicionTablero(15));
-		Barrio barrioSaltaNorte = (Barrio)Tablero.getInstance().obtenerCasilla(new PosicionTablero(14));
+		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
+		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		unJugador.agregarBarrio(barrioSaltaNorte);
+		unJugador.agregarBarrio(barrioSaltaSur);
 		barrioSaltaNorte.construir();
 		barrioSaltaNorte.construir();
 		barrioSaltaSur.construir();
@@ -253,10 +259,10 @@ public class BarrioSaltaSurTest {
 	@Test
 	public void testBarrioSaltaSurConUnaCasaSeVendeElBarrioYElCapitalAumenta() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new SaltaSurComprable());
-		unJugador.comprarPropiedad(new SaltaNorteComprable());
 		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
 		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		unJugador.agregarBarrio(barrioSaltaNorte);
+		unJugador.agregarBarrio(barrioSaltaSur);
 		barrioSaltaSur.construir();
 		int capitalInicial = unJugador.capital();
 		barrioSaltaSur.vender();
@@ -266,10 +272,10 @@ public class BarrioSaltaSurTest {
 	@Test
 	public void testBarrioSaltaSurConHotelSeVendeElBarrioYElCapitalAumenta() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new SaltaSurComprable());
-		unJugador.comprarPropiedad(new SaltaNorteComprable());
-		Barrio barrioSaltaSur = (Barrio)Tablero.getInstance().obtenerCasilla(new PosicionTablero(15));
-		Barrio barrioSaltaNorte = (Barrio)Tablero.getInstance().obtenerCasilla(new PosicionTablero(14));
+		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
+		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		unJugador.agregarBarrio(barrioSaltaNorte);
+		unJugador.agregarBarrio(barrioSaltaSur);
 		barrioSaltaNorte.construir();
 		barrioSaltaNorte.construir();
 		barrioSaltaSur.construir();
@@ -283,10 +289,10 @@ public class BarrioSaltaSurTest {
 	@Test
 	public void testBarrioSaltaSurConDosCasasSeVendeElBarrioYElCapitalAumenta() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new SaltaSurComprable());
-		unJugador.comprarPropiedad(new SaltaNorteComprable());
 		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
 		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		unJugador.agregarBarrio(barrioSaltaNorte);
+		unJugador.agregarBarrio(barrioSaltaSur);
 		barrioSaltaSur.construir();
 		barrioSaltaSur.construir();
 		int capitalInicial = unJugador.capital();

@@ -7,11 +7,6 @@ import modelo.entidades.Jugador;
 import modelo.entidades.JugadorDos;
 import modelo.entidades.JugadorUno;
 import modelo.juego.Dados;
-import modelo.tablero.Casilla;
-import modelo.tablero.PosicionTablero;
-import modelo.tablero.Tablero;
-import modelo.tablero.comprables.AysaComprable;
-import modelo.tablero.comprables.EdesurComprable;
 import modelo.tablero.poseibles.compania.Aysa;
 import modelo.tablero.poseibles.compania.Compania;
 import modelo.tablero.poseibles.compania.Edesur;
@@ -50,15 +45,14 @@ public class CompaniaEdesurTest {
 	public void testJugadorTieneAysaYEdesurYSuCapitalIncrementa1000Veces() {
 		Jugador jugadorUno = new JugadorUno("Juan");
 		Jugador jugadorDos = new JugadorDos("Pepe");
-		AysaComprable companiaUno = new AysaComprable();
-		EdesurComprable companiaDos = new EdesurComprable();
-		jugadorUno.comprarPropiedad(companiaUno);
-		jugadorUno.comprarPropiedad(companiaDos);		
+		Aysa companiaUno = new Aysa(jugadorUno);
+		Edesur companiaDos = new Edesur(jugadorUno);
+		jugadorUno.agregarCompania(companiaUno);
+		jugadorUno.agregarCompania(companiaDos);		
 		int capitalInicial = jugadorUno.capital();
 		Dados.getInstance().lanzarDados();
 		int valorACobrar = 1000 * Dados.getInstance().getValor();
-		Casilla edesur = Tablero.getInstance().obtenerCasilla(new PosicionTablero(4));
-		edesur.afectar(jugadorDos);
+		companiaDos.afectar(jugadorDos);
 		Assert.assertEquals(capitalInicial + valorACobrar, jugadorUno.capital());
 	}
 
@@ -66,15 +60,14 @@ public class CompaniaEdesurTest {
 	public void testJugadorCaeEnEdesurConAysaYSuCapitalDecrementa1000Veces() {
 		Jugador jugadorUno = new JugadorUno("Juan");
 		Jugador jugadorDos = new JugadorDos("Pepe");
-		AysaComprable companiaUno = new AysaComprable();
-		EdesurComprable companiaDos = new EdesurComprable();
-		jugadorUno.comprarPropiedad(companiaUno);
-		jugadorUno.comprarPropiedad(companiaDos);		
+		Aysa companiaUno = new Aysa(jugadorUno);
+		Edesur companiaDos = new Edesur(jugadorUno);
+		jugadorUno.agregarCompania(companiaUno);
+		jugadorUno.agregarCompania(companiaDos);		
 		int capitalInicial = jugadorDos.capital();
 		Dados.getInstance().lanzarDados();
 		int valorACobrar = 1000 * Dados.getInstance().getValor();
-		Casilla edesur = Tablero.getInstance().obtenerCasilla(new PosicionTablero(4));
-		edesur.afectar(jugadorDos);
+		companiaDos.afectar(jugadorDos);
 		Assert.assertEquals(capitalInicial - valorACobrar, jugadorDos.capital());
 	}
 
@@ -85,6 +78,9 @@ public class CompaniaEdesurTest {
 		Compania companiaEdesur = new Edesur(jugadorUno);
 		Compania companiaTren = new Tren(jugadorUno);
 		Compania companiaSubte = new Subte(jugadorUno);
+		jugadorUno.agregarCompania(companiaEdesur);
+		jugadorUno.agregarCompania(companiaTren);
+		jugadorUno.agregarCompania(companiaSubte);		
 		int capitalInicial = jugadorUno.capital();
 		Dados.getInstance().lanzarDados();
 		int valorACobrar = 500 * Dados.getInstance().getValor();
@@ -99,6 +95,10 @@ public class CompaniaEdesurTest {
 		Compania companiaEdesur = new Edesur(jugador);
 		Compania companiaTren = new Tren(jugador);
 		Compania companiaSubte = new Subte(jugador);
+		jugador.agregarCompania(companiaAysa);		
+		jugador.agregarCompania(companiaEdesur);
+		jugador.agregarCompania(companiaTren);
+		jugador.agregarCompania(companiaSubte);		
 		Assert.assertEquals(0, companiaEdesur.cobrarConEdesur());
 		Assert.assertEquals(0, companiaEdesur.cobrarCon(companiaEdesur));
 		Assert.assertEquals(200, companiaEdesur.cobrarConAysa());
@@ -114,6 +114,7 @@ public class CompaniaEdesurTest {
 		Jugador jugadorUno = new JugadorUno("Juan");
 		Jugador jugadorDos = new JugadorDos("Pepe");
 		Compania compania = new Edesur(jugadorUno);
+		jugadorUno.agregarCompania(compania);
 		int capitalInicial = jugadorDos.capital();
 		compania.afectar(jugadorDos);
 		Assert.assertTrue(capitalInicial > jugadorDos.capital());
@@ -124,6 +125,7 @@ public class CompaniaEdesurTest {
 		Jugador jugadorUno = new JugadorUno("Juan");
 		Jugador jugadorDos = new JugadorDos("Pepe");
 		Compania compania = new Edesur(jugadorUno);
+		jugadorUno.agregarCompania(compania);
 		int capitalInicial = jugadorUno.capital();
 		compania.afectar(jugadorDos);
 		Assert.assertEquals(capitalInicial - jugadorDos.capital(), jugadorUno.capital() - capitalInicial);

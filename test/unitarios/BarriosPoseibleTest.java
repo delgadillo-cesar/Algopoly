@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import modelo.entidades.JugadorDos;
 import modelo.entidades.JugadorUno;
-import modelo.tablero.comprables.NeuquenComprable;
 import modelo.tablero.poseibles.barrios.Barrio;
 import modelo.tablero.poseibles.barrios.BarrioNeuquen;
 import modelo.tablero.poseibles.barrios.construcciones.NadaParaConstruirException;
@@ -17,7 +16,6 @@ public class BarriosPoseibleTest {
 	@Test
 	public void testSeCreaUnBarrioYPropietarioEsJugador() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new NeuquenComprable());
 		Barrio barrio = new BarrioNeuquen(unJugador);
 		Assert.assertEquals(unJugador, barrio.propietario());
 	}
@@ -25,16 +23,16 @@ public class BarriosPoseibleTest {
 	@Test
 	public void testSeCreaUnBarrioYCantidadDePropiedadesEsCero() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new NeuquenComprable());
 		Barrio barrio = new BarrioNeuquen(unJugador);
+		unJugador.agregarBarrio(barrio);
 		Assert.assertEquals(1, barrio.cantidadDePropiedades());
 	}
 
 	@Test
 	public void testSeCreaUnBarrioSeVendeYAumentaCapital() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new NeuquenComprable());
 		Barrio barrio = new BarrioNeuquen(unJugador);
+		unJugador.agregarBarrio(barrio);
 		int capitalInicial = unJugador.capital();
 		barrio.vender();
 		Assert.assertTrue(capitalInicial < unJugador.capital());
@@ -43,8 +41,8 @@ public class BarriosPoseibleTest {
 	@Test
 	public void testSeConstruyeConstruccionYCantidadDePropiedadesEsUno() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new NeuquenComprable());
 		Barrio barrio = new BarrioNeuquen(unJugador);
+		unJugador.agregarBarrio(barrio);
 		barrio.construir();
 		Assert.assertEquals(1, barrio.cantidadDePropiedades());
 	}
@@ -52,8 +50,8 @@ public class BarriosPoseibleTest {
 	@Test
 	public void testSeConstruyeConstruccionYDisminuyeCapital() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new NeuquenComprable());
 		Barrio barrio = new BarrioNeuquen(unJugador);
+		unJugador.agregarBarrio(barrio);
 		int capitalInicial = unJugador.capital();
 		barrio.construir();
 		Assert.assertTrue(capitalInicial > unJugador.capital());
@@ -62,8 +60,8 @@ public class BarriosPoseibleTest {
 	@Test(expected = NadaParaConstruirException.class)
 	public void testSeIntentaContruirMuchasVecesYTiraException() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new NeuquenComprable());
 		Barrio barrio = new BarrioNeuquen(unJugador);
+		unJugador.agregarBarrio(barrio);
 		while (true) {
 			barrio.construir();
 		}
@@ -72,8 +70,8 @@ public class BarriosPoseibleTest {
 	@Test(expected = NadaParaConstruirException.class)
 	public void testSeConstruyeMuchasVecesYSePreguntaCostoDeConstruccionSiguienteYTiraException() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new NeuquenComprable());
 		Barrio barrio = new BarrioNeuquen(unJugador);
+		unJugador.agregarBarrio(barrio);
 		while (true) {
 			barrio.construir();
 			barrio.costoConstruccion();
@@ -83,24 +81,24 @@ public class BarriosPoseibleTest {
 	@Test
 	public void testNoSeConstruyeYSePreguntaCostoDeConstruccionSiguiente() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new NeuquenComprable());
 		Barrio barrio = new BarrioNeuquen(unJugador);
+		unJugador.agregarBarrio(barrio);
 		Assert.assertTrue(barrio.costoConstruccion() > 0);
 	}
 
 	@Test
 	public void testSeCreaBarrioYConstruccionActualEsTerreno() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new NeuquenComprable());
 		Barrio barrio = new BarrioNeuquen(unJugador);
+		unJugador.agregarBarrio(barrio);
 		Assert.assertEquals(Terreno.class, barrio.construccionActual().getClass());
 	}
 
 	@Test
 	public void testSeConstruyeYConstruccionActualEsUnaCasa() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new NeuquenComprable());
 		Barrio barrio = new BarrioNeuquen(unJugador);
+		unJugador.agregarBarrio(barrio);
 		barrio.construir();
 		Assert.assertEquals(UnaCasa.class, barrio.construccionActual().getClass());
 	}
@@ -109,8 +107,8 @@ public class BarriosPoseibleTest {
 	public void testAfectaAlJugadorDosYPierdeCapital() {
 		JugadorUno jugadorUno = new JugadorUno("jugadorUno");
 		JugadorDos jugadorDos = new JugadorDos("jugadorDos");
-		jugadorUno.comprarPropiedad(new NeuquenComprable());
 		Barrio barrio = new BarrioNeuquen(jugadorUno);
+		jugadorUno.agregarBarrio(barrio);
 		int capitalInicial = jugadorDos.capital();
 		barrio.afectar(jugadorDos);
 		Assert.assertTrue(capitalInicial > jugadorDos.capital());
@@ -120,8 +118,8 @@ public class BarriosPoseibleTest {
 	public void testAfectaAlJugadorDosYJugadorUnoGanaCapital() {
 		JugadorUno jugadorUno = new JugadorUno("jugadorUno");
 		JugadorDos jugadorDos = new JugadorDos("jugadorDos");
-		jugadorUno.comprarPropiedad(new NeuquenComprable());
 		Barrio barrio = new BarrioNeuquen(jugadorUno);
+		jugadorUno.agregarBarrio(barrio);
 		int capitalInicial = jugadorUno.capital();
 		barrio.afectar(jugadorDos);
 		Assert.assertTrue(capitalInicial < jugadorUno.capital());
@@ -130,16 +128,16 @@ public class BarriosPoseibleTest {
 	@Test
 	public void testSeCreaBarrioYNoSePuedeVenderConstruccion() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new NeuquenComprable());
 		Barrio barrio = new BarrioNeuquen(unJugador);
+		unJugador.agregarBarrio(barrio);
 		Assert.assertFalse(barrio.sePuedeVenderConstruccion());
 	}
 
 	@Test
 	public void testSeCreaBarrioSeConstruyeYSePuedeVenderConstruccion() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new NeuquenComprable());
 		Barrio barrio = new BarrioNeuquen(unJugador);
+		unJugador.agregarBarrio(barrio);
 		barrio.construir();
 		Assert.assertTrue(barrio.sePuedeVenderConstruccion());
 	}
@@ -147,8 +145,8 @@ public class BarriosPoseibleTest {
 	@Test
 	public void testSeCreaBarrioSeConstruyeSeVendeConstruccionYAumentaCapital() {
 		JugadorUno unJugador = new JugadorUno("jugador");
-		unJugador.comprarPropiedad(new NeuquenComprable());
 		Barrio barrio = new BarrioNeuquen(unJugador);
+		unJugador.agregarBarrio(barrio);
 		barrio.construir();
 		int capitalInicial = unJugador.capital();
 		barrio.venderConstruccion();

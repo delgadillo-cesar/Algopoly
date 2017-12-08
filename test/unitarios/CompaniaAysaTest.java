@@ -7,11 +7,6 @@ import modelo.entidades.Jugador;
 import modelo.entidades.JugadorDos;
 import modelo.entidades.JugadorUno;
 import modelo.juego.Dados;
-import modelo.tablero.Casilla;
-import modelo.tablero.PosicionTablero;
-import modelo.tablero.Tablero;
-import modelo.tablero.comprables.AysaComprable;
-import modelo.tablero.comprables.EdesurComprable;
 import modelo.tablero.poseibles.compania.Aysa;
 import modelo.tablero.poseibles.compania.Compania;
 import modelo.tablero.poseibles.compania.Edesur;
@@ -50,17 +45,17 @@ public class CompaniaAysaTest {
 	public void testJugadorTieneAysaYEdesurYSuCapitalIncrementa500Veces() {
 		Jugador jugadorUno = new JugadorUno("Juan");
 		Jugador jugadorDos = new JugadorDos("Pepe");
-		AysaComprable companiaUno = new AysaComprable();
-		jugadorUno.comprarPropiedad(companiaUno);		
-		EdesurComprable companiaDos = new EdesurComprable();
-		jugadorUno.comprarPropiedad(companiaDos);
+		Aysa aysa = new Aysa(jugadorUno);
+		jugadorUno.agregarCompania(aysa);
+		Edesur edesur = new Edesur(jugadorUno);
+		jugadorUno.agregarCompania(edesur);
 		
 		do {
 			Dados.getInstance().lanzarDados();
 		} while (Dados.getInstance().getValor() != 10);
+
 		int valorACobrar = 500 * Dados.getInstance().getValor();
 		int capitalInicial = jugadorUno.capital();
-		Casilla aysa = Tablero.getInstance().obtenerCasilla(new PosicionTablero(13));
 		aysa.afectar(jugadorDos);
 		Assert.assertEquals(capitalInicial + valorACobrar, jugadorUno.capital());
 	}
@@ -72,6 +67,9 @@ public class CompaniaAysaTest {
 		Compania companiaAysa = new Aysa(jugadorUno);
 		Compania companiaTren = new Tren(jugadorUno);
 		Compania companiaSubte = new Subte(jugadorUno);
+		jugadorUno.agregarCompania(companiaAysa);
+		jugadorUno.agregarCompania(companiaTren);
+		jugadorUno.agregarCompania(companiaSubte);
 		int capitalInicial = jugadorUno.capital();
 		Dados.getInstance().lanzarDados();
 		int valorACobrar = 300 * Dados.getInstance().getValor();
@@ -101,6 +99,7 @@ public class CompaniaAysaTest {
 		Jugador jugadorUno = new JugadorUno("Juan");
 		Jugador jugadorDos = new JugadorDos("Pepe");
 		Compania compania = new Aysa(jugadorUno);
+		jugadorUno.agregarCompania(compania);
 		int capitalInicial = jugadorDos.capital();
 		compania.afectar(jugadorDos);
 		Assert.assertTrue(capitalInicial > jugadorDos.capital());
@@ -111,6 +110,7 @@ public class CompaniaAysaTest {
 		Jugador jugadorUno = new JugadorUno("Juan");
 		Jugador jugadorDos = new JugadorDos("Pepe");
 		Compania compania = new Aysa(jugadorUno);
+		jugadorUno.agregarCompania(compania);
 		int capitalInicial = jugadorUno.capital();
 		compania.afectar(jugadorDos);
 		Assert.assertEquals(capitalInicial - jugadorDos.capital(), jugadorUno.capital() - capitalInicial);

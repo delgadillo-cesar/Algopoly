@@ -35,7 +35,7 @@ public abstract class Jugador {
 		return this.capital;
 	}
 	
-	public int cobrar(int unMonto) {
+	protected int cobrar(int unMonto) {
 		capital += unMonto;
 		return unMonto;
 	}
@@ -45,10 +45,6 @@ public abstract class Jugador {
 		
 		capital -= unMonto;
 		return unMonto;
-	}
-
-	public void comprarPropiedad(Comprable unComprable){
-		unComprable.comprar(this);
 	}
 
 	public void agregarCompania(Compania unaCompania){
@@ -106,10 +102,10 @@ public abstract class Jugador {
 	}
 	
 	public abstract void pagarA (Jugador cobrador, int monto);
-	public abstract int cobrarAJugador (JugadorUno pagador, int monto);
-	public abstract int cobrarAJugador (JugadorDos pagador, int monto);
-	public abstract int cobrarAJugador (JugadorTres pagador, int monto);
-	public abstract int cobrarABanco (Banco pagador, int monto);
+	protected abstract int cobrarAJugador (JugadorUno pagador, int monto);
+	protected abstract int cobrarAJugador (JugadorDos pagador, int monto);
+	protected abstract int cobrarAJugador (JugadorTres pagador, int monto);
+	protected abstract int cobrarABanco (Banco pagador, int monto);
 
 	
 }

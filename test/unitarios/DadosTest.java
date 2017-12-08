@@ -3,10 +3,7 @@ package unitarios;
 import org.junit.Assert;
 import org.junit.Test;
 
-import modelo.entidades.Jugador;
-import modelo.entidades.JugadorUno;
 import modelo.juego.Dados;
-import modelo.tablero.Tablero;
 
 public class DadosTest {
 

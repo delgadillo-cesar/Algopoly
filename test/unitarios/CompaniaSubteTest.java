@@ -7,11 +7,6 @@ import modelo.entidades.Jugador;
 import modelo.entidades.JugadorDos;
 import modelo.entidades.JugadorUno;
 import modelo.juego.Dados;
-import modelo.tablero.Casilla;
-import modelo.tablero.PosicionTablero;
-import modelo.tablero.Tablero;
-import modelo.tablero.comprables.SubteComprable;
-import modelo.tablero.comprables.TrenComprable;
 import modelo.tablero.poseibles.compania.Aysa;
 import modelo.tablero.poseibles.compania.Compania;
 import modelo.tablero.poseibles.compania.Edesur;
@@ -39,6 +34,7 @@ public class CompaniaSubteTest {
 		Jugador jugadorUno = new JugadorUno("Juan");
 		Jugador jugadorDos = new JugadorDos("Pepe");
 		Compania compania = new Subte(jugadorUno);
+		jugadorUno.agregarCompania(compania);
 		int capitalInicial = jugadorUno.capital();
 		Dados.getInstance().lanzarDados();
 		int valorACobrar = 600 * Dados.getInstance().getValor();
@@ -50,15 +46,14 @@ public class CompaniaSubteTest {
 	public void testJugadorTieneSubteYTrenYSuCapitalIncrementa1100Veces() {
 		Jugador jugadorUno = new JugadorUno("Juan");
 		Jugador jugadorDos = new JugadorDos("Pepe");
-		SubteComprable companiaUno = new SubteComprable();
-		TrenComprable companiaDos = new TrenComprable();
-		jugadorUno.comprarPropiedad(companiaUno);
-		jugadorUno.comprarPropiedad(companiaDos);
+		Subte companiaUno = new Subte(jugadorUno);
+		Tren companiaDos = new Tren(jugadorUno);
+		jugadorUno.agregarCompania(companiaUno);
+		jugadorUno.agregarCompania(companiaDos);
 		int capitalInicial = jugadorUno.capital();
 		Dados.getInstance().lanzarDados();
 		int valorACobrar = 1100 * Dados.getInstance().getValor();
-		Casilla subte = Tablero.getInstance().obtenerCasilla(new PosicionTablero(9));
-		subte.afectar(jugadorDos);
+		companiaUno.afectar(jugadorDos);
 		Assert.assertEquals(capitalInicial + valorACobrar, jugadorUno.capital());
 	}
 
@@ -69,6 +64,9 @@ public class CompaniaSubteTest {
 		Compania companiaAysa = new Aysa(jugadorUno);
 		Compania companiaTren = new Edesur(jugadorUno);
 		Compania companiaSubte = new Subte(jugadorUno);
+		jugadorUno.agregarCompania(companiaAysa);
+		jugadorUno.agregarCompania(companiaTren);
+		jugadorUno.agregarCompania(companiaSubte);
 		int capitalInicial = jugadorUno.capital();
 		Dados.getInstance().lanzarDados();
 		int valorACobrar = 600 * Dados.getInstance().getValor();
@@ -83,6 +81,10 @@ public class CompaniaSubteTest {
 		Compania companiaEdesur = new Edesur(jugador);
 		Compania companiaTren = new Tren(jugador);
 		Compania companiaSubte = new Subte(jugador);
+		jugador.agregarCompania(companiaAysa);
+		jugador.agregarCompania(companiaTren);
+		jugador.agregarCompania(companiaSubte);
+		jugador.agregarCompania(companiaEdesur);
 		Assert.assertEquals(0, companiaSubte.cobrarConAysa());
 		Assert.assertEquals(0, companiaSubte.cobrarCon(companiaAysa));
 		Assert.assertEquals(0, companiaSubte.cobrarConEdesur());

@@ -7,11 +7,6 @@ import modelo.entidades.Jugador;
 import modelo.entidades.JugadorDos;
 import modelo.entidades.JugadorUno;
 import modelo.juego.Dados;
-import modelo.tablero.Casilla;
-import modelo.tablero.PosicionTablero;
-import modelo.tablero.Tablero;
-import modelo.tablero.comprables.SubteComprable;
-import modelo.tablero.comprables.TrenComprable;
 import modelo.tablero.poseibles.compania.Aysa;
 import modelo.tablero.poseibles.compania.Compania;
 import modelo.tablero.poseibles.compania.Edesur;
@@ -50,15 +45,14 @@ public class CompaniaTrenTest {
 	public void testJugadorTieneTrenYSubteYSuCapitalIncrementa800Veces() {
 		Jugador jugadorUno = new JugadorUno("Juan");
 		Jugador jugadorDos = new JugadorDos("Pepe");		
-		SubteComprable companiaUno = new SubteComprable();
-		TrenComprable companiaDos = new TrenComprable();
-		jugadorUno.comprarPropiedad(companiaUno);
-		jugadorUno.comprarPropiedad(companiaDos);	
+		Subte companiaUno = new Subte(jugadorUno);
+		Tren companiaDos = new Tren(jugadorUno);
+		jugadorUno.agregarCompania(companiaUno);
+		jugadorUno.agregarCompania(companiaDos);	
 		int capitalInicial = jugadorUno.capital();
 		Dados.getInstance().lanzarDados();
 		int valorACobrar = 800 * Dados.getInstance().getValor();
-		Casilla tren = Tablero.getInstance().obtenerCasilla(new PosicionTablero(17));
-		tren.afectar(jugadorDos);
+		companiaDos.afectar(jugadorDos);
 		Assert.assertEquals(capitalInicial + valorACobrar, jugadorUno.capital());
 	}
 
@@ -69,6 +63,9 @@ public class CompaniaTrenTest {
 		Compania companiaAysa = new Aysa(jugadorUno);
 		Compania companiaTren = new Tren(jugadorUno);
 		Compania companiaEdesur = new Edesur(jugadorUno);
+		jugadorUno.agregarCompania(companiaAysa);
+		jugadorUno.agregarCompania(companiaTren);
+		jugadorUno.agregarCompania(companiaEdesur);
 		int capitalInicial = jugadorUno.capital();
 		Dados.getInstance().lanzarDados();
 		int valorACobrar = 450 * Dados.getInstance().getValor();
@@ -83,6 +80,10 @@ public class CompaniaTrenTest {
 		Compania companiaEdesur = new Edesur(jugador);
 		Compania companiaTren = new Tren(jugador);
 		Compania companiaSubte = new Subte(jugador);
+		jugador.agregarCompania(companiaAysa);
+		jugador.agregarCompania(companiaTren);
+		jugador.agregarCompania(companiaEdesur);
+		jugador.agregarCompania(companiaSubte);
 		Assert.assertEquals(0, companiaTren.cobrarConAysa());
 		Assert.assertEquals(0, companiaTren.cobrarCon(companiaAysa));
 		Assert.assertEquals(0, companiaTren.cobrarConEdesur());
