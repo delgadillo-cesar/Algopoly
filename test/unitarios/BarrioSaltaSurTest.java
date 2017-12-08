@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import modelo.entidades.JugadorDos;
 import modelo.entidades.JugadorUno;
+import modelo.tablero.PosicionTablero;
+import modelo.tablero.Tablero;
 import modelo.tablero.comprables.SaltaNorteComprable;
 import modelo.tablero.comprables.SaltaSurComprable;
 import modelo.tablero.poseibles.barrios.Barrio;
@@ -66,8 +68,8 @@ public class BarrioSaltaSurTest {
 		JugadorUno unJugador = new JugadorUno("jugador");
 		unJugador.comprarPropiedad(new SaltaSurComprable());
 		unJugador.comprarPropiedad(new SaltaNorteComprable());
-		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
-		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		Barrio barrioSaltaSur = (Barrio)Tablero.getInstance().obtenerCasilla(new PosicionTablero(15));
+		Barrio barrioSaltaNorte = (Barrio)Tablero.getInstance().obtenerCasilla(new PosicionTablero(14));
 		barrioSaltaSur.construir();
 		barrioSaltaSur.construir();
 		barrioSaltaNorte.construir();
@@ -132,8 +134,8 @@ public class BarrioSaltaSurTest {
 		JugadorUno unJugador = new JugadorUno("jugador");
 		unJugador.comprarPropiedad(new SaltaSurComprable());
 		unJugador.comprarPropiedad(new SaltaNorteComprable());
-		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
-		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		Barrio barrioSaltaSur = (Barrio)Tablero.getInstance().obtenerCasilla(new PosicionTablero(15));
+		Barrio barrioSaltaNorte = (Barrio)Tablero.getInstance().obtenerCasilla(new PosicionTablero(14));
 		barrioSaltaSur.construir();
 		barrioSaltaSur.construir();
 		barrioSaltaNorte.construir();
@@ -192,8 +194,8 @@ public class BarrioSaltaSurTest {
 		JugadorDos otroJugador = new JugadorDos("jugadorDos");
 		unJugador.comprarPropiedad(new SaltaSurComprable());
 		unJugador.comprarPropiedad(new SaltaNorteComprable());
-		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
-		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		Barrio barrioSaltaSur = (Barrio)Tablero.getInstance().obtenerCasilla(new PosicionTablero(15));
+		Barrio barrioSaltaNorte = (Barrio)Tablero.getInstance().obtenerCasilla(new PosicionTablero(14));
 		barrioSaltaNorte.construir();
 		barrioSaltaNorte.construir();
 		barrioSaltaSur.construir();
@@ -236,8 +238,8 @@ public class BarrioSaltaSurTest {
 		JugadorUno unJugador = new JugadorUno("jugador");
 		unJugador.comprarPropiedad(new SaltaSurComprable());
 		unJugador.comprarPropiedad(new SaltaNorteComprable());
-		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
-		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		Barrio barrioSaltaSur = (Barrio)Tablero.getInstance().obtenerCasilla(new PosicionTablero(15));
+		Barrio barrioSaltaNorte = (Barrio)Tablero.getInstance().obtenerCasilla(new PosicionTablero(14));
 		barrioSaltaNorte.construir();
 		barrioSaltaNorte.construir();
 		barrioSaltaSur.construir();
@@ -266,8 +268,8 @@ public class BarrioSaltaSurTest {
 		JugadorUno unJugador = new JugadorUno("jugador");
 		unJugador.comprarPropiedad(new SaltaSurComprable());
 		unJugador.comprarPropiedad(new SaltaNorteComprable());
-		Barrio barrioSaltaSur = new BarrioSaltaSur(unJugador);
-		Barrio barrioSaltaNorte = new BarrioSaltaNorte(unJugador);
+		Barrio barrioSaltaSur = (Barrio)Tablero.getInstance().obtenerCasilla(new PosicionTablero(15));
+		Barrio barrioSaltaNorte = (Barrio)Tablero.getInstance().obtenerCasilla(new PosicionTablero(14));
 		barrioSaltaNorte.construir();
 		barrioSaltaNorte.construir();
 		barrioSaltaSur.construir();
