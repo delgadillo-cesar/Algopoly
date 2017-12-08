@@ -13,7 +13,7 @@ public class CondenaRealConFianza extends Condena {
 	@Override
 	public void pagarFianzaDeJugadorEnCarcel(Jugador jugador, Carcel carcel) {
 		
-		carcel.pagarFianzaDeJugador(jugador);
+		carcel.liberar(jugador);
 	}
 
 	@Override
