@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import modelo.entidades.JugadorDos;
 import modelo.entidades.JugadorUno;
+import modelo.tablero.comprables.NeuquenComprable;
 import modelo.tablero.poseibles.barrios.Barrio;
 import modelo.tablero.poseibles.barrios.BarrioNeuquen;
 import modelo.tablero.poseibles.barrios.construcciones.NadaParaConstruirException;
@@ -14,6 +15,7 @@ public class BarrioNeuquenTest {
 	@Test
 	public void testSeCreaBarrioNeuquenYSuPropietarioEsJugador() {
 		JugadorUno unJugador = new JugadorUno("jugador");
+		unJugador.comprarPropiedad(new NeuquenComprable());
 		Barrio barrioNeuquen = new BarrioNeuquen(unJugador);
 		Assert.assertEquals(unJugador, barrioNeuquen.propietario());
 	}
@@ -21,6 +23,7 @@ public class BarrioNeuquenTest {
 	@Test
 	public void testSeCreaBarrioNeuquenYCostoConstruccionEs4800() {
 		JugadorUno unJugador = new JugadorUno("jugador");
+		unJugador.comprarPropiedad(new NeuquenComprable());
 		Barrio barrioNeuquen = new BarrioNeuquen(unJugador);
 		Assert.assertTrue(barrioNeuquen.costoConstruccion() == 4800);
 	}
@@ -28,6 +31,7 @@ public class BarrioNeuquenTest {
 	@Test(expected = NadaParaConstruirException.class)
 	public void testSeConstruyeUnaCasaYCostoConstruccionLanzaExcepcion() {
 		JugadorUno unJugador = new JugadorUno("jugador");
+		unJugador.comprarPropiedad(new NeuquenComprable());
 		Barrio barrioNeuquen = new BarrioNeuquen(unJugador);
 		barrioNeuquen.construir();
 		barrioNeuquen.costoConstruccion();
@@ -36,6 +40,7 @@ public class BarrioNeuquenTest {
 	@Test
 	public void testSeConstruyeUnaCasaYCapitalDisminuyeEn4800() {
 		JugadorUno unJugador = new JugadorUno("jugador");
+		unJugador.comprarPropiedad(new NeuquenComprable());
 		Barrio barrioNeuquen = new BarrioNeuquen(unJugador);
 		int capitalInicial = unJugador.capital();
 		barrioNeuquen.construir();
@@ -46,6 +51,7 @@ public class BarrioNeuquenTest {
 	public void testSeConstruyeUnaCasaYCostoDeAlquilerEs3800() {
 		//Construccion Actual Es UnaCasa
 		JugadorUno unJugador = new JugadorUno("jugadorUno");
+		unJugador.comprarPropiedad(new NeuquenComprable());
 		JugadorDos otroJugador = new JugadorDos("jugadorDos");
 		Barrio barrioNeuquen = new BarrioNeuquen(unJugador);
 		barrioNeuquen.construir();
@@ -58,6 +64,7 @@ public class BarrioNeuquenTest {
 	public void testSeCreaUnBarrioNeuquenYCostoDeAlquilerEs1800() {
 		//Construccion Actual Es Terreno
 		JugadorUno unJugador = new JugadorUno("jugadorUno");
+		unJugador.comprarPropiedad(new NeuquenComprable());
 		JugadorDos otroJugador = new JugadorDos("jugadorDos");
 		Barrio barrioNeuquen = new BarrioNeuquen(unJugador);
 		int capitalInicial = otroJugador.capital();
@@ -68,6 +75,7 @@ public class BarrioNeuquenTest {
 	@Test
 	public void testSeVendeUnaCasaYCapitalAumenta() {
 		JugadorUno unJugador = new JugadorUno("jugador");
+		unJugador.comprarPropiedad(new NeuquenComprable());
 		Barrio barrioNeuquen = new BarrioNeuquen(unJugador);
 		barrioNeuquen.construir();
 		int capitalInicial = unJugador.capital();
@@ -88,6 +96,7 @@ public class BarrioNeuquenTest {
 	@Test
 	public void testSeVendeElBarrioNeuquenYElCapitalAumenta() {
 		JugadorUno unJugador = new JugadorUno("jugador");
+		unJugador.comprarPropiedad(new NeuquenComprable());
 		Barrio barrioNeuquen = new BarrioNeuquen(unJugador);
 		int capitalInicial = unJugador.capital();
 		barrioNeuquen.vender();
