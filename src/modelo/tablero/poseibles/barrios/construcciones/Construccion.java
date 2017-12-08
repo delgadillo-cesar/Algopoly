@@ -5,8 +5,8 @@ import modelo.tablero.poseibles.barrios.Barrio;
 
 public interface Construccion {
 
-	public void costoCosntruccion(int costo);
-	public int costoCosntruccion(Barrio unBarrio);
+	public void costoConstruccion(int costo);
+	public int costoConstruccion(Barrio unBarrio);
 	public void precioAlquiler(int precio);
 	public int precioAlquiler(Barrio unBarrio);
 

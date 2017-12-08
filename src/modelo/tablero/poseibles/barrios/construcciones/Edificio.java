@@ -19,7 +19,7 @@ public class Edificio implements Construccion {
 	}
 	
 	@Override
-	public void costoCosntruccion(int costo) {
+	public void costoConstruccion(int costo) {
 		this.precioConstruccion = costo;
 	}
 
@@ -29,7 +29,7 @@ public class Edificio implements Construccion {
 	}
 
 	@Override
-	public int costoCosntruccion(Barrio unBarrio) {
+	public int costoConstruccion(Barrio unBarrio) {
 		return this.precioConstruccion;
 	}
 

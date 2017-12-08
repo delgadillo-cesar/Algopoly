@@ -25,8 +25,8 @@ public class BarrioTucuman  extends Barrio {
 
 	@Override
 	public void valoresDeTerreno(Construccion construccion) {
-		construccion.costoCosntruccion(0);
-		construccion.precioAlquiler(1800);	
+		construccion.costoConstruccion(0);
+		construccion.precioAlquiler(2500);	
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class BarrioTucuman  extends Barrio {
 
 	@Override
 	public void valoresDeEdificioHistorico(Construccion construccion) {
-		construccion.costoCosntruccion(7000);
+		construccion.costoConstruccion(7000);
 		construccion.precioAlquiler(4500);
 		((Edificio) construccion).nombreEdificioHistorico("la casita de Tucumán");
 	}

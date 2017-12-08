@@ -15,13 +15,13 @@ public class BarrioSantaFe extends Barrio {
 
 	@Override
 	public void valoresDeTerreno(Construccion construccion) {
-		construccion.costoCosntruccion(0);
+		construccion.costoConstruccion(0);
 		construccion.precioAlquiler(1500);	
 	}
 
 	@Override
 	public void valoresDeUnaCasa(Construccion construccion) {
-		construccion.costoCosntruccion(4000);
+		construccion.costoConstruccion(4000);
 		construccion.precioAlquiler(3500);	
 	}
 

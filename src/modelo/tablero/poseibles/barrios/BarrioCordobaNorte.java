@@ -15,26 +15,26 @@ public class BarrioCordobaNorte extends BarrioDoble {
 
 	@Override
 	public void valoresDeTerreno(Construccion construccion) {
-		construccion.costoCosntruccion(0);
+		construccion.costoConstruccion(0);
 		construccion.precioAlquiler(1300);	
 	}
 
 	@Override
 	public void valoresDeUnaCasa(Construccion construccion) {
-		construccion.costoCosntruccion(2200);
+		construccion.costoConstruccion(2200);
 		construccion.precioAlquiler(1800);	
 	}
 
 	@Override
 	public void valoresDeDosCasas(Construccion construccion) {
-		construccion.costoCosntruccion(2200);
+		construccion.costoConstruccion(2200);
 		construccion.precioAlquiler(2900);	
 	}
 
 
 	@Override
 	public void valoresDeHotel(Construccion construccion) {
-		construccion.costoCosntruccion(3500);
+		construccion.costoConstruccion(3500);
 		construccion.precioAlquiler(3500);	
 	}
 

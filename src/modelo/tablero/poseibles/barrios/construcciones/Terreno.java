@@ -19,7 +19,7 @@ public class Terreno implements Construccion {
 	}
 
 	@Override
-	public void costoCosntruccion(int costo) {
+	public void costoConstruccion(int costo) {
 		this.precioConstruccion = costo;
 	}
 
@@ -29,7 +29,7 @@ public class Terreno implements Construccion {
 	}
 
 	@Override
-	public int costoCosntruccion(Barrio unBarrio) {
+	public int costoConstruccion(Barrio unBarrio) {
 		return this.precioConstruccion;
 	}
 
@@ -49,13 +49,13 @@ public class Terreno implements Construccion {
 	@Override
 	public int costoConstruirEnBarrioSimple(Barrio unBarrio) {
 		Construccion construccion = this.construccionEnBarrioSimple(unBarrio);
-		return construccion.costoCosntruccion(unBarrio);
+		return construccion.costoConstruccion(unBarrio);
 	}
 
 	@Override
 	public Construccion construirEnBarrioSimple(Barrio unBarrio) {
 		Construccion construccion = this.construccionEnBarrioSimple(unBarrio);
-		unBarrio.propietario().pagarA(Banco.getInstance(), construccion.costoCosntruccion(unBarrio));
+		unBarrio.propietario().pagarA(Banco.getInstance(), construccion.costoConstruccion(unBarrio));
 		return construccion;
 	}
 
@@ -72,7 +72,7 @@ public class Terreno implements Construccion {
 		if(!((BarrioDoble) unBarrio).podesConstruirCasas()) throw new NadaParaConstruirException();
 
 		Construccion construccion = this.construccionEnBarrioDoble(unBarrio);
-		return construccion.costoCosntruccion(unBarrio);
+		return construccion.costoConstruccion(unBarrio);
 	}
 
 	@Override
@@ -80,7 +80,7 @@ public class Terreno implements Construccion {
 		if(!((BarrioDoble) unBarrio).podesConstruirCasas()) throw new NadaParaConstruirException();
 
 		Construccion construccion = this.construccionEnBarrioDoble(unBarrio);
-		unBarrio.propietario().pagarA(Banco.getInstance(), construccion.costoCosntruccion(unBarrio));
+		unBarrio.propietario().pagarA(Banco.getInstance(), construccion.costoConstruccion(unBarrio));
 		return construccion;
 	}
 
@@ -95,13 +95,13 @@ public class Terreno implements Construccion {
 	@Override
 	public int costoConstruirEnBarrioHistorico(Barrio unBarrio) {
 		Construccion construccion = this.construccionEnBarrioHistorico(unBarrio);
-		return construccion.costoCosntruccion(unBarrio);
+		return construccion.costoConstruccion(unBarrio);
 	}
 
 	@Override
 	public Construccion construirEnBarrioHistorico(Barrio unBarrio) {
 		Construccion construccion = this.construccionEnBarrioHistorico(unBarrio);
-		unBarrio.propietario().pagarA(Banco.getInstance(), construccion.costoCosntruccion(unBarrio));
+		unBarrio.propietario().pagarA(Banco.getInstance(), construccion.costoConstruccion(unBarrio));
 		return construccion;
 	}
 	

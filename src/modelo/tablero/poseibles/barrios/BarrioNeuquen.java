@@ -15,13 +15,13 @@ public class BarrioNeuquen extends Barrio {
 	
 	@Override
 	public void valoresDeTerreno(Construccion construccion) {
-		construccion.costoCosntruccion(0);
+		construccion.costoConstruccion(0);
 		construccion.precioAlquiler(1800);	
 	}
 
 	@Override
 	public void valoresDeUnaCasa(Construccion construccion) {
-		construccion.costoCosntruccion(4800);
+		construccion.costoConstruccion(4800);
 		construccion.precioAlquiler(3800);	
 	}
 

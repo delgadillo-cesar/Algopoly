@@ -14,26 +14,26 @@ public class BarrioBuenosAiresNorte extends BarrioDoble {
 
 	@Override
 	public void valoresDeTerreno(Construccion construccion) {
-		construccion.costoCosntruccion(0);
+		construccion.costoConstruccion(0);
 		construccion.precioAlquiler(2500);	
 	}
 
 	@Override
 	public void valoresDeUnaCasa(Construccion construccion) {
-		construccion.costoCosntruccion(5500);
+		construccion.costoConstruccion(5500);
 		construccion.precioAlquiler(3500);	
 	}
 
 	@Override
 	public void valoresDeDosCasas(Construccion construccion) {
-		construccion.costoCosntruccion(5500);
+		construccion.costoConstruccion(5500);
 		construccion.precioAlquiler(4000);	
 	}
 
 
 	@Override
 	public void valoresDeHotel(Construccion construccion) {
-		construccion.costoCosntruccion(9000);
+		construccion.costoConstruccion(9000);
 		construccion.precioAlquiler(6000);	
 	}
 

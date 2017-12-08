@@ -20,7 +20,7 @@ public class DosCasas implements Construccion {
 	}
 	
 	@Override
-	public void costoCosntruccion(int costo) {
+	public void costoConstruccion(int costo) {
 		this.precioConstruccion = costo;
 	}
 
@@ -30,7 +30,7 @@ public class DosCasas implements Construccion {
 	}
 
 	@Override
-	public int costoCosntruccion(Barrio unBarrio) {
+	public int costoConstruccion(Barrio unBarrio) {
 		return this.precioConstruccion;
 	}
 
@@ -63,7 +63,7 @@ public class DosCasas implements Construccion {
 		if(!((BarrioDoble) unBarrio).podesConstruirHotel()) throw new NadaParaConstruirException();
 
 		Construccion construccion = this.construccionEnBarrioDoble(unBarrio);
-		return construccion.costoCosntruccion(unBarrio);
+		return construccion.costoConstruccion(unBarrio);
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class DosCasas implements Construccion {
 		if(!((BarrioDoble) unBarrio).podesConstruirHotel()) throw new NadaParaConstruirException();
 
 		Construccion construccion = this.construccionEnBarrioDoble(unBarrio);
-		unBarrio.propietario().pagarA(Banco.getInstance(), construccion.costoCosntruccion(unBarrio));
+		unBarrio.propietario().pagarA(Banco.getInstance(), construccion.costoConstruccion(unBarrio));
 		return construccion;
 	}
 
