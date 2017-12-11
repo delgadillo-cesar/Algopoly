@@ -35,7 +35,7 @@ public abstract class Jugador {
 		return this.capital;
 	}
 	
-	protected int cobrar(int unMonto) {
+	public int cobrar(int unMonto) {
 		capital += unMonto;
 		return unMonto;
 	}
